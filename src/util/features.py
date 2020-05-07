@@ -2,10 +2,9 @@ from intron import IntronSet
 from feature.feature_factory import get_feature_from_name
 from util.sec_struct import add_secstruct_mfe_to_database, add_secstruct_ens_to_database
 from feature.secstruct.secstruct_metric import SecstructMetric
+from config import DATABASE_PATH
 import os
 import pandas as pd
-
-DATABASE_PATH='/Users/ramyar/Dropbox/GradSchool/Research/splicing/secstructs/pre-mRNA_SecStruct/database/'
 
 def get_features_filename(intron_class):
 	return DATABASE_PATH + 'introns/' + intron_class + '/features.csv'

@@ -1,12 +1,16 @@
+import util.gene_names
+
 class Intron:
-	def __init__(self, seq='', bp=-1, mfe='', ens=[], name='', chr_pos=('',-1,-1), strand='-'):
+	def __init__(self, seq='', bp=-1, mfe='', ens=[], name='', 
+		chr_pos=('',-1,-1), strand='-', ensembl_name=''):
 		self.bp = bp
 		self.seq = seq
 		self.mfe = mfe
 		self.ens = ens
-		self.name = name
+		self.name = name # refseq name
 		self.chr_pos = chr_pos
 		self.strand = strand
+		self.ensembl_name = ensembl_name
 
 class IntronSet:
 	def __init__(self):
@@ -46,3 +50,18 @@ class IntronSet:
 				ens = [x.split()[0] for x in ens]
 
 			self.introns.append(Intron(seq, bp, mfe, ens, name, chr_pos, strand))
+
+		self.fill_ensembl_names()
+
+	def fill_ensembl_names(self):
+		refseq_names = [intron.name for intron in introns]
+		ensembl_genes = gene_names.get_ensembl_names(refseq_names)
+		for intron in self.introns:
+			intron.ensembl_name = ensembl_genes[ii]
+
+	def get_intron_dict(self):
+		intron_dict = {}
+		for intron in self.introns:
+			intron_dict[intron.name] = intron
+		return intron_dict
+
