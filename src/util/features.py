@@ -58,7 +58,7 @@ def get_features_df(intron_class, feature_names=[], feature_options_all={}):
 
 	if feature_names != []:
 		full_names = [get_feature_full_name(feature_name, feature_options_all[feature_name]) for \
-			feature in feature_names]
+			feature_name in feature_names]
 		features_df = features_df[full_names]
 
 	return features_df
@@ -70,7 +70,7 @@ def get_features_in_database(intron_class):
 	columns = features_df.columns
 	no_na_columns = []
 	for column in columns:
-		if not df[column].isnull().values.any():
+		if not features_df[column].isnull().values.any():
 			no_na_columns += [column]
 	return no_na_columns
 
@@ -84,8 +84,8 @@ def get_feature_vals(feature, all_introns, feature_options):
 		if verbose:
 			print("Feature: %s, Evaluating intron: %d of %d" % \
 				(feature.name, ii, len(all_introns.introns)))
-		# feature_vals += [feature.apply(intron, feature_options)]
-		feature_vals += [1] # Fast evaluation for now
+		feature_vals += [feature.apply(intron, feature_options)]
+		# feature_vals += [1] # Fast evaluation for now
 
 	return feature_vals
 
@@ -128,7 +128,7 @@ def add_features_to_database(features_to_add, intron_class, feature_options_all,
 	
 	features_file = get_features_filename(intron_class)	
 	write_file = open(features_file, 'w')
-	df.to_csv(path_or_buf=write_file, index=False)
+	features_df.to_csv(path_or_buf=write_file, index=False)
 	write_file.close()
 
 # FeatureData holds options for features: secondary structure package, ens/mfe, print progress or no. 
@@ -149,7 +149,7 @@ def get_features(feature_names, intron_class, feature_options_all={}):
 	for feature_name in feature_names:
 		feature_full_name = get_feature_full_name(feature_name, feature_options_all[feature_name])
 		if feature_full_name not in features_in_database:
-			features_to_add += [feature_full_name]
+			features_to_add += [feature_name]
 	if len(features_to_add) > 0:
 		add_features_to_database(features_to_add, intron_class, feature_options_all, all_introns)
 
