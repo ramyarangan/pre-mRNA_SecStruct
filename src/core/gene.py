@@ -1,5 +1,6 @@
 from config import DATABASE_PATH
 from util.general import reverse_invert
+from attr import attrs,attrib
 
 STOP_CODONS = ['TAG', 'TAA', 'TGA']
 
@@ -39,7 +40,7 @@ class GeneSet:
 						strand_dir=strand_dir, seq=seq)
 			genes += [gene]
 		if prune_ORFs:
-			genes = prune_ORFs(genes)
+			genes = self.prune_ORFs(genes)
 		self.genes = genes 
 
 	def get_genes_dict(self):
@@ -48,7 +49,7 @@ class GeneSet:
 			genes_dict[gene.refseq_name] = gene
 		return genes_dict
 
-	def prune_ORFs(genes):
+	def prune_ORFs(self, genes):
 		# Clean genes list.. keep only sequences that are ORFs
 		new_genes = []
 		for gene in genes:

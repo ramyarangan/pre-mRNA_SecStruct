@@ -1,4 +1,4 @@
-import util.gene_names
+from util.gene_names import get_ensembl_names
 
 class Intron:
 	def __init__(self, seq='', bp=-1, mfe='', ens=[], name='', 
@@ -54,9 +54,9 @@ class IntronSet:
 		self.fill_ensembl_names()
 
 	def fill_ensembl_names(self):
-		refseq_names = [intron.name for intron in introns]
-		ensembl_genes = gene_names.get_ensembl_names(refseq_names)
-		for intron in self.introns:
+		refseq_names = [intron.name for intron in self.introns]
+		ensembl_genes = get_ensembl_names(refseq_names)
+		for ii, intron in enumerate(self.introns):
 			intron.ensembl_name = ensembl_genes[ii]
 
 	def get_intron_dict(self):
