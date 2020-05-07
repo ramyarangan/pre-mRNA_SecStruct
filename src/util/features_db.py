@@ -58,7 +58,11 @@ def get_features_df(intron_class, feature_names=[], feature_options_all={}):
 	if feature_names != []:
 		full_names = [get_feature_full_name(feature_name, feature_options_all[feature_name]) for \
 			feature_name in feature_names]
-		features_df = features_df[full_names]
+		full_names_df = []
+		for name in full_names:
+			if name in features_df.columns:
+				full_names_df += [name]
+		features_df = features_df[full_names_df]
 
 	return features_df
 
@@ -83,8 +87,10 @@ def get_feature_vals(feature, all_introns, feature_options):
 		if verbose:
 			print("Feature: %s, Evaluating intron: %d of %d" % \
 				(feature.name, ii, len(all_introns.introns)))
-		feature_vals += [feature.apply(intron, feature_options)]
-		# feature_vals += [1] # Fast evaluation for now
+		try:
+			feature_vals += [feature.apply(intron, feature_options)]
+		except NotImplementedError:
+			print("Feature: %s is not implemented" % feature.name)
 
 	return feature_vals
 
@@ -123,7 +129,8 @@ def add_features_to_database(features_to_add, intron_class, feature_options_all,
 		full_feature_name = get_feature_full_name(feature_name, feature_options)
 		[feature_vals, all_introns] = get_feature_vals_update_secstruct(feature_name, intron_class, \
 			feature_options, all_introns)
-		features_df[full_feature_name] = feature_vals
+		if feature_vals != []:
+			features_df[full_feature_name] = feature_vals
 	
 	features_file = get_features_filename(intron_class)	
 	write_file = open(features_file, 'w')

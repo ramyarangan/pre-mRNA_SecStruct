@@ -42,7 +42,7 @@ class EarlyStop:
 			early_stop = True
 
 		threeprime_dist = len(spliced_gene_seq) - stop2
-
+		
 		return (early_stop, late_stop, threeprime_dist)
 
 class HasEarlyStopFeature(Feature):
