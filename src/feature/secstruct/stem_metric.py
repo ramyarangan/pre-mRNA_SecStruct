@@ -1,7 +1,7 @@
-from intron_metric import IntronMetric
+from feature.secstruct.secstruct_metric import SecstructMetric
 import math 
 
-class StemMetric(IntronMetric):
+class StemMetric(SecstructMetric):
 
 	def __init__(self, start=-1, end=-1, do_bp_start=False, do_bp_end=False, \
 		do_intron_end=False, dist_cutoff=-1, req_stem_len=-1, name="Stem Metric"):

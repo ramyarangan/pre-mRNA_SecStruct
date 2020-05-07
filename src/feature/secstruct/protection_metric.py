@@ -1,6 +1,6 @@
-from intron_metric import IntronMetric
+from feature.secstruct.secstruct_metric import SecstructMetric
 
-class ProtectionMetric(IntronMetric):
+class ProtectionMetric(SecstructMetric):
 	def __init__(self, length, start_idx=-1, do_bp=False, do_end=False, name="ProtectionMetric"):
 		self.start_idx = start_idx
 		self.length = length

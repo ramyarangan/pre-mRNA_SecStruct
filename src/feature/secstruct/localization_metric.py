@@ -1,6 +1,6 @@
-from intron_metric import IntronMetric
+from feature.secstruct.secstruct_metric import SecstructMetric
 
-class LocalizationMetric(IntronMetric):
+class LocalizationMetric(SecstructMetric):
 	# Scores 2D graph localization between pair1 and pair2
 	def __init__(self, pair1=-1, pair2=-1, start_bp=False, end_bp=False, name="LocalizationMetric"):
 		self.INTMAX = 100000

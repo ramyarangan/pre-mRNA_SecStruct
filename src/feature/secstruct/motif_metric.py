@@ -1,9 +1,9 @@
-from intron_metric import IntronMetric
+from feature.secstruct.secstruct_metric import SecstructMetric
 import re
 import math
 
 
-class MotifMetric(IntronMetric):
+class MotifMetric(SecstructMetric):
 	def __init__(self, max_matches=100, name="MotifMetric"):
 		self.max_matches = max_matches
 		self.name = name
