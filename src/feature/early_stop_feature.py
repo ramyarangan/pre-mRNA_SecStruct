@@ -1,6 +1,6 @@
 from feature import Feature
-from gene import STOP_CODONS
-from gene import GeneSet
+from core.gene import STOP_CODONS
+from core.gene import GeneSet
 
 class EarlyStopFeature(Feature):
 	# Returns the resulting ORF length based on location of first stop

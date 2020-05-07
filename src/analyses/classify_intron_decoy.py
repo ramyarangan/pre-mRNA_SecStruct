@@ -1,4 +1,4 @@
-from util import features
+from util import features_db
 
 secstruct_options = {'secstruct_pkg': 'Vienna', 
 					'secstruct_type': 'mfe', 
@@ -7,8 +7,8 @@ secstruct_options = {'secstruct_pkg': 'Vienna',
 					}
 
 #all_features = ["LocalizationMetric", "StartToBPStemMetric", "BPToEndStemMetric", "StartProtectionMetric", 
-#		"EndProtectionMetric", "BPProtectionMetric"]
-all_features = ["ZipperStemMetric"]
+#		"EndProtectionMetric", "BPProtectionMetric", "ZipperStemMetric", ]
+all_features = ["HasEarlyStopFeature", "ThreeprimeDistStopFeature"]
 
 feature_options_all = {}
 for feature in all_features:

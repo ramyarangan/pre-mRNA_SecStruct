@@ -3,6 +3,7 @@ from feature.secstruct.protection_metric import StartProtectionMetric, EndProtec
 from feature.secstruct.motif_metric import KinkturnMetric, GNRAMetric
 from feature.secstruct.stem_metric import StartToBPStemMetric, BPToEndStemMetric
 from feature.secstruct.zipper_stem_metric import ZipperStemMetric
+from feature.secstruct.early_stp_feature import HasEarlyStopFeature, ThreeprimeDistStopFeature
 
 def get_feature_from_name(feature_name):
 	if feature_name == "LocalizationMetric":
