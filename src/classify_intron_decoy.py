@@ -2,7 +2,8 @@ from util import features
 
 secstruct_options = {'secstruct_pkg': 'Vienna', 
 					'secstruct_type': 'mfe', 
-					'verbose': True
+					'verbose': True,
+					'force_eval': True
 					}
 
 #all_features = ["LocalizationMetric", "StartToBPStemMetric", "BPToEndStemMetric", "StartProtectionMetric", 

@@ -1,1 +1,4 @@
 *ens.dat
+__pycache__/
+*/__pycache__/
+rna.ps

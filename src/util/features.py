@@ -147,8 +147,11 @@ def get_features(feature_names, intron_class, feature_options_all={}):
 	# Important: this might change all_introns as more data is loaded when needed.
 	features_to_add = []
 	for feature_name in feature_names:
-		feature_full_name = get_feature_full_name(feature_name, feature_options_all[feature_name])
+		feature_options = feature_options_all[feature_name]
+		feature_full_name = get_feature_full_name(feature_name, feature_options)
 		if feature_full_name not in features_in_database:
+			features_to_add += [feature_name]
+		elif 'force_eval' in feature_options and feature_options['force_eval']:
 			features_to_add += [feature_name]
 	if len(features_to_add) > 0:
 		add_features_to_database(features_to_add, intron_class, feature_options_all, all_introns)
