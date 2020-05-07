@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 # stability of these stems and a slightly expanded surrounding context with RNAfold or RNAcofold. 
 
 class ZipperStemMetric(SecstructMetric):
-	def __init__(self, do_first=True, dg_lim=0, min_seed=0, name="ZipperStemMetric"):
+	def __init__(self, do_first=True, dg_lim=20, min_seed=0, name="ZipperStemMetric"):
 		# Region is (lowest start, highest end, total distance max, total distance min)
 		# Stem must start after lowest start + start_idx and must end before end_idx - highest end
 		self.DOFIRST=do_first
@@ -146,25 +146,28 @@ class ZipperStemMetric(SecstructMetric):
 		# Assemble input for RNAfold or RNAcofold
 		run_seq = ""
 		secstruct = ""
-		dG = 0
+		dG = self.DG_LIM
 		if start2 > end1 + 4: 	# Two segments are separated in the intron so use RNAcofold
 			seq1 = seq[start1:end1]
 			seq2 = seq[start2:end2]
 			run_seq = seq1 + "&" + seq2
-			[dG, secstruct] = self.run_cofold(run_seq)
+			if len(run_seq) > 2:
+				[dG, secstruct] = self.run_cofold(run_seq)
 		else: # Two segments overlap or near-overlap in the intron; treat as one strand
 			run_seq = seq[start1:end2]
-			[dG, secstruct] = self.run_rnafold(run_seq)
+			if len(run_seq) > 1:
+				[dG, secstruct] = self.run_rnafold(run_seq)
 
 		# Get max stem from these segments and make two separate strands
 		max_stem = self.get_max_stem(secstruct)
 
 		# Get dG with RNAcofold
-		if (dG < 0):
+		if (dG < self.DG_LIM):
 			seq1 = run_seq[max_stem[0]:max_stem[1]]
 			seq2 = run_seq[max_stem[2]:max_stem[3]]
 			run_seq = seq1 + "&" + seq2
-			[dG, secstruct] = self.run_cofold(run_seq)
+			if len(run_seq) > 2:
+				[dG, secstruct] = self.run_cofold(run_seq)
 
 		stem_str = run_seq + "\n" + secstruct + "\n" + str(dG)
 		return [dG, stem_str]
@@ -196,4 +199,4 @@ class ZipperStemMetric(SecstructMetric):
 		if (has_dG):
 			return best_dG
 		else:
-			return 0
+			return self.DG_LIM
