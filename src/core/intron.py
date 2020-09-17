@@ -2,7 +2,8 @@ from util.gene_names import get_ensembl_names
 
 class Intron:
 	def __init__(self, seq='', bp=-1, mfe='', ens=[], name='', 
-		chr_pos=('',-1,-1), strand='-', ensembl_name=''):
+		chr_pos=('',-1,-1), strand='-', ensembl_name='', 
+		fivess_offset=0, threess_offset=0):
 		self.bp = bp
 		self.seq = seq
 		self.mfe = mfe
@@ -11,6 +12,8 @@ class Intron:
 		self.chr_pos = chr_pos
 		self.strand = strand
 		self.ensembl_name = ensembl_name
+		self.fivess_offset = fivess_offset
+		self.threess_offset = threess_offset
 
 class IntronSet:
 	def __init__(self):
@@ -40,6 +43,12 @@ class IntronSet:
 			chr_pos = (intron_info[1], int(intron_info[2]), int(intron_info[3]))
 			name = intron_info[4]
 			strand = intron_info[6]
+			fivess_offset = 0
+			threess_offset = 0
+			if len(intron_info) > 7:
+				fivess_offset = int(intron_info[7])
+				threess_offset = int(intron_info[8])
+
 			seq = seq_lines[2 * ii + 1].split()[0]
 			mfe = ''
 			ens = []
@@ -49,7 +58,8 @@ class IntronSet:
 				ens = ens_lines[((ens_size+1) * ii + 1):((ens_size+1) * (ii + 1))]
 				ens = [x.split()[0] for x in ens]
 
-			self.introns.append(Intron(seq, bp, mfe, ens, name, chr_pos, strand))
+			self.introns.append(Intron(seq, bp, mfe, ens, name, \
+				chr_pos, strand, fivess_offset, threess_offset))
 
 		self.fill_ensembl_names()
 

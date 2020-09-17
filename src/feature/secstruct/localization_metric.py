@@ -2,10 +2,8 @@ from feature.secstruct.secstruct_metric import SecstructMetric
 
 class LocalizationMetric(SecstructMetric):
 	# Scores 2D graph localization between pair1 and pair2
-	def __init__(self, pair1=-1, pair2=-1, start_bp=False, end_bp=False, name="LocalizationMetric"):
+	def __init__(self, start_bp=False, end_bp=False, name="LocalizationMetric"):
 		self.INTMAX = 100000
-		self.pair1 = pair1
-		self.pair2 = pair2
 		self.start_bp = start_bp
 		self.end_bp = end_bp
 		self.name = name
@@ -94,8 +92,8 @@ class LocalizationMetric(SecstructMetric):
 		return sum(bp_dists)/len(secstructs)
 
 	def get_score_mfe(self, intron):
-		start = self.pair1
-		end = self.pair2
+		start = intron.fivess_offset
+		end = len(intron.seq) - intron.threess_offset
 		if self.start_bp:
 			start = intron.bp
 		if self.end_bp:
@@ -103,8 +101,8 @@ class LocalizationMetric(SecstructMetric):
 		return self.get_mean_dist([intron.mfe], start, end)
 
 	def get_score_ens(self, intron):
-		start = self.pair1
-		end = self.pair2
+		start = intron.fivess_offset
+		end = len(intron.seq) - intron.threess_offset
 		if self.start_bp:
 			start = intron.bp
 		if self.end_bp:

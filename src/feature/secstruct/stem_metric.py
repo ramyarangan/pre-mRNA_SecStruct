@@ -3,10 +3,8 @@ import math
 
 class StemMetric(SecstructMetric):
 
-	def __init__(self, start=-1, end=-1, do_bp_start=False, do_bp_end=False, \
+	def __init__(self, do_bp_start=False, do_bp_end=False, \
 		do_intron_end=False, dist_cutoff=-1, req_stem_len=-1, name="Stem Metric"):
-		self.start = start
-		self.end = end
 		self.do_bp_start = do_bp_start
 		self.do_bp_end = do_bp_end
 		self.dist_cutoff = dist_cutoff
@@ -30,14 +28,14 @@ class StemMetric(SecstructMetric):
 
 	# maybe allow for bulges in this stem?
 	def find_stem(self, bp_map, intron):
-		start = self.start
-		end = self.end
+		start = intron.fivess_offset
+		end = len(intron.seq) - intron.threess_offset
 		if (self.do_bp_start):
 			start = intron.bp
 		if (self.do_bp_end):
 			end = intron.bp
 		if (self.do_intron_end):
-			end = len(intron.seq)
+			end = len(intron.seq) - intron.threess_offset
 		end_thresh = max(end - self.dist_cutoff, start)
 		start_thresh = min(end, start + self.dist_cutoff)
 		stem_found = False
@@ -78,7 +76,7 @@ class StemMetric(SecstructMetric):
 
 class StartToBPStemMetric(StemMetric):
 	def __init__(self):
-		super().__init__(start=0, do_bp_end=True, dist_cutoff=15, req_stem_len=3, name="StartToBPStemMetric")
+		super().__init__(do_bp_end=True, dist_cutoff=15, req_stem_len=3, name="StartToBPStemMetric")
 
 
 class BPToEndStemMetric(StemMetric):
