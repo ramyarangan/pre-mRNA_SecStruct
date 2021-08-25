@@ -1,9 +1,16 @@
 from util.gene_names import get_ensembl_names
+from core.gene import GeneSet
+from util.general import reverse_invert
+from config import DATABASE_PATH
+from util.gene_file_io import *
 
 class Intron:
 	def __init__(self, seq='', bp=-1, mfe='', ens=[], name='', 
 		chr_pos=('',-1,-1), strand='-', ensembl_name='', 
-		fivess_offset=0, threess_offset=0):
+		fivess_offset=0, threess_offset=0, 
+		gene_seq="", gene_start=-1, gene_end=-1, intron_pos_in_gene=-1, 
+		do_fill_gene_seq=False):
+
 		self.bp = bp
 		self.seq = seq
 		self.mfe = mfe
@@ -15,12 +22,65 @@ class Intron:
 		self.fivess_offset = fivess_offset
 		self.threess_offset = threess_offset
 
+		# Initialize gene values
+		# For inter-gene introns, include the full gene sequence
+		# For 5'UTR introns, include 10 nts before the intron and the full gene 
+		self.gene_seq = gene_seq 
+		self.gene_start = gene_start # Start position of gene
+		self.gene_end = gene_end # End position of gene
+		self.intron_pos_in_gene = intron_pos_in_gene # (Start, end) position of intron within the gene sequence
+		if do_fill_gene_seq: 
+			self.fill_gene_seq()
+
+	def fill_gene_seq(self, UTR_offset=10):
+		print(self.name)
+		gene_set = GeneSet()
+		genes_dict = gene_set.get_genes_dict()
+		if self.name not in genes_dict:
+			# Figure out why some gene annotations aren't right?
+			print("Intron not in ORF: %s" % (self.name))
+			return
+
+		gene = genes_dict[self.name]
+		
+		chr_num = gene.chr_num
+		(chr_start, chr_end) = gene.chr_pos
+		strand_dir = gene.strand_dir
+		self.gene_start = chr_start
+		self.gene_end = chr_end
+
+		bed_start = chr_start
+		bed_end = chr_end
+
+		(_, intron_start, intron_end) = self.chr_pos
+		if intron_start < chr_start: 
+			bed_start = intron_start - UTR_offset
+		if intron_end > chr_end: 
+			bed_end = intron_end + UTR_offset
+
+		bedfile = write_bed([(chr_num, bed_start, bed_end, self.name, strand_dir)])
+		genome_file = DATABASE_PATH + 'genome/sacCer3.fa'
+		fasta_file = fasta_from_bed(bedfile, genome_file)
+		fasta_seqs = read_fasta(fasta_file)
+		(tag, gene_seq) = fasta_seqs[0]
+
+		if self.seq not in gene_seq:
+			print("Gene sequence: " + gene_seq)
+			print("Intron sequence: " + self.seq)
+			raise RuntimeError("Intron not in gene sequence")
+
+		self.gene_seq = gene_seq
+		idx_start = gene_seq.index(self.seq)
+		idx_end = idx_start + len(self.seq)
+		self.intron_pos_in_gene = (idx_start, idx_end)
+		clear_tmp_files()
+
 class IntronSet:
 	def __init__(self):
 		self.introns = []
 
 	def init_from_files(self, seq_filename, mfe_filename="", \
-					ens_filename="", ens_size=1000):
+					ens_filename="", ens_size=1000, do_fill_gene_seq=False):
 		f = open(seq_filename)
 		seq_lines = f.readlines()
 		f.close()
@@ -59,7 +119,8 @@ class IntronSet:
 				ens = [x.split()[0] for x in ens]
 
 			self.introns.append(Intron(seq, bp, mfe, ens, name, \
-				chr_pos, strand, fivess_offset, threess_offset))
+				chr_pos, strand, fivess_offset, threess_offset, \
+				do_fill_gene_seq=do_fill_gene_seq))
 
 		self.fill_ensembl_names()
 

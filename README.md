@@ -19,3 +19,9 @@ This repository contains:
     * Statistical comparisons between intron and control / decoy sets
     * Identifying decoy introns from whole transcriptome
     * Classification of introns vs decoys
+
+
+# Requirements
+* bedtools
+* mygene
+* RNAstructure, Vienna, Contrafold
