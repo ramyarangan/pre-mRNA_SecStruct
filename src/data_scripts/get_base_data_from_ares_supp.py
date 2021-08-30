@@ -1,18 +1,24 @@
+# 8/27/21
 # Creates base_info data for an intron set from supplementary info 
 # in the Talkish, et al. 2020 proto intron paper 
 
 import pandas as pd 
 import os
-import sys
-
+import argparse
 
 from config import DATABASE_PATH
 from core.gene import GeneSet
+from util.gene_file_io import write_base_data
 
+parser = argparse.ArgumentParser(description='Parameters for processing intron data')
+parser.add_argument('intron_class', type=string, help='Intron class name', required=True)
+parser.add_argument('--min', default=-1, type=int, help='Minimum intron length')
+parser.add_argument('--max', default=-1, type=int, help='Maximum intron length')
+args = parser.parse_args()
 
-intron_class = sys.argv[1]
-length_min = -1
-length_max = -1
+intron_class = args.intron_class
+length_min = args.min
+length_max = args.max
 if len(sys.argv) > 2: 
 	length_min = sys.argv[2]
 	length_max = sys.argv[3]
@@ -61,7 +67,5 @@ for ii, chr_val in enumerate(chr_vals):
 		base_info_items	+= [base_info_item]
 
 base_info_path = os.path.join(DATABASE_PATH, 'introns/' + intron_class + '/base_info.dat')
-f = open(base_info_path, 'w')
-for ii, base_info_item in enumerate(base_info_items):
-	f.write("%d %s\n" % (base_info_item[0], '\t'.join(base_info_item[1:])))
-	f.write("%s\n" % base_info_seqs[ii])
+write_base_data(base_info_path, base_info_items, base_info_seqs)
+
