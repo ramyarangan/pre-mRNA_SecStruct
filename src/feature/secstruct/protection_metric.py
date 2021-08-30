@@ -15,10 +15,11 @@ class ProtectionMetric(SecstructMetric):
 		total_protection = 0
 		for secstruct in secstructs:
 			cur_protection = 0
-			for ii in range(start_idx, start_idx + self.length):
+			max_idx = min(start_idx + self.length, len(secstruct))
+			for ii in range(start_idx, max_idx):
 				if (secstruct[ii] != '.'):
 					cur_protection += 1
-			cur_protection = cur_protection/self.length
+			cur_protection = cur_protection/(max_idx - start_idx)
 			total_protection += cur_protection
 		return total_protection/len(secstructs)
 

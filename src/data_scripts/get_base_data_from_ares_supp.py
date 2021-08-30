@@ -80,5 +80,5 @@ if not os.path.exists(filepath):
 	os.mkdir(filepath)
 base_info_path = os.path.join(filepath, 'base_info.dat')
 
-write_base_data(base_info_path, base_info_items, base_info_seqs)
+write_base_data_items(base_info_path, base_info_items, base_info_seqs)
 

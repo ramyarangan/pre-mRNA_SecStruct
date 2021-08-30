@@ -98,7 +98,9 @@ class IntronSet:
 
 		self.introns = []
 		for ii in range(int(len(seq_lines)/2)):
-			intron_info = seq_lines[2 * ii].split()
+			intron_info = seq_lines[2 * ii].split(' ')[1].split('\t')
+			intron_info = [seq_lines[2 * ii].split(' ')[0]] + intron_info
+			intron_info = [x.replace('\n', '') for x in intron_info]
 			bp = int(intron_info[0])
 			chr_pos = (intron_info[1], int(intron_info[2]), int(intron_info[3]))
 			name = intron_info[4]
@@ -126,9 +128,20 @@ class IntronSet:
 
 	def fill_ensembl_names(self):
 		refseq_names = [intron.name for intron in self.introns]
-		ensembl_genes = get_ensembl_names(refseq_names)
+		no_blank_refseq_names = []
+		for refseq_name in refseq_names:
+			# Some introns haven't been properly associated with a gene name
+			# because they were in the UTR region outside the gene annotated window
+			if refseq_name == "":
+				continue
+			no_blank_refseq_names += [refseq_name]
+		ensembl_genes = get_ensembl_names(no_blank_refseq_names)
+		cnt = 0
 		for ii, intron in enumerate(self.introns):
-			intron.ensembl_name = ensembl_genes[ii]
+			if intron.name == "":
+				continue
+			intron.ensembl_name = ensembl_genes[cnt]
+			cnt += 1
 
 	def get_intron_dict(self):
 		intron_dict = {}

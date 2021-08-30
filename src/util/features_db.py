@@ -117,7 +117,6 @@ def get_feature_vals_update_secstruct(feature_name, intron_class, feature_option
 				add_secstruct_ens_to_database(intron_class, sec_struct_pref)
 
 		all_introns = build_intron_set(intron_class, feature_options)
-
 	feature_vals = get_feature_vals(feature, all_introns, feature_options)
 	return [feature_vals, all_introns]
 

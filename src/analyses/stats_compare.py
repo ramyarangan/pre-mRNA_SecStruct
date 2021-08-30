@@ -7,7 +7,7 @@ from util import features_db
 
 secstruct_options = {'secstruct_pkg': 'Vienna', 
 					'secstruct_type': 'ens', 
-					'verbose': False,
+					'verbose': True,
 					'force_eval': False
 					}
 
@@ -21,10 +21,22 @@ feature_options_all = {}
 for feature in all_features:
 	feature_options_all[feature] = secstruct_options
 
-standard_feature_df = features_db.get_features(all_features, 'standard_extend20', feature_options_all=feature_options_all)
+standard_feature_df = features_db.get_features(all_features, \
+	'standard_allsize_min_50_max_600', feature_options_all=feature_options_all)
 standard_feature_df = standard_feature_df.dropna(axis=0)
-shift_feature_df = features_db.get_features(all_features, 'standard_extend20_shift', feature_options_all=feature_options_all)
-shift_feature_df = shift_feature_df.dropna(axis=0)
+control_feature_df = features_db.get_features(all_features, \
+	'standard_allsize_min_50_max_600_shift_500_seq_matched', feature_options_all=feature_options_all)
+control_feature_df = control_feature_df.dropna(axis=0)
+
+# standard_feature_df = features_db.get_features(all_features, \
+#  	'standard', feature_options_all=feature_options_all)
+# standard_feature_df = standard_feature_df.dropna(axis=0)
+# control_feature_df = features_db.get_features(all_features, \
+# 	'standard_shuffle', feature_options_all=feature_options_all)
+# control_feature_df = control_feature_df.dropna(axis=0)
+
+print(standard_feature_df.shape)
+print(control_feature_df.shape)
 
 ii = 1
 for metric in metric_names:
@@ -32,7 +44,7 @@ for metric in metric_names:
 	control_vals = []
 	for idx, row in standard_feature_df.iterrows():
 		intron_vals += [row[metric]]
-	for idx, row in shift_feature_df.iterrows():
+	for idx, row in control_feature_df.iterrows():
 		control_vals += [row[metric]]
 	plt.subplot(1, len(metric_names), ii)
 	ii += 1

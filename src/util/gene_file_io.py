@@ -53,6 +53,15 @@ def read_base_data(basedata_filename):
 	
 	return base_data
 
+def write_base_data(base_data_path, base_data):
+	f = open(base_data_path, 'w')
+	for base_item in base_data:
+		bed_first = '\t'.join(base_item[0][1][0:4])
+		bed_second = base_item[0][1][-1]
+		f.write("%d %s\t0\t%s\n" % (int(base_item[0][0]), bed_first, bed_second))
+		f.write("%s\n" % base_item[1])
+	f.close()
+
 # A base data file can be written using the bed file and branchpoint positions
 def write_base_data_from_bed(base_data_path, bed_filename, bps):
 	genome_file = DATABASE_PATH + 'genome/sacCer3.fa'
@@ -75,7 +84,7 @@ def write_base_data_from_bed(base_data_path, bed_filename, bps):
 # base_info_items: A list of tuples of the form: 
 # (branchpoint position, chr name, chr start idx, \
 # chr end idx, gene name, 0, strand_dir)
-def write_base_data(base_info_path, base_info_items, base_info_seqs):
+def write_base_data_items(base_info_path, base_info_items, base_info_seqs):
 	f = open(base_info_path, 'w')
 	for ii, base_info_item in enumerate(base_info_items):
 		base_info_item_to_str = [str(x) for x in base_info_item[1:]]
