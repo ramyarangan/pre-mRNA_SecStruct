@@ -32,7 +32,7 @@ def read_bed(bed_filename):
 	bed_items = []
 	for bed_line in bed_lines:
 		(chr_num, bed_start, bed_end, tag, _, strand_dir) = \
-			bed_line.split('\t')
+			bed_line.replace('\n', '').split('\t')
 		bed_items += [(chr_num, bed_start, bed_end, tag, strand_dir)]
 	return bed_items
 
@@ -46,8 +46,9 @@ def read_base_data(basedata_filename):
 	base_data = []
 	for ii in range(int(len(all_lines)/2)):
 		bp = all_lines[ii * 2].split(' ')[0]
-		bed_items = all_lines[ii * 2].split(' ')[1].split('\t')
+		bed_items = all_lines[ii * 2].split(' ')[1].strip('\n').split('\t')
 		bed_items = tuple(bed_items[0:4] + bed_items[5:6])
+		seq = all_lines[ii * 2 + 1].replace('\n', '')
 		base_data += [((bp, bed_items), seq)]
 	
 	return base_data
@@ -55,17 +56,19 @@ def read_base_data(basedata_filename):
 # A base data file can be written using the bed file and branchpoint positions
 def write_base_data_from_bed(base_data_path, bed_filename, bps):
 	genome_file = DATABASE_PATH + 'genome/sacCer3.fa'
-	fasta_filename = fasta_from_bed(bedfile, genome_file)
+	fasta_filename = fasta_from_bed(bed_filename, genome_file)
 	fasta_seqs = read_fasta(fasta_filename)
-	bed_items = read_bedfile(bed_filename)
+	bed_items = read_bed(bed_filename)
 	os.remove(fasta_filename)
 
 	if len(bed_items) != len(fasta_seqs):
 		raise RuntimeError("Fasta sequence not recovered for some bed lines")
 
 	f = open(base_data_path, 'w')
-	for ii, (_, seq) in enumerate(fasta_seqs): 
-		f.write("%d %s\n" % (int(bps[ii]), '\t'.join(bed_items[1:])))
+	for ii, (_, seq) in enumerate(fasta_seqs):
+		bed_first = '\t'.join(bed_items[ii][:-1])
+		bed_second = bed_items[ii][-1]
+		f.write("%d %s\t0\t%s\n" % (int(bps[ii]), bed_first, bed_second))
 		f.write("%s\n" % seq)
 	f.close()
 
@@ -75,7 +78,10 @@ def write_base_data_from_bed(base_data_path, bed_filename, bps):
 def write_base_data(base_info_path, base_info_items, base_info_seqs):
 	f = open(base_info_path, 'w')
 	for ii, base_info_item in enumerate(base_info_items):
-		f.write("%d %s\n" % (base_info_item[0], '\t'.join(base_info_item[1:])))
+		base_info_item_to_str = [str(x) for x in base_info_item[1:]]
+		bed_first = '\t'.join(base_info_item_to_str[:-1])
+		bed_second = base_info_item_to_str[-1]
+		f.write("%d %s\t0\t%s\n" % (int(base_info_item[0]), bed_first, bed_second))
 		f.write("%s\n" % base_info_seqs[ii])
 	f.close()
 
