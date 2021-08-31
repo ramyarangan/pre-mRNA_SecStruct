@@ -4,10 +4,14 @@ from scipy import stats
 import numpy as np
 from matplotlib import pyplot as plt
 from util import features_db
+import sys
+
+intron_class = sys.argv[1] # E.g. standard_allsize_min_50_max_600
+control_class = sys.argv[2] # E.g. standard_allsize_min_50_max_600_shuffle
 
 secstruct_options = {'secstruct_pkg': 'Vienna', 
 					'secstruct_type': 'ens', 
-					'verbose': True,
+					'verbose': False,
 					'force_eval': False
 					}
 
@@ -22,10 +26,10 @@ for feature in all_features:
 	feature_options_all[feature] = secstruct_options
 
 standard_feature_df = features_db.get_features(all_features, \
-	'standard_allsize_min_50_max_600', feature_options_all=feature_options_all)
+	intron_class, feature_options_all=feature_options_all)
 standard_feature_df = standard_feature_df.dropna(axis=0)
 control_feature_df = features_db.get_features(all_features, \
-	'standard_allsize_min_50_max_600_shift_500_seq_matched', feature_options_all=feature_options_all)
+	control_class, feature_options_all=feature_options_all)
 control_feature_df = control_feature_df.dropna(axis=0)
 
 # standard_feature_df = features_db.get_features(all_features, \
