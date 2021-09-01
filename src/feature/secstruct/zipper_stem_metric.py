@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 # stability of these stems and a slightly expanded surrounding context with RNAfold or RNAcofold. 
 
 class ZipperStemMetric(SecstructMetric):
-	def __init__(self, do_first=True, dg_lim=20, min_seed=0, name="ZipperStemMetric"):
+	def __init__(self, do_first=True, dg_lim=0, min_seed=0, name="ZipperStemMetric", max_ens=100):
 		# Region is (lowest start, highest end, total distance max, total distance min)
 		# Stem must start after lowest start + start_idx and must end before end_idx - highest end
 		self.DOFIRST=do_first
@@ -27,6 +27,8 @@ class ZipperStemMetric(SecstructMetric):
 		self.name = name
 		self.DG_LIM=dg_lim# -12 # For a full histogram choose dG = 0
 		self.MIN_SEED=min_seed # 8 # Minimum seed stem size
+		self.max_ens = max_ens # Maximum number of secondary structures to average over when doing
+								# ensemble calculations
 
 	# Gets dictionary of start of BP: end of BP
 	def get_base_pairs(self, secstruct):
@@ -112,17 +114,20 @@ class ZipperStemMetric(SecstructMetric):
 		f = open('tmp.dat', 'w')
 		f.write(seq)
 		f.close()
-		p = subprocess.Popen(sys_command + ' tmp.dat', shell=True, stdout=subprocess.PIPE)
-		lines = p.stdout.readlines()
-		os.remove('tmp.dat')
+		try: 
+			p = subprocess.Popen(sys_command + ' tmp.dat', shell=True, stdout=subprocess.PIPE)
+			lines = p.stdout.readlines()
+			os.remove('tmp.dat')
 
-		# String parsing to process RNAfold/cofold output
-		secstruct = lines[1].decode("utf-8").split()[0]
-		# Handles cases when the output is like ((((..(((((...&)))))..)))) ( -8.20)\n or like
-		# ((((..(((((...&)))))..)))) (-8.20)\n
-		dG_str = ''.join(lines[1].decode("utf-8").split()[1:]) 
-		dG = float(dG_str[1:-1])
-
+			# String parsing to process RNAfold/cofold output
+			secstruct = lines[1].decode("utf-8").split()[0]
+			# Handles cases when the output is like ((((..(((((...&)))))..)))) ( -8.20)\n or like
+			# ((((..(((((...&)))))..)))) (-8.20)\n
+			dG_str = ''.join(lines[1].decode("utf-8").split()[1:]) 
+			dG = float(dG_str[1:-1])
+		except: 
+			dG = self.DG_LIM
+			secstruct = ""
 		return [dG, secstruct]
 
 	# System call to run RNAfold
@@ -200,3 +205,17 @@ class ZipperStemMetric(SecstructMetric):
 			return best_dG
 		else:
 			return self.DG_LIM
+
+	def get_score_ens(self, intron):
+		dg_total = 0
+		dg_cnt = 0
+		secstructs = intron.ens[:self.max_ens]
+		for secstruct in secstructs:
+			[has_dG, best_stem, best_dG] = self.has_stem_dG(intron.bp, intron.seq, secstruct)
+			if has_dG:
+				dg_total += best_dG
+				dg_cnt += 1
+		if dg_cnt > 0: 
+			return dg_total/dg_cnt
+		else:
+			return 0

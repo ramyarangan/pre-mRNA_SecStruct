@@ -9,5 +9,9 @@ from feature.rpkm_feature import RPKMFeature
 def get_feature_from_name(feature_name):
 	if feature_name == "LocalizationMetric":
 		return LocalizationMetric(start_bp=False, end_bp=True)
+	if feature_name == "ZipperStemStartMetric":
+		return ZipperStemMetric(do_first=True, name="ZipperStemStartMetric")
+	if feature_name == "ZipperStemEndMetric":
+		return ZipperStemMetric(do_first=False, name="ZipperStemEndMetric")
 	else:
 		return eval(feature_name)()
