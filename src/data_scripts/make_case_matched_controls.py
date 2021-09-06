@@ -11,28 +11,7 @@ import random
 from config import DATABASE_PATH
 from util.gene_file_io import * 
 
-parser = argparse.ArgumentParser(description='Parameters for processing intron data')
-parser.add_argument('intron_class', type=str, help='Intron class that the controls will be based off of')
-parser.add_argument('--make_shuffle', default=False, action='store_true', \
-	 help='Make a shuffled intron case-matched control set')
-parser.add_argument('--make_shifted', default=False, action='store_true', \
-	 help='Make a shifted intron case-matched control set')
-parser.add_argument('--shift_dist', type=int, default=500, \
-	help='Distance to shift the shifted control in the genome')
-parser.add_argument('--make_shifted_seq_matched', default=False, action='store_true', \
-	 help='Make a shifted intron case-matched control set with matching splicing sequences')
-parser.add_argument('--make_shuffle_seq_matched', default=False, action='store_true', \
-	 help='Make a shuffle intron case-matched control set with matching splicing sequences')
-args = parser.parse_args()
-
-intron_class = args.intron_class
-make_shuffle = args.make_shuffle
-make_shifted = args.make_shifted
-shift_dist = args.shift_dist
-make_shifted_seq_matched = args.make_shifted_seq_matched
-make_shuffle_seq_matched = args.make_shuffle_seq_matched
-
-def make_shifted_control(base_data):
+def make_shifted_control(base_data, intron_class):
 	new_classname = intron_class + '_shift_' + str(shift_dist)
 	new_filepath = os.path.join(DATABASE_PATH, 'introns/' + new_classname + '/')
 	if not os.path.exists(new_filepath):
@@ -59,11 +38,15 @@ def make_shifted_control(base_data):
 	write_base_data_from_bed(base_data_path, bed_filename, bps)
 	clear_tmp_files()
 
-def make_shuffled_control(base_data):
+def make_shuffled_control(base_data, intron_class, do_species=False, species_name=""):
 	new_classname = intron_class + '_shuffle'
 	new_filepath = os.path.join(DATABASE_PATH, 'introns/' + new_classname + '/')
 	if not os.path.exists(new_filepath):
 		os.mkdir(new_filepath)
+	if do_species:
+		new_filepath = os.path.join(new_filepath, species_name + '/')
+		if not os.path.exists(new_filepath):
+			os.mkdir(new_filepath)
 	base_data_path = os.path.join(new_filepath, 'base_info.dat')
 
 	base_data_items = []
@@ -75,19 +58,30 @@ def make_shuffled_control(base_data):
 	
 	write_base_data_items(base_data_path, base_data_items, base_data_seqs)
 
-def make_seq_matched(base_data, base_classname, shifted=True):
+def make_seq_matched(base_data, base_classname, shifted=True, \
+	do_species=False, species_name=""):
 	new_classname = base_classname + '_seq_matched'
 	new_filepath = os.path.join(DATABASE_PATH, 'introns/' + new_classname + '/')
 	if not os.path.exists(new_filepath):
 		os.mkdir(new_filepath)
+	if do_species:
+		new_filepath = os.path.join(new_filepath, species_name + '/')
+		if not os.path.exists(new_filepath):
+			os.mkdir(new_filepath)
 
 	basedata_filepath = os.path.join(DATABASE_PATH, 'introns/' + base_classname + '/')
+	if not os.path.exists(basedata_filepath):
+		os.mkdir(basedata_filepath)
+	if do_species:
+		basedata_filepath = os.path.join(basedata_filepath, species_name + '/')
+		if not os.path.exists(basedata_filepath):
+			os.mkdir(basedata_filepath)
 	basedata_filepath = os.path.join(basedata_filepath, 'base_info.dat')
 	if not os.path.exists(basedata_filepath):
 		if shifted:
 			make_shifted_control(base_data)
 		else:
-			make_shuffled_control(base_data)
+			make_shuffled_control(base_data, do_species=do_species, species_name=species_name)
 	
 	new_base_data = read_base_data(basedata_filepath)
 
@@ -105,24 +99,48 @@ def make_seq_matched(base_data, base_classname, shifted=True):
 	base_data_path = os.path.join(new_filepath, 'base_info.dat')
 	write_base_data(base_data_path, new_base_data)
 
-def make_shifted_seq_matched(base_data):
+def make_shifted_seq_matched_control(base_data, intron_class):
 	base_classname = intron_class + '_shift_' + str(shift_dist)
 	make_seq_matched(base_data, base_classname)
 
-def make_shuffle_seq_matched(base_data):
+def make_shuffle_seq_matched_control(base_data, intron_class, do_species=False, species_name=""):
 	base_classname = intron_class + '_shuffle'
-	make_seq_matched(base_data, base_classname, shifted=False)
+	make_seq_matched(base_data, base_classname, shifted=False, \
+		do_species=do_species, species_name=species_name)
 
-base_data_path = 'introns/' + intron_class + '/base_info.dat'
-base_data_path = os.path.join(DATABASE_PATH, base_data_path)
+if __name__ == "__main__":
 
-base_data = read_base_data(base_data_path)
+	parser = argparse.ArgumentParser(description='Parameters for processing intron data')
+	parser.add_argument('intron_class', type=str, help='Intron class that the controls will be based off of')
+	parser.add_argument('--make_shuffle', default=False, action='store_true', \
+		 help='Make a shuffled intron case-matched control set')
+	parser.add_argument('--make_shifted', default=False, action='store_true', \
+		 help='Make a shifted intron case-matched control set')
+	parser.add_argument('--shift_dist', type=int, default=500, \
+		help='Distance to shift the shifted control in the genome')
+	parser.add_argument('--make_shifted_seq_matched', default=False, action='store_true', \
+		 help='Make a shifted intron case-matched control set with matching splicing sequences')
+	parser.add_argument('--make_shuffle_seq_matched', default=False, action='store_true', \
+		 help='Make a shuffle intron case-matched control set with matching splicing sequences')
+	args = parser.parse_args()
 
-if make_shifted:
-	make_shifted_control(base_data)
-if make_shuffle:
-	make_shuffled_control(base_data)
-if make_shifted_seq_matched:
-	make_shifted_seq_matched(base_data)
-if make_shuffle_seq_matched:
-	make_shuffle_seq_matched(base_data)
+	intron_class = args.intron_class
+	make_shuffle = args.make_shuffle
+	make_shifted = args.make_shifted
+	shift_dist = args.shift_dist
+	make_shifted_seq_matched = args.make_shifted_seq_matched
+	make_shuffle_seq_matched = args.make_shuffle_seq_matched
+
+	base_data_path = 'introns/' + intron_class + '/base_info.dat'
+	base_data_path = os.path.join(DATABASE_PATH, base_data_path)
+
+	base_data = read_base_data(base_data_path)
+
+	if make_shifted:
+		make_shifted_control(base_data, intron_class)
+	if make_shuffle:
+		make_shuffled_control(base_data, intron_class)
+	if make_shifted_seq_matched:
+		make_shifted_seq_matched_control(base_data, intron_class)
+	if make_shuffle_seq_matched:
+		make_shuffle_seq_matched_control(base_data, intron_class)

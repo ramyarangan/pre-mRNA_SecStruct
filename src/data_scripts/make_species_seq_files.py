@@ -1,13 +1,25 @@
-import sys
+"""
+Make evolutionarily related intron sets
+
+Includes functionality to make intron control sets that match the 
+mutation / in-del level compared to S. cerevisiae.
+
+Example function call:
+
+python data_scripts/make_species_seq_files.py ../database/hooks_alignments/ species_hooks --min 50 --max 600 --make_shuffle --make_shuffle_seq_matched --make_phylo
+"""
+
+
+import argparse
 import os
 import random 
 import numpy as np
 
-alignment_dir = sys.argv[1]
-seq_dir = sys.argv[2]
-control_dir = ""
-if len(sys.argv) > 3:
-	control_dir = sys.argv[3]
+from config import DATABASE_PATH
+from make_case_matched_controls import make_shuffled_control
+from make_case_matched_controls import make_shuffle_seq_matched_control
+from util.gene_file_io import * 
+
 
 def find(s, ch):
     return [i for i, ltr in enumerate(s) if ltr == ch]
@@ -210,7 +222,7 @@ def make_species_seqs(alignment_dir):
 	return species_seqs
 
 
-def write_seqdat_files(species_seqs, seq_dir):
+def write_seqdat_files(species_seqs, seq_dir, min_size=-1, max_size=-1):
 	# Get number of introns for S. cer for labeling. 
 	intron_cnts = {}
 	for intron in species_seqs['scer']:
@@ -221,7 +233,14 @@ def write_seqdat_files(species_seqs, seq_dir):
 			intron_cnts[gene_name] = 1
 
 	for species_name, introns in species_seqs.items():
-		f = open(seq_dir + species_name + '.dat', 'w')
+		if not os.path.exists(seq_dir):
+			os.mkdir(seq_dir)
+		dir_path = os.path.join(seq_dir, species_name + '/')
+		if not os.path.exists(dir_path):
+			os.mkdir(dir_path)
+		filename = os.path.join(dir_path, 'base_info.dat')
+		
+		f = open(filename, 'w')
 
 		for intron in introns:
 			gene_name = intron[0]
@@ -231,15 +250,78 @@ def write_seqdat_files(species_seqs, seq_dir):
 			if intron_cnts[gene_name] > 1:
 				gene_name += '_' + str(intron[3])
 
-			info_str = str(intron[2]) + ' -1 -1 -1 ' + gene_name
+			seq = intron[1]
+
+			# Branchpoint -1
+			if int(intron[2]) == -1:
+				continue
+
+			if (min_size != -1) and \
+				((len(seq) < min_size) or (len(seq) > max_size)):
+				continue
+			end_pos = 1 + len(seq)
+			# Make a fake chromosome location for now rather than finding
+			# real genome position in genome annotations
+			info_str = str(intron[2]) + ' chrI\t1\t' + str(end_pos) + \
+				'\t\t0\t+'
 			f.write('%s\n' % info_str)
 			f.write('%s\n' % intron[1])
 
 		f.close()
 
+if __name__ == "__main__":
 
-species_seqs = make_species_seqs(alignment_dir)
-write_seqdat_files(species_seqs, seq_dir)
-if (control_dir != ""):
-	control_seqs = make_control_seqs(alignment_dir)
-	write_seqdat_files(control_seqs, control_dir)
+	parser = argparse.ArgumentParser(description='Parameters for processing intron alignment data into intron classes')
+	parser.add_argument('alignment_dir', type=str, help='Path to directory storing alignments in Stockholm format')
+	parser.add_argument('species_intron_class_dir', type=str, help='Path that will store base_info.dat files for all species')
+	parser.add_argument('--make_shuffle', default=False, action='store_true', \
+		 help='Make a shuffled intron case-matched control set')
+	parser.add_argument('--make_shuffle_seq_matched', default=False, action='store_true', \
+		 help='Make a shuffle intron case-matched control set with matching splicing sequences')
+	parser.add_argument('--make_phylo', default=False, action='store_true', \
+		 help='Make a control set with mutation and indel frequencies from Scer matched')
+	parser.add_argument('--min', default=-1, type=int, help='Minimum intron length')
+	parser.add_argument('--max', default=-1, type=int, help='Maximum intron length')
+	args = parser.parse_args()
+
+	alignment_dir = args.alignment_dir
+	species_intron_class_dir = args.species_intron_class_dir
+	make_shuffle = args.make_shuffle
+	make_shuffle_seq_matched = args.make_shuffle_seq_matched
+	make_phylo = args.make_phylo
+	min_size = args.min
+	max_size = args.max
+
+	species_seqs = make_species_seqs(alignment_dir)
+	file_ext = ""
+	if min_size != -1:
+		file_ext = "_min_" + str(min_size) + "_max_" + str(max_size)
+
+	standard_dir = os.path.join(DATABASE_PATH, \
+		'introns/' + species_intron_class_dir + '/standard' + file_ext + '/')
+	write_seqdat_files(species_seqs, standard_dir, min_size=min_size, max_size=max_size)
+
+	if make_phylo:
+		phylo_dir = species_intron_class_dir + '/standard' + file_ext + '_phylo_control/'
+		phylo_dir = os.path.join(DATABASE_PATH, 'introns/' + phylo_dir)
+		control_seqs = make_control_seqs(alignment_dir)
+		write_seqdat_files(control_seqs, phylo_dir, min_size=min_size, max_size=max_size)
+
+	if make_shuffle:
+		for species_name, _ in species_seqs.items():
+			dir_path = os.path.join(standard_dir, species_name + '/')
+			filename = os.path.join(dir_path, 'base_info.dat')		
+			base_data = read_base_data(filename)
+			intron_class = species_intron_class_dir + '/standard' + file_ext
+			make_shuffled_control(base_data, intron_class, \
+				do_species=True, species_name=species_name)
+
+	if make_shuffle_seq_matched:
+		for species_name, _ in species_seqs.items():
+			dir_path = os.path.join(standard_dir, species_name + '/')
+			filename = os.path.join(dir_path, 'base_info.dat')		
+			base_data = read_base_data(filename)
+			intron_class = species_intron_class_dir + '/standard' + file_ext
+			make_shuffle_seq_matched_control(base_data, intron_class, \
+				do_species=True, species_name=species_name)
+

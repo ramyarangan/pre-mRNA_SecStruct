@@ -111,7 +111,7 @@ class IntronSet:
 				fivess_offset = int(intron_info[7])
 				threess_offset = int(intron_info[8])
 
-			seq = seq_lines[2 * ii + 1].split()[0]
+			seq = seq_lines[2 * ii + 1].split()[0].replace('U', 'T')
 			mfe = ''
 			ens = []
 			if (len(mfe_lines) != 0):

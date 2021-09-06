@@ -112,7 +112,7 @@ class ZipperStemMetric(SecstructMetric):
 
 	def collect_dG_secstruct(self, seq, sys_command):
 		f = open('tmp.dat', 'w')
-		f.write(seq)
+		f.write(seq.replace('T', 'U'))
 		f.close()
 		try: 
 			p = subprocess.Popen(sys_command + ' tmp.dat', shell=True, stdout=subprocess.PIPE)

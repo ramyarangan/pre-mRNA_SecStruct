@@ -21,7 +21,7 @@ def add_secstruct_mfe_to_database(intron_class, sec_struct_pkg, print_freq=10):
 
 		if sec_struct_pkg.lower() not in MFE_PACKAGE_LIST:
 			raise NotImplementedError()
-		mfe_struct = mfe(intron.seq, package=sec_struct_pkg.lower())
+		mfe_struct = mfe(intron.seq.replace('T', 'U'), package=sec_struct_pkg.lower())
 		
 		bp = intron.bp
 		(chr_name, chr_start, chr_end) = intron.chr_pos
@@ -48,7 +48,8 @@ def add_secstruct_ens_to_database(intron_class, sec_struct_pkg, print_freq=10):
 
 		if sec_struct_pkg.lower() not in ENS_PACKAGE_LIST:
 			raise NotImplementedError()
-		ens = sample_structures(intron.seq, n_samples=1000, package=sec_struct_pkg.lower())
+		ens = sample_structures(intron.seq.replace('T', 'U'), n_samples=1000, \
+			package=sec_struct_pkg.lower())
 		
 		bp = intron.bp
 		(chr_name, chr_start, chr_end) = intron.chr_pos
