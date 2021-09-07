@@ -1,13 +1,18 @@
+import os
+import pandas as pd
+
 from core.intron import IntronSet
 from feature.feature_factory import get_feature_from_name
 from util.sec_struct import add_secstruct_mfe_to_database, add_secstruct_ens_to_database
 from feature.secstruct.secstruct_metric import SecstructMetric
 from config import DATABASE_PATH
-import os
-import pandas as pd
+from util.gene_file_io import *
 
 def get_features_filename(intron_class):
 	return DATABASE_PATH + 'introns/' + intron_class + '/features.csv'
+
+def get_zipper_stem_filename(intron_class):
+	return DATABASE_PATH + 'introns/' + intron_class + '/zipper_stems.txt'
 
 def build_intron_set(intron_class, feature_options={}):
 	intron_seq_file = DATABASE_PATH + 'introns/' + intron_class + '/base_info.dat' 
@@ -94,6 +99,25 @@ def get_feature_vals(feature, all_introns, feature_options):
 
 	return feature_vals
 
+# Updates secondary structure files if they are not currently filled
+# Raises an error if secondary structure flags are not set in the feature_options dictionary
+def check_update_secstruct(intron_class, feature_options):
+	if 'secstruct_pkg' not in feature_options.keys():
+		raise RuntimeError("Feature options must include the secondary structure package info")
+	if 'secstruct_type' not in feature_options.keys():
+		raise RuntimeError("Feature options must include the secondary structure estimation type (mfe or ens)")
+
+	sec_struct_pref = feature_options['secstruct_pkg']
+	sec_struct_type = feature_options['secstruct_type']
+
+	struct_file = DATABASE_PATH + 'introns/' + intron_class + '/' + sec_struct_pref + '_' + sec_struct_type + '.dat'
+	if not os.path.isfile(struct_file):
+		if sec_struct_type == 'mfe':
+			add_secstruct_mfe_to_database(intron_class, sec_struct_pref)
+		if sec_struct_type == 'ens':
+			add_secstruct_ens_to_database(intron_class, sec_struct_pref)
+
+
 # Needs to also return all_introns because it can get updated to include
 # the secondary structure here.
 def get_feature_vals_update_secstruct(feature_name, intron_class, feature_options, all_introns):
@@ -101,22 +125,9 @@ def get_feature_vals_update_secstruct(feature_name, intron_class, feature_option
 	
 	# Make sure that intron set has secondary structures computed if needed
 	if isinstance(feature, SecstructMetric):
-		if 'secstruct_pkg' not in feature_options.keys():
-			raise RuntimeError("Feature options must include the secondary structure package info")
-		if 'secstruct_type' not in feature_options.keys():
-			raise RuntimeError("Feature options must include the secondary structure estimation type (mfe or ens)")
-
-		sec_struct_pref = feature_options['secstruct_pkg']
-		sec_struct_type = feature_options['secstruct_type']
-
-		struct_file = DATABASE_PATH + 'introns/' + intron_class + '/' + sec_struct_pref + '_' + sec_struct_type + '.dat'
-		if not os.path.isfile(struct_file):
-			if sec_struct_type == 'mfe':
-				add_secstruct_mfe_to_database(intron_class, sec_struct_pref)
-			if sec_struct_type == 'ens':
-				add_secstruct_ens_to_database(intron_class, sec_struct_pref)
-
+		check_update_secstruct(intron_class, feature_options)
 		all_introns = build_intron_set(intron_class, feature_options)
+
 	feature_vals = get_feature_vals(feature, all_introns, feature_options)
 	return [feature_vals, all_introns]
 
@@ -135,6 +146,61 @@ def add_features_to_database(features_to_add, intron_class, feature_options_all,
 	write_file = open(features_file, 'w')
 	features_df.to_csv(path_or_buf=write_file, index=False)
 	write_file.close()
+
+# Get zipper stems for this intron class using the MFE
+# If zipper stems have not been stored in the database cache, compute them fresh now
+# and store to the database. Otherwise, retrieve them from the cache.
+def get_zipper_stems(intron_class, feature_options):
+	zipper_stem_filename = get_zipper_stem_filename(intron_class)
+
+	force_eval = False
+	if 'force_eval' in feature_options.keys():
+		force_eval = True
+	verbose = False
+	if 'verbose' in feature_options.keys():
+		verbose = True
+
+	if os.path.isfile(zipper_stem_filename) and not force_eval:
+		zipper_stem_file_data = read_zipper_stem_file(zipper_stem_filename)
+		return zipper_stem_file_data
+
+	if ('secstruct_type' not in feature_options.keys()) or \
+		(feature_options['secstruct_type'] != 'mfe'):
+		raise RuntimeError("Feature options must include the secondary structure estimation type mfe")
+	check_update_secstruct(intron_class, feature_options)
+	all_introns = build_intron_set(intron_class, feature_options)
+
+	all_zipper_stems = []		
+	for ii, intron in enumerate(all_introns.introns):
+		if verbose:
+			print("Feature: Zipper stems, Evaluating intron: %d of %d" % \
+				(ii, len(all_introns.introns)))
+
+		feature = get_feature_from_name(feature_name)
+		[has_dG, best_stem, _] = feature.has_stem_dG(intron.bp, intron.seq, intron.mfe)
+		zipper_stem_data = process_zipper_stem_entry(has_dG, best_stem)
+		all_zipper_stems += [zipper_stem_data]
+
+	write_zipper_stem_file(zipper_stem_filename, all_zipper_stems)
+
+	return all_zipper_stems
+
+def get_feature_vals(feature, all_introns, feature_options):
+	verbose = False
+	if 'verbose' in feature_options.keys():
+		verbose = feature_options['verbose']
+
+	feature_vals = []
+	for ii, intron in enumerate(all_introns.introns):
+		if verbose:
+			print("Feature: %s, Evaluating intron: %d of %d" % \
+				(feature.name, ii, len(all_introns.introns)))
+		try:
+			feature_vals += [feature.apply(intron, feature_options)]
+		except NotImplementedError:
+			print("Feature: %s is not implemented" % feature.name)
+
+	return feature_vals
 
 # FeatureData holds options for features: secondary structure package, ens/mfe, print progress or no. 
 # It is a dictionary from feature name to feature options

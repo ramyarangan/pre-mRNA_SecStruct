@@ -141,3 +141,42 @@ def write_fasta(fasta_seqs, fasta_filename="", line_break=50):
 
 	f.close()
 
+def read_zipper_stem_file(zipper_stem_filename):
+	f = open(zipper_stem_filename)
+	zipper_stem_lines = f.readlines()
+	f.close()
+
+	zipper_stem_data = []
+	for ii, line in enumerate(int(len(zipper_stem_lines)/3)):
+		seq = zipper_stem_lines[ii * 3].replace('\n', '')
+		seq1 = seq.split("&")[0]
+		seq2 = seq.split("&")[1]
+		secstruct = zipper_stem_lines[ii * 3 + 1].replace('\n', '')
+		dG = zipper_stem_lines[ii * 3 + 2].replace('\n', '')
+
+		zipper_stem_data += [(seq1, seq2, secstruct, dG)]
+		
+	return zipper_stem_data
+		
+def write_zipper_stem_file(zipper_stem_filename, zipper_stem_data):
+	f = open(zipper_stem_filename, 'w')
+
+	for cur_data in zipper_stem_data: 
+		[seq1, seq2, secstruct, dG] = cur_data
+		f.write("%s&%s\n%s\n%f\n" % (seq1, seq2, secstruct, dG))
+
+	f.close()
+
+
+def process_zipper_stem_entry(has_dG, best_stem):
+	if not has_dG: 
+		return ("", "", "", 0)
+
+	seq1 = best_stem.split()[0].split("&")[0]
+	seq2 = best_stem.split()[0].split("&")[1]
+	secstruct = best_stem.split()[1]
+	dG = float(best_stem.split()[2])
+
+	return (seq1, seq2, secstruct, dG)
+
+

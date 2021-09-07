@@ -1,3 +1,12 @@
+"""
+Make plots showing pvalues from secondary structure feature comparisons 
+
+Either plot violin plots for all features for a specific intron/control pair, or make
+a p-value heatmap for all species
+
+Example usage: 
+python analyses/plot_secstruct_features.py --make_species_heatmap --intron_class_species standard_min_50_max_600 --control_class_species standard_min_50_max_600_shuffle_seq_matched
+"""
 from matplotlib import pyplot as plt
 import seaborn as sns
 import pandas as pd 
@@ -99,7 +108,6 @@ def make_heatmap(all_features, feature_options_all, \
 			_, pval = stats.wilcoxon(np.array(intron_vals), np.array(control_vals))
 			df.at[plot_names[ii], species_name] = pval
 	df = np.log(df.astype(float))
-	print(df)
 
 	plt.figure(figsize=(10,8))
 	# sns.heatmap(df, cmap='coolwarm', center=0.3, annot=True, vmin=0, vmax=0.5)
