@@ -3,6 +3,8 @@ import seaborn as sns
 import pandas as pd 
 import numpy as np 
 import argparse
+import os
+from scipy import stats 
 
 from util import features_db
 from config import DATABASE_PATH
@@ -94,14 +96,15 @@ def make_heatmap(all_features, feature_options_all, \
 				intron_vals += [row[metric]]
 			for idx, row in control_feature_df.iterrows():
 				control_vals += [row[metric]]
-			ii += 1
 			_, pval = stats.wilcoxon(np.array(intron_vals), np.array(control_vals))
-
-			df[plot_names[ii]][species_name] = pval
+			df.at[plot_names[ii], species_name] = pval
+	df = np.log(df.astype(float))
+	print(df)
 
 	plt.figure(figsize=(10,8))
-	sns.heatmap(df, cmap='coolwarm', center=0.3, annot=True, vmin=0, vmax=0.5)
-	# sns.heatmap(df, cmap='coolwarm', center=0.5, annot=False, vmin=0, vmax=1)
+	# sns.heatmap(df, cmap='coolwarm', center=0.3, annot=True, vmin=0, vmax=0.5)
+	sns.heatmap(df, cmap='coolwarm', center=0.5, annot=False, vmin=-10, vmax=0)
+	plt.xticks(rotation=45, fontsize=8)
 	plt.show()
 
 def make_violin_plots(standard_feature_df, \
