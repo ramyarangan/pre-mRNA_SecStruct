@@ -3,6 +3,7 @@ from core.gene import GeneSet
 from util.general import reverse_invert
 from config import DATABASE_PATH
 from util.gene_file_io import *
+from util.aln_util import * 
 
 class Intron:
 	def __init__(self, seq='', bp=-1, mfe='', ens=[], name='', 
@@ -31,6 +32,12 @@ class Intron:
 		self.intron_pos_in_gene = intron_pos_in_gene # (Start, end) position of intron within the gene sequence
 		if do_fill_gene_seq: 
 			self.fill_gene_seq()
+
+		# Intron alignment dictionary - key: species name; value: extended sequence 
+		# from Stockholm file
+		self.aln_dict = {}
+		# Index mapping from intron sequence to extended Stockholm alignment sequence
+		self.aln_idx_mapping = {}
 
 	def fill_gene_seq(self, UTR_offset=10):
 		print(self.name)
@@ -74,6 +81,13 @@ class Intron:
 		idx_end = idx_start + len(self.seq)
 		self.intron_pos_in_gene = (idx_start, idx_end)
 		clear_tmp_files()
+
+	def fill_aln(self, alignment_dir):
+		self.aln_dict = get_intron_aln(self.seq, alignment_dir)
+		if 'scer' in self.aln_dict.keys():
+			scer_aln_seq = self.aln_dict['scer']
+			self.aln_idx_mapping = \
+				get_idx_map_intron_to_aln_seq(self.seq, scer_aln_seq)
 
 class IntronSet:
 	def __init__(self):
@@ -148,4 +162,8 @@ class IntronSet:
 		for intron in self.introns:
 			intron_dict[intron.name] = intron
 		return intron_dict
+
+	def fill_aln(self, alignment_dir):
+		for intron in self.introns:
+			intron.fill_aln(alignment_dir)
 

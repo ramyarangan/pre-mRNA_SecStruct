@@ -64,6 +64,8 @@ def make_heatmap_from_species_dir(species_dir):
 
 def make_heatmap(all_features, feature_options_all, \
 	intron_class, control_class, plot_names):
+	intron_class = 'species_hooks/' + intron_class
+	control_class = 'species_hooks/' + control_class 
 	intron_path = os.path.join(DATABASE_PATH, 'introns/' + intron_class)
 
 	all_species = []
@@ -71,7 +73,7 @@ def make_heatmap(all_features, feature_options_all, \
 		all_species += [species_name]
 
 	df = pd.DataFrame(index=np.array(plot_names), columns=np.array(all_species))
-
+	
 	for species_name in os.listdir(intron_path):
 		print("Species: %s\n" % species_name)
 

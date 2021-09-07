@@ -1,3 +1,8 @@
+# 
+# Compare secondary structure metrics for intron and control sets across all species
+# Example usage: 
+# python analyses/stats_compare_species.py standard_min_50_max_600 standard_min_50_max_600_shuffle_seq_matched
+# 
 import pandas as pd 
 import sys
 from scipy import stats 

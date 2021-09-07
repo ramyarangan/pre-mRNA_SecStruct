@@ -19,76 +19,12 @@ from config import DATABASE_PATH
 from make_case_matched_controls import make_shuffled_control
 from make_case_matched_controls import make_shuffle_seq_matched_control
 from util.gene_file_io import * 
-
-
-def find(s, ch):
-    return [i for i, ltr in enumerate(s) if ltr == ch]
-
-
-# Returns a list of intron positions in the form (5'SS, bp, 3'SS).
-def get_introns(annotation_str):
-	five_poses = find(annotation_str, '5')
-	bp_poses = find(annotation_str, 'B')
-	three_poses = find(annotation_str, '3')
-
-	intron_list = []
-	if (len(five_poses) == len(bp_poses)) and \
-		(len(five_poses) == len(three_poses)):
-		for ii in range(len(five_poses)):
-			intron_list += \
-				[(five_poses[ii]-2, bp_poses[ii]+3, three_poses[ii]+1)]
-	return intron_list
-
+from util.aln_util import *
 
 def get_seq(seq, pos_info):
 	[five_ss, bp, three_ss] = pos_info
 	full_seq = seq[five_ss:(three_ss+1)].upper()
 	return full_seq
-
-
-# Remove gaps and update branchpoint position
-def condense_seq(seq, pos_info):
-	[five_ss, bp, three_ss] = pos_info
-	full_seq = seq[five_ss:(three_ss+1)].upper()
-	bp_pos = bp - five_ss
-	new_bp_pos = -1
-	new_seq = ""
-	for ii in range(len(full_seq)):
-		new_char = full_seq[ii]
-		add_char = False
-		if (new_char != '-') and (new_char != '.'):
-			add_char = True
-		if add_char:
-			if ii == bp_pos:
-				new_bp_pos = len(new_seq)
-			new_seq += new_char
-	return [new_seq, new_bp_pos]
-
-
-# For reading .stk file sequence lines across different \n file varieties. 
-# Returns (number of lines skipped, starting position)
-def get_skips(lines):
-	num_skips = 0
-	count = 0
-	starting_pos = -1
-	for line in lines:
-		# This first one allows for up to 5 spaces in an "empty" line
-		if len(line) < 5:
-			num_skips += 1
-		elif line[0] == '#':
-			num_skips += 1
-		elif line[0] == '/':
-			num_skips += 1
-		else:
-			if (starting_pos == -1):
-				starting_pos = count 
-		count += 1
-	return (num_skips, starting_pos)
-
-
-def get_rnd_char():
-	return random.sample(["A", "C", "G", "U"], 1)[0]
-
 
 def make_mutations(scer_intron, scer_intron_exp, species_seq):
 	# Tabulate modification counts
@@ -184,42 +120,6 @@ def make_control_seqs(alignment_dir):
 						control_seqs[species_name] = [new_entry]
 
 	return control_seqs
-
-
-# First make species: [(Gene name, intron seq, branchpoint pos, intron num), ...] dictionary.
-def make_species_seqs(alignment_dir):
-	species_seqs = {}
-
-	for filename in os.listdir(alignment_dir):
-		if filename.endswith(".stk"):
-			f = open(alignment_dir + filename)
-			lines = f.readlines()
-			f.close()
-
-			gene_name = filename.split(".")[0]
-
-			annotation_str = lines[len(lines)-2].split()[2]
-			intron_pos_list = get_introns(annotation_str)
-			print(filename)
-			(num_skipped, starting_pos) = get_skips(lines)
-			for ii in range(len(lines)-num_skipped):
-				line = lines[ii + starting_pos]
-
-				for jj in range(len(intron_pos_list)):
-					intron_pos = intron_pos_list[jj]
-					species_name = (line.split()[0]).split('_')[0]
-					[species_seq, bp] = condense_seq(line.split()[1], intron_pos)
-
-					if len(species_seq) == 0:
-						continue
-
-					new_entry = (gene_name, species_seq, bp, jj + 1)
-					if species_name in species_seqs:
-						species_seqs[species_name] += [new_entry]
-					else:
-						species_seqs[species_name] = [new_entry]
-
-	return species_seqs
 
 
 def write_seqdat_files(species_seqs, seq_dir, min_size=-1, max_size=-1):
