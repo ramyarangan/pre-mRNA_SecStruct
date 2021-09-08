@@ -1,0 +1,17 @@
+# STOCKHOLM 1.0
+#=GF ID YBL059C-A
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003558.1/102335-102250  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome II, whole genome shotgun sequence
+#=GS CP048984.1/103911-103826  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScII
+#=GS NC_001134.8/110505-110420 DE [subseq from] Saccharomyces cerevisiae S288C chromosome II, complete sequence
+
+CM003558.1/102335-102250          GTAAGTATCCAGATTTTACTTCATATATTTGCCTTTTTCTGTGCTCCGACTTACTAACATTGTATTCTCCCCTTCTTCATTTTAGC
+#=GR CM003558.1/102335-102250  PP 79**********************************************************************************97
+CP048984.1/103911-103826          GTAAGTATCCAGATTTTACTTCATATATTTGCCTTTTTCTGTGCTCCGACTTACTAACATTGTATTCTCCCCTTCTTCATTTTAGC
+#=GR CP048984.1/103911-103826  PP 79**********************************************************************************97
+NC_001134.8/110505-110420         GTAAGTATCCAGATTTTACTTCATATATTTGCCTTTTTCTGTGCTCCGACTTACTAACATTGTATTCTCCCCTTCTTCATTTTAGC
+#=GR NC_001134.8/110505-110420 PP 79**********************************************************************************97
+#=GC PP_cons                      79**********************************************************************************97
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

@@ -1,0 +1,17 @@
+# STOCKHOLM 1.0
+#=GF ID YML036W
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003567.1/188819-188911  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome XIII, whole genome shotgun sequence
+#=GS CP048994.1/193723-193815  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScXIII
+#=GS NC_001145.3/206098-206190 DE [subseq from] Saccharomyces cerevisiae S288C chromosome XIII, complete sequence
+
+CM003567.1/188819-188911          GTATGTTTTAATAATAAATTCGAGGTAAAAACTTCAACAGCCTCACCAGAAACACATTGTACTAACTTCACCTTTGTTTTCCTTTTATTTTGT
+#=GR CM003567.1/188819-188911  PP 799****************************************************************************************98
+CP048994.1/193723-193815          GTATGTTTTAATAATAAATTCGAGGTAAAAACTTCAACAGCCTCACCAGAAACACATTGTACTAACTTCACCTTTGTTTTCCTTTTATTTTGT
+#=GR CP048994.1/193723-193815  PP 799****************************************************************************************98
+NC_001145.3/206098-206190         GTATGTTTTAATAATAAATTCGAGGTAAAAACTTCAACAGCCTCACCAGAAACACATTGTACTAACTTCACCTTTGTTTTCCTTTTATTTTGT
+#=GR NC_001145.3/206098-206190 PP 799****************************************************************************************98
+#=GC PP_cons                      799****************************************************************************************98
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

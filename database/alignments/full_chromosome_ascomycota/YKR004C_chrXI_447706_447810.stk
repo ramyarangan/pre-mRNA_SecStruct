@@ -1,0 +1,20 @@
+# STOCKHOLM 1.0
+#=GF ID YKR004C
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CP048992.1/459176-459072  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScXI
+#=GS CM003565.1/220516-220620  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome XI, whole genome shotgun sequence
+#=GS NC_001143.9/447810-447706 DE [subseq from] Saccharomyces cerevisiae S288C chromosome XI, complete sequence
+#=GS NC_047497.1/469503-469390 DE [subseq from] Saccharomyces paradoxus chromosome XI, complete sequence
+
+CP048992.1/459176-459072          GTATGTCTCAACGGTA.........AAATACAAAAAACTATTGCTATTTCACAATACGCATTTTGGATTCATTGT.TACGGCTACTAACAATTCTACATATTGATGTAAATTAGG
+#=GR CP048992.1/459176-459072  PP 799*************.........**************************************************.*************************************97
+CM003565.1/220516-220620          GTATGTCTCAACGGTA.........AAATACAAAAAACTATTGCTATTTTACAATACGCATTTTGGATTCATTGT.TACGGCTACTAACAATTCTACATATTGATGTAAATTAGG
+#=GR CM003565.1/220516-220620  PP 799*************.........**************************************************.*************************************97
+NC_001143.9/447810-447706         GTATGTCTCAACGGTA.........AAATACAAAAAACTATTGCTATTTTACAATACGCATTTTGGATTCATTGT.TACGGCTACTAACAATTCTACATATTGATGTAAATTAGG
+#=GR NC_001143.9/447810-447706 PP 799*************.........**************************************************.*************************************97
+NC_047497.1/469503-469390         GTATGTTTCAACAGTAtaatttcagAAATGCTAAAAACTATTGTCATTTTACAATACACATTTTGTATTCATTGTtTGCAGCTACTAACAATCTTACATATTAATGTAAATTAG-
+#=GR NC_047497.1/469503-469390 PP 799************999999999999***********************************************999**********************************998.
+#=GC PP_cons                      799*************.........**************************************************.*************************************97
+#=GC RF                           xxxxxxxxxxxxxxxx.........xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

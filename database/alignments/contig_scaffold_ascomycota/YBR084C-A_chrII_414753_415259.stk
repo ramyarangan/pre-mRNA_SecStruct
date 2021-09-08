@@ -1,0 +1,260 @@
+# STOCKHOLM 1.0
+#=GF ID YBR084C-A
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS NC_001134.8/415259-414753    DE [subseq from] Saccharomyces cerevisiae S288C chromosome II, complete sequence
+#=GS VZVN01000029.1/60759-61265   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces kudriavzevii strain yHQL621 flattened_line_56, whole genome shotgun sequence
+#=GS DUYB01000937.1/71958-72465   DE [subseq from] TPA_asm: Saccharomyces cerevisiae x Saccharomyces kudriavzevii x Saccharomyces uvarum strain CBS 2834 scf7180000028199, whole genome shotgun sequence
+#=GS VZXH01000037.1/62606-63113   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces eubayanus x Saccharomyces kudriavzevii x Saccharomyces uvarum strain yHQL563 flattened_line_72, whole genome shotgun sequence
+#=GS CP048984.1/403331-402825     DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScII
+#=GS MVPU01000014.1/237539-237033 DE [subseq from] Saccharomyces sp. M14 scaffold12, whole genome shotgun sequence
+#=GS VZVB01000046.1/114579-114073 DE [subseq from] Saccharomyces cerevisiae x Saccharomyces eubayanus strain yHQL630 flattened_line_90, whole genome shotgun sequence
+#=GS VZWS01000072.1/12495-13002   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces kudriavzevii x Saccharomyces eubayanus strain yHQL560 flattened_line_142, whole genome shotgun sequence
+#=GS DUXO01000480.1/88191-87684   DE [subseq from] TPA_asm: Saccharomyces cerevisiae x Saccharomyces uvarum strain Muri scaffold10139_cov342, whole genome shotgun sequence
+#=GS VZWC01002003.1/90184-89677   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces eubayanus x Saccharomyces uvarum strain yHAB34 scf7180000208443, whole genome shotgun sequence
+#=GS DUYB01000859.1/38706-39235   DE [subseq from] TPA_asm: Saccharomyces cerevisiae x Saccharomyces kudriavzevii x Saccharomyces uvarum strain CBS 2834 scf7180000028121, whole genome shotgun sequence
+#=GS VZWP01000009.1/121813-121284 DE [subseq from] Saccharomyces eubayanus x Saccharomyces uvarum strain yHQL555 flattened_line_16, whole genome shotgun sequence
+#=GS VZXH01000066.1/62473-63002   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces eubayanus x Saccharomyces kudriavzevii x Saccharomyces uvarum strain yHQL563 flattened_line_130, whole genome shotgun sequence
+#=GS DUXO01000217.1/62303-62830   DE [subseq from] TPA_asm: Saccharomyces cerevisiae x Saccharomyces uvarum strain Muri scaffold3564_cov327, whole genome shotgun sequence
+#=GS NOWY01000011.1/155760-155233 DE [subseq from] Saccharomyces uvarum strain U3 U3s11, whole genome shotgun sequence
+#=GS VZWC01002031.1/54821-54294   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces eubayanus x Saccharomyces uvarum strain yHAB34 scf7180000208471, whole genome shotgun sequence
+#=GS CP049001.1/591828-591299     DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome SeIV-SeII
+#=GS MVPU01000005.1/365610-366139 DE [subseq from] Saccharomyces sp. M14 scaffold3, whole genome shotgun sequence
+#=GS VZVB01000109.1/52666-52137   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces eubayanus strain yHQL630 flattened_line_218, whole genome shotgun sequence
+#=GS DUXM01000020.1/364673-365202 DE [subseq from] TPA_asm: Saccharomyces bayanus NBRC1948 scaffold25_cov77, whole genome shotgun sequence
+#=GS VZWS01000019.1/52685-52156   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces kudriavzevii x Saccharomyces eubayanus strain yHQL560 flattened_line_36, whole genome shotgun sequence
+#=GS NC_047488.1/425356-424851    DE [subseq from] Saccharomyces paradoxus chromosome II, complete sequence
+#=GS DUYB01000895.1/63443-62910   DE [subseq from] TPA_asm: Saccharomyces cerevisiae x Saccharomyces kudriavzevii x Saccharomyces uvarum strain CBS 2834 scf7180000028157, whole genome shotgun sequence
+#=GS VZXH01000118.1/12827-13360   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces eubayanus x Saccharomyces kudriavzevii x Saccharomyces uvarum strain yHQL563 flattened_line_234, whole genome shotgun sequence
+#=GS CP030963.1/396800-396269     DE [subseq from] Saccharomyces kudriavzevii strain CR85 chromosome II, complete sequence
+#=GS LT986463.1/401774-401245     DE [subseq from] Saccharomyces jurei genome assembly, chromosome: II
+#=GS AABZ01000766.1/343-864       DE [subseq from] Saccharomyces mikatae IFO 1815 contig_84, whole genome shotgun sequence
+
+NC_001134.8/415259-414753            GTATGTGATGCAGTGAATAATGAATCTATGAAAGTTTATCAGGAATAAGATAGAATTGTTATAATAACTCCCTC.-TTGAGGAATGC..GAGTTTGATGAG.TTATCACCTGAAACAC.CAGCGTTATTGAAA.AGTGATATGGGTAA...TATAT.GCC.AAGAACG...ATACTGTGTTC.CATTT.GCAT.CAT.GA
+#=GR NC_001134.8/415259-414753    PP 79************************************************************************..***********..************.****************.**************.**************...*****.***.*******...***********.*****.****.***.**
+VZVN01000029.1/60759-61265           GTATGTGATGCAGTGAATAATGAATCTATGAAAGTTTATCAGGAATAAGATAGAATTGTTATAATAACTCCCTC.-TTGAGGAATGC..GAGTTTGATGAG.TTATCACCTGAAACAC.CAGCGTTATTGAAA.AGTGATATGGGTAA...TATAT.GCC.AAGAACG...ATACTGTGTTC.CATTT.GCAT.CAT.GA
+#=GR VZVN01000029.1/60759-61265   PP 79************************************************************************..***********..************.****************.**************.**************...*****.***.*******...***********.*****.****.***.**
+DUYB01000937.1/71958-72465           GTATGTGATGCAGTGAATAATGAATCTATGAAAGTTTATCAGGAATAAGATAGAATTGTTATAATAACTCCCTC.-TTGAGGAATGC..GAGTTTGATGAG.TTATCACCTGAAACAC.CAGCGTTATTGAAA.AGTGATATGGGTAA...TATAT.GCC.AAGAACG...ATACTGTGTTC.CATTT.GCAT.CAT.GA
+#=GR DUYB01000937.1/71958-72465   PP 79************************************************************************..***********..************.****************.**************.**************...*****.***.*******...***********.*****.****.***.**
+VZXH01000037.1/62606-63113           GTATGTGATGCAGTGAATAATGAATCTATGAAAGTTTATCAGGAATAAGATAGAATTGTTATAATAACTCCCTC.-TTGAGGAATGC..GAGTTTGATGAG.TTATCACCTGAAACAC.CAGCGTTATTGAAA.AGTGATATGGGTAA...TATAT.GCC.AAGAACG...ATACTGTGTTC.CATTT.GCAT.CAT.GA
+#=GR VZXH01000037.1/62606-63113   PP 79************************************************************************..***********..************.****************.**************.**************...*****.***.*******...***********.*****.****.***.**
+CP048984.1/403331-402825             GTATGTGATGCAGTGAATAATGAATCTATGAAAGTTTATCAGGAATAAGATAGAATTGTTATAATAACTCCCTC.-TTGAGGAATGC..GAGTTTGATGAG.TTATCAACTGAAACAC.CAGCGTTATTGAAA.AGTGATATGGGTAA...TATAT.GCC.AAGAACG...ATACTGTGTTC.CATTT.GCAT.CAT.GA
+#=GR CP048984.1/403331-402825     PP 79************************************************************************..***********..************.****************.**************.**************...*****.***.*******...***********.*****.****.***.**
+MVPU01000014.1/237539-237033         GTATGTGATGCAGTGAATAATGAATCTATGAAAGTTTATCAGGAATAAGATAGAATTGTTATAATAACTCCCTC.-TTGAGGAATGC..GAGTTTGATGAG.TTATCAACTGAAACAC.CAGCGTTATTGAAA.AGTGATATGGGTAA...TATAT.GCC.AAGAACG...ATACTGTGTTC.CATTT.GCAT.CAT.GA
+#=GR MVPU01000014.1/237539-237033 PP 79************************************************************************..***********..************.****************.**************.**************...*****.***.*******...***********.*****.****.***.**
+VZVB01000046.1/114579-114073         GTATGTGATGCAGTGAATAATGAATCTATGAAAGTTTATCAGGAATAAGATAGAATTGTTATAATAACTCCCTC.-TTGAGGAATGC..GAGTTTGATGAG.TTATCAACTGAAACAC.CAGCGTTATTGAAA.AGTGATATGGGTAA...TATAT.GCC.AAGAACG...ATACTGTGTTC.CATTT.GCAT.CAT.GA
+#=GR VZVB01000046.1/114579-114073 PP 79************************************************************************..***********..************.****************.**************.**************...*****.***.*******...***********.*****.****.***.**
+VZWS01000072.1/12495-13002           GTATGTGATGCAGTGAATAATGAATCTATGAAAGTTTATCAGGAATAAGATAGAATTGTTATAATAACTCCCTC.-TTGAGGAATGC..GAGTTTGATGAG.TTATCACCAGAAACAC.CAGCGTTATTGAAA.AGTGATATGGGTAA...TATAT.GCC.AAGAACG...ATACTGTGTTC.CATTT.GAAT.CAT.GA
+#=GR VZWS01000072.1/12495-13002   PP 79************************************************************************..***********..************.****************.**************.**************...*****.***.*******...***********.*****.****.***.**
+DUXO01000480.1/88191-87684           GTATGTGATGCAGTGAATAATGAATCTATGAAAGTTTATCAGGAATAAGATAGAATTGTTATAATAACTCCCTC.-TTGAGGAATGC..GAGTTTGATGAG.TTATCACCTGAAACAC.CAGCGTTATTGAAA.AGTGATATGGGTAA...TATAT.GCC.AAGAACG...ATACTGTGTTC.CATTT.GCAT.CAT.GA
+#=GR DUXO01000480.1/88191-87684   PP 79************************************************************************..***********..************.****************.**************.**************...*****.***.*******...***********.*****.****.***.**
+VZWC01002003.1/90184-89677           GTATGTGATGCAGTGAATAATGAATCTATGAAAGTTTATCAGGAATAAGATAGAATTGTTATAATAACTCCCTC.-TTGAGGAATGC..GAGTTTGATGAG.TTATCACCTGAAACAC.CAGCGTTATTGAAA.AGTGATATGGGTAA...TATAT.GCC.AAGAACG...ATACTGTGTTC.CATTT.GCAT.CAT.GA
+#=GR VZWC01002003.1/90184-89677   PP 79************************************************************************..***********..************.****************.**************.**************...*****.***.*******...***********.*****.****.***.**
+DUYB01000859.1/38706-39235           GTATGTGATACCGTTAATAATAATCTAGTGGAAGTTTACCAGGAATAAGATAGTATTGCTGTAATGGCTGTTTT.TTTGAGAAATGT..-ACTTTAATGAGgATAACACGTTAAACGA.GCACAGTATTGCAGgCCTAATATGAACAAcaaCATGT.GGA.ATGA---...ATACCTTGTAT.TTTTG.GAATaCTA.GG
+#=GR DUYB01000859.1/38706-39235   PP 79************************************************************************.************...****************************.************************9988766699***.***.****......88*********.*****.*9998889.**
+VZWP01000009.1/121813-121284         GTATGTGATACCGTTAATAATAATCTAGTGGAAGTTTACCAGGAATAAGATAGTATTGCTGTAATGGCTGTTTT.TTTGAGAAATGT..-ACTTTAATGAGgATAACACGTTAAACGA.GCACAGTATTGCAGgCCTAATATGAACAAcaaCATGT.GGA.ATGA---...ATACCTTGTAT.TTTTG.GAATaCTA.GG
+#=GR VZWP01000009.1/121813-121284 PP 79************************************************************************.************...****************************.************************9988766699***.***.****......88*********.*****.*9998889.**
+VZXH01000066.1/62473-63002           GTATGTGATACCGTTAATAATAATCTAGTGGAAGTTTACCAGGAATAAGATAGTATTGCTGTAATGGCTGTTTT.TTTGAGAAATGT..-ACTTTAATGAGgATAACACGTTAAACGA.GCACAGTATTGCAGgCCTAATATGAACAAcaaCATGT.GGA.ATGA---...ATACCTTGTAT.TTTTG.GAATaCTA.GG
+#=GR VZXH01000066.1/62473-63002   PP 79************************************************************************.************...****************************.************************9988766699***.***.****......88*********.*****.*9998889.**
+DUXO01000217.1/62303-62830           GTATGTGATACCGTTAATAATAATCTAGTGGAAGTTTACCAGGAATAAGATAGTATTGCTGTAATGGCTGTTTT.TTTGAGAAATGT..-ACTTTAATGAGgATAACACGTTAAACGA.GCACAGTATTGCAGgCCTAATATGAACAAcaaCATGT.GGA.ATGA---...ATACCTTGTAT.TTTTG.GAAT.ATTaGG
+#=GR DUXO01000217.1/62303-62830   PP 79************************************************************************.************...****************************.************************9988766699***.***.****......88*********.*****.****.7766**
+NOWY01000011.1/155760-155233         GTATGTGATACCGTTAATAATAATCTAGTGGAAGTTTACCAGGAATAAGATAGTATTGCTGTAATGGCTGTTTT.TTTGAGAAATGT..-ACTTTAATGAGgATAACACGTTAAACGA.GCACAGTATTGCAGgCCTAATATGAACAAcaaCATGT.GGA.ATGA---...ATACCTTGTAT.TTTTG.GAAT.ATTaGG
+#=GR NOWY01000011.1/155760-155233 PP 79************************************************************************.************...****************************.************************9988766699***.***.****......88*********.*****.****.7766**
+VZWC01002031.1/54821-54294           GTATGTGATACCGTTAATAATAATCTAGTGGAAGTTTACCAGGAATAAGATAGTATTGCTGTAATGGCTGTTTT.TTTGAGAAATGT..-ACTTTAATGAGgATAACACGTTAAACGA.GCACAGTATTGCAGgCCTAATATGAACAAcaaCATGT.GGA.ATGA---...ATACCTTGTAT.TTTTG.GAAT.ATTaGG
+#=GR VZWC01002031.1/54821-54294   PP 79************************************************************************.************...****************************.************************9988766699***.***.****......88*********.*****.****.7766**
+CP049001.1/591828-591299             GTATGTGATACCGTTAATAATACTCTAGTGAAAGTTTATCAGGAATAAGATAGTATTACTATAATGACTACTAT.TTCGAGAAATGT..-ACTTTGATGAGgATAACACCTTAAACGA.GCACAGCATGGCAGaCATAATACGAACAA...CATGT.AGA.ATGAAA-...AACCTGTGTTT.TTTTTtGATA.CTA.GG
+#=GR CP049001.1/591828-591299     PP 89************************************************************************.************...****************************.*****************************...*****.***.****99....99*******99.7776637777.9**.**
+MVPU01000005.1/365610-366139         GTATGTGATACCGTTAATAATACTCTAGTGAAAGTTTATCAGGAATAAGATAGTATTACTATAATGACTACTAT.TTCGAGAAATGT..-ACTTTGATGAGgATAACACCTTAAACGA.GCACAGCATGGCAGaCATAATACGAACAA...CATGT.AGA.ATGAAA-...AACCTGTGTTT.TTTTTtGATA.CTA.GG
+#=GR MVPU01000005.1/365610-366139 PP 89************************************************************************.************...****************************.*****************************...*****.***.****99....99*******99.7776637777.9**.**
+VZVB01000109.1/52666-52137           GTATGTGATACCGTTAATAATACTCTAGTGAAAGTTTATCAGGAATAAGATAGTATTACTATAATGACTACTAT.TTCGAGAAATGT..-ACTTTGATGAGgATAACACCTTAAACGA.GCACAGCATGGCAGaCATAATACGAACAA...CATGT.AGA.ATGAAA-...AACCTGTGTTT.TTTTTtGATA.CTA.GG
+#=GR VZVB01000109.1/52666-52137   PP 89************************************************************************.************...****************************.*****************************...*****.***.****99....99*******99.7776637777.9**.**
+DUXM01000020.1/364673-365202         GTATGTGATACCGTTAATAATACTCTAGTGAAAGTTTATCAGGAATAAGATAGTATTACTATAATGACTACTAT.TTCGAGAAATGT..-ACTTTGATGAGgATAACACCTTAAACGA.GCACAGCATGGCAGaCATAATACGAACAA...CATGT.AGA.ATGAAA-...AACCTGTGTTTtCTTTT.GATA.CTA.GG
+#=GR DUXM01000020.1/364673-365202 PP 89************************************************************************.************...****************************.*****************************...*****.***.****99....99******998456666.8888.***.**
+VZWS01000019.1/52685-52156           GTATGTGATACCGTTAATAATACTCTAGTGAAAGTTTATCAGGAATAAGATAGTATTACTATAATGACTACTAT.TTCGAGAAATGT..-ACTTTGATGAGgATAACACCTTAAACGA.GCACAGCATGGCAGaCATAATACGAACAA...CATGT.AGA.ATGAAA-...AACCTGTGTTTtCTTTT.GATA.CTA.GG
+#=GR VZWS01000019.1/52685-52156   PP 89************************************************************************.************...****************************.*****************************...*****.***.****99....99******998456666.8888.***.**
+NC_047488.1/425356-424851            GTATGTGATGCAGTGAATAATGAATTAATGAAAGTATATCAGGAATAAGATAGAATTGTTATAATAACTCTTTC.-TCGAGACAAGT..CAGTTCGTTGAG.TTACCACCTGAAACGT.TAGCGTTATTGAGA.AGTGATATGGGTAC...TATAT.GCC.ATGGATG...ATGCTGTGT-C.CATTT.TTAT.TAC.TA
+#=GR NC_047488.1/425356-424851    PP 79************************************************************************..***********..************.****************.**************.**************...*****.***.*******...********9.5.67888.8888.899.99
+DUYB01000895.1/63443-62910           GTATGTGATGCAGCAGATAATGTTTCAATGGAAGTTTACCAGGGATAAGATAGATTTGTTATAGTGGTTTTTTT.-TTTTGGAATACatGAGTTTGATGGG.ACACCCCCTCGAACGAaCACCGATGTAGG--.AATGATATGGATAA...TATATtGCA.GTGAATA...GTGATCTGTTC.TTTTG.GAAA.CTT.AA
+#=GR DUYB01000895.1/63443-62910   PP 79******************************************************************999888..4445555554444************.***************95666666666554...89************...****99***.*******...***********.*****.****.***.**
+VZXH01000118.1/12827-13360           GTATGTGATGCAGCAGATAATGTTTCAATGGAAGTTTACCAGGGATAAGATAGATTTGTTATAGTGGTTTTTTT.-TTTTGGAATACatGAGTTTGATGGG.ACACCCCCTCGAACGAaCACCGATGTAGG--.AATGATATGGATAA...TATATtGCA.GTGAATA...GTGATCTGTTC.TTTTG.GAAA.CTT.AA
+#=GR VZXH01000118.1/12827-13360   PP 79******************************************************************999888..4445555554444************.***************95666666666554...89************...****99***.*******...***********.*****.****.***.**
+CP030963.1/396800-396269             GTATGTGATGCAGCAGATAATGTTTCAATGGAAGTTTACCAGGGATAAGATAGATTTGTTATAGTGGTTTTTTT.TTTGGAATACAT..GAGTTTGATGGG.ACACCCCTCGAACGAA.CACCGATGTAGG--.AATGATATGGATAA...TATATtGCA.GTGAATA...GTGATCTGTTC.TTTTG.GAAA.CTT.AA
+#=GR CP030963.1/396800-396269     PP 79************************************************************************.************..************.***9988888877777.999998888776...79************...****99***.*******...***********.*****.****.***.**
+LT986463.1/401774-401245             GTATGTGATGTAGTGAACAATAATTTAATAAAAGTTTATCAGGAATAAGATGGAAGTACTATATTAGCTTTATC.ACTGAGATGTAT..GAATTCCGCGGG.ATACCGCCCTAAACGT.TCACCTTCCTTAGG.AATGATATGGGTAT...TGTGT.GCA.CTGAAGA...GAGCTGTGTTC.-ATTT.CGAT.AAT.GA
+#=GR LT986463.1/401774-401245     PP 79************************************************************************.************..************.****************.**************.**************...*****.***.*******...*********87..8888.8999.***.**
+AABZ01000766.1/343-864               GTATGTGATGCAGCGAATAATGATTTAATGAAAGTTTATCAGGAATAAGATGGAATTACTATAATAGATTTTATcACTGAGGTGTAT..AAGTCCCACGGG.ATATCACCCTAAACGT.TTACATTACTTAGG.AATGATGTGGGTAA...TTTAT.ACAgTAGAACTgaaGAGATCTGTAT.TTGTT.TGAT.CAT.GA
+#=GR AABZ01000766.1/343-864       PP 89***************************************************************998887765599**********..************.****************.**************.**************...*****.99844566654334678999*****.*****.****.***.**
+#=GC PP_cons                         79************************************************************************.************..************.****************.***********9**.*************9...*****.***.*******...99********9.99999.9999.999.**
+#=GC RF                              xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxx..xxxxxxxxxxxx.xxxxxxxxxxxxxxxx.xxxxxxxxxxxxxx.xxxxxxxxxxxxxx...xxxxx.xxx.xxxxxxx...xxxxxxxxxxx.xxxxx.xxxx.xxx.xx
+
+NC_001134.8/415259-414753            ATATGCTAGTGAAGCCAGATGTTTCTATAA....TCGGAGT.TTTAG.CACTAAAAGG..CAAAAGAGGAAACTTGTGGAAGAATTTTTTTTCTGTGCAGTTTACCATTAAGATATT.TATAGCG.ATAA..GT.GAGAC..CATTAATATGAGTA.TTCAATACGAGAACCAGTTACGTGATAAAAG..TT........
+#=GR NC_001134.8/415259-414753    PP ******************************....*******.*****.**********..*********************************************************.*******.****..**.*****..**************.*******************************..**........
+VZVN01000029.1/60759-61265           ATATGCTAGTGAAGCCAGATGTTTCTATAA....TCGGAGT.TTTAG.CACTAAAAGG..CAAAAGAGGAAACTTGTGGAAGAATTTTTTTTCTGTGCAGTTTACCATTAAGATATT.TATAGCG.ATAA..GT.GAGAC..CATTAATATGAGTA.TTCAATACGAGAACCAGTTACGTGATAAAAG..TT........
+#=GR VZVN01000029.1/60759-61265   PP ******************************....*******.*****.**********..*********************************************************.*******.****..**.*****..**************.*******************************..**........
+DUYB01000937.1/71958-72465           ATATGCTAGTGAAGCCAGATGTTTCTATAA....TCGGAGT.TTTAG.CACTAAAAGG..CAAAAGAGGAAACTTGTGGAAGAATTTTTTTTCTGTGCACTTTACCATTAAGATATT.TATAGCG.ATAA..GT.GAGAC.tCATTAATATGAGTA.TTCAATACGAGAACCAGTTACGTGATAAAAG..TT........
+#=GR DUYB01000937.1/71958-72465   PP ******************************....*******.*****.**********..*********************************************************.*******.****..**.*****.***************.*******************************..**........
+VZXH01000037.1/62606-63113           ATATGCTAGTGAAGCCAGATGTTTCTATAA....TCGGAGT.TTTAG.CACTAAAAGG..CAAAAGAGGAAACTTGTGGAAGAATTTTTTTTCTGTGCACTTTACCATTAAGATATT.TATAGCG.ATAA..GT.GAGAC.tCATTAATATGAGTA.TTCAATACGAGAACCAGTTACGTGATAAAAG..TT........
+#=GR VZXH01000037.1/62606-63113   PP ******************************....*******.*****.**********..*********************************************************.*******.****..**.*****.***************.*******************************..**........
+CP048984.1/403331-402825             ATATGCTAGTGAAGCCAGATGTTTCTATAA....TCGGAGT.TCTAG.CACTAAAAGG..CAAAAGAGGAAACTTGTGGAAGAATTTTTTTTCTGTGCAGTTTACCATTAAGATATT.TATAGCG.ATAA..GT.GAGAC..CATTAATATGAGTA.TTCAATACGAGAACCAGTTACGTGATAAAAG..TT........
+#=GR CP048984.1/403331-402825     PP ******************************....*******.*****.**********..*********************************************************.*******.****..**.*****..**************.*******************************..**........
+MVPU01000014.1/237539-237033         ATATGCTAGTGAAGCCAGATGTTTCTATAA....TCGGAGT.TCTAG.CACTAAAAGG..CAAAAGAGGAAACTTGTGGAAGAATTTTTTTTCTGTGCAGTTTACCATTAAGATATT.TATAGCG.ATAA..GT.GAGAC..CATTAATATGAGTA.TTCAATACGAGAACCAGTTACGTGATAAAAG..TT........
+#=GR MVPU01000014.1/237539-237033 PP ******************************....*******.*****.**********..*********************************************************.*******.****..**.*****..**************.*******************************..**........
+VZVB01000046.1/114579-114073         ATATGCTAGTGAAGCCAGATGTTTCTATAA....TCGGAGT.TCTAG.CACTAAAAGG..CAAAAGAGGAAACTTGTGGAAGAATTTTTTTTCTGTGCAGTTTACCATTAAGATATT.TATAGCG.ATAA..GT.GAGAC..CATTAATATGAGTA.TTCAATACGAGAACCAGTTACGTGATAAAAG..TT........
+#=GR VZVB01000046.1/114579-114073 PP ******************************....*******.*****.**********..*********************************************************.*******.****..**.*****..**************.*******************************..**........
+VZWS01000072.1/12495-13002           ATATGCTAGTGAAGCCAGATGTTTCTATAA....TCGGAGT.TTTAG.CACTAAAAGG..CAAAAGAGGAAACTTGTGGAAGAATTTTTTTTCTGTGCACTTTACCATTAAGATATT.TATAGCG.ATAA..GT.GAGAC.tCATTAATATGAGTA.TTCAATACGAGAACCAGTTACGTGATAAAAG..TT........
+#=GR VZWS01000072.1/12495-13002   PP ******************************....*******.*****.**********..*********************************************************.*******.****..**.*****.***************.*******************************..**........
+DUXO01000480.1/88191-87684           ATATGCTAGTGAAGCCAGATGTTTCTATAA....TCGGAGT.TTTAG.CACTAAAAGG..CAAAAGAGGAAACTTGTGGAAGAATTTTTTTTCTGTGCACTTTACCATTAAGATATT.TATAGCG.ATAA..GT.GAGAC.tCATTAATATGAGTA.TTCAATACGAGAACCAGTTACGTGATAAAAG..TT........
+#=GR DUXO01000480.1/88191-87684   PP ******************************....*******.*****.**********..*********************************************************.*******.****..**.*****.***************.*******************************..**........
+VZWC01002003.1/90184-89677           ATATGCTAGTGAAGCCAGATGTTTCTATAA....TCGGAGT.TTTAG.CACTAAAAGG..CAAAAGAGGAAACTTGTGGAAGAATTTTTTTTCTGTGCACTTTACCATTAAGATATT.TATAGCG.ATAA..GT.GAGAC.tCATTAATATGAGTA.TTCAATACGAGAACCAGTTACGTGATAAAAG..TT........
+#=GR VZWC01002003.1/90184-89677   PP ******************************....*******.*****.**********..*********************************************************.*******.****..**.*****.***************.*******************************..**........
+DUYB01000859.1/38706-39235           ATATGATAATCGAGCCAGATTGTGTAAAAT....ACTGAAT.TTTAG.GACACTTAGGaaCTAAAGAGGAAATTTCTGGAAGATTTT-GTTTTTACGAAGTATGCAATAATGGATTG.CGTATGA.CTAC..GA.ACGAA..AAATGCTTTCATAA.CTCAACATCAAGACCGATTCTATGTCAATTTttTT........
+#=GR DUYB01000859.1/38706-39235   PP ******************************....*******.*****.**************************************9.9****************************.*******.****..**.*****..**************.****************************9985567........
+VZWP01000009.1/121813-121284         ATATGATAATCGAGCCAGATTGTGTAAAAT....ACTGAAT.TTTAG.GACACTTAGGaaCTAAAGAGGAAATTTCTGGAAGATTTT-GTTTTTACGAAGTATGCAATAATGGATTG.CGTATGA.CTAC..GA.ACGAA..AAATGCTTTCATAA.CTCAACATCAAGACCGATTCTATGTCAATTTttTT........
+#=GR VZWP01000009.1/121813-121284 PP ******************************....*******.*****.**************************************9.9****************************.*******.****..**.*****..**************.****************************9985567........
+VZXH01000066.1/62473-63002           ATATGATAATCGAGCCAGATTGTGTAAAAT....ACTGAAT.TTTAG.GACACTTAGGaaCTAAAGAGGAAATTTCTGGAAGATTTT-GTTTTTACGAAGTATGCAATAATGGATTG.CGTATGA.CTAC..GA.ACGAA..AAATGCTTTCATAA.CTCAACATCAAGACCGATTCTATGTCAATTTttTT........
+#=GR VZXH01000066.1/62473-63002   PP ******************************....*******.*****.**************************************9.9****************************.*******.****..**.*****..**************.****************************9985567........
+DUXO01000217.1/62303-62830           ATATGATAATCGAGCCAGATTGTGTAAAAT....ACTGAAT.TTTAG.GACACTTAGGaaCTAAAGAGGAAATTTCTGGAAGATTTT-GTTTTTACGAAGTATGCAATAATGGATTG.CGTATGA.CTAC..GA.ACG--..AAATGCTTTCATAA.CTCAACATCAAGACCGATTCTATGTCAATTTttTT........
+#=GR DUXO01000217.1/62303-62830   PP ******************************....*******.*****.**************************************9.9****************************.*******.****..*9.999....78999*********.****************************9985567........
+NOWY01000011.1/155760-155233         ATATGATAATCGAGCCAGATTGTGTAAAAT....ACTGAAT.TTTAG.GACACTTAGGaaCTAAAGAGGAAATTTCTGGAAGATTTT-GTTTTTACGAAGTATGCAATAATGGATTG.CGTATGA.CTAC..GA.ACG--..AAATGCTTTCATAA.CTCAACATCAAGACCGATTCTATGTCAATTTttTT........
+#=GR NOWY01000011.1/155760-155233 PP ******************************....*******.*****.**************************************9.9****************************.*******.****..*9.999....78999*********.****************************9985567........
+VZWC01002031.1/54821-54294           ATATGATAATCGAGCCAGATTGTGTAAAAT....ACTGAAT.TTTAG.GACACTTAGGaaCTAAAGAGGAAATTTCTGGAAGATTTT-GTTTTTACGAAGTATGCAATAATGGATTG.CGTATGA.CTAC..GA.ACG--..AAATGCTTTCATAA.CTCAACATCAAGACCGATTCTATGTCAATTTttTT........
+#=GR VZWC01002031.1/54821-54294   PP ******************************....*******.*****.**************************************9.9****************************.*******.****..*9.999....78999*********.****************************9985567........
+CP049001.1/591828-591299             ATATGATAATCAAGCCAGATCGTGTTAAAT....ACTGAAT.TTTAT.GACACTAAGGaaCCAAAGAGGAAATTTCTGGAGGCTTTT-GTTTTTACGAAGTATGCATT------ATC.GATTGCGtATAA..GTaCAGAC..GAAATGCTTTCATAtTCTAACATCAAGACCAATTCTATATCAGCTT..TT........
+#=GR CP049001.1/591828-591299     PP ******************************....*******.*****.************************************999.9****************998......899.99999999****..**777888..777777777777776999****************************..**........
+MVPU01000005.1/365610-366139         ATATGATAATCAAGCCAGATCGTGTTAAAT....ACTGAAT.TTTAT.GACACTAAGGaaCCAAAGAGGAAATTTCTGGAGGCTTTT-GTTTTTACGAAGTATGCATT------ATC.GATTGCGtATAA..GTaCAGAC..GAAATGCTTTCATAtTCTAACATCAAGACCAATTCTATATCAGCTT..TT........
+#=GR MVPU01000005.1/365610-366139 PP ******************************....*******.*****.************************************999.9****************998......899.99999999****..**777888..777777777777776999****************************..**........
+VZVB01000109.1/52666-52137           ATATGATAATCAAGCCAGATCGTGTTAAAT....ACTGAAT.TTTAT.GACACTAAGGaaCCAAAGAGGAAATTTCTGGAGGCTTTT-GTTTTTACGAAGTATGCATT------ATC.GATTGCGtATAA..GTaCAGAC..GAAATGCTTTCATAtTCTAACATCAAGACCAATTCTATATCAGCTT..TT........
+#=GR VZVB01000109.1/52666-52137   PP ******************************....*******.*****.************************************999.9****************998......899.99999999****..**777888..777777777777776999****************************..**........
+DUXM01000020.1/364673-365202         ATATTATAATCAAGCCAGATCGTGTTAAAT....ACTGAAT.TTTAT.GACACTAAGGaaCCAAAGAGGAAATTTCTGGAGGCTTTT-GTTTTTACGAAGTATGCATT------ATC.GATTGCGtATAA..GTaCAGAC..GAAATGCTTTCATAtTCTAACATCAAGACCAATTCTATATCAGCTT..TT........
+#=GR DUXM01000020.1/364673-365202 PP ******************************....*******.*****.************************************999.9****************998......899.99999999****..**777888..777777777777776999****************************..**........
+VZWS01000019.1/52685-52156           ATATTATAATCAAGCCAGATCGTGTTAAAT....ACTGAAT.TTTAT.GACACTAAGGaaCCAAAGAGGAAATTTCTGGAGGCTTTT-GTTTTTACGAAGTATGCATT------ATC.GATTGCGtATAA..GTaCAGAC..GAAATGCTTTCATAtTCTAACATCAAGACCAATTCTATATCAGCTT..TT........
+#=GR VZWS01000019.1/52685-52156   PP ******************************....*******.*****.************************************999.9****************998......899.99999999****..**777888..777777777777776999****************************..**........
+NC_047488.1/425356-424851            AAATGCCAGTTAAACCAGATCTTTGTATAA....TCGGAGT.TTTTT.GATTAAAAGG..AAAAAAAGGAAGCTTCTGGAAGACTTT---TTCTCTGCAGTCTATAAAGAAGATTGTgTATGAAAgGTAA..AT.GAAGCccCGAAAATATATCTA.T-TAATGTTGGGACCAGTCATGTGGTGAAAA..TCg.......
+#=GR NC_047488.1/425356-424851    PP ******************************....*******.*****.**********..*************************99...788888************9999988665888877669***..99.776664688889999999999.8.79**********************99988..554.......
+DUYB01000895.1/63443-62910           AAATGATTATTGGTTCAGATCTTCGTGTAAgaaaACGAACTcTTTTT.CATTTAAAGG..CAGAAGACGAACGTTTTGGGAGATTTTATTCTCA----ACTATACAACAAGTGTTTG.TATGAAG.ATGAagGT.ACTCT..CGAGAAGACCAGAA.TCCAACAGGAAGACCGTTTCCGTCTTGAAAA..CTttgcataa
+#=GR DUYB01000895.1/63443-62910   PP ************************99987666669******999999.**********..***************************9999998....9******************.*******.**998788.99999..**************.*************************999988..6645556555
+VZXH01000118.1/12827-13360           AAATGATTATTGGTTCAGATCTTCGTGTAAgaaaACGAACTcTTTTT.CATTTAAAGG..CAGAAGACGAACGTTTTGGGAGATTTTATTCTCA----ACTATACAACAAGTGTTTG.TATGAAG.ATGAagGT.ACTCT..CGAGAAGACCAGAA.TCCAACAGGAAGACCGTTTCCGTCTTGAAAA..CTttgcataa
+#=GR VZXH01000118.1/12827-13360   PP ************************99987666669******999999.**********..***************************9999998....9******************.*******.**998788.99999..**************.*************************999988..6645556555
+CP030963.1/396800-396269             AAATGATTATTGGTTCGGATCTTCGTGTAAgaaaACGAACTcTTTTT.CATTTAAAGG..CAGAAGACGAACGTTTTGGGAGATTTTATTCTCA----ACTATACAACAAGTGTTTG.TATGAAG.ATGAagGT.ACTCT..CGAGAAGACCAGAA.TCCAACAGGAAGACCGTTTCCGTCTTGAAAA..CTttgcataa
+#=GR CP030963.1/396800-396269     PP ************************99987666669******999999.**********..***************************9999998....9******************.*******.**998788.99999..**************.*************************999988..6645556555
+LT986463.1/401774-401245             AAATATTAGTAAAGAAATATGTTTATATCA....TCAAAAT.TTTTGgCGTTATGAAT..TAAAAGAGAAAACTTG-GGAAGACTTC-ATTTCTATACAGTATACGACAGAGATTGCgCATGATG.ATAA..AT.GCAGCcgCGAAAACGAGAGAA.TCCGACACTGATACCAATAGTAT----AATT..TG........
+#=GR LT986463.1/401774-401245     PP ******************************....******9.6666537788888888..****************.*********9.99***********************99988*******.****..**.9888846667778999999**.******************99998....5555..55........
+AABZ01000766.1/343-864               AAACGTTGGTAAAGAAAGATGCTTATATCA....TCGAAAA.TTTTG.GAGTTACTAA.tTGAAAAAGAAGACTTC-------ATTTATATATGGCAAAGATTGC-----------G.CATGAAA.ATAA..AT.GAAGCcaCGAGAATGTAAAAA.TCCAACATTGATACCACTCATAGTATAATTT..GC........
+#=GR AABZ01000766.1/343-864       PP ******************************....*******.*****.9999888777.689999999999****9.......999999999**********999...........8.99*****.****..**.8887757888889999999**.*******************************..**........
+#=GC PP_cons                         ******************************....*******.*****.**********..**************************9*9*************************9**.*******.****..**.99999..99999999999999.****************************999..89........
+#=GC RF                              xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx....xxxxxxx.xxxxx.xxxxxxxxxx..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxx.xxxx..xx.xxxxx..xxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx..xx........
+
+NC_001134.8/415259-414753            .....ACTCGAGC...TG............CTGCAG.................TATCC-.......................-AGCATAC.A...TAATAACCATGTCATTTTTCTATAGCGAGTTTTAAAGTGTCTACCACCGCAATTTCTATCTTTCG.ACGC.GAATAGACTTTTtCCTTCTTACAGAACGATAATA
+#=GR NC_001134.8/415259-414753    PP .....********...**............******.................*****.........................*******.*...*****************************************************************.****.************9*********************
+VZVN01000029.1/60759-61265           .....ACTCGAGC...TG............CTGCAG.................TATCC-.......................-AGCATAC.A...TAATAACCATGTCATTTTTCTATAGCGAGTTTTAAAGTGTCTACCACCGCAATTTCTATCTTTCG.ACGC.GAATAGACTTTTtCCTTCTTACAGAACGATAATA
+#=GR VZVN01000029.1/60759-61265   PP .....********...**............******.................*****.........................*******.*...*****************************************************************.****.************9*********************
+DUYB01000937.1/71958-72465           .....ACTCGAGC...TG............CTGCAG.................TATCC-.......................-AGCATAC.A...TAATAACCATGTCATTTTTCTATAGCAAGTTTTAAAGTGTCTACCACCGCAATTTCTATCTTTCG.ACGC.GAATAGACTTTTtCCTTCTTACAGAACGATAATA
+#=GR DUYB01000937.1/71958-72465   PP .....********...**............******.................*****.........................*******.*...*****************************************************************.****.************9*********************
+VZXH01000037.1/62606-63113           .....ACTCGAGC...TG............CTGCAG.................TATCC-.......................-AGCATAC.A...TAATAACCATGTCATTTTTCTATAGCAAGTTTTAAAGTGTCTACCACCGCAATTTCTATCTTTCG.ACGC.GAATAGACTTTTtCCTTCTTACAGAACGATAATA
+#=GR VZXH01000037.1/62606-63113   PP .....********...**............******.................*****.........................*******.*...*****************************************************************.****.************9*********************
+CP048984.1/403331-402825             .....ACTCGAGC...TG............CTGCAG.................TATCC-.......................-AGCATAC.A...TAATAACCATGTCATTTTTCTATAGCGAGTTTTAAAGTGTCTACCACCGCAATTTCTATCTTTCG.ACGC.GAATAGACTTTTtCCTTCTTACAGAACGATAATA
+#=GR CP048984.1/403331-402825     PP .....********...**............******.................*****.........................*******.*...*****************************************************************.****.************9*********************
+MVPU01000014.1/237539-237033         .....ACTCGAGC...TG............CTGCAG.................TATCC-.......................-AGCATAC.A...TAATAACCATGTCATTTTTCTATAGCGAGTTTTAAAGTGTCTACCACCGCAATTTCTATCTTTCG.ACGC.GAATAGACTTTTtCCTTCTTACAGAACGATAATA
+#=GR MVPU01000014.1/237539-237033 PP .....********...**............******.................*****.........................*******.*...*****************************************************************.****.************9*********************
+VZVB01000046.1/114579-114073         .....ACTCGAGC...TG............CTGCAG.................TATCC-.......................-AGCATAC.A...TAATAACCATGTCATTTTTCTATAGCGAGTTTTAAAGTGTCTACCACCGCAATTTCTATCTTTCG.ACGC.GAATAGACTTTTtCCTTCTTACAGAACGATAATA
+#=GR VZVB01000046.1/114579-114073 PP .....********...**............******.................*****.........................*******.*...*****************************************************************.****.************9*********************
+VZWS01000072.1/12495-13002           .....ACTCGAGC...TG............CTGCAG.................TATCC-.......................-AGCATAC.A...TAATAACCATGTCATTTTTCTATAGCAAGTTTTAAAGTGTCTACCACCGCAATTTCTATCTTTCG.ACGC.GAATAGACTTTTtCCTTCTTACAGAACGATAATA
+#=GR VZWS01000072.1/12495-13002   PP .....********...**............******.................*****.........................*******.*...*****************************************************************.****.************9*********************
+DUXO01000480.1/88191-87684           .....ACTCGAGC...TG............CTGCAG.................TATCC-.......................-AGCATAC.A...TAATAACCATGTCATTTTTCTATAGCAAGTTTTAAAGTGTCTACCACCGCAATTTCTATCTTTCG.ACGC.GAATAGACTTTTtCCTTCTTACAGAACGATAATA
+#=GR DUXO01000480.1/88191-87684   PP .....********...**............******.................*****.........................*******.*...*****************************************************************.****.************9*********************
+VZWC01002003.1/90184-89677           .....ACTCGAGC...TG............CTGCAG.................TATCC-.......................-AGCATAC.A...TAATAACCATGTCATTTTTCTATAGCAAGTTTTAAAGTGTCTACCACCGCAATTTCTATCTTTCG.ACGC.GAATAGACTTTTtCCTTCTTACAGAACGATAATA
+#=GR VZWC01002003.1/90184-89677   PP .....********...**............******.................*****.........................*******.*...*****************************************************************.****.************9*********************
+DUYB01000859.1/38706-39235           .....ACTCGTTG...CA............TTGAATatagca.....aattctTTTCCA.......................AATCATAC.AataTTACTACCCTGTTAGTTTTCCTTTGCAGGCTTAAGGTTAGTCGTTATTCTAAATTCTATCTTTTC.TAGTaCGGTAAACTGAT.TTTCCTTTAAAAATAACAATA
+#=GR DUYB01000859.1/38706-39235   PP .....99**9999...99............999998999999.....9999999*****.......................********.778899***************************************************************.88888************.*********************
+VZWP01000009.1/121813-121284         .....ACTCGTTG...CA............TTGAATatagca.....aattctTTTCCA.......................AATCATAC.AataTTACTACCCTGTTAGTTTTCCTTTGCAGGCTTAAGGTTAGTCGTTATTCTAAATTCTATCTTTTC.TAGTaCGGTAAACTGAT.TTTCCTTTAAAAATAACAATA
+#=GR VZWP01000009.1/121813-121284 PP .....99**9999...99............999998999999.....9999999*****.......................********.778899***************************************************************.88888************.*********************
+VZXH01000066.1/62473-63002           .....ACTCGTTG...CA............TTGAATatagca.....aattctTTTCCA.......................AATCATAC.AataTTACTACCCTGTTAGTTTTCCTTTGCAGGCTTAAGGTTAGTCGTTATTCTAAATTCTATCTTTTC.TAGTaCGGTAAACTGAT.TTTCCTTTAAAAATAACAATA
+#=GR VZXH01000066.1/62473-63002   PP .....99**9999...99............999998999999.....9999999*****.......................********.778899***************************************************************.88888************.*********************
+DUXO01000217.1/62303-62830           .....ACTCGTTG...CA............TTGAATataaca.....aattctTTTCCA.......................AATCATAC.AataTTACTACCCTGTTAGTTTTCCTTTGCAGGCTTAAGGTTAGTCGTTATTCTAAATTCTATCTTTTC.TAGTaCGGTAAACTGAT.TTTCCTTTAAAAATAACAATA
+#=GR DUXO01000217.1/62303-62830   PP .....99**9999...99............999999999999.....9999999*****.......................********.778899***************************************************************.88888************.*********************
+NOWY01000011.1/155760-155233         .....ACTCGTTG...CA............TTGAATataaca.....aattctTTTCCA.......................AATCATAC.AataTTACTACCCTGTTAGTTTTCCTTTGCAGGCTTAAGGTTAGTCGTTATTCTAAATTCTATCTTTTC.TAGTaCGGTAAACTGAT.TTTCCTTTAAAAATAACAATA
+#=GR NOWY01000011.1/155760-155233 PP .....99**9999...99............999999999999.....9999999*****.......................********.778899***************************************************************.88888************.*********************
+VZWC01002031.1/54821-54294           .....ACTCGTTG...CA............TTGAATataaca.....aattctTTTCCA.......................AATCATAC.AataTTACTACCCTGTTAGTTTTCCTTTGCAGGCTTAAGGTTAGTCGTTATTCTAAATTCTATCTTTTC.TAGTaCGGTAAACTGAT.TTTCCTTTAAAAATAACAATA
+#=GR VZWC01002031.1/54821-54294   PP .....99**9999...99............999999999999.....9999999*****.......................********.778899***************************************************************.88888************.*********************
+CP049001.1/591828-591299             .....ATTTGACTgttTG............TTGCATtgaatatatccaatcctTTTCCA.......................AAGCATATtA...TTTCTACCATGACAATTTCTCTTTGCAGGCTTGAGGTTAGTCGTCGTTCTATATTCTATCTTTTCtAATA.CGGTAAACTGAT.TTTTCATAAAAAATAACAATA
+#=GR CP049001.1/591828-591299     PP .....*****99855568............8888889999999999999999999****.......................*******989...*****************************************************************77777.************.*********************
+MVPU01000005.1/365610-366139         .....ATTTGACTgttTG............TTGCATtgaatatatccaatcctTTTCCA.......................AAGCATATtA...TTTCTACCATGACAATTTCTCTTTGCAGGCTTGAGGTTAGTCGTCGTTCTATATTCTATCTTTTCtAATA.CGGTAAACTGAT.TTTTCATAAAAAATAACAATA
+#=GR MVPU01000005.1/365610-366139 PP .....*****99855568............8888889999999999999999999****.......................*******989...*****************************************************************77777.************.*********************
+VZVB01000109.1/52666-52137           .....ATTTGACTgttTG............TTGCATtgaatatatccaatcctTTTCCA.......................AAGCATATtA...TTTCTACCATGACAATTTCTCTTTGCAGGCTTGAGGTTAGTCGTCGTTCTATATTCTATCTTTTCtAATA.CGGTAAACTGAT.TTTTCATAAAAAATAACAATA
+#=GR VZVB01000109.1/52666-52137   PP .....*****99855568............8888889999999999999999999****.......................*******989...*****************************************************************77777.************.*********************
+DUXM01000020.1/364673-365202         .....ATTTGACTgttTG............TTGCATtgaatatatccaatcctTTTCCA.......................AAGCATATtA...TTTCTACCATGACAATTTCTCTTTGCAGGCTTGAGGTTAGTCGTCGTTCTATATTCTATCTTTTCtAATA.CGGTAAACTGAT.TTTTCATAAAAAATAACAATA
+#=GR DUXM01000020.1/364673-365202 PP .....*****99855568............8888889999999999999999999****.......................*******989...*****************************************************************77777.************.*********************
+VZWS01000019.1/52685-52156           .....ATTTGACTgttTG............TTGCATtgaatatatccaatcctTTTCCA.......................AAGCATATtA...TTTCTACCATGACAATTTCTCTTTGCAGGCTTGAGGTTAGTCGTCGTTCTATATTCTATCTTTTCtAATA.CGGTAAACTGAT.TTTTCATAAAAAATAACAATA
+#=GR VZWS01000019.1/52685-52156   PP .....*****99855568............8888889999999999999999999****.......................*******989...*****************************************************************77777.************.*********************
+NC_047488.1/425356-424851            ....gATTCAAGC...GG............CTGCAG.................TATTC-.......................-AGCGTAC.A...AAATAACCATGTCGTTTTTCCATAGCGAGTTTTAAAGTGGCTACCAC--TAATTTCTATCTTTTT.ACTT.GAATAGACTTTTtCTTTCTTACAGAACAATAATA
+#=GR NC_047488.1/425356-424851    PP ....599******...**............******.................*****.........................*******.*...*********************************************98..8***************.****.************9*********************
+DUYB01000895.1/63443-62910           ccgctTGTCGTAA...TGagtataatacatCTACCG.................TTC--A.......................AAGCATAC.G...ATTCTACCACATTAATTTTCTCCACGAGTAATTAGAGTGGTTGCTATTCAACCTACTATCTTTTCcGATT.GGCTACACTTTC.---TTTAAAAAAACAATAATA
+#=GR DUYB01000895.1/63443-62910   PP 5544445555555...44777777777777888888.................876..*.......................********.*...****************************************************************999999.*********997....7789999***********
+VZXH01000118.1/12827-13360           ccgctTGTCGTAA...TGagtataatacatCTACCG.................TTC--A.......................AAGCATAC.G...ATTCTACCACATTAATTTTCTCCACGAGTAATTAGAGTGGTTGCTATTCAACCTACTATCTTTTCcGATT.GGCTACACTTTC.---TTTAAAAAAACAATAATA
+#=GR VZXH01000118.1/12827-13360   PP 5544445555555...44777777777777888888.................876..*.......................********.*...****************************************************************999999.*********997....7789999***********
+CP030963.1/396800-396269             ccgctTGTCGTAA...TGagtataatacatCTACCG.................TTC--A.......................AAGCATAC.G...ATTCTACCACATTAATTTTCTCCACGAGTAATTAGAGTGGTTGCTATTCAACCTACTATCTTTTCcGATT.GGCTACACTTTC.---TTTAAAAAAACAATAATA
+#=GR CP030963.1/396800-396269     PP 5544445555555...44777777777777888888.................876..*.......................********.*...****************************************************************999999.*********997....7789999***********
+LT986463.1/401774-401245             .....CGTCCAAC..tAT............TTTCAG.................TACCCAaaatacaactt.ctactttttgaAAGCACTC.AtaaTTACTACAATTCCAT-TTTCCTAAGCTGGCATTGAAGTGGTTGCTACCTTAATTTCTGTCTTTTCtCATC.AAGTAAATTTTT.---TCTTACGGAACAATAATA
+#=GR LT986463.1/401774-401245     PP .....66666555..168............999***.................*****9999999999**.**********9********.8667899999999999987.5667899******************************************77777.*******99985....******************
+AABZ01000766.1/343-864               .....ATCCAACT...AT............TTTCAG.................TATCCCaatatacagcatctactatttaaAAGCACTC.AaagTTACTCCAATTTCATTCTC-CTAAGTAAGCATTAAAGTAGTTGTTAACTTAATTTCTGTCTTCTCcCATT.AAGTAAACTTT-.---TCTTACGGAACAATAATA
+#=GR AABZ01000766.1/343-864       PP .....********...**............******.................****999999******************9********.77899*************97765.7899*****************************************67777.*********98.....8*****************
+#=GC PP_cons                         .....99999999...89............999999.................99****.......................********.9...*****************************************************************.9999.***********9.*********************
+#=GC RF                              .....xxxxxxxx...xx............xxxxxx.................xxxxxx.......................xxxxxxxx.x...xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxx.xxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxx
+
+NC_001134.8/415259-414753            ACTAACAT.GACTTTAACAGG
+#=GR NC_001134.8/415259-414753    PP ********.**********98
+VZVN01000029.1/60759-61265           ACTAACAT.GACTTTAACAGG
+#=GR VZVN01000029.1/60759-61265   PP ********.**********98
+DUYB01000937.1/71958-72465           ACTAACAT.GACTTTAACAGG
+#=GR DUYB01000937.1/71958-72465   PP ********.**********98
+VZXH01000037.1/62606-63113           ACTAACAT.GACTTTAACAGG
+#=GR VZXH01000037.1/62606-63113   PP ********.**********98
+CP048984.1/403331-402825             ACTAACAT.GACTTTAACAGG
+#=GR CP048984.1/403331-402825     PP ********.**********98
+MVPU01000014.1/237539-237033         ACTAACAT.GACTTTAACAGG
+#=GR MVPU01000014.1/237539-237033 PP ********.**********98
+VZVB01000046.1/114579-114073         ACTAACAT.GACTTTAACAGG
+#=GR VZVB01000046.1/114579-114073 PP ********.**********98
+VZWS01000072.1/12495-13002           ACTAACAT.GACTTTAACAGG
+#=GR VZWS01000072.1/12495-13002   PP ********.**********98
+DUXO01000480.1/88191-87684           ACTAACAT.GACTTTAATAGG
+#=GR DUXO01000480.1/88191-87684   PP ********.********9997
+VZWC01002003.1/90184-89677           ACTAACAT.GACTTTAATAGG
+#=GR VZWC01002003.1/90184-89677   PP ********.********9997
+DUYB01000859.1/38706-39235           ACTAACAT.AATTTCAACAGG
+#=GR DUYB01000859.1/38706-39235   PP ********.**********98
+VZWP01000009.1/121813-121284         ACTAACAT.AATTTCAACAGG
+#=GR VZWP01000009.1/121813-121284 PP ********.**********98
+VZXH01000066.1/62473-63002           ACTAACAT.AATTTCAACAGG
+#=GR VZXH01000066.1/62473-63002   PP ********.**********98
+DUXO01000217.1/62303-62830           ACTAACAT.AATTTCAACAGG
+#=GR DUXO01000217.1/62303-62830   PP ********.**********98
+NOWY01000011.1/155760-155233         ACTAACAT.AATTTCAACAGG
+#=GR NOWY01000011.1/155760-155233 PP ********.**********98
+VZWC01002031.1/54821-54294           ACTAACAT.AATTTCAACAGG
+#=GR VZWC01002031.1/54821-54294   PP ********.**********98
+CP049001.1/591828-591299             ACTAACAT.AATTTAAACAGG
+#=GR CP049001.1/591828-591299     PP ********.**********98
+MVPU01000005.1/365610-366139         ACTAACAT.AATTTAAACAGG
+#=GR MVPU01000005.1/365610-366139 PP ********.**********98
+VZVB01000109.1/52666-52137           ACTAACAT.AATTTAAACAGG
+#=GR VZVB01000109.1/52666-52137   PP ********.**********98
+DUXM01000020.1/364673-365202         ACTAACAT.AATTTAAACAGG
+#=GR DUXM01000020.1/364673-365202 PP ********.**********98
+VZWS01000019.1/52685-52156           ACTAACAT.AATTTAAACAGG
+#=GR VZWS01000019.1/52685-52156   PP ********.**********98
+NC_047488.1/425356-424851            ACTAACAT.GACTTTAACAGG
+#=GR NC_047488.1/425356-424851    PP ********.**********97
+DUYB01000895.1/63443-62910           ACTAACAT.AATTTTAACAGG
+#=GR DUYB01000895.1/63443-62910   PP ********.**********98
+VZXH01000118.1/12827-13360           ACTAACAT.AATTTTAACAGG
+#=GR VZXH01000118.1/12827-13360   PP ********.**********98
+CP030963.1/396800-396269             ACTAACAT.AATTTTAACAGG
+#=GR CP030963.1/396800-396269     PP ********.**********98
+LT986463.1/401774-401245             ACTAACATtGATTTTTACAGG
+#=GR LT986463.1/401774-401245     PP ********9**********98
+AABZ01000766.1/343-864               ACTAACATtGATTTTAACAGG
+#=GR AABZ01000766.1/343-864       PP ********9**********98
+#=GC PP_cons                         ********.**********98
+#=GC RF                              xxxxxxxx.xxxxxxxxxxxx
+//

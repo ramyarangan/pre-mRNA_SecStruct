@@ -1,0 +1,17 @@
+# STOCKHOLM 1.0
+#=GF ID YCL005W-A
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003559.1/209331-209235  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome III, whole genome shotgun sequence
+#=GS NC_001135.5/107191-107287 DE [subseq from] Saccharomyces cerevisiae S288C chromosome III, complete sequence
+#=GS NC_047489.1/131971-132053 DE [subseq from] Saccharomyces paradoxus chromosome III, complete sequence
+
+CM003559.1/209331-209235          CGTATGTGCAACATTTTTTTTACGATGTGTCTCCATATTACTAGTTTCCCT.TTCTTTTTTACTAACAAGAGTTTGTTTGTTTTGTTTTGTCGTACAG
+#=GR CM003559.1/209331-209235  PP 799************************************************.********************************************97
+NC_001135.5/107191-107287         CGTATGTGCAACATTTTTTTTACGATGTGTCTCCATATTACTAGTTTCCCT.TTCTTTTTTACTAACAAGAGTTTGTTTGTTTTGTTTTGTCGTACAG
+#=GR NC_001135.5/107191-107287 PP 799************************************************.********************************************97
+NC_047489.1/131971-132053         CGTATGTGCAACCTTT-TTTTACGATGTGGTCCCGTATTACCAGTTTACGTtTTCTTTCCTACTAACAAGAGTTTGTCTGTCTT--------------
+#=GR NC_047489.1/131971-132053 PP 799*********8765.6789************************99886516899999*******************998765..............
+#=GC PP_cons                      799*********9998*999***************************9998.99**************************9998************97
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

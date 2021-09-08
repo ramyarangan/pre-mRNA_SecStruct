@@ -1,0 +1,41 @@
+# STOCKHOLM 1.0
+#=GF ID YML067C
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS DUXO01000028.1/131839-131746 DE [subseq from] TPA_asm: Saccharomyces cerevisiae x Saccharomyces uvarum strain Muri scaffold275_cov342, whole genome shotgun sequence
+#=GS DUYB01000599.1/7001-7094     DE [subseq from] TPA_asm: Saccharomyces cerevisiae x Saccharomyces kudriavzevii x Saccharomyces uvarum strain CBS 2834 scf7180000027861, whole genome shotgun sequence
+#=GS MVPU01000035.1/108024-108117 DE [subseq from] Saccharomyces sp. M14 scaffold33, whole genome shotgun sequence
+#=GS NC_001145.3/140183-140090    DE [subseq from] Saccharomyces cerevisiae S288C chromosome XIII, complete sequence
+#=GS VZVB01000048.1/28344-28437   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces eubayanus strain yHQL630 flattened_line_94, whole genome shotgun sequence
+#=GS VZWC01001977.1/204287-204380 DE [subseq from] Saccharomyces cerevisiae x Saccharomyces eubayanus x Saccharomyces uvarum strain yHAB34 scf7180000208417, whole genome shotgun sequence
+#=GS VZWS01000165.1/6399-6306     DE [subseq from] Saccharomyces cerevisiae x Saccharomyces kudriavzevii x Saccharomyces eubayanus strain yHQL560 flattened_line_327, whole genome shotgun sequence
+#=GS VZXH01000015.1/8300-8207     DE [subseq from] Saccharomyces cerevisiae x Saccharomyces eubayanus x Saccharomyces kudriavzevii x Saccharomyces uvarum strain yHQL563 flattened_line_28, whole genome shotgun sequence
+#=GS VZVN01000043.1/18227-18322   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces kudriavzevii strain yHQL621 flattened_line_84, whole genome shotgun sequence
+#=GS CP048994.1/139817-139729     DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScXIII
+#=GS NC_047499.1/145114-145016    DE [subseq from] Saccharomyces paradoxus chromosome XIII, complete sequence
+
+DUXO01000028.1/131839-131746         GTATGTTATATGGATT.TTTCTGAAGTAGCCCGCTTCAGCATATTTTA....TTTTTGCTTTTGCTTTTTCACTAACAATGGAAAT.TTAACTTTACAGC
+#=GR DUXO01000028.1/131839-131746 PP 789*************.*******************************....**********************************.***********97
+DUYB01000599.1/7001-7094             GTATGTTATATGGATT.TTTCTGAAGTAGCCCGCTTCAGCATATTTTA....TTTTTGCTTTTGCTTTTTCACTAACAATGGAAAT.TTAACTTTACAGC
+#=GR DUYB01000599.1/7001-7094     PP 789*************.*******************************....**********************************.***********97
+MVPU01000035.1/108024-108117         GTATGTTATATGGATT.TTTCTGAAGTAGCCCGCTTCAGCATATTTTA....TTTTTGCTTTTGCTTTTTCACTAACAATGGAAAT.TTAACTTTACAGC
+#=GR MVPU01000035.1/108024-108117 PP 789*************.*******************************....**********************************.***********97
+NC_001145.3/140183-140090            GTATGTTATATGGATT.TTTCTGAAGTAGCCCGCTTCAGCATATTTTA....TTTTTGCTTTTGCTTTTTCACTAACAATGGAAAT.TTAACTTTACAGC
+#=GR NC_001145.3/140183-140090    PP 789*************.*******************************....**********************************.***********97
+VZVB01000048.1/28344-28437           GTATGTTATATGGATT.TTTCTGAAGTAGCCCGCTTCAGCATATTTTA....TTTTTGCTTTTGCTTTTTCACTAACAATGGAAAT.TTAACTTTACAGC
+#=GR VZVB01000048.1/28344-28437   PP 789*************.*******************************....**********************************.***********97
+VZWC01001977.1/204287-204380         GTATGTTATATGGATT.TTTCTGAAGTAGCCCGCTTCAGCATATTTTA....TTTTTGCTTTTGCTTTTTCACTAACAATGGAAAT.TTAACTTTACAGC
+#=GR VZWC01001977.1/204287-204380 PP 789*************.*******************************....**********************************.***********97
+VZWS01000165.1/6399-6306             GTATGTTATATGGATT.TTTCTGAAGTAGCCCGCTTCAGCATATTTTA....TTTTTGCTTTTGCTTTTTCACTAACAATGGAAAT.TTAACTTTACAGC
+#=GR VZWS01000165.1/6399-6306     PP 789*************.*******************************....**********************************.***********97
+VZXH01000015.1/8300-8207             GTATGTTATATGGATT.TTTCTGAAGTAGCCCGCTTCAGCATATTTTA....TTTTTGCTTTTGCTTTTTCACTAACAATGGAAAT.TTAACTTTACAGC
+#=GR VZXH01000015.1/8300-8207     PP 789*************.*******************************....**********************************.***********97
+VZVN01000043.1/18227-18322           GTATGTTATATGGATT.TTTCTGAAGTAGCCCGCTTCAGCATATTTTTt..tTTTTTGCTTTTGCTTTTTCACTAACAATGGAAAT.TTAACTTTACAGC
+#=GR VZVN01000043.1/18227-18322   PP 789*************.**************************988762..256699*****************************.***********97
+CP048994.1/139817-139729             GTATGTTATATGGATT.TTTCTGAAGTAGCCCGCTTCAGCATAT----....-TTTTGCTTTTGCTTTTTCACTAACAATGGAAAT.TTAACTTTACAGC
+#=GR CP048994.1/139817-139729     PP 789*************.************************998.........6789*****************************.***********97
+NC_047499.1/145114-145016            GTATGTTATATGGGTTtTTTCTGAAGTAGTCTACTTCAGCATATTTCTttctTTTTTGCTTTTGCTT-TTCACTAACAATTGAAATtTTAACCTTACAGC
+#=GR NC_047499.1/145114-145016    PP 789*********99885789***********************98765333367899********97.79***************9789*********97
+#=GC PP_cons                         789*************.****************************999....999*******************************.***********97
+#=GC RF                              xxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx....xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxx
+//

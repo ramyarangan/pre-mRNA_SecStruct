@@ -1,0 +1,23 @@
+# STOCKHOLM 1.0
+#=GF ID YPL129W
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003570.1/299126-299231  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome XVI, whole genome shotgun sequence
+#=GS CP048997.1/305603-305708  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScXVI
+#=GS NC_001148.4/305307-305412 DE [subseq from] Saccharomyces cerevisiae S288C chromosome XVI, complete sequence
+#=GS NC_047502.1/290071-290176 DE [subseq from] Saccharomyces paradoxus chromosome XVI, complete sequence
+#=GS LT986478.1/297989-298096  DE [subseq from] Saccharomyces jurei genome assembly, chromosome: XVI
+
+CM003570.1/299126-299231          GTATGTTCGTTAATCTCTTTTAGCCACCCACCCATATGC.TTTTTGTTTTGTTAGCTAA.AATAATACTAACTTACGACTCTATTCTCATCATTAAATAACCAACAGA
+#=GR CM003570.1/299126-299231  PP 89*************************************.*******************.**********************************************97
+CP048997.1/305603-305708          GTATGTTCGTTAATCTCTTTTAGCCACCCACCCATATGC.TTTTTGTTTTGTTAGCTAA.AATAATACTAACTTACGACTCTATTCTCATCATTAAATAACCAACAGA
+#=GR CP048997.1/305603-305708  PP 89*************************************.*******************.**********************************************97
+NC_001148.4/305307-305412         GTATGTTCGTTAATCTCTTTTAGCCACCCACCCATATGC.TTTTTGTTTTGTTAGCTAA.AATAATACTAACTTACGACTCTATTCTCATCATTAAATAACCAACAGA
+#=GR NC_001148.4/305307-305412 PP 89*************************************.*******************.**********************************************97
+NC_047502.1/290071-290176         GTATGTTCATTATTTTCTTTTCGTCACCCACTTCTCTGT.CTTTTCTTTTGTTGACTAA.ATTAATACTAACTTACGACTCCATTCTCATTATTTAATATTCAACAGA
+#=GR NC_047502.1/290071-290176 PP 89*************************************.*******************.**********************************************97
+LT986478.1/297989-298096          GTATGTTTATTATTTTCCTTTAGCCATCTAATTTTTTTCtTCTTTGTTTTACTCGCTAAaAATAATACTAACCTACGGTTTTATTCTCATTATTCAATATCCAACAGA
+#=GR LT986478.1/297989-298096  PP 899***********************99987766555441457889999999****9762689*******************************************97
+#=GC PP_cons                      89****************************999999999.999**************99.9*********************************************97
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

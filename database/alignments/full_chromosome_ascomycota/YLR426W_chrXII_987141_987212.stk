@@ -1,0 +1,17 @@
+# STOCKHOLM 1.0
+#=GF ID YLR426W
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CP048993.1/1045235-1045305 DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScXII
+#=GS NC_001144.5/987142-987212  DE [subseq from] Saccharomyces cerevisiae S288C chromosome XII, complete sequence
+#=GS CM003566.1/963443-963512   DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome XII, whole genome shotgun sequence
+
+CP048993.1/1045235-1045305         GTATGTAAAGTAGAAAATAGGCATGAGGTTAGAAACAGCGTTTTTTATACTAACATGACGAACTAACCTAG
+#=GR CP048993.1/1045235-1045305 PP 799******************************************************************97
+NC_001144.5/987142-987212          GTATGTAAAGTAGAAAATAGGCATGAGGTTAGAAACAGCGTTTTTTATACTAACATGACGAACTAACCTAG
+#=GR NC_001144.5/987142-987212  PP 799******************************************************************97
+CM003566.1/963443-963512           GTATGTAAAGTAGAAAATA-GCATGAGGTTAGAAACAGCGTTTTTTATACTAACATGACGAACTAACCTAG
+#=GR CM003566.1/963443-963512   PP 799****************.9************************************************97
+#=GC PP_cons                       799******************************************************************97
+#=GC RF                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

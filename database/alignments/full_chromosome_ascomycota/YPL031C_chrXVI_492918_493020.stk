@@ -1,0 +1,26 @@
+# STOCKHOLM 1.0
+#=GF ID YPL031C
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003570.1/486148-486046  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome XVI, whole genome shotgun sequence
+#=GS CP048997.1/486338-486236  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScXVI
+#=GS NC_001148.4/493020-492918 DE [subseq from] Saccharomyces cerevisiae S288C chromosome XVI, complete sequence
+#=GS NC_047502.1/469769-469666 DE [subseq from] Saccharomyces paradoxus chromosome XVI, complete sequence
+#=GS LT986478.1/480705-480611  DE [subseq from] Saccharomyces jurei genome assembly, chromosome: XVI
+#=GS CP030977.1/468616-468516  DE [subseq from] Saccharomyces kudriavzevii strain CR85 chromosome XVI
+
+CM003570.1/486148-486046          GTATGTAGTTTTCTAGTCAAGTATCATTGGAAAGTAAAGAACTAGAAATGATGAATACTAACATATATACGAGAAAAA.ATCAACCTCGAGCTCTATGAACAGA
+#=GR CM003570.1/486148-486046  PP 799***************************************************************************.**********************985
+CP048997.1/486338-486236          GTATGTAGTTTTCTAGTCAAGTATCATTGGAAAGTAAAGAACTAGAAATGATGAATACTAACATATATACGAGAAAAA.ATCAACCTCGAGCTCTATGAACAGA
+#=GR CP048997.1/486338-486236  PP 799***************************************************************************.**********************985
+NC_001148.4/493020-492918         GTATGTAGTTTTCTAGTCAAGTATCATTGGAAAGTAAAGAACTAGAAATGATGAATACTAACATATATACGAGAAAAA.ATCAACCTCGAGCTCTATGAACAGA
+#=GR NC_001148.4/493020-492918 PP 799***************************************************************************.**********************985
+NC_047502.1/469769-469666         GTATGTAGTTTTCTAGGCAGGTATAATCGGAGAGTAAGAAGCTAGGAATGATGAGTACTAACATGTATACGAGAAAAAaAACGAACTCGAGCCATATAAACAGA
+#=GR NC_047502.1/469769-469666 PP 799**********************************************************************99988799********************985
+LT986478.1/480705-480611          GTATGTAGTATTTTGGGCAGTTTCAATTGGAGAGTAAGAAGTTGGAAATCTCAAGTACTAACATATATACGAGAACAA.AACGAACTCGAGATATC--------
+#=GR LT986478.1/480705-480611  PP 799***************************************************************************.************99875........
+CP030977.1/468616-468516          GTATGTAATTTT-TGAGCAGCTTTGATTGGAAATTAAGGAGTAGGAAATCATCAGTACTAACATGTAAGCGAAAAACA.AACAAACTCGAGCTATAAGAATAG-
+#=GR CP030977.1/468616-468516  PP 689999998776.56679************************************************************.****************99988776.
+#=GC PP_cons                      799******999*9999*************************************************************.***************99****9985
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxx
+//

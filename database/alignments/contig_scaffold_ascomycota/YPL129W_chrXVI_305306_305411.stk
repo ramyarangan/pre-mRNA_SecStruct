@@ -1,0 +1,47 @@
+# STOCKHOLM 1.0
+#=GF ID YPL129W
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CP048997.1/305603-305708     DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScXVI
+#=GS DUXO01000867.1/276354-276459 DE [subseq from] TPA_asm: Saccharomyces cerevisiae x Saccharomyces uvarum strain Muri scaffold22063_cov342, whole genome shotgun sequence
+#=GS DUYB01000426.1/72335-72230   DE [subseq from] TPA_asm: Saccharomyces cerevisiae x Saccharomyces kudriavzevii x Saccharomyces uvarum strain CBS 2834 scf7180000027688, whole genome shotgun sequence
+#=GS MVPU01000012.1/432260-432155 DE [subseq from] Saccharomyces sp. M14 scaffold10, whole genome shotgun sequence
+#=GS NC_001148.4/305307-305412    DE [subseq from] Saccharomyces cerevisiae S288C chromosome XVI, complete sequence
+#=GS VZVB01000013.1/164918-164813 DE [subseq from] Saccharomyces cerevisiae x Saccharomyces eubayanus strain yHQL630 flattened_line_24, whole genome shotgun sequence
+#=GS VZWC01001869.1/18126-18021   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces eubayanus x Saccharomyces uvarum strain yHAB34 scf7180000208309, whole genome shotgun sequence
+#=GS VZXH01000055.1/72186-72081   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces eubayanus x Saccharomyces kudriavzevii x Saccharomyces uvarum strain yHQL563 flattened_line_108, whole genome shotgun sequence
+#=GS VZVN01000130.1/22658-22763   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces kudriavzevii strain yHQL621 flattened_line_258, whole genome shotgun sequence
+#=GS VZWS01000073.1/32705-32600   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces kudriavzevii x Saccharomyces eubayanus strain yHQL560 flattened_line_144, whole genome shotgun sequence
+#=GS NC_047502.1/290071-290176    DE [subseq from] Saccharomyces paradoxus chromosome XVI, complete sequence
+#=GS AABZ01000058.1/17979-18086   DE [subseq from] Saccharomyces mikatae IFO 1815 contig_26, whole genome shotgun sequence
+#=GS LT986478.1/297989-298096     DE [subseq from] Saccharomyces jurei genome assembly, chromosome: XVI
+
+CP048997.1/305603-305708             GTATGTTCGTTAATCTCTTTTAGCCACCCACCCAT.ATGCTTTTTGTTTTGTTAGCTAA.AATA..ATACTAACTTACGACTCTATTCTCATCATTAAATAACCAACAGA
+#=GR CP048997.1/305603-305708     PP 89*********************************.***********************.****..******************************************97
+DUXO01000867.1/276354-276459         GTATGTTCGTTAATCTCTTTTAGCCACCCACCCAT.ATGCTTTTTGTTTTGTTAGCTAA.AATA..ATACTAACTTACGACTCTATTCTCATCATTAAATAACCAACAGA
+#=GR DUXO01000867.1/276354-276459 PP 89*********************************.***********************.****..******************************************97
+DUYB01000426.1/72335-72230           GTATGTTCGTTAATCTCTTTTAGCCACCCACCCAT.ATGCTTTTTGTTTTGTTAGCTAA.AATA..ATACTAACTTACGACTCTATTCTCATCATTAAATAACCAACAGA
+#=GR DUYB01000426.1/72335-72230   PP 89*********************************.***********************.****..******************************************97
+MVPU01000012.1/432260-432155         GTATGTTCGTTAATCTCTTTTAGCCACCCACCCAT.ATGCTTTTTGTTTTGTTAGCTAA.AATA..ATACTAACTTACGACTCTATTCTCATCATTAAATAACCAACAGA
+#=GR MVPU01000012.1/432260-432155 PP 89*********************************.***********************.****..******************************************97
+NC_001148.4/305307-305412            GTATGTTCGTTAATCTCTTTTAGCCACCCACCCAT.ATGCTTTTTGTTTTGTTAGCTAA.AATA..ATACTAACTTACGACTCTATTCTCATCATTAAATAACCAACAGA
+#=GR NC_001148.4/305307-305412    PP 89*********************************.***********************.****..******************************************97
+VZVB01000013.1/164918-164813         GTATGTTCGTTAATCTCTTTTAGCCACCCACCCAT.ATGCTTTTTGTTTTGTTAGCTAA.AATA..ATACTAACTTACGACTCTATTCTCATCATTAAATAACCAACAGA
+#=GR VZVB01000013.1/164918-164813 PP 89*********************************.***********************.****..******************************************97
+VZWC01001869.1/18126-18021           GTATGTTCGTTAATCTCTTTTAGCCACCCACCCAT.ATGCTTTTTGTTTTGTTAGCTAA.AATA..ATACTAACTTACGACTCTATTCTCATCATTAAATAACCAACAGA
+#=GR VZWC01001869.1/18126-18021   PP 89*********************************.***********************.****..******************************************97
+VZXH01000055.1/72186-72081           GTATGTTCGTTAATCTCTTTTAGCCACCCACCCAT.ATGCTTTTTGTTTTGTTAGCTAA.AATA..ATACTAACTTACGACTCTATTCTCATCATTAAATAACCAACAGA
+#=GR VZXH01000055.1/72186-72081   PP 89*********************************.***********************.****..******************************************97
+VZVN01000130.1/22658-22763           GTATGTTCGTTAATCTCTTTTAGCCACCCACCCAT.ATGCTTTTTATTTTGTTAGCTAA.AATA..ATACTAACTTACGACTCTATTCTCATCATTAAATAACCAACAGA
+#=GR VZVN01000130.1/22658-22763   PP 89*********************************.***********************.****..******************************************97
+VZWS01000073.1/32705-32600           GTATGTTCGTTAATCTCTTTTAGCCACCCACCCAT.ATGCTTTTTATTTTGTTAGCTAA.AATA..ATACTAACTTACGACTCTATTCTCATCATTAAATAACCAACAGA
+#=GR VZWS01000073.1/32705-32600   PP 89*********************************.***********************.****..******************************************97
+NC_047502.1/290071-290176            GTATGTTCATTATTTTCTTTTCGTCACCCACTTCT.CTGTCTTTTCTTTTGTTGACTAA.ATTA..ATACTAACTTACGACTCCATTCTCATTATTTAATATTCAACAGA
+#=GR NC_047502.1/290071-290176    PP 89*********************************.***********************.****..******************************************97
+AABZ01000058.1/17979-18086           GTATGTTTATTATTTTTATCTAGCCATCTACCCCT.CTCTCCTTTGTTTTGTTCGCTAA.AACAcgATACTAACTCACGGTTTTATTTTCATTATTTAATATCCAACAGA
+#=GR AABZ01000058.1/17979-18086   PP 89*********************************.***********************.**9999******************************************97
+LT986478.1/297989-298096             GTATGTTTATTATTTTCCTTTAGCCATCTAATTTTtTTCTTCTTTGTTTTACTCGCTAAaAATA..ATACTAACCTACGGTTTTATTCTCATTATTCAATATCCAACAGA
+#=GR LT986478.1/297989-298096     PP 899*************************98766551456677899************862579*..******************************************97
+#=GC PP_cons                         89*********************************.***********************.****..******************************************97
+#=GC RF                              xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxx.xxxx..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

@@ -1,0 +1,20 @@
+# STOCKHOLM 1.0
+#=GF ID YCL005W-A
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003559.1/209489-209412  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome III, whole genome shotgun sequence
+#=GS NC_001135.5/107033-107110 DE [subseq from] Saccharomyces cerevisiae S288C chromosome III, complete sequence
+#=GS NC_047489.1/131812-131890 DE [subseq from] Saccharomyces paradoxus chromosome III, complete sequence
+#=GS CP030964.1/120410-120488  DE [subseq from] Saccharomyces kudriavzevii strain CR85 chromosome III, complete sequence
+
+CM003559.1/209489-209412          TGTATGTGTCATAATCTCTTCTCTCCGCTTCCCTTTTCTTCCTTCTTCTTCTACTAACTC.TCTGCGCGTCCAATTTAG
+#=GR CM003559.1/209489-209412  PP 69**********************************************************.****************98
+NC_001135.5/107033-107110         TGTATGTGTCATAATCTCTTCTCTCCGCTTCCCTTTTCTTCCTTCTTCTTCTACTAACTC.TCTGCGCGTCCAATTTAG
+#=GR NC_001135.5/107033-107110 PP 69**********************************************************.****************98
+NC_047489.1/131812-131890         TGTATGTGTCATAATATCTTCTATCCGCTTCCCTTTCCCTTCTTCTTCCTCTACTAACTCgTCTGTGTGTCCAATTTAG
+#=GR NC_047489.1/131812-131890 PP 69***************************************************************************98
+CP030964.1/120410-120488          TGTATGTGTGCTAATCTGTCCCCCTCGCTTAACTTTCCCCCCCGCATCCTCTACTAACTAgTCTGCGTGTCCAATTTAG
+#=GR CP030964.1/120410-120488  PP 69***************************************************************************97
+#=GC PP_cons                      69**********************************************************.****************98
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxx
+//

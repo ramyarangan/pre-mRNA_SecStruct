@@ -1,0 +1,32 @@
+# STOCKHOLM 1.0
+#=GF ID YIL004C
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CP048990.1/338296-338165  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScIX
+#=GS CM003554.1/93673-93804    DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome IXb, whole genome shotgun sequence
+#=GS NC_001141.2/348494-348363 DE [subseq from] Saccharomyces cerevisiae S288C chromosome IX, complete sequence
+#=GS CP049006.1/325048-324917  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome SeIX
+#=GS NC_047495.1/342612-342485 DE [subseq from] Saccharomyces paradoxus chromosome IX, complete sequence
+#=GS NC_030984.1/316664-316533 DE [subseq from] Saccharomyces eubayanus strain FM1318 chromosome IX, whole genome shotgun sequence
+#=GS LT986466.1/346488-346357  DE [subseq from] Saccharomyces jurei genome assembly, chromosome: IX
+#=GS CP030970.1/352071-351938  DE [subseq from] Saccharomyces kudriavzevii strain CR85 chromosome IX, complete sequence
+
+CP048990.1/338296-338165          GTATGAGAAATTATTAGACTATTCTAAAGTTAGAGTAGCGCTTTTTGTTAAACATCTAC........CATAGCACCTCGATATTGGGAGTTATTGA..CCACGAGTGAACTTCGTTTACTAACTATAGCGTG.TGTATATAGA
+#=GR CP048990.1/338296-338165  PP 79*********************************************************........*****************************..**********************************.********97
+CM003554.1/93673-93804            GTATGAGAAATTATTAGACTATTCTAAAGTTAGAGTAGCGCTTTTTGTTAAACATCTAC........CATAACACCTCGATATTGGGAGTTATTGA..CCACGAGTGAACTTCGTTTACTAACTATAGCGTG.TGTATATAGA
+#=GR CM003554.1/93673-93804    PP 79*********************************************************........*****************************..**********************************.********97
+NC_001141.2/348494-348363         GTATGAGAAATTATTAGACTATTCTAAAGTTAGAGTAGCGCTTTTTGTTAAACATCTAC........CATAACACCTCGATATTGGGAGTTATTGA..CCACGAGTGAACTTCGTTTACTAACTATAGCGTG.TGTATATAGA
+#=GR NC_001141.2/348494-348363 PP 79*********************************************************........*****************************..**********************************.********97
+CP049006.1/325048-324917          GTATGAAAAGATGTCGGGCTGTTCTACATTTTAATAGGCCCTTTTT--CCAACATTTTT........AGCAGCATTTCGATACTGGGGAATGGGCAacTCATAAGCGAATCGGATTTACTAACTATAATGAA.ATTATGTAGA
+#=GR CP049006.1/325048-324917  PP 79*************************************8887766..9**********........***************************9999**********************************.*******997
+NC_047495.1/342612-342485         GTATGAAAAAT---TAGACT-TTCTACATTTAGAGTAGCCCTTTTTTT-CGACGTTTAC........TATAGTACTTCGATACTAGGAATTATTGT..CCACAAGTGAATTCGTTTTACTAACCATAGCACGgTGTATACAGA
+#=GR NC_047495.1/342612-342485 PP 7999*999987...89****.9*****************999988877.6667******........*****************************..**********************************9*******997
+NC_030984.1/316664-316533         GTATGAAAAGATGTCGGGCTGTTCTACATTTTAATAGGC--CTTTTTTCCAACATTTTT........AGCAGCATTTCGATACTGGGGAATGGGCAatTCATAAGCGAATCGGATTTACTAACTATAATGAA.ATTATGTAGA
+#=GR NC_030984.1/316664-316533 PP 79************************************9..55566679**********........**************************99999**********************************.*******997
+LT986466.1/346488-346357          GTATGGAAAAATATCAGCCTACTCTACACTTTGAGTACCATTCTCTTTCAAG-GATTAC........TATAGTACTTCTATATTAGGAGTAAGAGT..TTATAAGTGAATTTTGTTTACTAACCATAGTAGGaTTTACATAGA
+#=GR LT986466.1/346488-346357  PP 79********************************************998888.******........*****************************..**********************************9*******996
+CP030970.1/352071-351938          GTATGACAAAGTATCAGGCTACTCTACGTTTAGAATAGCGCTTCCTTTTGAT-GTTTACtgccgtatCCAAATACTGCAGTAAAGG-TGTT-----..TTATAAGTGAATTTGGTTTACTAACCATAGTAAGaTTTATATAGA
+#=GR CP030970.1/352071-351938  PP 79**********************************************9999.999999444444444556666666666666554.5555.......99****************************************997
+#=GC PP_cons                      79***************************************999999999999******........9999999999999999999*9999*****..**********************************.*******997
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx........xxxxxxxxxxxxxxxxxxxxxxxxxxxxx..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxx
+//

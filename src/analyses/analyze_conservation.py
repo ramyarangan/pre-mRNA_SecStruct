@@ -8,14 +8,16 @@ Optionally also compute stats for zipper stems
 import argparse
 import numpy as np
 from matplotlib import pyplot as plt
+import os
 
-from features_db import *
-from aln_util import aln_seq_is_empty
+from util.features_db import *
+from util.aln_util import aln_seq_is_empty
 
 def convert_intervals_to_aln(intron, intervals):
 	new_intervals = []
 	for interval in intervals:
 		idx_mapping = intron.aln_idx_mapping
+		print(idx_mapping)
 		new_start = idx_mapping[interval[0]]
 		new_end = idx_mapping[interval[1]]
 		new_intervals += [(new_start, new_end)]
@@ -37,7 +39,7 @@ def get_num_orthologs(intron, intervals):
 
 # Get average conservation in range for all species with an ortholog for this intron
 # NOTE: if a species has the full intron deleted, will not include in the calculation
-def get_avg_conservation(intron, intervals, min_seqs=3)
+def get_avg_conservation(intron, intervals, min_seqs=3):
 	intervals = convert_intervals_to_aln(intron, intervals)
 
 	total_conservation = 0
@@ -66,10 +68,7 @@ def get_avg_conservation(intron, intervals, min_seqs=3)
 
 # For now just provides the average conservation, but later could include things like
 # number of intervals of at least __ length meeting a __% conservation cutoff
-def get_stats(intron_class):
-	all_introns = build_intron_set(intron_class)
-	all_introns.fill_aln(alignment_dir)
-
+def get_stats(all_introns, intron_class):
 	ortholog_stats = []
 	cons_stats = []
 	for intron in all_introns.introns:
@@ -80,10 +79,7 @@ def get_stats(intron_class):
 
 	return [ortholog_stats, cons_stats]
 
-def get_stats_zipper(intron_class):
-	all_introns = build_intron_set(intron_class)
-	all_introns.fill_aln(alignment_dir)
-
+def get_stats_zipper(all_introns, intron_class):
 	feature_options = {'secstruct_pkg': 'Vienna', 
 					'secstruct_type': 'mfe', 
 					'verbose': True,
@@ -122,7 +118,7 @@ def plot_conservation_stats(cons_stats):
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='Parameters for processing intron alignment data')
 	parser.add_argument('alignment_dir', type=str, help='Path to directory storing alignments in Stockholm format')
-	parser.add_argument('intron_class', type=str, help='Path to directory storing alignments in Stockholm format')
+	parser.add_argument('intron_class', type=str, help='Intron class to analyze conservation values for')
 	parser.add_argument('--do_zipper', default=False, action='store_true', \
 		 help='Do stats on zipper stems')	
 	args = parser.parse_args()
@@ -131,12 +127,16 @@ if __name__ == "__main__":
 	intron_class = args.intron_class
 	do_zipper = args.do_zipper
 
+	all_introns = build_intron_set(intron_class)
+	all_introns.fill_aln(alignment_dir)
+	for intron in all_introns.introns:
+		print(intron.aln_idx_mapping)
 
-	[ortholog_stats, cons_stats] = get_stats(intron_class)
+	[ortholog_stats, cons_stats] = get_stats(all_introns, intron_class)
 	plot_ortholog_stats(ortholog_stats)
 	plot_conservation_stats(cons_stats)
 
 	if do_zipper:
-		[ortholog_stats, cons_stats] = get_stats_zipper(intron_class)
+		[ortholog_stats, cons_stats] = get_stats_zipper(all_introns, intron_class)
 		plot_ortholog_stats(ortholog_stats)
 		plot_conservation_stats(cons_stats)

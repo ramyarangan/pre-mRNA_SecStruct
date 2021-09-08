@@ -1,0 +1,29 @@
+# STOCKHOLM 1.0
+#=GF ID YMR147W
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003567.1/531082-531166  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome XIII, whole genome shotgun sequence
+#=GS CP048994.1/537585-537669  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScXIII
+#=GS NC_001145.3/559783-559867 DE [subseq from] Saccharomyces cerevisiae S288C chromosome XIII, complete sequence
+#=GS NC_047499.1/544322-544406 DE [subseq from] Saccharomyces paradoxus chromosome XIII, complete sequence
+#=GS CP030974.1/541349-541430  DE [subseq from] Saccharomyces kudriavzevii strain CR85 chromosome XIII, complete sequence
+#=GS CP049010.1/572215-572296  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome SeXIII-ScXIII
+#=GS NC_030972.1/548304-548385 DE [subseq from] Saccharomyces eubayanus strain FM1318 chromosome XIII, whole genome shotgun sequence
+
+CM003567.1/531082-531166          GTATGTCTGTCGTAGCTTCTCGCGCCATAACGAAATTGCCCAATTACTAACACGTATTTTTACTTACAATATCAACCACCTCCAC
+#=GR CM003567.1/531082-531166  PP 89********************************************************************************985
+CP048994.1/537585-537669          GTATGTCTGTCGTAGCTTCTCGCGCCATAACGAAATTGCCCAATTACTAACACGTATTTTTACTTACAATATCAACCACCTCCAC
+#=GR CP048994.1/537585-537669  PP 89********************************************************************************985
+NC_001145.3/559783-559867         GTATGTCTGTCGTAGCTTCTCGCGCCATAACGAAATTGCCCAATTACTAACACGTATTTTTACTTACAATATCAACCACCTCCAC
+#=GR NC_001145.3/559783-559867 PP 89********************************************************************************985
+NC_047499.1/544322-544406         GTATGTCTGTCACAACTTTTTCCACAATAAAGCAATTGTCAAATTACTAACATGCATTTTTACCTGCAATCTCAACCATCTCCAC
+#=GR NC_047499.1/544322-544406 PP 89********************************************************************************985
+CP030974.1/541349-541430          GTATGTCAACTGGAAGTTCTCCCCCAATAATGCAACTGCCACTTTACTAACATGAACTTTTATCTCCTATCCCAACCCTGTC---
+#=GR CP030974.1/541349-541430  PP 89***************************************************************************99987...
+CP049010.1/572215-572296          GTATGTCAACTGTCAATACTCTCCCGGAGCCGA-ATCTTCACTTTACTAACATCAACTTTCGCCTTTTATCCAAATCATTTCC--
+#=GR CP049010.1/572215-572296  PP 89******************************9.*********************************************9996..
+NC_030972.1/548304-548385         GTATGTCAACTGTCAATACTCTCCCGGAGCCGA-ATCTTCACTTTACTAACATCAACTTTCGCCTTTTATCCAAATCATTTCC--
+#=GR NC_030972.1/548304-548385 PP 89******************************9.*********************************************9996..
+#=GC PP_cons                      89******************************************************************************99885
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

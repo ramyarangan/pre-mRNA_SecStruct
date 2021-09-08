@@ -1,0 +1,38 @@
+# STOCKHOLM 1.0
+#=GF ID YBL059W
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CP048984.1/104286-104354     DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScII
+#=GS DUXO01000132.1/177352-177284 DE [subseq from] TPA_asm: Saccharomyces cerevisiae x Saccharomyces uvarum strain Muri scaffold1930_cov344, whole genome shotgun sequence
+#=GS DUYB01000409.1/121487-121419 DE [subseq from] TPA_asm: Saccharomyces cerevisiae x Saccharomyces kudriavzevii x Saccharomyces uvarum strain CBS 2834 scf7180000027671, whole genome shotgun sequence
+#=GS MVPU01000040.1/91552-91484   DE [subseq from] Saccharomyces sp. M14 scaffold38, whole genome shotgun sequence
+#=GS NC_001134.8/110880-110948    DE [subseq from] Saccharomyces cerevisiae S288C chromosome II, complete sequence
+#=GS VZVB01000041.1/96474-96542   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces eubayanus strain yHQL630 flattened_line_80, whole genome shotgun sequence
+#=GS VZVN01000027.1/95225-95293   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces kudriavzevii strain yHQL621 flattened_line_52, whole genome shotgun sequence
+#=GS VZWC01002033.1/169711-169643 DE [subseq from] Saccharomyces cerevisiae x Saccharomyces eubayanus x Saccharomyces uvarum strain yHAB34 scf7180000208473, whole genome shotgun sequence
+#=GS VZXH01000060.1/95042-94974   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces eubayanus x Saccharomyces kudriavzevii x Saccharomyces uvarum strain yHQL563 flattened_line_118, whole genome shotgun sequence
+#=GS VZWS01000044.1/95238-95306   DE [subseq from] Saccharomyces cerevisiae x Saccharomyces kudriavzevii x Saccharomyces eubayanus strain yHQL560 flattened_line_86, whole genome shotgun sequence
+
+CP048984.1/104286-104354             GTATGCATAGGCAATAACTTCGGCCTCATACTCAAAGAACACGTTTACTAACATAACTTATTTACATAG
+#=GR CP048984.1/104286-104354     PP 89*****************************************************************97
+DUXO01000132.1/177352-177284         GTATGCATAGGCAATAACTTCGGCCTCATACTCAAAGAACACGTTTACTAACATAACTTATTTACATAG
+#=GR DUXO01000132.1/177352-177284 PP 89*****************************************************************97
+DUYB01000409.1/121487-121419         GTATGCATAGGCAATAACTTCGGCCTCATACTCAAAGAACACGTTTACTAACATAACTTATTTACATAG
+#=GR DUYB01000409.1/121487-121419 PP 89*****************************************************************97
+MVPU01000040.1/91552-91484           GTATGCATAGGCAATAACTTCGGCCTCATACTCAAAGAACACGTTTACTAACATAACTTATTTACATAG
+#=GR MVPU01000040.1/91552-91484   PP 89*****************************************************************97
+NC_001134.8/110880-110948            GTATGCATAGGCAATAACTTCGGCCTCATACTCAAAGAACACGTTTACTAACATAACTTATTTACATAG
+#=GR NC_001134.8/110880-110948    PP 89*****************************************************************97
+VZVB01000041.1/96474-96542           GTATGCATAGGCAATAACTTCGGCCTCATACTCAAAGAACACGTTTACTAACATAACTTATTTACATAG
+#=GR VZVB01000041.1/96474-96542   PP 89*****************************************************************97
+VZVN01000027.1/95225-95293           GTATGCATAGGCAATAACTTCGGCCTCATACTCAAAGAACACGTTTACTAACATAACTTATTTACATAG
+#=GR VZVN01000027.1/95225-95293   PP 89*****************************************************************97
+VZWC01002033.1/169711-169643         GTATGCATAGGCAATAACTTCGGCCTCATACTCAAAGAACACGTTTACTAACATAACTTATTTACATAG
+#=GR VZWC01002033.1/169711-169643 PP 89*****************************************************************97
+VZXH01000060.1/95042-94974           GTATGCATAGGCAATAACTTCGGCCTCATACTCAAAGAACACGTTTACTAACATAACTTATTTACATAG
+#=GR VZXH01000060.1/95042-94974   PP 89*****************************************************************97
+VZWS01000044.1/95238-95306           GTATGCATAGGCAATAACTTCGGCCTCCTACTCAAAGAACACGTTTACTAACATAACTTATTTACATAG
+#=GR VZWS01000044.1/95238-95306   PP 89*****************************************************************97
+#=GC PP_cons                         89*****************************************************************97
+#=GC RF                              xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

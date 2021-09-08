@@ -1,0 +1,23 @@
+# STOCKHOLM 1.0
+#=GF ID YBR215W
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003558.1/632899-632983  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome II, whole genome shotgun sequence
+#=GS CP048984.1/639488-639572  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScII
+#=GS NC_001134.8/653369-653453 DE [subseq from] Saccharomyces cerevisiae S288C chromosome II, complete sequence
+#=GS NC_047488.1/669866-669949 DE [subseq from] Saccharomyces paradoxus chromosome II, complete sequence
+#=GS CP030963.1/635801-635884  DE [subseq from] Saccharomyces kudriavzevii strain CR85 chromosome II, complete sequence
+
+CM003558.1/632899-632983          GTATGTTCTGGCTTTATTTTCAATTATCCGCCCTTCGTTAGGGGTGTTTTAGATCATTCTCATTAACAATTATATTTATGATAGC
+#=GR CM003558.1/632899-632983  PP 79*********************************************************************************98
+CP048984.1/639488-639572          GTATGTTCTGGCTTTATTTTCAATTATCCGCCCTTCGTTAGGGGTGTTTTAGATCATTCTCATTAACAATTATATTTATGATAGC
+#=GR CP048984.1/639488-639572  PP 79*********************************************************************************98
+NC_001134.8/653369-653453         GTATGTTCTGGCTTTATTTTCAATTATCCGCCCTTCGTTAGGGGTGTTTTAGATCATTTTGATTAACAATTCTATTTATGATAGC
+#=GR NC_001134.8/653369-653453 PP 79*********************************************************************************98
+NC_047488.1/669866-669949         GTATGTCCAGGCTTCATTTCCTATGATCCGCCCTTCGTTAGGTTT-ATTTAGTTCATTTTTACTAACAACTAAATTCATAATAGC
+#=GR NC_047488.1/669866-669949 PP 89****************************************999.8999*********************************97
+CP030963.1/635801-635884          GTATGTTCATACTTTTTTTCTCATGGCCCGCCTCT-ATTGGCTTTCTATCGACACATTTTGACTAACAGCCAAGTTTATATTAGC
+#=GR CP030963.1/635801-635884  PP 79*********************************.***********************************************97
+#=GC PP_cons                      79*********************************************************************************98
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

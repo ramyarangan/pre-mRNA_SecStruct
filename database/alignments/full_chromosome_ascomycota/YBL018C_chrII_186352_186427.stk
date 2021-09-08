@@ -1,0 +1,20 @@
+# STOCKHOLM 1.0
+#=GF ID YBL018C
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003558.1/178259-178185  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome II, whole genome shotgun sequence
+#=GS CP048984.1/179704-179630  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScII
+#=GS NC_001134.8/186427-186353 DE [subseq from] Saccharomyces cerevisiae S288C chromosome II, complete sequence
+#=GS NC_047488.1/206450-206375 DE [subseq from] Saccharomyces paradoxus chromosome II, complete sequence
+
+CM003558.1/178259-178185          GTACGTATATTTTTGACTTTTTGAGTCTCAGCTACCGAAGAG.AAATAAGCTACTAACGTACCTTAATATTTATAG
+#=GR CM003558.1/178259-178185  PP 799***************************************.******************************997
+CP048984.1/179704-179630          GTATGTATATTTTTGACTTTTTGAGTCTCAACTACCGAAGAG.AAATAAACTACTAACGTACTTTAATATTTATAG
+#=GR CP048984.1/179704-179630  PP 799***************************************.******************************997
+NC_001134.8/186427-186353         GTATGTATATTTTTGACTTTTTGAGTCTCAACTACCGAAGAG.AAATAAACTACTAACGTACTTTAATATTTATAG
+#=GR NC_001134.8/186427-186353 PP 799***************************************.******************************997
+NC_047488.1/206450-206375         GTACGTATATTTTTGGTTTTTCGAGGCCCAGCCACCCAAGGTaAAATAAGCTACTAACTTACCTTGATATTTACAG
+#=GR NC_047488.1/206450-206375 PP 799*********************************9998652679**************************9876
+#=GC PP_cons                      799************************************999.99****************************987
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

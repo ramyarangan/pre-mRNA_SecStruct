@@ -1,0 +1,17 @@
+# STOCKHOLM 1.0
+#=GF ID YPR187W
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003570.1/898918-898993  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome XVI, whole genome shotgun sequence
+#=GS NC_001148.4/911277-911352 DE [subseq from] Saccharomyces cerevisiae S288C chromosome XVI, complete sequence
+#=GS NC_047502.1/871653-871728 DE [subseq from] Saccharomyces paradoxus chromosome XVI, complete sequence
+
+CM003570.1/898918-898993          GTATGTGCATTCATATTGGAGAAATTGCGTGCTTTAGTTTTAATTATATTTACTAACTTCTATCATTGTGATACAG
+#=GR CM003570.1/898918-898993  PP 789***********************************************************************97
+NC_001148.4/911277-911352         GTATGTGCATTCATATTGGAGAAATTGCGTGCTTTAGTTTTAATTATATTTACTAACTTCTATCATTGTGATACAG
+#=GR NC_001148.4/911277-911352 PP 789***********************************************************************97
+NC_047502.1/871653-871728         GTATGTGCATTCATATCGGAGGAATTGCGTGTTTTTGTTTTAATTATATTTACTAACTTTTATCATTGTGATATAG
+#=GR NC_047502.1/871653-871728 PP 789*********************************************************************9986
+#=GC PP_cons                      789***********************************************************************97
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

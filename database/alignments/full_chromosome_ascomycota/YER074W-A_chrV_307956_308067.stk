@@ -1,0 +1,17 @@
+# STOCKHOLM 1.0
+#=GF ID YER074W-A
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003555.1/308218-308326  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome Va, whole genome shotgun sequence
+#=GS CP048986.1/317900-318008  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScV
+#=GS NC_001137.3/307957-308068 DE [subseq from] Saccharomyces cerevisiae S288C chromosome V, complete sequence
+
+CM003555.1/308218-308326          GTATGTTATGTTGATGGAGAACGGTTAAAGTTACATTTCATCAGTTT...CCCGTTCTTTTTCACCTTTTGTGAGAAAATTTTACTAACGTTTCGTATATTATTCTTGTAGT
+#=GR CM003555.1/308218-308326  PP 689********************************************...***********************************************************985
+CP048986.1/317900-318008          GTATGTTATGTTGATGGAGAACGGTTAAAGTTACATTTCATCAGTTT...CCCGTTCTTTTTCACCTTTTGTGAGAAAATTTTACTAACGTTTCGTATATTATTCTTGTAGT
+#=GR CP048986.1/317900-318008  PP 689********************************************...***********************************************************985
+NC_001137.3/307957-308068         GTATGTTATGTTGATGGAGAACGGTTAAAGTTACATTTCATCAGTTTtttCCCGTTCTTTTTCACCTTTTGTGAGAAAATTTTACTAACGTTTCGTATATTATTCTTGTAGT
+#=GR NC_001137.3/307957-308068 PP 689*****************************************987777***********************************************************985
+#=GC PP_cons                      689******************************************99...***********************************************************985
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

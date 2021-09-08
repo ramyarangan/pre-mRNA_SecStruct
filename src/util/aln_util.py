@@ -1,8 +1,6 @@
 # Utilities for working with stockholm alignment files
 
-# For an S. cerevisiae intron sequence, get per position conservation values
-# for other introns
-
+import os
 
 def find(s, ch):
     return [i for i, ltr in enumerate(s) if ltr == ch]
@@ -131,51 +129,66 @@ def make_species_seqs(alignment_dir):
 # Returns a stockholm alignment dictionary with key: species name, value: sequence
 # Includes scer species sequence with . and -'s
 # If the intron sequence is not found in the .stk files, returns an empty dictionary
-def get_intron_aln(intron_seq, alignment_dir):
+def get_intron_aln(intron_seq, ensembl_name, alignment_dir):
 	intron_seq_rna = intron_seq.replace('T', 'U')
 
 	aln_dict = {}
 
+	# Assemble list of stockholm file alignments in the alignment directory, 
+	# placing the most probable location of the intron's alignment first.
+	all_filenames = []
 	for filename in os.listdir(alignment_dir):
-		if filename.endswith(".stk"):
-			f = open(alignment_dir + filename)
-			lines = f.readlines()
-			f.close()
+		if ensembl_name in filename:
+			all_filenames = [filename] + all_filenames
+		else:
+			all_filenames += [filename]
 
-			annotation_str = lines[len(lines)-2].split()[2]
-			intron_pos_list = get_introns(annotation_str)
+	for filename in all_filenames:
+		f = open(alignment_dir + filename)
+		lines = f.readlines()
+		f.close()
 
-			(num_skipped, starting_pos) = get_skips(lines)
-			
-			intron_hit = -1
+		annotation_str = lines[len(lines)-2].split()[2]
+		intron_pos_list = get_introns(annotation_str)
 
-			# First find out if the scer introns match the 
-			# given intron_seq
+		(num_skipped, starting_pos) = get_skips(lines)
+		
+		intron_hit = -1
+		scer_hit = ""
+		# First find out if the scer introns match the 
+		# given intron_seq
+		for ii in range(len(lines)-num_skipped):
+			line = lines[ii + starting_pos]
+
+			for jj in range(len(intron_pos_list)):
+				intron_pos = intron_pos_list[jj]
+				species_name = (line.split()[0]).split('_')[0]
+
+				[species_seq, bp] = condense_seq(line.split()[1], intron_pos)
+				
+				if species_name == 'scer' and \
+					intron_seq_rna == species_seq:
+					intron_hit = jj
+					scer_hit = get_seq_pos_info(line.split()[1], intron_pos)
+		
+		# If an scer intron matched the input intron_seq, 
+		# assemble the dictionary of aligned sequences
+		if intron_hit != -1:
 			for ii in range(len(lines)-num_skipped):
 				line = lines[ii + starting_pos]
 
-				for jj in range(len(intron_pos_list)):
-					intron_pos = intron_pos_list[jj]
-					species_name = (line.split()[0]).split('_')[0]
+				intron_pos = intron_pos_list[intron_hit]
+				species_name = (line.split()[0]).split('_')[0]
+				species_seq = get_seq_pos_info(line.split()[1], intron_pos)
+				
+				aln_dict[species_name] = species_seq.replace('U', 'T')
 
-					[species_seq, bp] = condense_seq(line.split()[1], intron_pos)
-					
-					if species_name == 'scer' and \
-						intron_seq_rna == species_seq:
-						intron_hit = jj
-			
-			# If an scer intron matched the input intron_seq, 
-			# assemble the dictionary of aligned sequences
-			if intron_hit != -1:
-				for ii in range(len(lines)-num_skipped):
-					line = lines[ii + starting_pos]
+		# NOTE: this only keeps one paralog 
+		if len(scer_hit) > 0:
+			aln_dict['scer'] = scer_hit.replace('U', 'T')
 
-					for jj in range(len(intron_pos_list)):
-						intron_pos = intron_pos_list[jj]
-						species_name = (line.split()[0]).split('_')[0]
-						species_seq = get_seq_pos_info(line.split()[1], intron_pos)
-						
-						aln_dict[species_name] = species_seq
+		if intron_hit != -1:
+			break
 
 	return aln_dict
 
@@ -190,7 +203,7 @@ def get_idx_map_intron_to_aln_seq(intron_seq, aln_seq):
 			continue
 		if aln_seq[ii] != intron_seq[idx]:
 			raise RuntimeError("Intron sequence does not match extended sequence from alignment")
-		idx += 1
 		idx_mapping[idx] = ii
+		idx += 1
 
 	return idx_mapping

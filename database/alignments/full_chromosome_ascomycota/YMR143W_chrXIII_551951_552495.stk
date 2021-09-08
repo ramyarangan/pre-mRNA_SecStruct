@@ -1,0 +1,98 @@
+# STOCKHOLM 1.0
+#=GF ID YMR143W
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003567.1/523255-523799  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome XIII, whole genome shotgun sequence
+#=GS NC_001145.3/551952-552496 DE [subseq from] Saccharomyces cerevisiae S288C chromosome XIII, complete sequence
+#=GS CP048994.1/529768-530308  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScXIII
+#=GS NC_047499.1/536468-537016 DE [subseq from] Saccharomyces paradoxus chromosome XIII, complete sequence
+#=GS CP049010.1/564352-564901  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome SeXIII-ScXIII
+#=GS NC_030972.1/540430-540979 DE [subseq from] Saccharomyces eubayanus strain FM1318 chromosome XIII, whole genome shotgun sequence
+#=GS CP030974.1/533515-534058  DE [subseq from] Saccharomyces kudriavzevii strain CR85 chromosome XIII, complete sequence
+#=GS LT986461.1/418765-419304  DE [subseq from] Saccharomyces jurei genome assembly, chromosome: I.1_XIII.2
+#=GS NC_035922.1/878102-877683 DE [subseq from] Kazachstania naganishii CBS 8797 chromosome 1, complete genome
+
+CM003567.1/523255-523799          GTATGTTTTCAGTTC...TGCAGAATGATGTTTGATAGTATCGATAATGGAGTGAGATCAAGAGAAAAAAAATGAAT.ATGTCAGCCAACCAAGTTCT.GAGTAGGCAGTA..AATGAGTACGCA.TAGTGTATTTATCCAA..AGGAAAGAATTGTTATTTTTACAAGCCGAAT...TGAGAT...CCAATTAGGCAAT
+#=GR CM003567.1/523255-523799  PP 89*************...***********************************************************.********************.************..************.****************..*******************************...******...*************
+NC_001145.3/551952-552496         GTATGTTTTCAGTTC...TGCAGAATGATGTTTGATAGTATCGATAATGGAGTGAGATCAAGAGAAAAAAAATGAAT.ATGTCAGCCAACCAAGTTCT.GAGTAGGCAGTA..AATGAGTACGCA.TAGTGTATTTATCCAA..AGGAAAGAATTGTTATTTTTACAAGCCGAAT...TGAGAT...CCAATTAGGCAAT
+#=GR NC_001145.3/551952-552496 PP 89*************...***********************************************************.********************.************..************.****************..*******************************...******...*************
+CP048994.1/529768-530308          GTATGTTTTCAGTTC...TGCAGAATGATGTTTGATAGTATCGATAATGGAGTGAGATCAAGAGAAAAAAAATGAAT.ATGTCAGCCAACCAAGTTCT.GAGTAGGCAGTA..AATGAGTACGCA.TAGTGTATTTATCCAA..AGGAAAGAATTGTTATTTTTACAAGCCGAAT...TGAGAT...CCAATTAGGCAAT
+#=GR CP048994.1/529768-530308  PP 89*************...***********************************************************.********************.************..************.****************..*******************************...******...***********76
+NC_047499.1/536468-537016         GTATGTTTTCAGTTC...TGCAGAATGATATTTGATAGTATAAATAATGGAATAAGATCAGGG---AAAATATGAAT.GTGTCAGCCAGTCAAGTTCT.GAATAGGCA-TA..AATGAGTACGCA.CAATATATTTATTCAA..AG---AGAACCGTCACCACCACAAGCCGAAT...TGAGATa.tCTAATCAAGTAAT
+#=GR NC_047499.1/536468-537016 PP 89*************...*********************************************...9999*******.********************.********9.99..************.****************..*9...89************************...*****99.9*************
+CP049010.1/564352-564901          GTATGTTAGCAGTTCattTAGAGAATAAATTTTGATTGCGTAAGAAATGGAATAAGATAAAGGGCAGAATAGA-GAT.ATCACAAGCAATTAACTTCA.ACTGATGATAAT..GATGAATACGTA.TGTTGGCCCGGTCTAT..ATGA-AGAACTGTCTTTGTTACGAGCCAAATctgTGATAG...CCAAT--------
+#=GR CP049010.1/564352-564901  PP 79***********************************************************************.89*.********************.************..************.****************..**97.***************************999*****...*****........
+NC_030972.1/540430-540979         GTATGTTAGCAGTTCattTAGAGAATAAATTTTGATTGCGTAAGAAATGGAATAAGATAAAGGGCAGAATAGA-GAT.ATCACAAGCAATTAACTTCA.ACTGATGATAAT..GATGAATACGTA.TGTTGGCCCGGTCTAT..ATGA-AGAACTGTCTTTGTTACGAGCCAAATctgTGATAG...CCAAT--------
+#=GR NC_030972.1/540430-540979 PP 79***********************************************************************.89*.********************.************..************.****************..**97.***************************999*****...*****........
+CP030974.1/533515-534058          GTATGTTTTCAGTTC...TACAAAATAAAGTTTAATAAATTAGAGGATGGAATAAGTCC---AGAAAAGGAGTAAAT.ACGTCAGCCAATTAAGTTTC.GAATCGATAATTgtGAGGAATACATG.TATAATGTCTGCCCAC..ATAAATGGACCACTTTTGTCACTAGCTAAAT...CGAGATg.aCCCATTCAGAATT
+#=GR CP030974.1/533515-534058  PP 89*************...*****************************************...7899***********.********************.*********999889***********.****************..*******************************...*******.************99
+LT986461.1/418765-419304          GTATGTTTTCAGTTC...TGTAAGATAATATTTGATAGTTTAGAAAATGGAATAAAATCAAGG---AGAAAATGAGTtTTTTCAGCCAGCCAAATTTTgGAATCGATAATA..AATGAATACACA.TTAGGT--TTGTCCAAgaAAAGAAGAACTATTTCTGTCACAAGCGGGAT...TGAAATactGCCATTCGGA-TC
+#=GR LT986461.1/418765-419304  PP 79*************...*********************************************...999999999997999*************999989***********..***********9.988877..9******98866667**************************...******9999*****9998.89
+NC_035922.1/878102-877683         GTATGTTATTAATTT...TATGAAGAGATCAGCAATAGTGGAGATAATAGTTTGACGAAAAGA-------GGTGTA-.----------TCGAAGTTCA.CAGTTCGTGGC-..-ATGGGTAAGAAaTAATTGAGCAGTCCAT..CGG-----ATTGGTA---------------T...TGAG--...----CTATACA--
+#=GR NC_035922.1/878102-877683 PP 89*************...**************************************9999999.......899998............89********.***********....**********99****************..*99.....8999998...............9...****.........7777888..
+#=GC PP_cons                      89*************...********************************************************99*.********************.************..************.****************..*9999**************************...******...******99*9*99
+#=GC RF                           xxxxxxxxxxxxxxx...xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxx..xxxxxxxxxxxx.xxxxxxxxxxxxxxxx..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...xxxxxx...xxxxxxxxxxxxx
+
+CM003567.1/523255-523799          GT.....TTTGGGGAGAGTAT.TTTGACAAGA.TTGGTTAAACTACTACGGTCAGTTCC..GTAACCAGTACGATTGTACACATAAGGAAACA.ACT....GTAAAGATAAACAATA...AGGGCTTCCAATGCCATTGTAAGATATCAT.AT.TCCTAAAC...AAAAATGTACAGCGAATATAAAGC...........
+#=GR CM003567.1/523255-523799  PP **.....**************.**********.**************************..********************************.***....****************...******************************.**.********...************************...........
+NC_001145.3/551952-552496         GT.....TTTGGGGAGAGTAT.TTTGACAAGA.TTGGTTAAACTACTACGGTCAGTTCC..GTAACCAGTACGATTGTACACATAAGGAAACA.ACT....GTAAAGATAAACAATA...AGGGCTTCCAATGCCATTGTAAGATATCAT.AT.TCCTAAAC...AAAAATGTACAGCGAATATAAAGC...........
+#=GR NC_001145.3/551952-552496 PP **.....**************.**********.**************************..********************************.***....****************...******************************.**.********...************************...........
+CP048994.1/529768-530308          --.....---GGGGAGAGTAT.TTTGACAAGA.TTGGTTAAACTACTACGGTCAGTTCC..GTAACCAGTACGATTGTACACATAAGGAAACA.ACT....GTAAGGATAAACAATA...AGGGCTTCCAATGCCATTGTAAGATATCAT.AT.TCCTAAAC...AAAAATGTACAGCGAATATAAAGC...........
+#=GR CP048994.1/529768-530308  PP ..........***********.**********.**************************..********************************.***....****************...******************************.**.********...************************...........
+NC_047499.1/536468-537016         GT.....TTTGGAGAAAGTAC.CTTGCCAAGA.TTTGCTAGATCACTAAGCTTAGTTTC..GTAATCAATGCGACCATACACAGAAGGAAACAaTCT....GTAAATATAAGAAATC...AATACAGCCAGAGCCATTGTAAGATGCCAT.GCgTCGTAGACtaaAAAAAGATACAGTAAATATAAGGC...........
+#=GR NC_047499.1/536468-537016 PP **.....**************.**********.**************************..********************************9***....****************...******************************.888******997767788999*****************...........
+CP049010.1/564352-564901          --.....TGTGGAGAGATCAC.TTTTGCCAGAtTTTGCTGAATTACCT--GACGGAACCgtGTAGGTAACACGACTGTGCAGGACAGAAATGAtTCT....GTAGAAGACAATAATA...AG-TTTAACAATGCAAC-----AATATCTA.AA.TCATCGAT...TTTAATGGAGAACGAATACTTCGCtttctgagagc
+#=GR CP049010.1/564352-564901  PP .......9*************.**********999*************..*********9999******************************9***....****************...*9.89************.....********.**.********...*********************99988888888887
+NC_030972.1/540430-540979         --.....TGTGGAGAGATCAC.TTTTGCCAGAtTTTGCTGAATTACCT--GACGGAACCgtGTAGGTAACACGACTGTGCAGGACAGAAATGAtTCT....GTAGAAGACAATAATA...AG-TTTAACAATGCAAC-----AATATCTA.AA.TCATCGAT...TTTAATGGAGAACGAATACTTCGCtttctgagagc
+#=GR NC_030972.1/540430-540979 PP .......9*************.**********999*************..*********9999******************************9***....****************...*9.89************.....********.**.********...*********************99988888888887
+CP030974.1/533515-534058          GTtttttTTTGGGGGGAGCACcTTTGCCAAAA.CTTGCCAAATCACTAGGCCCAGTTTC..CTAATCAATACAACTGTACAAGGATGGAAAAT.TCTaataGTGGAAGTCAAAATTA...---------TCAGTCATTGTGAAGTACTACtTT.TCCCAGGC...ATCGACG-GCAACGAAAATAAATG...........
+#=GR CP030974.1/533515-534058  PP 9866666899***********89999999999.**************************..********************************.99999999************999............7899*****************555.********...*****99.9***************...........
+LT986461.1/418765-419304          TT.....TTTGAAAAGCCACCtTTGTACAATG.TTTACCAGATCGCTGGGTTCAGTTCC..GTAATCAATACGACCGTGCGGGATAGAAATAA.TTA....ATAACGTTAGACAATAttgAGGG-------AGTTATTGTCAGATACCGG.GT.GCCAGAGG...AAACA------ACG---ATATAAC...........
+#=GR LT986461.1/418765-419304  PP 99.....**************88999******.**************************..********************************.***....************99987778866.......*******************.**.*9999988...87665......888...99999**...........
+NC_035922.1/878102-877683         CG.....TGTGGAGTGAGGGC.CTAGACAACG.TG--CT--ATCACGCTGTTTACTCAC..GT-------ACATACCTCCATAT----AACCT.TTC....CTAAAGCGATGCAATG...AGGCCTACCGTTCTC--TGTATAGTATTAG.GT.----AAAA...AGACCGATACCG------------...........
+#=GR NC_035922.1/878102-877683 PP 88.....**************.********98.76..99..******************..**.......9*************....*****.***....****************...***************..*************.*9.....9999...999999999988.......................
+#=GC PP_cons                      99.....9*************.**********.99************************..********************************.***....****************...*999**************************.99.********...99999*******************...........
+#=GC RF                           xx.....xxxxxxxxxxxxxx.xxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxx..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxx....xxxxxxxxxxxxxxxx...xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xx.xxxxxxxx...xxxxxxxxxxxxxxxxxxxxxxxx...........
+
+CM003567.1/523255-523799          CAGCGT.CAGTGTCTTC.CTGGAAGGTTGCGCAA.........CTAAAGAAGTT.GAAATTAACATGGCAAGCACTACATTTTCATCCATTTTCACTCATCAGATGT.CCAAGATTTCCGAA..AAATAAATAT..TCTCATTTTT.C.TCTCA.ATGAAATAA.TTG.TTACTAACATTGAA.TTG......CCTCGTA
+#=GR CM003567.1/523255-523799  PP ******.**********.****************.........***********.****************************************************.**************..**********..**********.*.*****.*********.***.**************.***......*******
+NC_001145.3/551952-552496         CAGCGT.CAGTGTCTTC.CTGGAAGGTTGCGCAA.........CTAAAGAAGTT.GAAATTAAAATGGCAAGCGCTACATTTTCATCCATTTTCACTCATCAGATGT.CCAAGATTTTCGAA..AAATAAATAT..TCTCATTTTT.C.TCTCA.ATGAAATAA.TTG.TTACTAACATTGAA.TTT......CCTCGTA
+#=GR NC_001145.3/551952-552496 PP ******.**********.****************.........***********.****************************************************.**************..**********..**********.*.*****.*********.***.**************.***......*******
+CP048994.1/529768-530308          CAACGT.CAGTGTCTTC.CTGGAAGGTTGCGCAA.........CTAAAGAAGTT.GAAATTAAAATGGCAAGCACTACATTTTCATCCATTTTCACTCATCAGATGT.CCAAGATTTTCGAA..AAATAAATAT..TCTCATTTTT.C.TCTCA.ATGAAATAA.TTG.TTACTAACATTGAAaTTG......CCTCGTA
+#=GR CP048994.1/529768-530308  PP ******.**********.****************.........***********.****************************************************.**************..**********..**********.*.*****.*********.***.************988***......*******
+NC_047499.1/536468-537016         GTATTTcCTTTGTCTTC.TCAAGAGGCTATATAA.........CTAAAGACGTT.GAAATTGAAACGACGAATACCGTATTTTACTCCATTTTCCCTCTTCAAATGT.CTAAGAATGTTGAT..ATTTAAATTTttTCTCATTCTT.CaTCTTC.CACAAGAAA.TGG.TTACTAACGTTGAA.TTG......CTTTGTA
+#=GR NC_047499.1/536468-537016 PP 9999987999*******.****************.........***********.****************************************************.**************..******9987668999******.*999999.*********.***.**************.***......*******
+CP049010.1/564352-564901          TCGATT.TGATATATTT.TCGATAGGTTTCATGG.........G--AATAATACaAAGACTACAGGATTCAGTGCTTG-TTCCATTTTATTTTTACTCTTCAAAATTtTCAGGAAT-ATGAAttACACGAATAT..CGCGTTTTTT.C.TTTTAtCTGGAGAAA.TTGaTTACTAACGTTAAA.TCG......CTTTATG
+#=GR CP049010.1/564352-564901  PP 99999*.**********.****************.........*..8999999989**********************.***********************99998899999999.****999**********..**********.*.999888*********.9999**************.***......*******
+NC_030972.1/540430-540979         TCGATT.TGATATATTT.TCGATAGGTTTCATGG.........G--AATAATACaAAGACTACAGGATTCAGTGCTTG-TTCCATTTTATTTTTACTCTTCAAAATTtTCAGGAAT-ATGAAttACACGAATAT..CGCGTTTTTT.C.TTTTAtCTGGAGAAA.TTGaTTACTAACGTTAAA.TCG......CTTTATG
+#=GR NC_030972.1/540430-540979 PP 99999*.**********.****************.........*..8999999989**********************.***********************99998899999999.****999**********..**********.*.999888*********.9999**************.***......*******
+CP030974.1/533515-534058          TACTTT.CTTTATATCCtCTCCATAGACTATCAA.........CTACGGAAGTC.GACATAAACAGTAAA---ACCATAATTTATTCCACTTACACTCATTTAAAGT.CT-TGATGTACGAC..-CATAATTAT..CATGACTTTT.C.CTCCA.TTATAAGAAgTGA.TTACTAACTCTGAA.TTG......TTTCATA
+#=GR CP030974.1/533515-534058  PP ******.********998778888899999****.........***********.**********96555...9*********************************.**.***********...*********..**********.9.98888.6665555553888.**************.***......*******
+LT986461.1/418765-419304          AAGGGA.AGATTATTTC.TTGATAACTTTTCCAAtaggtatatGACTCGAGGCT.TAGATTTAAACGACAAAATCTATATTTCACTCCATTTTC----ATCAAATTT.CTAAAGATTTTGAG..GTATAACTAT..CCTATTCTTTaC.TTTAT.AATAAGAAG.TAG.TTACTAACTTTGGA.TTG......CTTTGTA
+#=GR LT986461.1/418765-419304  PP ******.**********.***********9999988888888866799******.**************************************9....9********.**************..**********..**********99.99999.*********.***.**************.***......*******
+NC_035922.1/878102-877683         ---TGA.CAGATACT--.-ATGAACAT----CCA.........CTACCCCATTA.AACATTCATAT---------------------------TACCGACACCATTA.CCATGATTTCTGTT..ATACAAGT--..----------.C.CCTAA.AAATTATA-.---.ATACTAACATAAAC.TTTacattaTCTTTTG
+#=GR NC_035922.1/878102-877683 PP ...667.77777777....78888888....99*.........***********.********999...........................89999*********.**************..********...............*.*****.99999999......89*****9999998.87777777799999**
+#=GC PP_cons                      ***999.**********.*9**************.........*9*9*******.***********9999*************************************.**************..**********..**********.*.99999.999999999.999.**************.***......*******
+#=GC RF                           xxxxxx.xxxxxxxxxx.xxxxxxxxxxxxxxxx.........xxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxx..xxxxxxxxxx..xxxxxxxxxx.x.xxxxx.xxxxxxxxx.xxx.xxxxxxxxxxxxxx.xxx......xxxxxxx
+
+CM003567.1/523255-523799          ACTAATTGCATTACTTC....TTTAGA
+#=GR CM003567.1/523255-523799  PP *****************....****95
+NC_001145.3/551952-552496         ACTAATTGCATTACTTC....TTTAGA
+#=GR NC_001145.3/551952-552496 PP *****************....****95
+CP048994.1/529768-530308          ACTAATTGCATTACTTC....TTTAGA
+#=GR CP048994.1/529768-530308  PP *****************....****95
+NC_047499.1/536468-537016         ACTAATTGCATTCCTTC....TTCAGA
+#=GR NC_047499.1/536468-537016 PP *****************....***995
+CP049010.1/564352-564901          AATTATCGCTTTCCTTTt.taTTTAG-
+#=GR CP049010.1/564352-564901  PP ****************96.6767776.
+NC_030972.1/540430-540979         AATTATCGCTTTCCTTTt.taTTTAG-
+#=GR NC_030972.1/540430-540979 PP ****************96.6767776.
+CP030974.1/533515-534058          AACAATTAAATTCATTT....GTTAGA
+#=GR CP030974.1/533515-534058  PP *****************....***995
+LT986461.1/418765-419304          ACTAATTGCATTCATAT....TTCAGA
+#=GR LT986461.1/418765-419304  PP *****************....***995
+NC_035922.1/878102-877683         AT-GTGTTTATTACTTTtcatTTTAG-
+#=GR NC_035922.1/878102-877683 PP 98.9999999****999777777777.
+#=GC PP_cons                      *****************....999985
+#=GC RF                           xxxxxxxxxxxxxxxxx....xxxxxx
+//

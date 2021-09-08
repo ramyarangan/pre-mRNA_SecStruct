@@ -1,0 +1,26 @@
+# STOCKHOLM 1.0
+#=GF ID YHR123W
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003563.1/182780-182689  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome VIII, whole genome shotgun sequence
+#=GS CP048989.1/346953-347044  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScVIII
+#=GS NC_001140.6/354864-354955 DE [subseq from] Saccharomyces cerevisiae S288C chromosome VIII, complete sequence
+#=GS NC_047494.1/339977-340068 DE [subseq from] Saccharomyces paradoxus chromosome VIII, complete sequence
+#=GS CP030969.1/337945-338037  DE [subseq from] Saccharomyces kudriavzevii strain CR85 chromosome VIII, complete sequence
+#=GS LT986471.1/333586-333676  DE [subseq from] Saccharomyces jurei genome assembly, chromosome: VIII
+
+CM003563.1/182780-182689          AGTATGTGAAGCGTCCATTGGCTGCCTTTAAAGTGCAGAAGTCAGAAGCATTG..T..TACTAACTTTCAACAATTTTTATTCCTTTTCATGATAG
+#=GR CM003563.1/182780-182689  PP 699**************************************************..*..***********************************997
+CP048989.1/346953-347044          AGTATGTGAAGCGTCCATTGGCTGCCTTTAAAGTGCAGAAGTCAGAAGCATTG..T..TACTAACTTTCAACAATTTTTATTCCTTTTCATGATAG
+#=GR CP048989.1/346953-347044  PP 699**************************************************..*..***********************************997
+NC_001140.6/354864-354955         AGTATGTGAAGCGTCCATTGGCTGCCTTTAAAGTGCAGAAGTCAGAAGCATTG..T..TACTAACTTTCAACAATTTTTATTCCTTTTCATGATAG
+#=GR NC_001140.6/354864-354955 PP 699**************************************************..*..***********************************997
+NC_047494.1/339977-340068         AGTATGTGAAGCGTCCATTGGCTGCCCTTAGAACACAGAAATCAAAAGCATTG..T..TACTAACCTTCAACAATTTTTATTTCCTTTCGTAATAG
+#=GR NC_047494.1/339977-340068 PP 69***************************************************..*..**********************************9987
+CP030969.1/337945-338037          AGTATGTGAGACGTCCATTGGCTGCCT-CAAACTGCGGAGAGCAAAATCCTTAatT..TACTAACCTTCAACAATTTTCGTTTCCTTTCTCAATAG
+#=GR CP030969.1/337945-338037  PP 69**********************985.7999****************99985448..9******************************9998886
+LT986471.1/333586-333676          AGTATGTAAAGCGCCCAATGGCTGC-TTTAGTATGCAGAGAGCAAAGAACTTG..AtaTACTAACCTTCAACAATTTTCGTTTTCTCTCACAAC--
+#=GR LT986471.1/333586-333676  PP 699*********************6.7899*********99999877777788..62368******************9999999988877665..
+#=GC PP_cons                      699*********************9*9*9****************99999999..9..9******************************9999897
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx..x..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

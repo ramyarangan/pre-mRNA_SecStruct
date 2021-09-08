@@ -1,0 +1,29 @@
+# STOCKHOLM 1.0
+#=GF ID YML034W
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003567.1/194162-194291  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome XIII, whole genome shotgun sequence
+#=GS NC_001145.3/211441-211570 DE [subseq from] Saccharomyces cerevisiae S288C chromosome XIII, complete sequence
+#=GS CP048994.1/199092-199222  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScXIII
+#=GS NC_047499.1/204843-204966 DE [subseq from] Saccharomyces paradoxus chromosome XIII, complete sequence
+#=GS CP049010.1/229531-229635  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome SeXIII-ScXIII
+#=GS NC_030972.1/211862-211967 DE [subseq from] Saccharomyces eubayanus strain FM1318 chromosome XIII, whole genome shotgun sequence
+#=GS CP030974.1/205460-205568  DE [subseq from] Saccharomyces kudriavzevii strain CR85 chromosome XIII, complete sequence
+
+CM003567.1/194162-194291          GCAAGTGAGTACAATTTATTATCTTACAAAAATTATTAAACCTGTTATTATATGATAACAGTTTTAATTTT.TTTTGAATTTTTTTTTGTTTTTGA..TTT...ATTTACTAACATCTTTTCCTAATTTTCTCTAG
+#=GR CM003567.1/194162-194291  PP 8**********************************************************************.************************..***...*****************************997
+NC_001145.3/211441-211570         GCAAGTGAGTACAATTTATTATCTTACAAAAATTATTAAACCTGTTATTATATGATAACAGTTTTAATTTT.TTTTGAATTTTTTTTTGTTTTTGA..TTT...ATTTACTAACATCTTTTCCTAATTTTCTCTAG
+#=GR NC_001145.3/211441-211570 PP 8**********************************************************************.************************..***...*****************************997
+CP048994.1/199092-199222          GCAAGTGAGTACAATTTATTATCTTACAAAAATTATTAAACCTGTTATTATATGATAACAGTTTTAATTTTtTTTTGAATTTTTTTTTGTTTTTGA..TTT...ATTTACTAACATCTTTTCCTAATTTTCTCTAG
+#=GR CP048994.1/199092-199222  PP 8******************************************************************998878999********************..***...*****************************997
+NC_047499.1/204843-204966         GCAAGTGAGTACAATTTATTTTTTTACTAAAATCACTAAAGCTGTTATTCTATGATAACTGTTTTAGTGAT.AATTCTTTCTAT--TTTTTTTTGA..TTG...ACTTACTAACAATTTTTCCTTATTTTCT----
+#=GR NC_047499.1/204843-204966 PP 8**********************************************************************.*****9999998..6778999***..***...************************9997....
+CP049010.1/229531-229635          GCAAGTGAGTAGAATTTATC-TTTTACA-ACCTTATTGAGACAGTTATCCTGCGATAACGGTTTCAGTTTT.TTTTGATTTTTT----------GAacTTA...ATTTACTAACAACTTTT---------------
+#=GR CP049010.1/229531-229635  PP 89****************86.5678886.56899************************************9.999998765443..........3322678...8999********99876...............
+NC_030972.1/211862-211967         GCAAGTGAGTAGAATTTATC-TTTTACA-ACCTTATTGAGACAGTTATCCTGCGATAACGGTTTCAGTTTT.TTTTTGATTTTT---------TGAacTTA...ATTTACTAACAACTTTT---------------
+#=GR NC_030972.1/211862-211967 PP 89****************86.5678886.56899*********************************9998.666555544333.........34322678...9999********99875...............
+CP030974.1/205460-205568          GCAAGTGAGTACAATTTATCTTTCCAC-------ACTGAAGTTGTTATTTTGCGATAACAGCCTTAGTAGT.ATTTTCTTTTGT-TTACTTTTCGA..ATCaaaATTTACTAACATTTTC----------------
+#=GR CP030974.1/205460-205568  PP 89**************99877766665.......7999******************************999.887766666555.56778888899..886233689********87654................
+#=GC PP_cons                      8*****************9898899999*899*************************************99.999998888777*98999999988..999...99**********99989**********9*997
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxx..xxx...xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

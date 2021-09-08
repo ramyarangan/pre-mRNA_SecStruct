@@ -83,11 +83,21 @@ class Intron:
 		clear_tmp_files()
 
 	def fill_aln(self, alignment_dir):
-		self.aln_dict = get_intron_aln(self.seq, alignment_dir)
+		self.aln_dict = get_intron_aln(self.seq, self.ensembl_name, alignment_dir)
+
 		if 'scer' in self.aln_dict.keys():
 			scer_aln_seq = self.aln_dict['scer']
 			self.aln_idx_mapping = \
 				get_idx_map_intron_to_aln_seq(self.seq, scer_aln_seq)
+
+	def print_string(self):
+		str_chrpos = self.chr_pos[0] + ":" + \
+			str(self.chr_pos[1]) + "-" + str(self.chr_pos[2])
+		print_string = str_chrpos
+		if self.name != "":
+			print_string += " " + self.name
+			print_string += " " + self.ensembl_name
+		return print_string
 
 class IntronSet:
 	def __init__(self):
@@ -152,9 +162,10 @@ class IntronSet:
 		ensembl_genes = get_ensembl_names(no_blank_refseq_names)
 		cnt = 0
 		for ii, intron in enumerate(self.introns):
+			intron.ensembl_name = ""
 			if intron.name == "":
 				continue
-			intron.ensembl_name = ensembl_genes[cnt]
+			intron.ensembl_name = str(ensembl_genes[cnt])
 			cnt += 1
 
 	def get_intron_dict(self):
@@ -167,5 +178,4 @@ class IntronSet:
 		for intron in self.introns:
 			intron.fill_aln(alignment_dir)
 			if len(intron.aln_dict.keys()) == 0:
-				print("Alignment not found for: %s, %s" % \
-					(intron.name, intron.ensembl_name))
+				print("Alignment not found for: %s" % intron.print_string())

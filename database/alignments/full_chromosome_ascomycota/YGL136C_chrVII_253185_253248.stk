@@ -1,0 +1,98 @@
+# STOCKHOLM 1.0
+#=GF ID YGL136C
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS LT598457.1/166988-166925    DE [subseq from] Lachancea dasiensis CBS 10888 genome assembly, chromosome: G, whole genome shotgun sequence
+#=GS CM003562.1/792140-792203    DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome VII, whole genome shotgun sequence
+#=GS CP048988.1/73545-73482      DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScVII
+#=GS NC_001139.9/253248-253185   DE [subseq from] Saccharomyces cerevisiae S288C chromosome VII, complete sequence
+#=GS CP030968.1/266152-266089    DE [subseq from] Saccharomyces kudriavzevii strain CR85 chromosome VII
+#=GS NC_047493.1/251604-251541   DE [subseq from] Saccharomyces paradoxus chromosome VII, complete sequence
+#=GS CP049004.1/260709-260646    DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome SeVII-ScVII
+#=GS NC_030982.1/255153-255090   DE [subseq from] Saccharomyces eubayanus strain FM1318 chromosome VII, whole genome shotgun sequence
+#=GS LT986470.1/247900-247837    DE [subseq from] Saccharomyces jurei genome assembly, chromosome: VI.2_VII.1
+#=GS CM000687.1/364871-364808    DE [subseq from] Saccharomyces kluyveri NRRL Y-12651 chromosome A, whole genome shotgun sequence
+#=GS LT598451.1/358563-358500    DE [subseq from] Lachancea nothofagi CBS 11611 genome assembly, chromosome: E, whole genome shotgun sequence
+#=GS NC_016450.1/350242-350179   DE [subseq from] Eremothecium cymbalariae DBVPG#7215 chromosome 2, complete sequence
+#=GS NC_013084.1/331053-330990   DE [subseq from] Lachancea thermotolerans CBS 6340 chromosome H complete sequence
+#=GS CP006025.1/386174-386111    DE [subseq from] Saccharomycetaceae sp. 'Ashbya aceri' chromosome VI, complete sequence
+#=GS NC_005787.5/220775-220712   DE [subseq from] Eremothecium gossypii ATCC 10895 chromosome VI, complete sequence
+#=GS LT598469.1/848507-848444    DE [subseq from] Lachancea mirantina genome assembly, chromosome: G, whole genome shotgun sequence
+#=GS LT598478.1/477643-477706    DE [subseq from] Lachancea meyersii CBS 8951 genome assembly, chromosome: B, whole genome shotgun sequence
+#=GS CP059271.1/1006755-1006818  DE [subseq from] Torulaspora sp. CBS 2947 strain CBS2947 chromosome 5
+#=GS LT598476.1/2063967-2064030  DE [subseq from] Lachancea sp. CBS 6924 genome assembly, chromosome: G, whole genome shotgun sequence
+#=GS NC_016505.1/1002479-1002542 DE [subseq from] Torulaspora delbrueckii CBS 1146 chromosome 5, complete genome
+#=GS CP019494.1/977308-977371    DE [subseq from] Zygosaccharomyces parabailii strain ATCC 60483 chromosome 5, complete sequence
+#=GS NC_050731.1/993586-993649   DE [subseq from] Torulaspora globosa chromosome 5, complete sequence
+#=GS CP019490.1/825921-825858    DE [subseq from] Zygosaccharomyces parabailii strain ATCC 60483 chromosome 1, complete sequence
+#=GS NC_012994.1/563706-563769   DE [subseq from] Zygosaccharomyces rouxii strain CBS732 chromosome E complete sequence
+#=GS LT598485.1/362175-362112    DE [subseq from] Lachancea fermentati genome assembly, chromosome: C, whole genome shotgun sequence
+#=GS CP012816.1/817987-817924    DE [subseq from] Saccharomycopsis fibuligera x Saccharomycopsis cf. fibuligera strain KJJ81 chromosome B1, complete sequence
+#=GS CP012809.1/1327262-1327199  DE [subseq from] Saccharomycopsis fibuligera x Saccharomycopsis cf. fibuligera strain KJJ81 chromosome A1, complete sequence
+#=GS CP012823.1/1338473-1338410  DE [subseq from] Saccharomycopsis fibuligera strain KPH12 chromosome 1, complete sequence
+#=GS CP025322.1/1110349-1110412  DE [subseq from] Saccharomycopsis malanga strain KCN26 chromosome 2
+#=GS NC_050720.1/196919-196982   DE [subseq from] Zygotorulaspora mrakii chromosome 2, complete sequence
+
+LT598457.1/166988-166925            GTATGAACCCTGGCCCCAGACAACCGGATTTTGGAACAATTTTACTAATTCTGCTTATTACAGG
+#=GR LT598457.1/166988-166925    PP 89************************************************************98
+CM003562.1/792140-792203            GTATGAACCCTGGCCCCAAACAACCGGTTTTTGGAACAACATTACTAATCAAGCTTATTTTAGG
+#=GR CM003562.1/792140-792203    PP 89************************************************************98
+CP048988.1/73545-73482              GTATGAACCCTGGCCCCAAACAACCGGTTTTTGGAACAACATTACTAATCAAGCTTATTTTAGG
+#=GR CP048988.1/73545-73482      PP 89************************************************************98
+NC_001139.9/253248-253185           GTATGAACCCTGGCCCCAAACAACCGGTTTTTGGAACAACATTACTAATCAAGCTTATTTTAGG
+#=GR NC_001139.9/253248-253185   PP 89************************************************************98
+CP030968.1/266152-266089            GTATGAACCCTGGCCCCAAACAACCGGTTTTTGGAATAACATTACTAATCAAGCTTACTTTAGG
+#=GR CP030968.1/266152-266089    PP 89************************************************************98
+NC_047493.1/251604-251541           GTATGAACCCTGGCCTCAAACAACCGGCTTTTGGAATAACATTACTAATCAAGCTTATTTTAGG
+#=GR NC_047493.1/251604-251541   PP 89************************************************************98
+CP049004.1/260709-260646            GTATGAACCTTGGCCCCAGACAGCGGGATTTTGGAATAACATTACTAATCAAGCTTATTTTAGG
+#=GR CP049004.1/260709-260646    PP 79************************************************************97
+NC_030982.1/255153-255090           GTATGAACCTTGGCCCCAGACAGCGGGATTTTGGAATAACATTACTAATCAAGCTTATTTTAGG
+#=GR NC_030982.1/255153-255090   PP 79************************************************************97
+LT986470.1/247900-247837            GTATGAACCCTGGCCCCAGATAACCGGTTTTTGGAATAACATTACTAATCAAGCTTATTTTAGG
+#=GR LT986470.1/247900-247837    PP 79************************************************************97
+CM000687.1/364871-364808            GTATGAACCATGGCCCCAGATGACTGGTTTTTGGAATAATCTTACTAATTCAGCTTATTACAGG
+#=GR CM000687.1/364871-364808    PP 79************************************************************97
+LT598451.1/358563-358500            GTATGAACCCTGGCCACAAACAACTGGATTTTGGAACAATTTTACTAATTCTGCCTACTATAGG
+#=GR LT598451.1/358563-358500    PP 89************************************************************98
+NC_016450.1/350242-350179           GTATGAACCCTGGCCCCAAACTACTGGTTATTGGAACAATTTTACTAATGTTGCATATTACAGG
+#=GR NC_016450.1/350242-350179   PP 79************************************************************98
+NC_013084.1/331053-330990           GTATGAACCTTGGCCTCAGACAACGGGCTTCTGGAACAACATTACTAATTCTGCATATGATAGG
+#=GR NC_013084.1/331053-330990   PP 79************************************************************97
+CP006025.1/386174-386111            GTATGAGCCTTGGCCCCAAGTAACTGGGTTTTGGAACAATTTTACTAATGCAGCATATTCCAGG
+#=GR CP006025.1/386174-386111    PP 79************************************************************97
+NC_005787.5/220775-220712           GTATGAGCCTTGGCCCCAAGTAACTGGGTTTTGGAACAATTTTACTAATGCAGCATATTCCAGG
+#=GR NC_005787.5/220775-220712   PP 79************************************************************97
+LT598469.1/848507-848444            GTATGAACCTTGGCCACAAACTACGGGTTTTTGGAATAATCTTACTAATAGCGCATACTCTAGG
+#=GR LT598469.1/848507-848444    PP 79************************************************************97
+LT598478.1/477643-477706            GTATGAACCTTGGCCTCAAACTGACGGTTTTTGGAACAATTTTACTAATTCGGCTTATGACAGG
+#=GR LT598478.1/477643-477706    PP 79************************************************************97
+CP059271.1/1006755-1006818          GTATGAACCGTGGCCCCAGGATTCTGGATTTTGGACAAATATTACTAATGCAGCATACTACAGG
+#=GR CP059271.1/1006755-1006818  PP 79************************************************************97
+LT598476.1/2063967-2064030          GTATGAACCCTGGCCTCAAACTGAAGGATTTTGGAATAACTTTACTAATTCAGCCTATGACAGG
+#=GR LT598476.1/2063967-2064030  PP 79************************************************************97
+NC_016505.1/1002479-1002542         GTATGAACCGTGGCCTCAAAGTTCGGGTTTTTGGACGAACATTACTAATGCAGCTTATAACAGG
+#=GR NC_016505.1/1002479-1002542 PP 79************************************************************97
+CP019494.1/977308-977371            GTATGAATGCTGGCCACAAACGACAGGCTTTTGGAACAATCTTACTAATTTGGCTTATTACAGG
+#=GR CP019494.1/977308-977371    PP 79************************************************************97
+NC_050731.1/993586-993649           GTATGAACCGTGGCCCCAGGACTCTGGATTTTGGACAAATATTACTAATGCAGCATACTACAGG
+#=GR NC_050731.1/993586-993649   PP 79************************************************************97
+CP019490.1/825921-825858            GTATGAGTGCTGGCCACAAACAACAGGCTTTTGGAACAATCTTACTAATTTGGCTTATTACAGG
+#=GR CP019490.1/825921-825858    PP 79************************************************************97
+NC_012994.1/563706-563769           GTATGAATGTTGGCCCCAGATAACTGGATATTGGAATAATCTTACTAATGCAGCTTATTACAGG
+#=GR NC_012994.1/563706-563769   PP 79************************************************************97
+LT598485.1/362175-362112            GTATGAATGCTGGCCCCAAACTTCGGGATTTTGGAATAATCTTACTAATTTTGCTTATGATAGG
+#=GR LT598485.1/362175-362112    PP 79************************************************************97
+CP012816.1/817987-817924            GTATGAACCGTTTCCTCAATCAACTGGCTTTTGGAATAACACTACTAATAGCGCATACTATAGG
+#=GR CP012816.1/817987-817924    PP 89************************************************************98
+CP012809.1/1327262-1327199          GTATGAACCATTTCCTCAATCAACTGGCTTTTGGAATAACACTACTAATAGCGCATACTATAGG
+#=GR CP012809.1/1327262-1327199  PP 89************************************************************98
+CP012823.1/1338473-1338410          GTATGAACCATTTCCTCAATCAACTGGCTTTTGGAATAACACTACTAATAGCGCATACTATAGG
+#=GR CP012823.1/1338473-1338410  PP 89************************************************************98
+CP025322.1/1110349-1110412          GTATGAGCCTTTACCACAAGTTACTGGTTTTTGGAGCAACACCACTAATAGTGCATACAATAGG
+#=GR CP025322.1/1110349-1110412  PP 79***********************************************************997
+NC_050720.1/196919-196982           GTATGAACCTTGGATTCAGACTTCTGGATTTTGGAATAATCTTACTAACTTTCCTTATTATAGG
+#=GR NC_050720.1/196919-196982   PP 79************************************************************98
+#=GC PP_cons                        79************************************************************97
+#=GC RF                             xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

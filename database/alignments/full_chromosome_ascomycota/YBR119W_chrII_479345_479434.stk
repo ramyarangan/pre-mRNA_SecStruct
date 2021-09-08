@@ -1,0 +1,26 @@
+# STOCKHOLM 1.0
+#=GF ID YBR119W
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003558.1/459314-459403  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome II, whole genome shotgun sequence
+#=GS CP048984.1/465625-465714  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScII
+#=GS NC_001134.8/479346-479435 DE [subseq from] Saccharomyces cerevisiae S288C chromosome II, complete sequence
+#=GS CP049001.1/655844-655933  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome SeIV-SeII
+#=GS NC_030979.1/649676-649765 DE [subseq from] Saccharomyces eubayanus strain FM1318 chromosome IV, whole genome shotgun sequence
+#=GS NC_047488.1/489624-489711 DE [subseq from] Saccharomyces paradoxus chromosome II, complete sequence
+
+CM003558.1/459314-459403          GTATGTATATACCTTGTAATTTACGTTTCCCTAAATCTTCTTTCTACTAACGTTTTCATTATTCTATACTCTATGACCAATAAAAACAGA
+#=GR CM003558.1/459314-459403  PP 89**************************************************************************************97
+CP048984.1/465625-465714          GTATGTATATACCTTGTAATTTACGTTTCCCTAAATCTTCTTTCTACTAACGTTTTCATTATTCTATACTCTATGACCAATAAAAACAGA
+#=GR CP048984.1/465625-465714  PP 89**************************************************************************************97
+NC_001134.8/479346-479435         GTATGTATATACCTTGTAATTTACGTTTCCTTAAATCTTCTTTCTACTAACGTTTTCATTATTCTATACTCTATGACCAATAAAAACAGA
+#=GR NC_001134.8/479346-479435 PP 89**************************************************************************************97
+CP049001.1/655844-655933          GTATGTATAGGCTTGAGGATATATGCACTTGTCAAACGTATCTTTACTAACACTATTTCCATTTCACATTATTTGATTGGTAAGTACAGA
+#=GR CP049001.1/655844-655933  PP 79**************************************************************************************97
+NC_030979.1/649676-649765         GTATGTATAGGCTTGAGGATATATGCACTTGTCAAATGTATCTTTACTAACACTATTTACATTTCACATTATTTGATTGGTAAGTACAGA
+#=GR NC_030979.1/649676-649765 PP 79**************************************************************************************97
+NC_047488.1/489624-489711         GTATGTGCATACCTTGTAATTCACGTTT-CTAAAATCTTCGTTCTACTAACATTCTCTTTA-TCTAAACTGTATGACCAATAAAAACAGA
+#=GR NC_047488.1/489624-489711 PP 89***********************998.8899****************************.9*************************97
+#=GC PP_cons                      89**************************************************************************************97
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

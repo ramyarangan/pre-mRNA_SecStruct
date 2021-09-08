@@ -1,0 +1,20 @@
+# STOCKHOLM 1.0
+#=GF ID YPL175W
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003570.1/212478-212577  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome XVI, whole genome shotgun sequence
+#=GS CP048997.1/218998-219097  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScXVI
+#=GS NC_001148.4/218647-218746 DE [subseq from] Saccharomyces cerevisiae S288C chromosome XVI, complete sequence
+#=GS NC_047502.1/203355-203446 DE [subseq from] Saccharomyces paradoxus chromosome XVI, complete sequence
+
+CM003570.1/212478-212577          GTATGTCTAGCTCACAGCATGTGTTCCAAATACATTAAAGAAGATCTCTTTTGTTGTTGATACTAACCAGTAAAGTTGAGAGTTATAACAATGAAAATAG
+#=GR CM003570.1/212478-212577  PP 799*********************************************************************************************9986
+CP048997.1/218998-219097          GTATGTCTAGCTCACAGCATGTGTTCCAAATACATTAAAGAAGATCTCTTTTGTTGTTGATACTAACCAGTAAAGTTGAGAGTTATAACAATGAAAATAG
+#=GR CP048997.1/218998-219097  PP 799*********************************************************************************************9986
+NC_001148.4/218647-218746         GTATGTCTAGCTCACAGCATGTGTTCCAAATACATTAAAGAAGATCTCTTTTGTTGTTGATACTAACCAGTAAAGTTGAGAGTTATAACAATGAAAATAG
+#=GR NC_001148.4/218647-218746 PP 799*********************************************************************************************9986
+NC_047502.1/203355-203446         GTATGTCTAGTTCAAAACAGGTGTTCCAGACACATCAAAAAATATTTCTTTTGCT---GATACTAACCAGTAAAGTTGAGTGTTA----AATAATAACA-
+#=GR NC_047502.1/203355-203446 PP 799*************************************************999...9*************************9....7777777766.
+#=GC PP_cons                      799**************************************************************************************99999998886
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//

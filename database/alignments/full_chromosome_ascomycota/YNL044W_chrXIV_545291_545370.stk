@@ -1,0 +1,20 @@
+# STOCKHOLM 1.0
+#=GF ID YNL044W
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CM003568.1/241095-241016  DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome XIV, whole genome shotgun sequence
+#=GS CP048995.1/541745-541824  DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScXIV
+#=GS NC_001146.8/545292-545371 DE [subseq from] Saccharomyces cerevisiae S288C chromosome XIV, complete sequence
+#=GS NC_047500.1/542571-542653 DE [subseq from] Saccharomyces paradoxus chromosome XIV, complete sequence
+
+CM003568.1/241095-241016          GTAAGTTCTAAATTGTAAACACATTTGCATCATTGAAAA.ACTATACTAACGCGT..TAACCTTTTTTCTATATTTCTATAGC
+#=GR CM003568.1/241095-241016  PP 79*************************************.***************..************************97
+CP048995.1/541745-541824          GTAAGTTCTAAATTGTAAACACATTTGCATCATTGAAAA.ACTATACTAACGCGT..TAACCTTTTTTCTATATTTCTATAGC
+#=GR CP048995.1/541745-541824  PP 79*************************************.***************..************************97
+NC_001146.8/545292-545371         GTAAGTTCTAAATTGTAAACACATTTGCATCATTGAAAA.ACTATACTAACGCGT..TAACCTTTTTTCTATATTTCTATAGC
+#=GR NC_001146.8/545292-545371 PP 79*************************************.***************..************************97
+NC_047500.1/542571-542653         GTAAGTTAAAAGTCATAAACATAATTACATCATTGAAAGcACAATATTAACGCGTttTAACCTTTTTTCTTTATTTCTATAGC
+#=GR NC_047500.1/542571-542653 PP 78999999999************************98754899***********7336***********************97
+#=GC PP_cons                      79**********************************999.9*************9..9***********************97
+#=GC RF                           xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxx..xxxxxxxxxxxxxxxxxxxxxxxxxx
+//

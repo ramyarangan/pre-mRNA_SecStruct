@@ -1,0 +1,23 @@
+# STOCKHOLM 1.0
+#=GF ID YDR005C
+#=GF AU nhmmer (HMMER 3.3.2)
+
+#=GS CP048985.1/469405-469325   DE [subseq from] Saccharomyces pastorianus strain CBS 1483 chromosome ScIV
+#=GS NC_001136.10/458097-458017 DE [subseq from] Saccharomyces cerevisiae S288C chromosome IV, complete sequence
+#=GS CM003560.1/1053479-1053558 DE [subseq from] Saccharomyces sp. 'boulardii' strain unique28 chromosome IV, whole genome shotgun sequence
+#=GS NC_047490.1/460080-459993  DE [subseq from] Saccharomyces paradoxus chromosome IV, complete sequence
+#=GS LT986465.1/450330-450248   DE [subseq from] Saccharomyces jurei genome assembly, chromosome: IV
+
+CP048985.1/469405-469325           GTATGTTATCACTCTAAAACTGCCATGCTC.TT.......TATTCGAAATTACTAACATTGTACCTGAACCCTCC.TTTTCTTCCTTAGT
+#=GR CP048985.1/469405-469325   PP 89****************************.**.......***********************************.************96
+NC_001136.10/458097-458017         GTATGTTATCACTCTAAAACTGCCATGCTC.TT.......TATTCGAAATTACTAACATTGTACCTGAACCCTCC.TTTTCTTCCTTAGT
+#=GR NC_001136.10/458097-458017 PP 89****************************.**.......***********************************.************96
+CM003560.1/1053479-1053558         GTATGTTATCACTCTAAAACTGCCATGCTC.TT.......TATTCGAAATTACTAACATTGTACCTGAAC-CTCC.TTTTCTTCCTTAGT
+#=GR CM003560.1/1053479-1053558 PP 89****************************.**.......*****************************9.89**.************96
+NC_047490.1/460080-459993          GTATGTTATTTCTCTAAAACTGCCATACCC.TTtccctttTGTTCTAGATTACTAACCTGATATTTGAACCCTGC.TTTTCTTCCTTAGT
+#=GR NC_047490.1/460080-459993  PP 89**************************99.8767777779**********************************.************96
+LT986465.1/450330-450248           GTACGTTATTTCTTTAAAACTGCCATCCTCtTT.......TGTTCTAAAATACTAACATGATATTTGAATCTTTCtTTTTCTTCCTTAGT
+#=GR LT986465.1/450330-450248   PP 89****************************778.......***********************************88999********96
+#=GC PP_cons                       89****************************.99.......***********************************.************96
+#=GC RF                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xx.......xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxx
+//
