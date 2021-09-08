@@ -21,7 +21,7 @@ secstruct_options = {'secstruct_pkg': 'Vienna',
 					}
 
 secstruct_features = ["LocalizationMetric", "StartToBPStemMetric", "BPToEndStemMetric", \
-		"StartProtectionMetric", "EndProtectionMetric"] # "ZipperStemMetric", 
+		"StartProtectionMetric", "EndProtectionMetric", "BPProtectionMetric"] # "ZipperStemMetric", 
 
 all_features = secstruct_features + ["ThreeprimeDistStopFeature", "RPKMFeature"] # "HasEarlyStopFeature"
 
@@ -44,7 +44,7 @@ def update_feature_list(df, feature_list):
 	df = df[feature_list]
 	return df
 
-standard_feature_df = features_db.get_features(all_features, 'standard', feature_options_all=feature_options_all)
+standard_feature_df = features_db.get_features(all_features, 'standard_allsize_min_50_max_600', feature_options_all=feature_options_all)
 standard_feature_df = standard_feature_df.dropna(axis=0)
 decoy_feature_df = features_db.get_features(all_features, 'decoy', feature_options_all=feature_options_all)
 decoy_feature_df = decoy_feature_df.dropna(axis=0)
@@ -121,6 +121,7 @@ def plot_auc_curve(pred_probs, exp_classes, bin_width=0.01):
 	plt.ylabel("Cohen's Kappa")
 	plt.show()
 
+	
 	plt.plot(fprs, tprs, color='black')
 	plt.plot(bins, bins, color='red', linestyle='--')
 	plt.xlabel("False Positive Rate")
@@ -151,9 +152,9 @@ def random_forest_clf_mccv(feature_matrix, exp_data,
 
 
 		ros = RandomOverSampler(random_state=42)
-		print(Counter(exp_data[train_idxs]))
+		# print(Counter(exp_data[train_idxs]))
 		feature_train, data_train = ros.fit_resample(feature_matrix[train_idxs,:], exp_data[train_idxs])
-		print(Counter(data_train))
+		# print(Counter(data_train))
 
 		# Train decision tree 
 		clf = ensemble.RandomForestClassifier(n_estimators=n_estimators,
@@ -205,6 +206,6 @@ def do_mc_cv_random_forest(feature_matrix, exp_class_data):
 	pred_probs = np.array([x[1] for x in all_pred_data])
 	plot_auc_curve(pred_probs, all_exp_data)
 
-# do_mc_cv_random_forest(feature_matrix, exp_class_data)
+do_mc_cv_random_forest(feature_matrix, exp_class_data)
 print_trees(feature_matrix, exp_class_data, list(all_feature_df.columns), 10)
 

@@ -115,7 +115,7 @@ def make_heatmap(all_features, feature_options_all, \
 	plt.xticks(rotation=45, fontsize=8)
 	plt.show()
 
-def make_violin_plots(standard_feature_df, \
+def make_violin(standard_feature_df, \
 	control_feature_df, metric_names, plot_names):
 	print(standard_feature_df.shape)
 	print(control_feature_df.shape)
@@ -244,7 +244,7 @@ if __name__ == "__main__":
 			control_class_violin, feature_options_all=feature_options_all)
 		control_feature_df = control_feature_df.dropna(axis=0)
 
-		make_violin_plots(standard_feature_df, control_feature_df, metric_names, plot_names)
+		make_violin(standard_feature_df, control_feature_df, metric_names, plot_names)
 
 	if make_species_heatmap:
 		make_heatmap(all_features, feature_options_all, \
