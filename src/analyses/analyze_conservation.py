@@ -125,12 +125,16 @@ def get_stats_zipper(all_introns, intron_class):
 	return [ortholog_stats, cons_stats]
 
 def plot_ortholog_stats(ortholog_stats):
-	plt.hist(ortholog_stats)
+	counts, bins, bars = plt.hist(ortholog_stats, range=[0, 20])
 	plt.show()
+	print(counts)
+	print(bins)
 
 def plot_conservation_stats(cons_stats):
-	plt.hist(cons_stats)
+	counts, bins, bars = plt.hist(cons_stats, range=[0, 1])
 	plt.show()
+	print(counts)
+	print(bins)
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='Parameters for processing intron alignment data')
