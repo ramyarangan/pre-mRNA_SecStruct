@@ -4,6 +4,9 @@ For an intron set, plot histogram of number of orthologs and percent conservatio
 Use alignments from an alignment directory
 
 Optionally also compute stats for zipper stems
+
+Example usage: 
+python analyses/analyze_conservation.py ../database/alignments/hooks_alignments/ standard_allsize_min_50_max_600  --do_zipper
 """
 import argparse
 import numpy as np
@@ -54,18 +57,18 @@ def get_avg_conservation(intron, intervals, min_seqs=3):
 	if len(all_seqs) < min_seqs:
 		return -1
 
-	all_cons_vals = []
+	all_cons_vals = np.array([])
 	for (start_idx, end_idx) in intervals:
 		seq_arr = []
 		for seq in all_seqs:
 			seq_arr += [list(seq[start_idx:end_idx])]
 		seq_arr = np.array(seq_arr)
 
-		mask = (list(scer_seq) == seq_arr)
+		scer_int = scer_seq[start_idx:end_idx]
+		mask = (list(scer_int) == seq_arr)
 		cons_vals = np.sum(mask, axis=0)/len(all_seqs)
-		all_cons_vals += [cons_vals]
+		all_cons_vals = np.append(all_cons_vals, cons_vals)
 
-	all_cons_vals = np.array(all_cons_vals)
 	return np.mean(all_cons_vals)
 
 def has_alignments(intron):
@@ -107,16 +110,17 @@ def get_stats_zipper(all_introns, intron_class):
 		zipper_stem = zipper_stem_data[ii]
 		[seq1, seq2, _, _] = zipper_stem
 
-		range1_start = intron.seq.index(seq1)
-		range1_end = range1_start + len(intron.seq)
-		range2_start = intron.seq.index(seq2)
-		range2_end = range2_start + len(intron.seq)
-		intervals = [(range1_start, range1_end), (range2_start, range2_end)]
+		if len(seq1) > 0 and len(seq2) > 0:
+			range1_start = intron.seq.index(seq1)
+			range1_end = range1_start + len(seq1)
+			range2_start = intron.seq.index(seq2)
+			range2_end = range2_start + len(seq2)
+			intervals = [(range1_start, range1_end), (range2_start, range2_end)]
 
-		num_orthologs = get_num_orthologs(intron, intervals)
-		avg_conservation = get_avg_conservation(intron, intervals)
-		ortholog_stats += [num_orthologs]
-		cons_stats += [avg_conservation]
+			num_orthologs = get_num_orthologs(intron, intervals)
+			avg_conservation = get_avg_conservation(intron, intervals)
+			ortholog_stats += [num_orthologs]
+			cons_stats += [avg_conservation]
 
 	return [ortholog_stats, cons_stats]
 

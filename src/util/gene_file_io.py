@@ -147,7 +147,7 @@ def read_zipper_stem_file(zipper_stem_filename):
 	f.close()
 
 	zipper_stem_data = []
-	for ii, line in enumerate(int(len(zipper_stem_lines)/3)):
+	for ii in range(int(len(zipper_stem_lines)/3)):
 		seq = zipper_stem_lines[ii * 3].replace('\n', '')
 		seq1 = seq.split("&")[0]
 		seq2 = seq.split("&")[1]
@@ -157,7 +157,7 @@ def read_zipper_stem_file(zipper_stem_filename):
 		zipper_stem_data += [(seq1, seq2, secstruct, dG)]
 		
 	return zipper_stem_data
-		
+
 def write_zipper_stem_file(zipper_stem_filename, zipper_stem_data):
 	f = open(zipper_stem_filename, 'w')
 

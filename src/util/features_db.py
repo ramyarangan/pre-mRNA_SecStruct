@@ -155,10 +155,10 @@ def get_zipper_stems(intron_class, feature_options):
 
 	force_eval = False
 	if 'force_eval' in feature_options.keys():
-		force_eval = True
+		force_eval = feature_options['force_eval']
 	verbose = False
 	if 'verbose' in feature_options.keys():
-		verbose = True
+		verbose = feature_options['verbose']
 
 	if os.path.isfile(zipper_stem_filename) and not force_eval:
 		zipper_stem_file_data = read_zipper_stem_file(zipper_stem_filename)
