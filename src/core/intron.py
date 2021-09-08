@@ -166,4 +166,6 @@ class IntronSet:
 	def fill_aln(self, alignment_dir):
 		for intron in self.introns:
 			intron.fill_aln(alignment_dir)
-
+			if len(intron.aln_dict.keys()) == 0:
+				print("Alignment not found for: %s, %s" % \
+					(intron.name, intron.ensembl_name))

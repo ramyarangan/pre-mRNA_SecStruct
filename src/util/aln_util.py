@@ -8,6 +8,23 @@ def find(s, ch):
     return [i for i, ltr in enumerate(s) if ltr == ch]
 
 
+# Check if sequence is empty (full of blanks), optionally in a 
+# given range
+def aln_seq_is_empty(sequence, aln_range=[-1, -1]):
+	if aln_range[0] == -1:
+		aln_range[0] = 0
+		aln_range[1] = len(sequence)
+
+	is_empty = True
+	for ii in range(aln_range[0], aln_range[1]):
+		cur_char = sequence[ii]
+		if not ((cur_char == ".") or (cur_char == "-")):
+			is_empty = False
+			break
+	
+	return is_empty
+
+
 # Returns a list of intron positions in the form (5'SS, bp, 3'SS).
 def get_introns(annotation_str):
 	five_poses = find(annotation_str, '5')
@@ -144,9 +161,9 @@ def get_intron_aln(intron_seq, alignment_dir):
 					[species_seq, bp] = condense_seq(line.split()[1], intron_pos)
 					
 					if species_name == 'scer' and \
-						intron_seq_rna in species_seq:
+						intron_seq_rna == species_seq:
 						intron_hit = jj
-
+			
 			# If an scer intron matched the input intron_seq, 
 			# assemble the dictionary of aligned sequences
 			if intron_hit != -1:
@@ -156,7 +173,7 @@ def get_intron_aln(intron_seq, alignment_dir):
 					for jj in range(len(intron_pos_list)):
 						intron_pos = intron_pos_list[jj]
 						species_name = (line.split()[0]).split('_')[0]
-						species_seq = get_seq_pos_info(line.split()[1], pos_info)
+						species_seq = get_seq_pos_info(line.split()[1], intron_pos)
 						
 						aln_dict[species_name] = species_seq
 

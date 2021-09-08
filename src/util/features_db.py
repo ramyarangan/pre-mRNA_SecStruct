@@ -176,7 +176,7 @@ def get_zipper_stems(intron_class, feature_options):
 			print("Feature: Zipper stems, Evaluating intron: %d of %d" % \
 				(ii, len(all_introns.introns)))
 
-		feature = get_feature_from_name(feature_name)
+		feature = get_feature_from_name("ZipperStemStartMetric")
 		[has_dG, best_stem, _] = feature.has_stem_dG(intron.bp, intron.seq, intron.mfe)
 		zipper_stem_data = process_zipper_stem_entry(has_dG, best_stem)
 		all_zipper_stems += [zipper_stem_data]
