@@ -8,10 +8,9 @@ def find(s, ch):
 
 # Check if sequence is empty (full of blanks), optionally in a 
 # given range
-def aln_seq_is_empty(sequence, aln_range=[-1, -1]):
-	if aln_range[0] == -1:
-		aln_range[0] = 0
-		aln_range[1] = len(sequence)
+def aln_seq_is_empty(sequence, aln_range=[]):
+	if len(aln_range) == 0:
+		aln_range = (0, len(sequence))
 
 	is_empty = True
 	for ii in range(aln_range[0], aln_range[1]):

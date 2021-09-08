@@ -17,10 +17,9 @@ def convert_intervals_to_aln(intron, intervals):
 	new_intervals = []
 	for interval in intervals:
 		idx_mapping = intron.aln_idx_mapping
-		print(idx_mapping)
 		new_start = idx_mapping[interval[0]]
-		new_end = idx_mapping[interval[1]]
-		new_intervals += [(new_start, new_end)]
+		new_end = idx_mapping[interval[1]-1]
+		new_intervals += [(new_start, new_end+1)]
 	return new_intervals
 
 def get_num_orthologs(intron, intervals):
@@ -30,7 +29,7 @@ def get_num_orthologs(intron, intervals):
 	for species, species_seq in enumerate(intron.aln_dict.values()):
 		is_empty = True
 		for interval in intervals:
-			if not aln_seq_is_empty(intron, interval):
+			if not aln_seq_is_empty(species_seq, aln_range=interval):
 				is_empty = False
 				break
 		if not is_empty:
@@ -45,9 +44,12 @@ def get_avg_conservation(intron, intervals, min_seqs=3):
 	total_conservation = 0
 
 	all_seqs = []
-	for species, species_seq in enumerate(intron.aln_dict.values()):
+	scer_seq = ""
+	for species, species_seq in intron.aln_dict.items():
 		if not aln_seq_is_empty(species_seq):
 			all_seqs += [species_seq]
+			if species == 'scer':
+				scer_seq = species_seq
 
 	if len(all_seqs) < min_seqs:
 		return -1
@@ -56,15 +58,20 @@ def get_avg_conservation(intron, intervals, min_seqs=3):
 	for (start_idx, end_idx) in intervals:
 		seq_arr = []
 		for seq in all_seqs:
-			arr += [list(seq[start_idx:end_idx])]
-		seq_arr = np.array(arr)
+			seq_arr += [list(seq[start_idx:end_idx])]
+		seq_arr = np.array(seq_arr)
 
-		mask = (list(intron.seq) == seq_arr)
+		mask = (list(scer_seq) == seq_arr)
 		cons_vals = np.sum(mask, axis=0)/len(all_seqs)
 		all_cons_vals += [cons_vals]
 
 	all_cons_vals = np.array(all_cons_vals)
 	return np.mean(all_cons_vals)
+
+def has_alignments(intron):
+	if len(intron.aln_idx_mapping.keys()) == 0:
+		return False
+	return True
 
 # For now just provides the average conservation, but later could include things like
 # number of intervals of at least __ length meeting a __% conservation cutoff
@@ -72,6 +79,9 @@ def get_stats(all_introns, intron_class):
 	ortholog_stats = []
 	cons_stats = []
 	for intron in all_introns.introns:
+		if not has_alignments(intron):
+			print("Skipping intron without alignment: %s" % intron.print_string())
+			continue
 		num_orthologs = get_num_orthologs(intron, [(0, len(intron.seq))])
 		ortholog_stats += [num_orthologs]
 		avg_conservation = get_avg_conservation(intron, [(0, len(intron.seq))])
@@ -91,6 +101,9 @@ def get_stats_zipper(all_introns, intron_class):
 	cons_stats = []
 
 	for ii, intron in enumerate(all_introns.introns):
+		if not has_alignments(intron):
+			print("Skipping intron without alignment: %s" % intron.print_string())
+			continue		
 		zipper_stem = zipper_stem_data[ii]
 		[seq1, seq2, _, _] = zipper_stem
 
@@ -129,8 +142,6 @@ if __name__ == "__main__":
 
 	all_introns = build_intron_set(intron_class)
 	all_introns.fill_aln(alignment_dir)
-	for intron in all_introns.introns:
-		print(intron.aln_idx_mapping)
 
 	[ortholog_stats, cons_stats] = get_stats(all_introns, intron_class)
 	plot_ortholog_stats(ortholog_stats)
