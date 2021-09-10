@@ -5,6 +5,8 @@ from sklearn import tree
 from sklearn import ensemble
 from sklearn import metrics
 import sklearn
+import shap
+import argparse
 import os
 from matplotlib import pyplot as plt
 from scipy.stats import spearmanr
@@ -14,20 +16,8 @@ import pandas as pd
 import random
 from collections import Counter
 
-secstruct_options = {'secstruct_pkg': 'Vienna', 
-					'secstruct_type': 'ens', 
-					'verbose': False,
-					'force_eval': False
-					}
-
-secstruct_features = ["LocalizationMetric", "StartToBPStemMetric", "BPToEndStemMetric", \
-		"StartProtectionMetric", "EndProtectionMetric", "BPProtectionMetric"] # "ZipperStemMetric", 
-
-all_features = secstruct_features + ["ThreeprimeDistStopFeature", "RPKMFeature"] # "HasEarlyStopFeature"
-
-feature_options_all = {}
-for feature in all_features:
-	feature_options_all[feature] = secstruct_options
+SECSTRUCT_FEATURES = ["LocalizationMetric", "StartToBPStemMetric", "BPToEndStemMetric", \
+			"StartProtectionMetric", "EndProtectionMetric", "BPProtectionMetric", "ZipperStemStartMetric", "ZipperStemEndMetric"] 
 
 def filter_decoys(df, columns_list, cutoff_list, cutoff_is_greater):
 	for ii, column in enumerate(columns_list):
@@ -43,25 +33,6 @@ def update_feature_list(df, feature_list):
 		for feature_name in feature_list]
 	df = df[feature_list]
 	return df
-
-standard_feature_df = features_db.get_features(all_features, 'standard_allsize_min_50_max_600', feature_options_all=feature_options_all)
-standard_feature_df = standard_feature_df.dropna(axis=0)
-decoy_feature_df = features_db.get_features(all_features, 'decoy', feature_options_all=feature_options_all)
-decoy_feature_df = decoy_feature_df.dropna(axis=0)
-# Filter out low transcription genes and NMD introns
-decoy_feature_df = filter_decoys(decoy_feature_df, ["ThreeprimeDistStopFeature", "RPKMFeature"], [0, 50], [False, True])
-print(decoy_feature_df.shape)
-
-feature_list = secstruct_features
-standard_feature_df = update_feature_list(standard_feature_df, feature_list)
-decoy_feature_df = update_feature_list(decoy_feature_df, feature_list)
-
-all_feature_df = pd.concat([standard_feature_df, decoy_feature_df], axis=0)
-exp_class_data = np.array([0] * standard_feature_df.shape[0] + [1] * decoy_feature_df.shape[0])
-# np.random.shuffle(exp_class_data)
-feature_matrix = all_feature_df.to_numpy()
-
-
 
 def expore_cutoffs():
 	cutoff_val = 2
@@ -96,7 +67,7 @@ def get_auc(pred_probs, exp_classes, bin_width=0.01):
 	auc = sklearn.metrics.auc(fprs, tprs)
 	return auc
 
-def plot_auc_curve(pred_probs, exp_classes, bin_width=0.01):
+def get_fprs_tprs(pred_probs, exp_classes, bin_width):
 	pred_probs = np.array(pred_probs)
 	exp_classes = np.array(exp_classes)
 	bins = np.arange(0, 1 + bin_width, bin_width)
@@ -112,16 +83,24 @@ def plot_auc_curve(pred_probs, exp_classes, bin_width=0.01):
 		fpr = sum(pred_pos * (1 - exp_classes))/sum(1 - exp_classes)
 		tprs += [tpr]
 		fprs += [fpr]
-	
+	return [fprs, tprs, cohen_kappas, bins]
+
+def calc_auc(pred_probs, exp_classes, bin_width=0.01):
+	[fprs, tprs, _, _] = \
+		get_fprs_tprs(pred_probs, exp_classes, bin_width)
 	auc = sklearn.metrics.auc(fprs, tprs)
 	print("AUC: %f" % auc)
+	return auc
+
+def plot_auc_curve(pred_probs, exp_classes, bin_width=0.01):
+	[fprs, tprs, cohen_kappas, bins] = \
+		get_fprs_tprs(pred_probs, exp_classes, bin_width)
 	
 	plt.plot(bins, cohen_kappas)
 	plt.xlabel("False Postive Rate")
 	plt.ylabel("Cohen's Kappa")
 	plt.show()
 
-	
 	plt.plot(fprs, tprs, color='black')
 	plt.plot(bins, bins, color='red', linestyle='--')
 	plt.xlabel("False Positive Rate")
@@ -173,6 +152,13 @@ def random_forest_clf_mccv(feature_matrix, exp_data,
 			train_predictions = clf.predict_proba(feature_train)
 			all_pred_data_train += list(train_predictions)
 			all_exp_data_train += list(data_train)
+
+		explainer = shap.TreeExplainer(clf)
+		shap_values = explainer.shap_values(feature_train)
+		plot_names = [x.replace("Metric", "") for x in SECSTRUCT_FEATURES]
+		shap.summary_plot(shap_values[0], feature_train, feature_names=plot_names)
+		plt.show()
+
 	return (all_pred_data, all_exp_data, all_pred_data_train, all_exp_data_train)
 
 def print_trees(feature_matrix, exp_data, column_names, niter, train_size=0.9):
@@ -184,12 +170,12 @@ def print_trees(feature_matrix, exp_data, column_names, niter, train_size=0.9):
 		print_tree(feature_train, data_train, column_names)
 
 # Monte-Carlo Cross Validation
-def do_mc_cv_random_forest(feature_matrix, exp_class_data):
+def do_mc_cv_random_forest(feature_matrix, exp_class_data, do_plots=False):
 	# Training data size
 	train_size = 0.9
 	num_train = int(train_size * np.size(feature_matrix, 0))
-	niter = 100
-	n_estimators = 5
+	niter = 10 # 100
+	n_estimators = 5000
 	max_leaf_nodes = 5
 	min_sample_leaf = 3
 
@@ -200,12 +186,88 @@ def do_mc_cv_random_forest(feature_matrix, exp_class_data):
 
 	print("Training data")
 	pred_probs = np.array([x[1] for x in all_pred_data_train])
-	plot_auc_curve(pred_probs, all_exp_data_train)
+	calc_auc(pred_probs, all_exp_data_train)
+	if do_plots:
+		plot_auc_curve(pred_probs, all_exp_data_train)
 
 	print("Test data")
 	pred_probs = np.array([x[1] for x in all_pred_data])
-	plot_auc_curve(pred_probs, all_exp_data)
+	calc_auc(pred_probs, all_exp_data)
+	if do_plots:
+		plot_auc_curve(pred_probs, all_exp_data)
 
-do_mc_cv_random_forest(feature_matrix, exp_class_data)
-print_trees(feature_matrix, exp_class_data, list(all_feature_df.columns), 10)
+if __name__ == "__main__":
+	parser = argparse.ArgumentParser(description='Parameters for classifying intron sets')
+	parser.add_argument('intron_class', type=str, help='Intron class to classify from decoys')
+	parser.add_argument('decoy_class', type=str, help='Decoy class to classify from introns')
+	parser.add_argument('--do_dropout', default=False, action='store_true', \
+		 help='Do dropout on each feature')
+	parser.add_argument('--do_print_trees', default=False, action='store_true', \
+		 help='Print some sample decision trees')
+	parser.add_argument('--do_plots', default=False, action='store_true', \
+		 help='Plot Cohen kappa curves and AUC curves for train and test set')
+	args = parser.parse_args()
 
+	intron_class = args.intron_class
+	decoy_class = args.decoy_class
+	do_dropout = args.do_dropout
+	do_print_trees = args.do_print_trees
+	do_plots = args.do_plots
+
+	secstruct_options = {'secstruct_pkg': 'Vienna', 
+					'secstruct_type': 'ens', 
+					'verbose': False,
+					'force_eval': False
+					}
+
+	secstruct_features = SECSTRUCT_FEATURES
+
+	all_features = secstruct_features + ["ThreeprimeDistStopFeature", "RPKMFeature"] # "HasEarlyStopFeature"
+
+	feature_options_all = {}
+	for feature in all_features:
+		feature_options_all[feature] = secstruct_options
+
+	standard_feature_df = features_db.get_features(all_features, intron_class, feature_options_all=feature_options_all)
+	standard_feature_df = standard_feature_df.dropna(axis=0)
+	decoy_feature_df = features_db.get_features(all_features, decoy_class, feature_options_all=feature_options_all)
+	decoy_feature_df = decoy_feature_df.dropna(axis=0)
+
+	decoy_feature_df = filter_decoys(decoy_feature_df, \
+		["ThreeprimeDistStopFeature", "RPKMFeature"], [50, 50], [False, True])
+	print(decoy_feature_df.shape)
+
+	feature_list = secstruct_features
+	standard_feature_df = update_feature_list(standard_feature_df, feature_list)
+	decoy_feature_df = update_feature_list(decoy_feature_df, feature_list)
+
+	all_feature_df = pd.concat([standard_feature_df, decoy_feature_df], axis=0)
+	exp_class_data = np.array([0] * standard_feature_df.shape[0] + [1] * decoy_feature_df.shape[0])
+	# np.random.shuffle(exp_class_data)
+	feature_matrix = all_feature_df.to_numpy()
+
+	do_mc_cv_random_forest(feature_matrix, exp_class_data, do_plots=do_plots)
+
+	if do_print_trees:
+		print_trees(feature_matrix, exp_class_data, list(all_feature_df.columns), 10)
+
+	if do_dropout:
+		for feature in secstruct_features:
+			print("Dropout: %s\n" % feature)
+
+			dropout_feature_list = []
+			for tmp_feature in secstruct_features:
+				if tmp_feature == feature:
+					continue
+				dropout_feature_list += [tmp_feature]
+			dropout_feature_list = [feature]
+			standard_dropout_df = \
+				update_feature_list(standard_feature_df, dropout_feature_list)
+			decoy_dropout_df = \
+				update_feature_list(decoy_feature_df, dropout_feature_list)
+			all_feature_df = pd.concat([standard_dropout_df, decoy_dropout_df], axis=0)
+			exp_class_data = np.array([0] * standard_dropout_df.shape[0] + [1] * decoy_dropout_df.shape[0])
+			# np.random.shuffle(exp_class_data)
+			feature_matrix = all_feature_df.to_numpy()
+
+			do_mc_cv_random_forest(feature_matrix, exp_class_data, do_plots=do_plots)
