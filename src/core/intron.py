@@ -168,6 +168,12 @@ class IntronSet:
 			intron.ensembl_name = str(ensembl_genes[cnt])
 			cnt += 1
 
+	def get_intron_by_ensembl_name(self, ensembl_name):
+		for intron in self.introns:
+			if intron.ensembl_name == ensembl_name:
+				return intron
+		return None 
+
 	def get_intron_dict(self):
 		intron_dict = {}
 		for intron in self.introns:
