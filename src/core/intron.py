@@ -169,10 +169,11 @@ class IntronSet:
 			cnt += 1
 
 	def get_intron_by_ensembl_name(self, ensembl_name):
+		introns = []
 		for intron in self.introns:
 			if intron.ensembl_name == ensembl_name:
-				return intron
-		return None 
+				introns += [intron]
+		return introns
 
 	def get_intron_dict(self):
 		intron_dict = {}
