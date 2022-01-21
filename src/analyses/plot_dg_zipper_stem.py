@@ -6,6 +6,7 @@ import sys
 
 from util import features_db
 from util.features_db import * 
+from util.gene_names import *
 
 intron_class = sys.argv[1] # E.g. standard_allsize_min_50_max_600
 control_class = sys.argv[2] # E.g. standard_allsize_min_50_max_600_shuffle
@@ -46,6 +47,10 @@ control_feature_df = control_feature_df.dropna(axis=0)
 # Print number of introns 
 check_update_secstruct(intron_class, secstruct_options)
 all_introns = build_intron_set(intron_class, secstruct_options)
+
+rpg_mask = get_rpg_intron_mask(all_introns)
+print("Total number of RPGs: %d" % sum(rpg_mask))
+
 intron_len_mask = [(len(x.seq) > 200) for x in all_introns.introns]
 intron_len_mask = np.array(intron_len_mask)
 print("Total introns with length > 200: %d" % sum(intron_len_mask))
@@ -64,11 +69,13 @@ for ii, feature in enumerate(all_features):
 	mask_len = np.logical_and(np.array(mask), intron_len_mask)
 	num_passing_standard = sum(mask)
 	num_passing_standard_len = sum(mask_len)
+	num_passing_standard_rpg = sum(np.logical_and(np.array(mask), rpg_mask))
 
 	mask = control_feature_df[metric_names[ii]] < summary_cutoff_val
 	mask_len = np.logical_and(np.array(mask), intron_len_mask)
 	num_passing_control = sum(mask)
 	num_passing_control_len = sum(mask_len)
+	num_passing_control_rpg = sum(np.logical_and(np.array(mask), rpg_mask))
 
 	print(feature)
 	print("Num passing cutoff %f kcal/mol - introns: %d/%d" % \
@@ -79,6 +86,10 @@ for ii, feature in enumerate(all_features):
 		(summary_cutoff_val, num_passing_standard_len, sum(intron_len_mask)))
 	print("Num passing cutoff %f kcal/mol with len > 200 - controls: %d/%d" % \
 		(summary_cutoff_val, num_passing_control_len, sum(intron_len_mask)))
+	print("Num passing cutoff %f kcal/mol in RPGs - introns: %d/%d" % \
+		(summary_cutoff_val, num_passing_standard_rpg, sum(rpg_mask)))
+	print("Num passing cutoff %f kcal/mol in RPGs - controls: %d/%d" % \
+		(summary_cutoff_val, num_passing_control_rpg, sum(rpg_mask)))
 
 # Get histogram bin values - used for plotting in GraphPad Prism
 for ii, feature in enumerate(all_features):

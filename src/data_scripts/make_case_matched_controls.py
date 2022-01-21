@@ -19,23 +19,29 @@ def make_shifted_control(base_data, intron_class):
 
 	bed_data = []
 	bps = []
+	offsets = []
 	for data_line in base_data: 
 		bps += [data_line[0][0]]
-		(chr_num, bed_start, bed_end, tag, strand_dir) = data_line[0][1]
-		bed_start = int(bed_start)
-		bed_end = int(bed_end)
+		bed_start = int(data_line[0][1][1])
+		bed_end = int(data_line[0][1][2])
+		strand_dir = data_line[0][1][4]
 		if strand_dir == '-':
 			bed_start = bed_start - shift_dist
 			bed_end = bed_end - shift_dist
 		else:
 			bed_start = bed_start + shift_dist
 			bed_end = bed_end + shift_dist
-		bed_data += [(chr_num, bed_start, bed_end, tag, strand_dir)]
+		cur_bed_data = list(data_line[0][1])
+		cur_bed_data[1] = bed_start
+		cur_bed_data[2] = bed_end
+		bed_data += [tuple(cur_bed_data[:5])]
+		if len(cur_bed_data) > 6:
+			offsets += [(cur_bed_data[5], cur_bed_data[6])]
 		
 	bed_filename = write_bed(bed_data)
 
 	base_data_path = os.path.join(new_filepath, 'base_info.dat')
-	write_base_data_from_bed(base_data_path, bed_filename, bps)
+	write_base_data_from_bed(base_data_path, bed_filename, bps, offsets=offsets)
 	clear_tmp_files()
 
 def make_shuffled_control(base_data, intron_class, do_species=False, species_name=""):
@@ -87,12 +93,18 @@ def make_seq_matched(base_data, base_classname, shifted=True, \
 
 	for ii, data_line in enumerate(base_data):
 		bps = int(data_line[0][0])
+		start_offset = 0
+		end_offset = 0
+		if len(data_line[0][1]) > 6:
+			start_offset = int(data_line[0][1][-2])
+			end_offset = int(data_line[0][1][-1])
 		seq = data_line[1]
 		new_seq = new_base_data[ii][1]
 		new_seq = list(new_seq)
-		new_seq[0:6] = seq[0:6]
+		new_seq[start_offset:(start_offset + 6)] = seq[start_offset:(start_offset + 6)]
 		new_seq[(bps-5):(bps+2)] = seq[(bps-5):(bps+2)]
-		new_seq[-3:] = seq[-3:]
+		new_seq[(len(new_seq)-end_offset-3):(len(new_seq)-end_offset)] = \
+			seq[(len(new_seq)-end_offset-3):(len(new_seq)-end_offset)]
 		new_seq = ''.join(new_seq)
 		new_base_data[ii] = (new_base_data[ii][0], new_seq)
 

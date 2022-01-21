@@ -82,3 +82,4 @@ class StartToBPStemMetric(StemMetric):
 class BPToEndStemMetric(StemMetric):
 	def __init__(self):
 		super().__init__(do_bp_start=True, do_intron_end=True, dist_cutoff=15, req_stem_len=3, name="BPToEndStemMetric")
+

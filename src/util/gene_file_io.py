@@ -12,8 +12,10 @@ def clear_tmp_files():
 
 # Expects list of tuples with bed file info: 
 # (chr_num, bed_start, bed_end, tag, strand_dir)
-def write_bed(bed_data):
-	bed_filename = get_rnd_tmp_file() + ".bed"
+def write_bed(bed_data, filename=""):
+	bed_filename = filename
+	if filename == "":
+		bed_filename = get_rnd_tmp_file() + ".bed"
 	
 	f = open(bed_filename, 'w')
 	for (chr_num, bed_start, bed_end, tag, strand_dir) in bed_data: 
@@ -43,11 +45,13 @@ def read_base_data(basedata_filename):
 
 	# A list of tuples of the form: 
 	# ((bp, (chr_num, bed_start, bed_end, tag, strand_dir)), sequence)
+	# or
+	# ((bp, (chr_num, bed_start, bed_end, tag, strand_dir, fivess_offset, threess_offset)), sequence)
 	base_data = []
 	for ii in range(int(len(all_lines)/2)):
 		bp = all_lines[ii * 2].split(' ')[0]
 		bed_items = all_lines[ii * 2].split(' ')[1].strip('\n').split('\t')
-		bed_items = tuple(bed_items[0:4] + bed_items[5:6])
+		bed_items = tuple(bed_items[0:4] + bed_items[5:])
 		seq = all_lines[ii * 2 + 1].replace('\n', '')
 		base_data += [((bp, bed_items), seq)]
 	
@@ -57,13 +61,13 @@ def write_base_data(base_data_path, base_data):
 	f = open(base_data_path, 'w')
 	for base_item in base_data:
 		bed_first = '\t'.join(base_item[0][1][0:4])
-		bed_second = base_item[0][1][-1]
+		bed_second = '\t'.join(base_item[0][1][4:])
 		f.write("%d %s\t0\t%s\n" % (int(base_item[0][0]), bed_first, bed_second))
 		f.write("%s\n" % base_item[1])
 	f.close()
 
 # A base data file can be written using the bed file and branchpoint positions
-def write_base_data_from_bed(base_data_path, bed_filename, bps):
+def write_base_data_from_bed(base_data_path, bed_filename, bps, offsets=[]):
 	genome_file = DATABASE_PATH + 'genome/sacCer3.fa'
 	fasta_filename = fasta_from_bed(bed_filename, genome_file)
 	fasta_seqs = read_fasta(fasta_filename)
@@ -77,6 +81,8 @@ def write_base_data_from_bed(base_data_path, bed_filename, bps):
 	for ii, (_, seq) in enumerate(fasta_seqs):
 		bed_first = '\t'.join(bed_items[ii][:-1])
 		bed_second = bed_items[ii][-1]
+		if len(offsets) > 0:
+			bed_second = '\t'.join([bed_second] + list(offsets[ii]))
 		f.write("%d %s\t0\t%s\n" % (int(bps[ii]), bed_first, bed_second))
 		f.write("%s\n" % seq)
 	f.close()

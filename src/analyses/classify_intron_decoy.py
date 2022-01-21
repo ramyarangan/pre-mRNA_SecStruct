@@ -235,6 +235,7 @@ if __name__ == "__main__":
 
 	decoy_feature_df = filter_decoys(decoy_feature_df, \
 		["ThreeprimeDistStopFeature", "RPKMFeature"], [50, 50], [False, True])
+	print(standard_feature_df.shape)
 	print(decoy_feature_df.shape)
 
 	feature_list = secstruct_features

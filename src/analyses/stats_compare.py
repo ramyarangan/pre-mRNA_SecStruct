@@ -11,7 +11,7 @@ control_class = sys.argv[2] # E.g. standard_allsize_min_50_max_600_shuffle
 
 secstruct_options = {'secstruct_pkg': 'Vienna', 
 					'secstruct_type': 'ens', 
-					'verbose': False,
+					'verbose': True,
 					'force_eval': False
 					}
 

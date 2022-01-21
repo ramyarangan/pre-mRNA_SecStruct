@@ -4,7 +4,7 @@ from arnie.sample_structures import sample_structures
 from arnie.mfe import mfe
 
 MFE_PACKAGE_LIST = ['vienna', 'contrafold', 'rnastructure', 'eternafold']
-ENS_PACKAGE_LIST = ['vienna', 'eternafold']
+ENS_PACKAGE_LIST = ['vienna', 'rnastructure']
 
 def add_secstruct_mfe_to_database(intron_class, sec_struct_pkg, print_freq=10):
 	intron_seq_file = DATABASE_PATH + 'introns/' + intron_class + '/base_info.dat' 

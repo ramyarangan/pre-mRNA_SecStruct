@@ -48,6 +48,8 @@ intron_path = os.path.join(DATABASE_PATH, 'introns/' + intron_class)
 
 species_names = []
 for species_name in os.listdir(intron_path):
+	if species_name == 'scer':
+		continue
 	species_names += [species_name]
 
 df_dict = {}
@@ -56,7 +58,8 @@ for feature in all_features:
 
 for species_name in species_names:
 	print("Species: %s\n" % species_name)
-
+	if species_name == 'scer':
+		continue
 	intron_class_species = intron_class + '/' + species_name
 	standard_feature_df = features_db.get_features(all_features, \
 		intron_class_species, feature_options_all=feature_options_all)

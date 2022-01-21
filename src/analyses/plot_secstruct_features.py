@@ -81,12 +81,17 @@ def make_heatmap(all_features, feature_options_all, \
 
 	all_species = []
 	for species_name in os.listdir(intron_path):
+		if species_name == 'scer':
+			continue
 		all_species += [species_name]
 
 	df = pd.DataFrame(index=np.array(plot_names), columns=np.array(all_species))
 	
 	for species_name in os.listdir(intron_path):
 		print("Species: %s\n" % species_name)
+
+		if species_name == 'scer':
+			continue
 
 		intron_class_species = intron_class + '/' + species_name
 		standard_feature_df = features_db.get_features(all_features, \
@@ -107,11 +112,11 @@ def make_heatmap(all_features, feature_options_all, \
 				control_vals += [row[metric]]
 			_, pval = stats.wilcoxon(np.array(intron_vals), np.array(control_vals))
 			df.at[plot_names[ii], species_name] = pval
-	df = np.log(df.astype(float))
+	df = np.log10(df.astype(float))
 
 	plt.figure(figsize=(10,8))
 	# sns.heatmap(df, cmap='coolwarm', center=0.3, annot=True, vmin=0, vmax=0.5)
-	sns.heatmap(df, cmap='coolwarm', center=0.5, annot=False, vmin=-10, vmax=0)
+	sns.heatmap(df, cmap='coolwarm', center=0.5, annot=False, vmin=-4, vmax=0)
 	plt.xticks(rotation=45, fontsize=8)
 	plt.show()
 
