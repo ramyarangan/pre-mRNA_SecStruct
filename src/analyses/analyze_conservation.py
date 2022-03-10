@@ -136,26 +136,66 @@ def plot_conservation_stats(cons_stats):
 	print(counts)
 	print(bins)
 
+def heatmap_zipper_stem_data(intron_class):
+	intron_class = 'species_hooks/' + intron_class
+	feature_options = {'secstruct_pkg': 'Vienna', 
+					'secstruct_type': 'mfe', 
+					'verbose': True,
+					'force_eval': False}
+
+	intron_path = os.path.join(DATABASE_PATH, 'introns/' + intron_class)
+
+	species_names = []
+	for species_name in os.listdir(intron_path):
+		species_names += [species_name]
+
+	aln_dict = get_aln_dict(alignment_dir)
+
+	seqs = {}
+	dG_vals = {}
+	for species_name in species_names:
+		intron_class_species = intron_class + '/' + species_name
+		zipper_stem_data = get_zipper_stems(intron_class_species, feature_options)
+		dG_vals[species_name] = [x[3] for x in zipper_stem_data]
+		all_introns
+		seqs[species_name] = 
+
+	for gene_name, aln_line in aln_dict.items():
+
+
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='Parameters for processing intron alignment data')
 	parser.add_argument('alignment_dir', type=str, help='Path to directory storing alignments in Stockholm format')
 	parser.add_argument('intron_class', type=str, help='Intron class to analyze conservation values for')
 	parser.add_argument('--do_zipper', default=False, action='store_true', \
-		 help='Do stats on zipper stems')	
+		 help='Do stats on zipper stems')
+	parser.add_argument('--do_stats', default=False, action='store_true', \
+		 help='Do stats on alignment')		
+	parser.add_argument('--do_zipper_species', default=False, action='store_true', \
+		 help='Get zipper stems for all species')	
 	args = parser.parse_args()
 
 	alignment_dir = args.alignment_dir
 	intron_class = args.intron_class
 	do_zipper = args.do_zipper
+	do_stats = args.do_stats
+	do_zipper_species= args.do_zipper_species
 
-	all_introns = build_intron_set(intron_class)
-	all_introns.fill_aln(alignment_dir)
+	if do_stats or do_zipper:
+		all_introns = build_intron_set(intron_class)
+		all_introns.fill_aln(alignment_dir)
 
-	[ortholog_stats, cons_stats] = get_stats(all_introns, intron_class)
-	plot_ortholog_stats(ortholog_stats)
-	plot_conservation_stats(cons_stats)
+		if do_stats:
+			[ortholog_stats, cons_stats] = get_stats(all_introns, intron_class)
+			plot_ortholog_stats(ortholog_stats)
+			plot_conservation_stats(cons_stats)
 
-	if do_zipper:
-		[ortholog_stats, cons_stats] = get_stats_zipper(all_introns, intron_class)
-		plot_ortholog_stats(ortholog_stats)
-		plot_conservation_stats(cons_stats)
+		if do_zipper:
+			[ortholog_stats, cons_stats] = get_stats_zipper(all_introns, intron_class)
+			plot_ortholog_stats(ortholog_stats)
+			plot_conservation_stats(cons_stats)
+
+	if do_zipper_species:
+		populate_zipper_stem_data(intron_class)
+
+

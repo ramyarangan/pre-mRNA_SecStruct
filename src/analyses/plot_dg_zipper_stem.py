@@ -29,8 +29,8 @@ metric_names = [features_db.get_feature_full_name(feature_name, secstruct_option
 
 # Determined by looking at the data distribution
 plot_mins = {
-	metric_names[0]: -25, 
-	metric_names[1]: -17.5
+	metric_names[0]: -45, # -25, 
+	metric_names[1]: -45# -17.5
 }
 
 feature_options_all = {}
@@ -65,6 +65,7 @@ for ii, feature in enumerate(all_features):
 
 	summary_cutoff_val = summary_cutoffs[feature]
 	
+	print(min(standard_feature_df[metric_names[ii]]))
 	mask = standard_feature_df[metric_names[ii]] < summary_cutoff_val
 	mask_len = np.logical_and(np.array(mask), intron_len_mask)
 	num_passing_standard = sum(mask)

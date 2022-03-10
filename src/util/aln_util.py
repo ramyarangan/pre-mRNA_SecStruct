@@ -121,7 +121,12 @@ def make_species_seqs(alignment_dir):
 
 	return species_seqs
 
+def get_homolog_dicts(alignment_dir):
+	# For each species, make a dictionary of: 
+	# intron number in scer base_info.dat: (intron seq, first scer intron number, scer intron seq)
+	scer_homologs = {}
 
+	
 # Get stk alignment for this S. cer intron sequence
 # Goes through all .stk alignment files in species_dir to find
 # one with the sequence matching the intron sequence

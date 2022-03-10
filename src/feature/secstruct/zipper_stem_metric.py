@@ -19,8 +19,8 @@ class ZipperStemMetric(SecstructMetric):
 		# Region is (lowest start, highest end, total distance max, total distance min)
 		# Stem must start after lowest start + start_idx and must end before end_idx - highest end
 		self.DOFIRST=do_first
-		first_step_region = (10, 20, 12+10+20, 45+10+20) # For 5'SS to BP
-		second_step_region = (8, 3, 8+3, 3000) # For BP to 3'SS
+		first_step_region = (10, 20, 12+10+20, 55+10+20) # For 5'SS to BP
+		second_step_region =  (0, 0, 0, 3000)# For BP to 3'SS (8, 3, 8+3, 3000)
 		self.region = second_step_region 
 		if self.DOFIRST:
 			self.region = first_step_region
@@ -47,7 +47,7 @@ class ZipperStemMetric(SecstructMetric):
 	# Get stems of the form [(a, b, c, d, n)] for a---b paired to c---d 
 	# with n bps present in the stem, with max bulge size specified.
 	# Can handle strings with & in the middle to indicate two strands
-	def get_stems(self, secstruct, bulge_size=3):
+	def get_stems(self, secstruct, bulge_size=5):
 		bps = self.get_base_pairs(secstruct)
 
 		stems = []
@@ -140,8 +140,29 @@ class ZipperStemMetric(SecstructMetric):
 
 	# For an expanded region around the stem candidate from the MFE, check the stability
 	# using RNAfold or RNAcofold
-	def get_max_stem_dG(self, stem, seq, min_start, max_end, expand_low=5, expand_total=25):
+	def get_max_stem_dG(self, stem, seq, min_start, max_end, expand_low=5): #, expand_total=25):
+	
+		# Get region surrounding the stem that does not go too close to the 5'SS and BP
+		start1 = max(min_start, stem[0] - expand_low)
+		end1 = stem[1] + expand_low
+		end2 = min(max_end, stem[3] + expand_low)
+		start2 = stem[2] - expand_low
+
+		# Assemble input for RNAfold or RNAcofold
+		run_seq = ""
+		secstruct = ""
+		dG = self.DG_LIM
+		seq1 = seq[start1:min(end1, start2)]
+		seq2 = seq[max(end1, start2):end2]
+		run_seq = seq1 + "&" + seq2
+		if len(run_seq) > 2:
+			[dG, secstruct] = self.run_cofold(run_seq)
+
+		stem_str = run_seq + "\n" + secstruct + "\n" + str(dG)
+		return [dG, stem_str]
 		
+		"""
+		Old function definition
 		# Get region surrounding the stem that does not go too close to the 5'SS and BP
 		start1 = max(min_start, stem[0] - expand_low)
 		end1 = start1 + expand_total
@@ -176,8 +197,9 @@ class ZipperStemMetric(SecstructMetric):
 
 		stem_str = run_seq + "\n" + secstruct + "\n" + str(dG)
 		return [dG, stem_str]
-
-	def has_stem_dG(self, bp, seq, mfe):
+		"""
+	
+	def has_stem_dG(self, bp, seq, mfe, min_num_bp=6):
 		dG_lim = self.DG_LIM
 		stems = self.get_stems(mfe)
 		stems_region = []
@@ -185,9 +207,13 @@ class ZipperStemMetric(SecstructMetric):
 			stems_region = self.get_stems_region(stems, self.region, bp, len(seq)) # Second step
 		else:
 			stems_region = self.get_stems_region(stems, self.region, 0, bp) # First step
+
+		has_zipper_stem = False
 		best_dG = 200 # Some large number
 		best_stem = ""
 		for stem in stems_region:
+			if stem[4] < min_num_bp:
+				continue
 			dG = 200
 			cur_stem = ""
 			if not self.DOFIRST: 
@@ -195,9 +221,10 @@ class ZipperStemMetric(SecstructMetric):
 			else:
 				[dG, cur_stem] = self.get_max_stem_dG(stem, seq, self.region[0], bp-self.region[1]) # First step
 			if (dG < best_dG):
+				has_zipper_stem = True
 				best_dG = dG
 				best_stem = cur_stem
-		return [(best_dG < dG_lim), best_stem, best_dG]
+		return [has_zipper_stem, best_stem, best_dG]
 
 	def get_score_mfe(self, intron):
 		[has_dG, best_stem, best_dG] = self.has_stem_dG(intron.bp, intron.seq, intron.mfe)
