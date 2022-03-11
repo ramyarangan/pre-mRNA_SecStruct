@@ -163,7 +163,7 @@ def write_seqdat_files(species_seqs, seq_dir, min_size=-1, max_size=-1):
 			# Make a fake chromosome location for now rather than finding
 			# real genome position in genome annotations
 			info_str = str(intron[2]) + ' chrI\t1\t' + str(end_pos) + \
-				'\t\t0\t+'
+				'\t' + gene_name + '\t0\t+'
 			f.write('%s\n' % info_str)
 			f.write('%s\n' % intron[1])
 

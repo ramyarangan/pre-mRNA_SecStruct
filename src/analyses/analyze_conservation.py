@@ -8,10 +8,11 @@ Optionally also compute stats for zipper stems
 Example usage: 
 python analyses/analyze_conservation.py ../database/alignments/hooks_alignments/ standard_allsize_min_50_max_600  --do_zipper
 """
+import os
 import argparse
 import numpy as np
 from matplotlib import pyplot as plt
-import os
+import seaborn as sns
 
 from util.features_db import *
 from util.aln_util import aln_seq_is_empty
@@ -136,8 +137,106 @@ def plot_conservation_stats(cons_stats):
 	print(counts)
 	print(bins)
 
+def plot_heatmap(data_arr, data_mask, labels, colormap='YlGnBu_r'):
+	colormap = plt.cm.get_cmap(colormap)
+	colormap.set_bad('gray')
+	s = sns.heatmap(data_arr, mask=data_mask, cmap=colormap, xticklabels=labels)
+	s.set(xlabel='Species', ylabel='Intron')
+	plt.show()
+
+def plot_paralogs_separately(dG_species_dict, all_gene_names, \
+	do_binary=False, dG_cutoff=0):
+	species_names = dG_species_dict.keys()
+
+	# Get heatmap data - each aligned intron can match up to two introns/species 
+	# two introns whenever this gene was duplicated in the WGD event
+	dG_arr = np.zeros((len(all_gene_names), len(species_names) * 2))
+	dG_mask = np.full((len(all_gene_names), len(species_names) * 2), False)
+	for ii, name in enumerate(all_gene_names):
+		for jj, species in enumerate(species_names):
+			if name not in dG_species_dict[species]:
+				dG_mask[ii, jj] = True
+				dG_mask[ii, jj + len(species_names)] = True
+				continue
+			dG_vals = dG_species_dict[species][name]
+			if len(dG_vals) > 2:
+				raise RuntimeError("Do not expect more than one paralog per gene")
+			dG_arr[ii, jj] = dG_vals[0]
+			if do_binary:
+				dG_arr[ii, jj] = (float(dG_arr[ii, jj]) < dG_cutoff)
+			if len(dG_vals) > 1:
+				dG_arr[ii, jj + len(species_names)] = dG_vals[1]
+				if do_binary:
+					dG_arr[ii, jj + len(species_names)] = \
+						(float(dG_vals[1]) < dG_cutoff)
+			else:
+				dG_mask[ii, jj + len(species_names)] = True
+
+	labels = [0] * len(species_names) * 2
+	for ii, species in enumerate(species_names):
+		labels[ii] = species
+		labels[ii + len(species_names)] = species
+
+	colormap = 'YlGnBu_r'
+	if do_binary:
+		colormap='YlGnBu'
+	plot_heatmap(dG_arr, dG_mask, labels, colormap=colormap)
+
+def plot_best_zipper_paralog(dG_species_dict, all_gene_names, \
+	do_binary=False, dG_cutoff=0):
+	species_names = dG_species_dict.keys()
+
+	# Get heatmap data - each aligned intron can match up to two introns/species 
+	# two introns whenever this gene was duplicated in the WGD event
+	dG_arr = np.zeros((len(all_gene_names), len(species_names)))
+	dG_mask = np.full((len(all_gene_names), len(species_names)), False)
+	for ii, name in enumerate(all_gene_names):
+		for jj, species in enumerate(species_names):
+			if name not in dG_species_dict[species]:
+				dG_mask[ii, jj] = True
+				continue
+			dG_vals = dG_species_dict[species][name]
+			if len(dG_vals) > 2:
+				raise RuntimeError("Do not expect more than one paralog per gene")
+			dG_arr[ii, jj] = dG_vals[0]
+			if len(dG_vals) > 1:
+				dG_arr[ii, jj] = min(dG_vals[0], dG_vals[1])
+			if do_binary:
+				dG_arr[ii, jj] = (float(dG_arr[ii, jj]) < dG_cutoff)
+
+	colormap = 'YlGnBu_r'
+	if do_binary:
+		colormap='YlGnBu'
+	plot_heatmap(dG_arr, dG_mask, species_names, colormap=colormap)
+
+def plot_histogram_num_zipperstems(dG_species_dict, all_gene_names, dG_cutoff=0):
+	species_names = dG_species_dict.keys()
+	num_zipper_stems = []
+	for gene_name in all_gene_names:
+		cnt_zipper_stem = 0
+		for species in species_names:
+			if gene_name not in dG_species_dict[species].keys():
+				continue
+			dG_vals = dG_species_dict[species][gene_name]
+			if len(dG_vals) > 0:
+				if float(dG_vals[0]) < dG_cutoff:
+					cnt_zipper_stem += 1
+			if len(dG_vals) > 1:
+				if float(dG_vals[1]) < dG_cutoff:
+					cnt_zipper_stem += 1
+		num_zipper_stems += [cnt_zipper_stem]
+
+	bins = np.arange(0, max(num_zipper_stems))
+	ticks = np.arange(0, max(num_zipper_stems), 2)
+	plt.hist(num_zipper_stems, color='blue', bins=bins, alpha=0.5, rwidth=0.85)
+	plt.xticks(ticks=ticks, labels=ticks)
+	plt.xlabel("Number of homologous introns with zipper stems")
+	plt.ylabel("Frequency")
+	plt.title("Distribution of zipper stems in introns in Saccharomyces genus")
+	plt.show()
+
 def heatmap_zipper_stem_data(intron_class):
-	intron_class = 'species_hooks/' + intron_class
+	intron_class = 'species_hooks_2/' + intron_class
 	feature_options = {'secstruct_pkg': 'Vienna', 
 					'secstruct_type': 'mfe', 
 					'verbose': True,
@@ -149,19 +248,31 @@ def heatmap_zipper_stem_data(intron_class):
 	for species_name in os.listdir(intron_path):
 		species_names += [species_name]
 
-	aln_dict = get_aln_dict(alignment_dir)
-
-	seqs = {}
-	dG_vals = {}
+	# Retrieve zipper stem data and names
+	dG_species_dict = {}
+	gene_name_set = set() # Superset of all introns across all species - note that 
+					# some species may not have a representative for an intron
 	for species_name in species_names:
+		dG_species_dict[species_name] = {}
 		intron_class_species = intron_class + '/' + species_name
 		zipper_stem_data = get_zipper_stems(intron_class_species, feature_options)
-		dG_vals[species_name] = [x[3] for x in zipper_stem_data]
-		all_introns
-		seqs[species_name] = 
+		dGs = [x[3] for x in zipper_stem_data]
+		all_introns = build_intron_set(intron_class_species, \
+			intron_options={'name_is_refseq': False})
+		names = [intron.name for intron in all_introns.introns]
+		for ii, name in enumerate(names):
+			if name in dG_species_dict[species_name].keys():
+				dG_species_dict[species_name][name] += [dGs[ii]]
+			else:
+				dG_species_dict[species_name][name] = [dGs[ii]]
+		gene_name_set = gene_name_set.union(set(names))
+	all_gene_names = list(gene_name_set)
 
-	for gene_name, aln_line in aln_dict.items():
-
+	plot_histogram_num_zipperstems(dG_species_dict, all_gene_names)
+	plot_paralogs_separately(dG_species_dict, all_gene_names)
+	plot_paralogs_separately(dG_species_dict, all_gene_names, do_binary=True)
+	plot_best_zipper_paralog(dG_species_dict, all_gene_names)
+	plot_best_zipper_paralog(dG_species_dict, all_gene_names, do_binary=True)
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='Parameters for processing intron alignment data')
@@ -196,6 +307,6 @@ if __name__ == "__main__":
 			plot_conservation_stats(cons_stats)
 
 	if do_zipper_species:
-		populate_zipper_stem_data(intron_class)
+		heatmap_zipper_stem_data(intron_class)
 
 

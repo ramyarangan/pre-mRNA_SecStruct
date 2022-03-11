@@ -7,7 +7,7 @@ from util.aln_util import *
 
 class Intron:
 	def __init__(self, seq='', bp=-1, mfe='', ens=[], name='', 
-		chr_pos=('',-1,-1), strand='-', ensembl_name='', 
+		name_is_refseq=True,chr_pos=('',-1,-1), strand='-', ensembl_name='', 
 		fivess_offset=0, threess_offset=0, 
 		gene_seq="", gene_start=-1, gene_end=-1, intron_pos_in_gene=-1, 
 		do_fill_gene_seq=False):
@@ -16,7 +16,10 @@ class Intron:
 		self.seq = seq
 		self.mfe = mfe
 		self.ens = ens
-		self.name = name # refseq name
+		self.name = name
+		# Usually, the intron's name will be in Refseq format
+		# if it is not - user needs to express it that way
+		self.name_is_refseq = name_is_refseq 
 		self.chr_pos = chr_pos
 		self.strand = strand
 		self.ensembl_name = ensembl_name
@@ -104,7 +107,9 @@ class IntronSet:
 		self.introns = []
 
 	def init_from_files(self, seq_filename, mfe_filename="", \
-					ens_filename="", ens_size=1000, do_fill_gene_seq=False):
+					ens_filename="", ens_size=1000, \
+					do_fill_gene_seq=False, name_is_refseq=True, \
+					get_ensembl_names=True):
 		f = open(seq_filename)
 		seq_lines = f.readlines()
 		f.close()
@@ -144,11 +149,18 @@ class IntronSet:
 				ens = ens_lines[((ens_size+1) * ii + 1):((ens_size+1) * (ii + 1))]
 				ens = [x.split()[0] for x in ens]
 
-			self.introns.append(Intron(seq, bp, mfe, ens, name, \
+			self.introns.append(Intron(seq, bp, mfe, ens, name, name_is_refseq, \
 				chr_pos, strand, fivess_offset, threess_offset, \
 				do_fill_gene_seq=do_fill_gene_seq))
 
-		self.fill_ensembl_names()
+		if name_is_refseq and get_ensembl_names:
+			self.fill_ensembl_names()
+
+	def get_seqs(self):
+		seqs = []
+		for intron in self.introns:
+			seqs += [intron.seq]
+		return seqs
 
 	def fill_ensembl_names(self):
 		refseq_names = [intron.name for intron in self.introns]

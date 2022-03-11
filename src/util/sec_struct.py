@@ -9,7 +9,7 @@ ENS_PACKAGE_LIST = ['vienna', 'rnastructure']
 def add_secstruct_mfe_to_database(intron_class, sec_struct_pkg, print_freq=10):
 	intron_seq_file = DATABASE_PATH + 'introns/' + intron_class + '/base_info.dat' 
 	all_introns = IntronSet()
-	all_introns.init_from_files(intron_seq_file)
+	all_introns.init_from_files(intron_seq_file, get_ensembl_names=False)
 
 	secstruct_file = DATABASE_PATH + 'introns/' + intron_class + '/' + sec_struct_pkg + '_mfe.dat'
 
@@ -36,7 +36,7 @@ def add_secstruct_mfe_to_database(intron_class, sec_struct_pkg, print_freq=10):
 def add_secstruct_ens_to_database(intron_class, sec_struct_pkg, print_freq=10):
 	intron_seq_file = DATABASE_PATH + 'introns/' + intron_class + '/base_info.dat' 
 	all_introns = IntronSet()
-	all_introns.init_from_files(intron_seq_file)
+	all_introns.init_from_files(intron_seq_file, get_ensembl_names=False)
 
 	secstruct_file = DATABASE_PATH + 'introns/' + intron_class + '/' + sec_struct_pkg + '_ens.dat'
 

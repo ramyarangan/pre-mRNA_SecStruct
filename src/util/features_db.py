@@ -14,7 +14,7 @@ def get_features_filename(intron_class):
 def get_zipper_stem_filename(intron_class):
 	return DATABASE_PATH + 'introns/' + intron_class + '/zipper_stems.txt'
 
-def build_intron_set(intron_class, feature_options={}):
+def build_intron_set(intron_class, feature_options={}, intron_options={}):
 	intron_seq_file = DATABASE_PATH + 'introns/' + intron_class + '/base_info.dat' 
 	if not os.path.isfile(intron_seq_file):
 		raise RuntimeError('Intron class missing base_info.dat file')
@@ -29,9 +29,17 @@ def build_intron_set(intron_class, feature_options={}):
 			mfe_file = mfe_file_check
 		if os.path.isfile(ens_file_check):
 			ens_file = ens_file_check
+
+	name_is_refseq = True
+	get_ensembl_names = True
+	if 'name_is_refseq' in intron_options.keys():
+		name_is_refseq = intron_options['name_is_refseq']
+	if 'get_ensembl_names' in intron_options.keys():
+		get_ensembl_names = intron_options['get_ensembl_names']
 	
 	all_introns = IntronSet()
-	all_introns.init_from_files(intron_seq_file, mfe_filename=mfe_file, ens_filename=ens_file)
+	all_introns.init_from_files(intron_seq_file, mfe_filename=mfe_file, \
+		ens_filename=ens_file, name_is_refseq=name_is_refseq, get_ensembl_names=get_ensembl_names)
 
 	return all_introns
 
@@ -168,7 +176,8 @@ def get_zipper_stems(intron_class, feature_options):
 		(feature_options['secstruct_type'] != 'mfe'):
 		raise RuntimeError("Feature options must include the secondary structure estimation type mfe")
 	check_update_secstruct(intron_class, feature_options)
-	all_introns = build_intron_set(intron_class, feature_options)
+	all_introns = build_intron_set(intron_class, feature_options=feature_options, 
+		intron_options={'get_ensembl_names': False})
 
 	all_zipper_stems = []		
 	for ii, intron in enumerate(all_introns.introns):
@@ -204,8 +213,8 @@ def get_feature_vals(feature, all_introns, feature_options):
 
 # FeatureData holds options for features: secondary structure package, ens/mfe, print progress or no. 
 # It is a dictionary from feature name to feature options
-def get_features(feature_names, intron_class, feature_options_all={}):
-	all_introns = build_intron_set(intron_class)
+def get_features(feature_names, intron_class, feature_options_all={}, intron_options={}):
+	all_introns = build_intron_set(intron_class, intron_options=intron_options)
 
 	features_file = get_features_filename(intron_class)
 	if not os.path.isfile(features_file):
