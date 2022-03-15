@@ -3,6 +3,9 @@ from feature.secstruct.protection_metric import StartProtectionMetric, EndProtec
 from feature.secstruct.motif_metric import KinkturnMetric, GNRAMetric
 from feature.secstruct.stem_metric import StartToBPStemMetric, BPToEndStemMetric
 from feature.secstruct.zipper_stem_metric import ZipperStemMetric
+from feature.secstruct.longest_stem_metric import LongestStemMetric
+from feature.secstruct.nwj_metric import NWJMetric
+from feature.secstruct.mld_metric import MLDMetric
 from feature.early_stop_feature import HasEarlyStopFeature, ThreeprimeDistStopFeature
 from feature.rpkm_feature import RPKMFeature
 

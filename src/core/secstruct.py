@@ -70,7 +70,7 @@ class SecstructGraph():
 		self.node_dict = G
 		self.stemG = self.get_stem_graph()
 
-	def get_stems(self):
+	def get_stems(self, stem_verbose=False):
 		dotbracket = self.dotbracket
 		stems = []
 
@@ -122,7 +122,7 @@ class SecstructGraph():
 	#    Single nucleotide
 	# Used for: MLD calculation (longest shortest paths)
 	# Return type: networkx graph, node id to node object dict
-	def get_graph(ss_weight=1, bp_weight=1):
+	def get_graph(self, ss_weight=1, bp_weight=1):
 		dotbracket = self.dotbracket
 		base1_list = []
 		node_dict = {}
@@ -170,7 +170,7 @@ class SecstructGraph():
 	# G: current graph
 	# is_internal: False for a portion of the structure that is not in any stems 
 	#              or internal to any stems
-	def get_stem_graph_rec(cur_start, cur_end, nt_to_node_dict, \
+	def get_stem_graph_rec(self, cur_start, cur_end, nt_to_node_dict, \
 		dotbracket, G, is_internal, verbose=False):
 		# Add node for current portion of stem graph
 		G.add_node(cur_start)
@@ -198,7 +198,7 @@ class SecstructGraph():
 
 			# Update graph for nts between the 5' and 3' strands of stem
 			# E.g. when Called on (((....)))... from (((((....)))...)), get node for ....
-			node_id = get_stem_graph_rec(junc_start + 1, junc_end, nt_to_node_dict, \
+			node_id = self.get_stem_graph_rec(junc_start + 1, junc_end, nt_to_node_dict, \
 				dotbracket, G, True, verbose=verbose)
 			# Connect node for .... to ((()))
 			G.add_edge(stem_start, node_id)
@@ -208,7 +208,7 @@ class SecstructGraph():
 				# This happens for internal loops with only 3' nucleotides or
 				# external ssRNA outside of stems 
 				# E.g. when Called on (((....)))... from (((((....)))...)), get node for ...
-				node_id_2 = get_stem_graph_rec(stem_end + 1, cur_end, nt_to_node_dict, \
+				node_id_2 = self.get_stem_graph_rec(stem_end + 1, cur_end, nt_to_node_dict, \
 					dotbracket, G, is_internal, verbose=verbose)
 				# Connect node for ... to ((()))
 				G.add_edge(stem_start, node_id_2)
@@ -246,7 +246,7 @@ class SecstructGraph():
 
 			if cur_end > ssrna_end:
 				# E.g. when called on ....(((...))) from ((....))....(((...)))
-				node_id = get_stem_graph_rec(ssrna_end, cur_end, nt_to_node_dict, \
+				node_id = self.get_stem_graph_rec(ssrna_end, cur_end, nt_to_node_dict, \
 					dotbracket, G, False, verbose=verbose)
 				# Connect .... to ((()))
 				G.add_edge(cur_start, node_id)
@@ -286,7 +286,7 @@ class SecstructGraph():
 				start_idx = min(neighbor_stem.strand1_nts)
 				end_idx = max(neighbor_stem.strand2_nts)
 				# E.g. when called on ....((...))...(....).. from ((....((...))...(....)..))
-				node_id = get_stem_graph_rec(start_idx, end_idx + 1, nt_to_node_dict, \
+				node_id = self.get_stem_graph_rec(start_idx, end_idx + 1, nt_to_node_dict, \
 					dotbracket, G, True, verbose=verbose)
 				# Connect ......... to (()) and ......... to ()
 				G.add_edge(cur_start, node_id)
@@ -311,12 +311,12 @@ class SecstructGraph():
 	# Used for: NWJ accounting, longest stem
 	# Return type: networkx graph, dictionary connecting nucleotides to the stems/ junctions
 	#              they belong in 
-	def get_stem_graph(stem_verbose=False, graph_verbose=False):
+	def get_stem_graph(self, graph_verbose=False):
 		dotbracket = self.dotbracket
 		# Initiate stem graph building recursion
 		G = nx.Graph()
 		nt_to_node_dict = self.nt_to_stem_dict
-		get_stem_graph_rec(0, len(dotbracket), nt_to_node_dict, dotbracket, G, \
+		self.get_stem_graph_rec(0, len(dotbracket), nt_to_node_dict, dotbracket, G, \
 			False, verbose=graph_verbose)
 		return G
 

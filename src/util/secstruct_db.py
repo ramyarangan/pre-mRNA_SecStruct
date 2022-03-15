@@ -3,7 +3,7 @@ from config import DATABASE_PATH
 from arnie.sample_structures import sample_structures
 from arnie.mfe import mfe
 
-MFE_PACKAGE_LIST = ['vienna', 'contrafold', 'rnastructure', 'eternafold']
+MFE_PACKAGE_LIST = ['vienna', 'contrafold', 'rnastructure', 'eternafold', 'rnastructure_dms']
 ENS_PACKAGE_LIST = ['vienna', 'rnastructure']
 
 def add_secstruct_mfe_to_database(intron_class, sec_struct_pkg, print_freq=10):
