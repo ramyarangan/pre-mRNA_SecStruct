@@ -19,12 +19,15 @@ class Stem(BigNode):
 		self.strand2_nts = strand2_nts
 		self.bpp = None
 
-	def set_bpp(self, bpp_matrix):
-		total_bpp = 0
+	def get_bpp(self, bpp_matrix):
+		max_bpp = 0
 		for ii, nt1 in enumerate(self.strand1_nts):
 			nt2 = self.strand2_nts[ii]
-			total_bpp += bpp_matrix[nt1][nt2]
-		self.bpp = total_bpp/len(self.strand1_nts)
+			max_bpp = max(max_bpp, bpp_matrix[nt1][nt2])
+		return max_bpp
+
+	def set_bpp(self, bpp_matrix):
+		self.bpp = self.get_bpp(bpp_matrix)
 
 	def get_type(self):
 		return 'stem'

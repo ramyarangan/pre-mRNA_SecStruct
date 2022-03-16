@@ -34,7 +34,7 @@ class StemMetric(SecstructMetric):
 		return best_bpp
 
 	# maybe allow for bulges in this stem?
-	def find_stem(self, bp_map, intron, do_bpp=False, bpp_thresh=0.7, bpp_stem_len=4):
+	def find_stem(self, bp_map, intron, do_bpp=False, bpp_thresh=0.7, bpp_len_cutoff=4):
 		start = intron.fivess_offset
 		end = len(intron.seq) - intron.threess_offset
 		if (self.do_bp_start):
@@ -67,7 +67,7 @@ class StemMetric(SecstructMetric):
 				passes_bpp = True
 				if do_bpp:
 					bpp = get_bpp(stem_pos1, stem_pos2, intron.bpp)
-					if num_bps <= bpp_stem_len:
+					if num_bps <= bpp_len_cutoff:
 						passes_bpp = False
 					if bpp < bpp_thresh: 
 						passes_bpp = False

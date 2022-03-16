@@ -8,7 +8,8 @@ class LongestStemMetric(SecstructMetric):
 		self.max_ens = max_ens
 		self.name = name
 	
-	def get_longest_stem(self, secstruct, loop_cutoff=10):
+	def get_longest_stem(self, secstruct, loop_cutoff=10, do_bpp=False, \
+		bpp_thresh=0.7, bpp_len_cutoff=4, bpp_matrix=None):
 		secstruct_graph = SecstructGraph(secstruct)
 		stemG = secstruct_graph.stemG
 		nt_to_node_dict = secstruct_graph.nt_to_stem_dict
@@ -39,6 +40,13 @@ class LongestStemMetric(SecstructMetric):
 			cur_longest_stem += [cur_stem]
 			cur_longest_len += cur_stem.len()
 
+			passes_bpp = True
+			if do_bpp:
+				passes_bpp = False
+				if cur_stem.len() > bpp_len_cutoff and \
+					cur_stem.get_bpp(bpp_matrix) > bpp_thresh:
+					passes_bpp = True
+
 			# Extend stem as far as possible
 			neighbors = list(nx.neighbors(stemG, nt))
 			while len(neighbors) > 0:
@@ -56,6 +64,10 @@ class LongestStemMetric(SecstructMetric):
 					cur_longest_stem += [neighbor_node]
 					cur_longest_len += neighbor_node.len()
 
+					if neighbor_node.len() > bpp_len_cutoff and \
+						neighbor_node.get_bpp(bpp_matrix) > bpp_thresh:
+						passes_bpp = True
+
 				if neighbor_node.get_type() == 'loop':
 					if len(neighbor_node.nts) > loop_cutoff:
 						continue
@@ -72,7 +84,7 @@ class LongestStemMetric(SecstructMetric):
 					if candidate not in tested_stems:
 						neighbors += [candidate]
 
-			if cur_longest_len > longest_len:
+			if passes_bpp and (cur_longest_len > longest_len):
 				longest_len = cur_longest_len
 				longest_stem = cur_longest_stem
 
@@ -80,6 +92,11 @@ class LongestStemMetric(SecstructMetric):
 
 	def get_score_mfe(self, intron):
 		_, longest_len = self.get_longest_stem(intron.mfe)
+		return longest_len
+
+	def get_score_mfe_bpp(self, intron):
+		_, longest_len = self.get_longest_stem(intron.mfe, do_bpp=True, \
+			bpp_matrix=intron.bpp_matrix)
 		return longest_len
 
 	def get_score_ens(self, intron):
