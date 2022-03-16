@@ -2,6 +2,7 @@ import random
 import os
 from config import TMP_PATH
 from config import DATABASE_PATH
+import numpy as np 
 
 def get_rnd_tmp_file():
 	return TMP_PATH + str(int(random.random() * 10000))
@@ -185,4 +186,20 @@ def process_zipper_stem_entry(has_dG, best_stem):
 
 	return (seq1, seq2, secstruct, dG)
 
+def get_bpp_from_file(bpp_dir, chr_pos, seq_len):
+	(chr_num, start_idx, end_idx) = chr_pos
+
+	filename = chr_num + "_" + str(start_idx) + "_" + str(end_idx) + "_bpp.csv"
+	bpp_file = os.path.join(bpp_dir, filename)
+
+	f = open(bpp_file)
+	bpp_lines = f.readlines()
+	f.close()
+
+	bpp_arr = np.zeros((seq_len, seq_len))
+	for ii in range(seq_len):
+		bpp_items = bpp_lines[ii].replace('\n', '').split(',')
+		bpp_arr[ii,:] = bpp_items
+
+	return bpp_arr
 

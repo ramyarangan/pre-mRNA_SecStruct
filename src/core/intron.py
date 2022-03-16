@@ -93,6 +93,9 @@ class Intron:
 			self.aln_idx_mapping = \
 				get_idx_map_intron_to_aln_seq(self.seq, scer_aln_seq)
 
+	def add_bpp(self, bpp_dir):
+		self.bpp = get_bpp_from_file(bpp_dir, chr_pos, len(self.seq))
+
 	def print_string(self):
 		str_chrpos = self.chr_pos[0] + ":" + \
 			str(self.chr_pos[1]) + "-" + str(self.chr_pos[2])
@@ -109,7 +112,7 @@ class IntronSet:
 	def init_from_files(self, seq_filename, mfe_filename="", \
 					ens_filename="", ens_size=1000, \
 					do_fill_gene_seq=False, name_is_refseq=True, \
-					get_ensembl_names=True):
+					get_ensembl_names=True, add_bpp=False, bpp_dir=""):
 		f = open(seq_filename)
 		seq_lines = f.readlines()
 		f.close()
@@ -155,6 +158,12 @@ class IntronSet:
 
 		if name_is_refseq and get_ensembl_names:
 			self.fill_ensembl_names()
+
+		if add_bpp:
+			if not bpp_dir:
+				raise RuntimeError("Need to specify base-pair probability directory.")
+			for intron in self.introns:
+				intron.add_bpp(bpp_dir)
 
 	def get_seqs(self):
 		seqs = []

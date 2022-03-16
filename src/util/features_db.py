@@ -30,6 +30,11 @@ def build_intron_set(intron_class, feature_options={}, intron_options={}):
 		if os.path.isfile(ens_file_check):
 			ens_file = ens_file_check
 
+	add_bpp = False 
+	if 'use_bpp' in feature_options.keys() and feature_options['use_bpp']:
+		add_bpp = True
+		bpp_dir = DATABASE_PATH + 'introns/' + intron_class + '/bpp_dir/'
+
 	name_is_refseq = True
 	get_ensembl_names = True
 	if 'name_is_refseq' in intron_options.keys():
@@ -39,7 +44,8 @@ def build_intron_set(intron_class, feature_options={}, intron_options={}):
 	
 	all_introns = IntronSet()
 	all_introns.init_from_files(intron_seq_file, mfe_filename=mfe_file, \
-		ens_filename=ens_file, name_is_refseq=name_is_refseq, get_ensembl_names=get_ensembl_names)
+		ens_filename=ens_file, name_is_refseq=name_is_refseq, \
+		get_ensembl_names=get_ensembl_names, add_bpp=add_bpp, bpp_dir=bpp_dir)
 
 	return all_introns
 

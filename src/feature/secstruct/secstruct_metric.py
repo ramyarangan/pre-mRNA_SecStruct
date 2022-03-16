@@ -9,7 +9,10 @@ class SecstructMetric(Feature):
 			raise RuntimeError("SecstructMetric feature requires secondary structure package in feature_options")
 		if 'secstruct_type' not in feature_options:
 			raise RuntimeError("SectructMetric feature requires secondary structure type: ens or mfe")
-		return self.name + '_' + feature_options['secstruct_pkg'] + '_' + feature_options['secstruct_type']
+		full_name = self.name + '_' + feature_options['secstruct_pkg'] + '_' + feature_options['secstruct_type']
+		if 'use_bpp' in feature_options.keys() and feature_options['use_bpp']:
+			full_name += '_' + "BPP"
+		return full_name
 
 	def apply(self, intron, feature_options):
 		if 'secstruct_type' not in feature_options:
