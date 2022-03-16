@@ -198,8 +198,74 @@ class ZipperStemMetric(SecstructMetric):
 		stem_str = run_seq + "\n" + secstruct + "\n" + str(dG)
 		return [dG, stem_str]
 		"""
+
+	# Get the highest average BPP for a helix of length at least 4 within the stem
+	def get_best_bpp(self, secstruct, stem, bpp_matrix, len_cutoff=4, bpp_thresh=0.7):
+		
+		strand1 = secstruct[stem[0]:stem[1]]
+		strand2 = secstruct[stem[2]:stem[3]]
+
+		bps = get_base_pairs(secstruct)
+
+		ii = stem[0]
+		cur_end = stem[3] - 1
+		cur_cnt = 0
+		total_bpp = 0
+		bpps = []
+		cnts = []
+		while ii < stem[1] and cur_end >= stem[2]:
+			if (ii in bps) and (bps[ii] == cur_end):
+				cur_cnt += 1
+				# For now get the maximum base-pairing probability in the stem 
+				# This is what is done to get the VARNA diagrams from Biers
+				total_bpp = max(bpp_matrix[ii][cur_end], total_bpp)
+				# print("%d %d %d %f\n" % (cur_cnt, ii, cur_end, bpp_matrix[ii][cur_end]))
+				ii += 1
+				cur_end -= 1
+				continue
+
+			if secstruct[ii] != '(':
+				ii += 1
+			elif cur_end != bps[ii]:
+				cur_end -= 1
+
+			if cur_cnt > 0:
+				bpps += [total_bpp]
+				cnts += [cur_cnt]
+
+			cur_cnt = 0
+			total_bpp = 0
+		
+		bpps += [total_bpp]
+		cnts += [cur_cnt]
+
+		#print(cnts)
+		#print(bpps)
+		# How many base-pairs are in stems passing the base-pair probability threshold?
+		total_bps_passing = 0
+		total_bpp = 0
+		for ii, cnt in enumerate(cnts):
+			#print(bpps[ii])
+			if bpps[ii] > bpp_thresh:
+				total_bps_passing += cnt
+				total_bpp = max(total_bpp, bpps[ii])
+
+		if total_bps_passing > len_cutoff:
+			return True, total_bpp # /total_bps_passing
+
+		# total_bps_passing = 0
+		# total_bpp = 0
+		# for ii, cnt in enumerate(cnts):
+		#	print(bpps[ii]/cnt)
+		#	if bpps[ii]/cnt > bpp_thresh:
+		#		total_bps_passing += cnt
+		#		total_bpp += bpps[ii]
+
+		#if total_bps_passing > len_cutoff:
+		#	return True, total_bpp/total_bps_passing
+		return False, -1
 	
-	def has_stem_dG(self, bp, seq, mfe, min_num_bp=6):
+	def has_stem_dG(self, bp, seq, mfe, bpp_matrix=None, min_num_bp=6, bpp_cutoff=0.7):
 		dG_lim = self.DG_LIM
 		stems = self.get_stems(mfe)
 		stems_region = []
@@ -214,6 +280,14 @@ class ZipperStemMetric(SecstructMetric):
 		for stem in stems_region:
 			if stem[4] < min_num_bp:
 				continue
+
+			passes_bpp = True
+			if bpp_matrix is not None:
+				passes_bpp, best_bpp = self.get_best_bpp(mfe, stem, bpp_matrix, \
+					bpp_thresh=bpp_cutoff)
+			if not passes_bpp:
+				continue
+
 			dG = 200
 			cur_stem = ""
 			if not self.DOFIRST: 
@@ -228,6 +302,14 @@ class ZipperStemMetric(SecstructMetric):
 
 	def get_score_mfe(self, intron):
 		[has_dG, best_stem, best_dG] = self.has_stem_dG(intron.bp, intron.seq, intron.mfe)
+		if (has_dG):
+			return best_dG
+		else:
+			return self.DG_LIM
+
+	def get_score_mfe_bpp(self, intron):
+		[has_dG, best_stem, best_dG] = self.has_stem_dG(intron.bp, intron.seq, \
+			intron.mfe, bpp_matrix=intron.bpp)
 		if (has_dG):
 			return best_dG
 		else:
