@@ -242,27 +242,16 @@ class ZipperStemMetric(SecstructMetric):
 		#print(cnts)
 		#print(bpps)
 		# How many base-pairs are in stems passing the base-pair probability threshold?
-		total_bps_passing = 0
-		total_bpp = 0
+		best_bpp = 0
 		for ii, cnt in enumerate(cnts):
 			#print(bpps[ii])
 			if bpps[ii] > bpp_thresh:
-				total_bps_passing += cnt
-				total_bpp = max(total_bpp, bpps[ii])
+				if cnt > len_cutoff: 
+					best_bpp = max(bpps[ii], best_bpp)
 
-		if total_bps_passing > len_cutoff:
-			return True, total_bpp # /total_bps_passing
+		if best_bpp > 0:
+			return True, best_bpp
 
-		# total_bps_passing = 0
-		# total_bpp = 0
-		# for ii, cnt in enumerate(cnts):
-		#	print(bpps[ii]/cnt)
-		#	if bpps[ii]/cnt > bpp_thresh:
-		#		total_bps_passing += cnt
-		#		total_bpp += bpps[ii]
-
-		#if total_bps_passing > len_cutoff:
-		#	return True, total_bpp/total_bps_passing
 		return False, -1
 	
 	def has_stem_dG(self, bp, seq, mfe, bpp_matrix=None, min_num_bp=6, bpp_cutoff=0.7):

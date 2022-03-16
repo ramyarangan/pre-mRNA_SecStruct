@@ -26,8 +26,15 @@ class StemMetric(SecstructMetric):
 				bp_map[ii] = bp_start
 		return bp_map
 
+	def get_bpp(stem_strand1, stem_strand2, bpp_matrix):
+		best_bpp = 0
+		for ii, strand1_idx in enumerate(stem_strand1):
+			strand2_idx = stem_strand2[ii]
+			best_bpp = max(best_bpp, bpp_matrix[strand1_idx][strand2_idx])
+		return best_bpp
+
 	# maybe allow for bulges in this stem?
-	def find_stem(self, bp_map, intron):
+	def find_stem(self, bp_map, intron, do_bpp=False, bpp_thresh=0.7, bpp_stem_len=4):
 		start = intron.fivess_offset
 		end = len(intron.seq) - intron.threess_offset
 		if (self.do_bp_start):
@@ -46,12 +53,26 @@ class StemMetric(SecstructMetric):
 				cur_start = ii
 				cur_end = bp_map[ii]
 				num_bps = 1
+				stem_pos1 = [cur_start]
+				stem_pos2 = [cur_end]
+
 				while ((cur_start + 1) in bp_map) and \
 					(bp_map[cur_start + 1] == cur_end - 1):
+					stem_pos1 += [cur_start + 1]
+					stem_pos2 += [cur_end - 1]
 					num_bps += 1
 					cur_start += 1
 					cur_end -= 1
-				if (num_bps > self.req_stem_len):
+
+				passes_bpp = True
+				if do_bpp:
+					bpp = get_bpp(stem_pos1, stem_pos2, intron.bpp)
+					if num_bps <= bpp_stem_len:
+						passes_bpp = False
+					if bpp < bpp_thresh: 
+						passes_bpp = False
+
+				if (num_bps > self.req_stem_len) and passes_bpp:
 					stem_found = True
 			if (stem_found):
 				break
@@ -62,6 +83,10 @@ class StemMetric(SecstructMetric):
 	def get_score_mfe(self, intron):
 		bp_map = self.get_base_pairs(intron.mfe)
 		return -self.find_stem(bp_map, intron)
+
+	def get_score_mfe_bpp(self, intron):
+		bp_map = self.get_base_pairs(intron.mfe)
+		return -self.find_stem(bp_map, intron, do_bpp=True)
 
 	def get_score_ens(self, intron):
 		num_stems = 0
