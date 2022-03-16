@@ -30,7 +30,8 @@ def build_intron_set(intron_class, feature_options={}, intron_options={}):
 		if os.path.isfile(ens_file_check):
 			ens_file = ens_file_check
 
-	add_bpp = False 
+	add_bpp = False
+	bpp_dir = ""
 	if 'use_bpp' in feature_options.keys() and feature_options['use_bpp']:
 		add_bpp = True
 		bpp_dir = DATABASE_PATH + 'introns/' + intron_class + '/bpp_dir/'

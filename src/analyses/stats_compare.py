@@ -34,13 +34,6 @@ control_feature_df = features_db.get_features(all_features, \
 	control_class, feature_options_all=feature_options_all)
 control_feature_df = control_feature_df.dropna(axis=0)
 
-# standard_feature_df = features_db.get_features(all_features, \
-#  	'standard', feature_options_all=feature_options_all)
-# standard_feature_df = standard_feature_df.dropna(axis=0)
-# control_feature_df = features_db.get_features(all_features, \
-# 	'standard_shuffle', feature_options_all=feature_options_all)
-# control_feature_df = control_feature_df.dropna(axis=0)
-
 print(standard_feature_df.shape)
 print(control_feature_df.shape)
 
@@ -55,8 +48,14 @@ for metric in metric_names:
 	# plt.subplot(1, len(metric_names), ii)
 	# ii += 1
 	# plt.hist(np.array(intron_vals) - np.array(control_vals), alpha=0.5, rwidth=0.85, color="forestgreen")
-	# plt.axvline(x=0, linestyle='--', color='black')
+	# plt.axvline(x=0, linestyle='--', color='black')		
 	print(metric)
+	num_nonzero_introns = sum(np.array(intron_vals) != 0)
+	num_nonzero_controls = sum(np.array(control_vals) != 0)
+	if max(num_nonzero_introns, num_nonzero_controls) < 10:
+		print("Sample sizes too small to compare.")
+		continue
+
 	print(stats.ttest_rel(np.array(intron_vals), np.array(control_vals)))
 	print(stats.wilcoxon(np.array(intron_vals), np.array(control_vals)))
 

@@ -1,4 +1,4 @@
-from feature.secstruct.secstruct_metric import SecstructMetric
+from feature.secstruct.secstruct_metric import SecstuctMetricBPP
 
 import subprocess # For making RNAfold/RNAcofold calls
 import os
@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 # Approach: Starts with reasonably long stems present in the MFE, and then checks the 
 # stability of these stems and a slightly expanded surrounding context with RNAfold or RNAcofold. 
 
-class ZipperStemMetric(SecstructMetric):
+class ZipperStemMetric(SecstuctMetricBPP):
 	def __init__(self, do_first=True, dg_lim=0, min_seed=0, name="ZipperStemMetric", max_ens=100):
 		# Region is (lowest start, highest end, total distance max, total distance min)
 		# Stem must start after lowest start + start_idx and must end before end_idx - highest end
@@ -205,7 +205,7 @@ class ZipperStemMetric(SecstructMetric):
 		strand1 = secstruct[stem[0]:stem[1]]
 		strand2 = secstruct[stem[2]:stem[3]]
 
-		bps = get_base_pairs(secstruct)
+		bps = self.get_base_pairs(secstruct)
 
 		ii = stem[0]
 		cur_end = stem[3] - 1

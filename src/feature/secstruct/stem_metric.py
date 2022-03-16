@@ -1,7 +1,7 @@
-from feature.secstruct.secstruct_metric import SecstructMetric
+from feature.secstruct.secstruct_metric import SecstuctMetricBPP
 import math 
 
-class StemMetric(SecstructMetric):
+class StemMetric(SecstuctMetricBPP):
 
 	def __init__(self, do_bp_start=False, do_bp_end=False, \
 		do_intron_end=False, dist_cutoff=-1, req_stem_len=-1, name="Stem Metric"):
@@ -26,7 +26,7 @@ class StemMetric(SecstructMetric):
 				bp_map[ii] = bp_start
 		return bp_map
 
-	def get_bpp(stem_strand1, stem_strand2, bpp_matrix):
+	def get_bpp(self, stem_strand1, stem_strand2, bpp_matrix):
 		best_bpp = 0
 		for ii, strand1_idx in enumerate(stem_strand1):
 			strand2_idx = stem_strand2[ii]
@@ -66,7 +66,7 @@ class StemMetric(SecstructMetric):
 
 				passes_bpp = True
 				if do_bpp:
-					bpp = get_bpp(stem_pos1, stem_pos2, intron.bpp)
+					bpp = self.get_bpp(stem_pos1, stem_pos2, intron.bpp)
 					if num_bps <= bpp_len_cutoff:
 						passes_bpp = False
 					if bpp < bpp_thresh: 

@@ -94,7 +94,7 @@ class Intron:
 				get_idx_map_intron_to_aln_seq(self.seq, scer_aln_seq)
 
 	def add_bpp(self, bpp_dir):
-		self.bpp = get_bpp_from_file(bpp_dir, chr_pos, len(self.seq))
+		self.bpp = get_bpp_from_file(bpp_dir, self.chr_pos, len(self.seq))
 
 	def print_string(self):
 		str_chrpos = self.chr_pos[0] + ":" + \

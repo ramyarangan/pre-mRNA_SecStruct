@@ -1,9 +1,9 @@
-from feature.secstruct.secstruct_metric import SecstructMetric
+from feature.secstruct.secstruct_metric import SecstuctMetricBPP
 from core.secstruct import SecstructGraph
 
 import networkx as nx
 
-class LongestStemMetric(SecstructMetric):
+class LongestStemMetric(SecstuctMetricBPP):
 	def __init__(self, max_ens = 1000, name="LongestStemMetric"):
 		self.max_ens = max_ens
 		self.name = name
@@ -43,9 +43,10 @@ class LongestStemMetric(SecstructMetric):
 			passes_bpp = True
 			if do_bpp:
 				passes_bpp = False
-				if cur_stem.len() > bpp_len_cutoff and \
-					cur_stem.get_bpp(bpp_matrix) > bpp_thresh:
+				if cur_stem.len() > bpp_len_cutoff:
 					passes_bpp = True
+				if cur_stem.get_bpp(bpp_matrix) < bpp_thresh:
+					continue
 
 			# Extend stem as far as possible
 			neighbors = list(nx.neighbors(stemG, nt))
@@ -61,12 +62,13 @@ class LongestStemMetric(SecstructMetric):
 				neighbor_node = nt_to_node_dict[cur_neighbor]
 
 				if neighbor_node.get_type() == 'stem':
+					if do_bpp:
+						if neighbor_node.len() > bpp_len_cutoff:
+							passes_bpp = True
+						if neighbor_node.get_bpp(bpp_matrix) < bpp_thresh:
+							continue
 					cur_longest_stem += [neighbor_node]
 					cur_longest_len += neighbor_node.len()
-
-					if neighbor_node.len() > bpp_len_cutoff and \
-						neighbor_node.get_bpp(bpp_matrix) > bpp_thresh:
-						passes_bpp = True
 
 				if neighbor_node.get_type() == 'loop':
 					if len(neighbor_node.nts) > loop_cutoff:
@@ -84,7 +86,7 @@ class LongestStemMetric(SecstructMetric):
 					if candidate not in tested_stems:
 						neighbors += [candidate]
 
-			if passes_bpp and (cur_longest_len > longest_len):
+			if passes_bpp and cur_longest_len > longest_len:
 				longest_len = cur_longest_len
 				longest_stem = cur_longest_stem
 
@@ -96,7 +98,7 @@ class LongestStemMetric(SecstructMetric):
 
 	def get_score_mfe_bpp(self, intron):
 		_, longest_len = self.get_longest_stem(intron.mfe, do_bpp=True, \
-			bpp_matrix=intron.bpp_matrix)
+			bpp_matrix=intron.bpp)
 		return longest_len
 
 	def get_score_ens(self, intron):
