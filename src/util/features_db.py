@@ -97,23 +97,6 @@ def get_features_in_database(intron_class):
 			no_na_columns += [column]
 	return no_na_columns
 
-def get_feature_vals(feature, all_introns, feature_options):
-	verbose = False
-	if 'verbose' in feature_options.keys():
-		verbose = feature_options['verbose']
-
-	feature_vals = []
-	for ii, intron in enumerate(all_introns.introns):
-		if verbose:
-			print("Feature: %s, Evaluating intron: %d of %d" % \
-				(feature.name, ii, len(all_introns.introns)))
-		try:
-			feature_vals += [feature.apply(intron, feature_options)]
-		except NotImplementedError:
-			print("Feature: %s is not implemented" % feature.name)
-
-	return feature_vals
-
 # Updates secondary structure files if they are not currently filled
 # Raises an error if secondary structure flags are not set in the feature_options dictionary
 def check_update_secstruct(intron_class, feature_options):
@@ -149,6 +132,7 @@ def get_feature_vals_update_secstruct(feature_name, intron_class, feature_option
 def add_features_to_database(features_to_add, intron_class, feature_options_all, all_introns):
 	features_df = get_features_df(intron_class)
 	
+	features_to_add = []
 	for feature_name in features_to_add:
 		feature_options = feature_options_all[feature_name]
 		full_feature_name = get_feature_full_name(feature_name, feature_options)
@@ -240,8 +224,10 @@ def get_features(feature_names, intron_class, feature_options_all={}, intron_opt
 			features_to_add += [feature_name]
 		elif 'force_eval' in feature_options and feature_options['force_eval']:
 			features_to_add += [feature_name]
+
 	if len(features_to_add) > 0:
 		add_features_to_database(features_to_add, intron_class, feature_options_all, all_introns)
 
 	# Get a dataframe of the features requested
 	return get_features_df(intron_class, feature_names=feature_names, feature_options_all=feature_options_all)
+

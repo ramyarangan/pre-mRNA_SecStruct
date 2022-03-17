@@ -29,4 +29,4 @@ class MLDMetric(SecstructMetric):
 		for mfe in secstructs:
 			total_mld += self.get_mld(mfe)
 
-		return total_mld/len(mfe)
+		return total_mld/len(secstructs)

@@ -17,7 +17,8 @@ import random
 from collections import Counter
 
 SECSTRUCT_FEATURES = ["LocalizationMetric", "StartToBPStemMetric", "BPToEndStemMetric", \
-			"StartProtectionMetric", "EndProtectionMetric", "BPProtectionMetric", "ZipperStemStartMetric", "ZipperStemEndMetric"] 
+			"StartProtectionMetric", "EndProtectionMetric", "BPProtectionMetric", "ZipperStemStartMetric", \
+			"ZipperStemEndMetric", "LongestStemMetric", "MLDMetric"]
 
 def filter_decoys(df, columns_list, cutoff_list, cutoff_is_greater):
 	for ii, column in enumerate(columns_list):
@@ -216,7 +217,7 @@ if __name__ == "__main__":
 
 	secstruct_options = {'secstruct_pkg': 'Vienna', 
 					'secstruct_type': 'ens', 
-					'verbose': False,
+					'verbose': True,
 					'force_eval': False
 					}
 

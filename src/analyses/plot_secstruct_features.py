@@ -19,12 +19,17 @@ from util import features_db
 from config import DATABASE_PATH
 
 PLOT_NAME_DICT = {
-	"LocalizationMetric": "5'SS to Branchpoint Distance",
-	"StartToBPStemMetric": "5'SS to Branchpoint Stem",
-	"BPToEndStemMetric": "Branchpoint to 3'SS Stem", 
+	"LocalizationMetric": "5'SS-BP Dist",
+	"StartToBPStemMetric": "5'SS-BP Stem",
+	"BPToEndStemMetric": "BP-3'SS Stem", 
 	"StartProtectionMetric": "5'SS Protection", 
 	"EndProtectionMetric": "3'SS Protection", 
-	"BPProtectionMetric": "Branchpoint Protection"
+	"BPProtectionMetric": "BP Protection", 
+	"ZipperStemStartMetric": "Zipper dG",
+	"ZipperStemEndMetric": "End dG",
+	"LongestStemMetric": "Longest Stem", 
+	"NWJMetric": "# NWJs", 
+	"MLDMetric": "MLD"
 }
 
 def read_pvals_from_file(filename):
@@ -120,8 +125,12 @@ def make_heatmap(all_features, feature_options_all, \
 	plt.xticks(rotation=45, fontsize=8)
 	plt.show()
 
+def get_percentile(arr, perc):
+	arr = np.array(arr)
+	return np.percentile(arr, perc * 100)
+
 def make_violin(standard_feature_df, \
-	control_feature_df, metric_names, plot_names):
+	control_feature_df, metric_names, plot_names, all_introns):
 	print(standard_feature_df.shape)
 	print(control_feature_df.shape)
 
@@ -134,31 +143,58 @@ def make_violin(standard_feature_df, \
 		for idx, row in control_feature_df.iterrows():
 			control_vals += [row[metric]]
 
+	# norm_long_stem = []
+	# norm_long_stem_control = []
+	# longest_stem_vals = standard_feature_df["LongestStemMetric_Vienna_ens"]
+	# longest_stem_vals_controls = control_feature_df["LongestStemMetric_Vienna_ens"]
+	# for ii, intron in enumerate(all_introns.introns):
+	# 	norm_long_stem += [longest_stem_vals[ii]/len(intron.seq)]
+	# 	norm_long_stem_control += [longest_stem_vals_controls[ii]/len(intron.seq)]
+	# standard_feature_df["LongestStemMetric_Vienna_ens"] = norm_long_stem
+	# control_feature_df["LongestStemMetric_Vienna_ens"] = norm_long_stem_control
+
 	max_vals = {}
 	min_vals = {}
+	perc_95_vals = {}
+	perc_5_vals = {}
 	for metric in metric_names: 
-		max_intron = max(standard_feature_df[metric])
-		max_control = max(control_feature_df[metric])
-		max_vals[metric] = max(max_intron, max_control)
+		all_vals = list(standard_feature_df[metric])
+		all_vals += list(control_feature_df[metric])
 
-		min_intron = min(standard_feature_df[metric])
-		min_control = min(control_feature_df[metric])
-		min_vals[metric] = min(min_intron, min_control)
+		# if "LongestStem" in metric:
+		# 	plt.hist(list(standard_feature_df[metric]), alpha=0.5, label='intron')
+		# 	plt.hist(list(control_feature_df[metric]), alpha=0.5, label='control')
+		# 	plt.legend(loc='upper right')
+		# 	plt.show()
+		max_vals[metric] = max(all_vals)
+		perc_95_vals[metric] =  get_percentile(all_vals, 0.95)
+
+		min_vals[metric] = min(all_vals)
+		perc_5_vals[metric] =  get_percentile(all_vals, 0.05)
+		print("%s: %f-%f\n" % (metric, perc_5_vals[metric], perc_95_vals[metric]))
+
+		intron_vals = standard_feature_df[metric]
+		control_vals = control_feature_df[metric]
+		print(stats.ttest_rel(np.array(intron_vals), np.array(control_vals)))
+		print(stats.wilcoxon(np.array(intron_vals), np.array(control_vals)))
 
 	df = pd.DataFrame(columns=plot_names)
 	for idx, row in standard_feature_df.iterrows():
 		new_entry = []
 		for metric in metric_names:
-			norm_intron = (row[metric]-min_vals[metric])/(max_vals[metric]-min_vals[metric])
+			perc_range = perc_95_vals[metric]-perc_5_vals[metric]
+			min_max_range = max_vals[metric] - min_vals[metric]
+			norm_intron = (row[metric]-min_vals[metric])/min_max_range
 			control_row = control_feature_df.iloc[[idx]]
-			norm_control = (control_row[metric]-min_vals[metric])/(max_vals[metric]-min_vals[metric])
+			norm_control = (control_row[metric]-min_vals[metric])/min_max_range
 			new_entry += [norm_intron - norm_control]
 		df.loc[len(df)] = new_entry
 
 	plt.figure(figsize=(10,1.5))
-	ax = sns.violinplot(data=df)# , inner="stick")
+	ax = sns.violinplot(data=df, scale="count")# , inner="stick")
 	ax.axhline(0, color='black', linestyle='--')
 	plt.ylabel("Intron Metric - Control Metric")
+	plt.xticks(rotation=45)
 	plt.show()
 
 # def make_countplot(df_metric_filename):
@@ -223,14 +259,18 @@ if __name__ == "__main__":
 		intron_class_species = args.intron_class_species
 		control_class_species = args.control_class_species
 
-	secstruct_options = {'secstruct_pkg': 'Vienna', 
-						'secstruct_type': 'ens', 
+	secstruct_options = {'secstruct_pkg': 'RNAstructure', 
+						'secstruct_type': 'mfe', 
+						'use_bpp': False,
 						'verbose': False,
 						'force_eval': False
 						}
 
 	all_features = ["LocalizationMetric", "StartToBPStemMetric", "BPToEndStemMetric", "StartProtectionMetric", 
 			"EndProtectionMetric", "BPProtectionMetric"]
+	all_features = ["LocalizationMetric", "StartToBPStemMetric", "BPToEndStemMetric", "StartProtectionMetric", 
+		"EndProtectionMetric", "BPProtectionMetric", "ZipperStemStartMetric", "ZipperStemEndMetric", \
+		"LongestStemMetric", "NWJMetric", "MLDMetric"]
 
 	metric_names = [features_db.get_feature_full_name(feature_name, secstruct_options) \
 			for feature_name in all_features]
@@ -248,8 +288,9 @@ if __name__ == "__main__":
 		control_feature_df = features_db.get_features(all_features, \
 			control_class_violin, feature_options_all=feature_options_all)
 		control_feature_df = control_feature_df.dropna(axis=0)
-
-		make_violin(standard_feature_df, control_feature_df, metric_names, plot_names)
+		print(standard_feature_df[metric_names[-1]])
+		all_introns = features_db.build_intron_set(intron_class_violin)
+		make_violin(standard_feature_df, control_feature_df, metric_names, plot_names, all_introns)
 
 	if make_species_heatmap:
 		make_heatmap(all_features, feature_options_all, \

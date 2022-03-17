@@ -9,9 +9,9 @@ import sys
 intron_class = sys.argv[1] # E.g. standard_allsize_min_50_max_600
 control_class = sys.argv[2] # E.g. standard_allsize_min_50_max_600_shuffle
 
-secstruct_options = {'secstruct_pkg': 'RNAstructure_DMS', # 'RNAstructure_DMS', 
+secstruct_options = {'secstruct_pkg': 'RNAstructure', # 'RNAstructure_DMS', 
 					'secstruct_type': 'mfe', 
-					'use_bpp': True,
+					'use_bpp': False,
 					'verbose': True,
 					'force_eval': False
 					}
@@ -52,11 +52,14 @@ for metric in metric_names:
 	print(metric)
 	num_nonzero_introns = sum(np.array(intron_vals) != 0)
 	num_nonzero_controls = sum(np.array(control_vals) != 0)
-	if max(num_nonzero_introns, num_nonzero_controls) < 10:
+	if max(num_nonzero_introns, num_nonzero_controls) < 5:
 		print("Sample sizes too small to compare.")
+		print()
 		continue
-
+	print("Average intron value: %f" % np.mean(np.array(intron_vals)))
+	print("Average control value: %f" % np.mean(np.array(control_vals)))
 	print(stats.ttest_rel(np.array(intron_vals), np.array(control_vals)))
 	print(stats.wilcoxon(np.array(intron_vals), np.array(control_vals)))
+	print()
 
 plt.show()
