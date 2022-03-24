@@ -93,19 +93,28 @@ class LongestStemMetric(SecstuctMetricBPP):
 		return longest_stem, longest_len
 
 	def get_score_mfe(self, intron):
-		_, longest_len = self.get_longest_stem(intron.mfe)
+		start = intron.fivess_offset
+		end = len(intron.seq) - intron.threess_offset
+		mfe = intron.mfe[start:end]
+		_, longest_len = self.get_longest_stem(mfe)
 		return longest_len
 
 	def get_score_mfe_bpp(self, intron):
+		if intron.fivess_offset > 0 or intron.threess_offset > 0:
+			raise RuntimeError("Cannot get BPP metric with extended introns")
 		_, longest_len = self.get_longest_stem(intron.mfe, do_bpp=True, \
 			bpp_matrix=intron.bpp)
 		return longest_len
 
 	def get_score_ens(self, intron):
+		start = intron.fivess_offset
+		end = len(intron.seq) - intron.threess_offset
 		total_longest_len = 0
 		secstructs = intron.ens[:self.max_ens]
+		
 		for mfe in secstructs:
-			_, longest_len = self.get_longest_stem(mfe)
+			trunc_mfe = intron.mfe[start:end]
+			_, longest_len = self.get_longest_stem(trunc_mfe)
 			total_longest_len += longest_len
 
 		return total_longest_len/len(secstructs)

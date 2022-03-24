@@ -5,4 +5,6 @@ class LengthFeature(Feature):
 		self.name = name
 
 	def apply(self, intron, feature_options):
-		return len(intron.seq)
+		start = intron.fivess_offset
+		end = len(intron.seq) - intron.threess_offset
+		return len(intron.seq[start:end])

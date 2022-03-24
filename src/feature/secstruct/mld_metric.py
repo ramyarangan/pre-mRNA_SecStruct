@@ -21,12 +21,19 @@ class MLDMetric(SecstructMetric):
 		return max_value/len(secstruct)
 
 	def get_score_mfe(self, intron):
-		return self.get_mld(intron.mfe)
+		start = intron.fivess_offset
+		end = len(intron.seq) - intron.threess_offset
+		mfe = intron.mfe[start:end]
+		return self.get_mld(mfe)
 
 	def get_score_ens(self, intron):
+		start = intron.fivess_offset
+		end = len(intron.seq) - intron.threess_offset
+
 		total_mld = 0
 		secstructs = intron.ens[:self.max_ens]
 		for mfe in secstructs:
-			total_mld += self.get_mld(mfe)
+			trunc_mfe = mfe[start:end]
+			total_mld += self.get_mld(trunc_mfe)
 
 		return total_mld/len(secstructs)

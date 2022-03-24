@@ -292,13 +292,21 @@ class ZipperStemMetric(SecstuctMetricBPP):
 		return [has_zipper_stem, best_stem, best_dG]
 
 	def get_score_mfe(self, intron):
-		[has_dG, best_stem, best_dG] = self.has_stem_dG(intron.bp, intron.seq, intron.mfe)
+		start = intron.fivess_offset
+		end = len(intron.seq) - intron.threess_offset
+		seq = intron.seq[start:end]
+		bp = bp - intron.fivess_offset
+		mfe = intron.mfe[start:end]
+		[has_dG, best_stem, best_dG] = self.has_stem_dG(bp, seq, mfe)
 		if (has_dG):
 			return best_dG
 		else:
 			return self.DG_LIM
 
 	def get_score_mfe_bpp(self, intron):
+		if intron.fivess_offset > 0 or intron.threess_offset > 0:
+			raise RuntimeError("Cannot evaluate BPP metric with extended introns")
+
 		[has_dG, best_stem, best_dG] = self.has_stem_dG(intron.bp, intron.seq, \
 			intron.mfe, bpp_matrix=intron.bpp)
 		if (has_dG):
@@ -307,11 +315,17 @@ class ZipperStemMetric(SecstuctMetricBPP):
 			return self.DG_LIM
 
 	def get_score_ens(self, intron):
+		start = intron.fivess_offset
+		end = len(intron.seq) - intron.threess_offset
+
 		dg_total = 0
 		dg_cnt = 0
 		secstructs = intron.ens[:self.max_ens]
 		for secstruct in secstructs:
-			[has_dG, best_stem, best_dG] = self.has_stem_dG(intron.bp, intron.seq, secstruct)
+			seq = intron.seq[start:end]
+			bp = bp - intron.fivess_offset
+			trunc_secstruct = secstruct[start:end]			
+			[has_dG, best_stem, best_dG] = self.has_stem_dG(bp, seq, trunc_secstruct)
 			if has_dG:
 				dg_total += best_dG
 				dg_cnt += 1

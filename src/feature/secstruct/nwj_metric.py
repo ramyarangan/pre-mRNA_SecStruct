@@ -35,12 +35,18 @@ class NWJMetric(SecstructMetric):
 		return len(nwjs)
 
 	def get_score_mfe(self, intron):
-		return self.get_num_nwj(intron.mfe)
+		start = intron.fivess_offset
+		end = len(intron.seq) - intron.threess_offset
+		mfe = intron.mfe[start:end]
+		return self.get_num_nwj(mfe)
 
 	def get_score_ens(self, intron):
+		start = intron.fivess_offset
+		end = len(intron.seq) - intron.threess_offset
 		total_nwj = 0
 		secstructs = intron.ens[:self.max_ens]
 		for mfe in secstructs:
-			total_nwj += self.get_num_nwj(mfe)
+			trunc_mfe = mfe[start:end]
+			total_nwj += self.get_num_nwj(trunc_mfe)
 
 		return total_nwj/len(secstructs)

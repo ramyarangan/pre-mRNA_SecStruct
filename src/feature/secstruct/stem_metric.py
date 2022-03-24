@@ -85,6 +85,9 @@ class StemMetric(SecstuctMetricBPP):
 		return -self.find_stem(bp_map, intron)
 
 	def get_score_mfe_bpp(self, intron):
+		if intron.fivess_offset > 0 or intron.threess_offset > 0: 
+			raise RuntimeError("Can't evaluate BPP metric with extended introns")
+
 		bp_map = self.get_base_pairs(intron.mfe)
 		return -self.find_stem(bp_map, intron, do_bpp=True)
 
