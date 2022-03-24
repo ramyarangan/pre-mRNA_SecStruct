@@ -111,14 +111,16 @@ class ZipperStemMetric(SecstuctMetricBPP):
 		return matching_stems
 
 	def collect_dG_secstruct(self, seq, sys_command):
-		f = open('tmp.dat', 'w')
-		f.write(seq.replace('T', 'U'))
-		f.close()
+		# f = open('tmp.dat', 'w')
+		#f.write(seq.replace('T', 'U'))
+		#f.close()
 		try: 
-			p = subprocess.Popen(sys_command + ' tmp.dat', shell=True, stdout=subprocess.PIPE)
+			#p = subprocess.Popen(sys_command + ' tmp.dat', shell=True, stdout=subprocess.PIPE)
+			#lines = p.stdout.readlines()
+			#os.remove('tmp.dat')
+			p = subprocess.Popen('echo "' + seq.replace('T', 'U') + '" | ' + sys_command, \
+				shell=True, stdout=subprocess.PIPE)
 			lines = p.stdout.readlines()
-			os.remove('tmp.dat')
-
 			# String parsing to process RNAfold/cofold output
 			secstruct = lines[1].decode("utf-8").split()[0]
 			# Handles cases when the output is like ((((..(((((...&)))))..)))) ( -8.20)\n or like

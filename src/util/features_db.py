@@ -132,7 +132,6 @@ def get_feature_vals_update_secstruct(feature_name, intron_class, feature_option
 def add_features_to_database(features_to_add, intron_class, feature_options_all, all_introns):
 	features_df = get_features_df(intron_class)
 	
-	features_to_add = []
 	for feature_name in features_to_add:
 		feature_options = feature_options_all[feature_name]
 		full_feature_name = get_feature_full_name(feature_name, feature_options)

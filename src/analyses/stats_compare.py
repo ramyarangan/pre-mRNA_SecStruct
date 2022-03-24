@@ -4,22 +4,21 @@ from scipy import stats
 import numpy as np
 from matplotlib import pyplot as plt
 from util import features_db
-import sys
 
 intron_class = sys.argv[1] # E.g. standard_allsize_min_50_max_600
 control_class = sys.argv[2] # E.g. standard_allsize_min_50_max_600_shuffle
 
-secstruct_options = {'secstruct_pkg': 'RNAstructure', # 'RNAstructure_DMS', 
+secstruct_options = {'secstruct_pkg': 'RNAstructure_DMS', # 'RNAstructure_DMS', 
 					'secstruct_type': 'mfe', 
-					'use_bpp': False,
+					'use_bpp': True,
 					'verbose': True,
-					'force_eval': False
+					'force_eval': True
 					}
 
 all_features = ["LocalizationMetric", "StartToBPStemMetric", "BPToEndStemMetric", "StartProtectionMetric", 
 		"EndProtectionMetric", "BPProtectionMetric", "ZipperStemStartMetric", "ZipperStemEndMetric", \
 		"LongestStemMetric", "NWJMetric", "MLDMetric"]
-
+all_features = ["LongestStemMetric"]
 metric_names = [features_db.get_feature_full_name(feature_name, secstruct_options) \
 		for feature_name in all_features]
 

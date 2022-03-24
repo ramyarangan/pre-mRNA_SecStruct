@@ -43,10 +43,10 @@ class LongestStemMetric(SecstuctMetricBPP):
 			passes_bpp = True
 			if do_bpp:
 				passes_bpp = False
-				if cur_stem.len() > bpp_len_cutoff:
-					passes_bpp = True
 				if cur_stem.get_bpp(bpp_matrix) < bpp_thresh:
 					continue
+				if cur_stem.len() > bpp_len_cutoff:
+					passes_bpp = True
 
 			# Extend stem as far as possible
 			neighbors = list(nx.neighbors(stemG, nt))
@@ -63,10 +63,10 @@ class LongestStemMetric(SecstuctMetricBPP):
 
 				if neighbor_node.get_type() == 'stem':
 					if do_bpp:
-						if neighbor_node.len() > bpp_len_cutoff:
-							passes_bpp = True
 						if neighbor_node.get_bpp(bpp_matrix) < bpp_thresh:
 							continue
+						if neighbor_node.len() > bpp_len_cutoff:
+							passes_bpp = True
 					cur_longest_stem += [neighbor_node]
 					cur_longest_len += neighbor_node.len()
 

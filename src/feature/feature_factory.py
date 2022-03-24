@@ -7,6 +7,7 @@ from feature.secstruct.longest_stem_metric import LongestStemMetric
 from feature.secstruct.nwj_metric import NWJMetric
 from feature.secstruct.mld_metric import MLDMetric
 from feature.early_stop_feature import HasEarlyStopFeature, ThreeprimeDistStopFeature
+from feature.length_feature import LengthFeature
 from feature.rpkm_feature import RPKMFeature
 
 def get_feature_from_name(feature_name):

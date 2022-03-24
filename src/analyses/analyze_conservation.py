@@ -14,8 +14,20 @@ import numpy as np
 from matplotlib import pyplot as plt
 import seaborn as sns
 
+from scipy.spatial import distance
+from scipy.cluster import hierarchy
+from scipy.cluster.hierarchy import fcluster
+
 from util.features_db import *
 from util.aln_util import aln_seq_is_empty
+
+# In order of evolutionary distance
+SPECIES_NAMES = ['scer', 'smik', 'skud', 'suva', 'cgla', 'kafr', 'knag', 'ncas', \
+	'ndai', 'tbla', 'tpha', 'kpol', 'zrou', 'tdel', 'klac', 'agos', 'ecym', 'sklu', \
+	'kthe', 'kwal']
+# use cutoff of 40 zipper stems
+# SPECIES_NAMES = ['scer', 'smik', 'skud', 'suva', 'kafr', 'knag', 'ncas', 'ndai', \
+# 	'kpol', 'klac', 'ecym', 'sklu', 'kthe', 'kwal']
 
 def convert_intervals_to_aln(intron, intervals):
 	new_intervals = []
@@ -137,26 +149,45 @@ def plot_conservation_stats(cons_stats):
 	print(counts)
 	print(bins)
 
-def plot_heatmap(data_arr, data_mask, labels, colormap='YlGnBu_r'):
+def plot_heatmap(data_arr, data_mask, labels, perc_bars, colormap='YlGnBu_r'):
+	row_linkage = hierarchy.linkage(distance.pdist(data_arr))
+	permutation = hierarchy.leaves_list(row_linkage)
+	data_arr[:] = data_arr[permutation,:]
+	data_mask[:] = data_mask[permutation,:]
+
+	fig, ((ax1, cbar_ax), (ax2, dummy_ax)) = plt.subplots(nrows=2, ncols=2, 
+		figsize=(4, 8), sharex='col',
+		gridspec_kw={'height_ratios': [10, 1], 'width_ratios': [20, 1]})
+
 	colormap = plt.cm.get_cmap(colormap)
 	colormap.set_bad('gray')
-	s = sns.heatmap(data_arr, mask=data_mask, cmap=colormap, xticklabels=labels)
-	s.set(xlabel='Species', ylabel='Intron')
+	g = sns.heatmap(data_arr, mask=data_mask, cmap=colormap, xticklabels=False, \
+		yticklabels=False, ax=ax1, cbar_ax=cbar_ax)
+	ax2.set_xlabel("Species")
+	x_tick_pos = [i + 0.5 for i in range(len(labels))]
+	ax2.bar(x_tick_pos, perc_bars, align='center', color='grey')
+	ax2.set_ylim(0, 1)
+	ax2.set_xticks(x_tick_pos)
+	ax2.set_xticklabels(labels, Rotation=45, Fontsize=8)
+	dummy_ax.axis('off')
+	plt.tight_layout()
 	plt.show()
 
 def plot_paralogs_separately(dG_species_dict, all_gene_names, \
 	do_binary=False, dG_cutoff=0):
-	species_names = dG_species_dict.keys()
 
 	# Get heatmap data - each aligned intron can match up to two introns/species 
 	# two introns whenever this gene was duplicated in the WGD event
-	dG_arr = np.zeros((len(all_gene_names), len(species_names) * 2))
-	dG_mask = np.full((len(all_gene_names), len(species_names) * 2), False)
-	for ii, name in enumerate(all_gene_names):
-		for jj, species in enumerate(species_names):
+	dG_arr = np.zeros((len(all_gene_names), len(SPECIES_NAMES) * 2))
+	dG_mask = np.full((len(all_gene_names), len(SPECIES_NAMES) * 2), False)
+	perc_bars = []
+	for jj, species in enumerate(SPECIES_NAMES):
+		species_zipper_cnt = 0
+		species_total = 0
+		for ii, name in enumerate(all_gene_names):
 			if name not in dG_species_dict[species]:
 				dG_mask[ii, jj] = True
-				dG_mask[ii, jj + len(species_names)] = True
+				dG_mask[ii, jj + len(SPECIES_NAMES)] = True
 				continue
 			dG_vals = dG_species_dict[species][name]
 			if len(dG_vals) > 2:
@@ -165,33 +196,45 @@ def plot_paralogs_separately(dG_species_dict, all_gene_names, \
 			if do_binary:
 				dG_arr[ii, jj] = (float(dG_arr[ii, jj]) < dG_cutoff)
 			if len(dG_vals) > 1:
-				dG_arr[ii, jj + len(species_names)] = dG_vals[1]
+				dG_arr[ii, jj + len(SPECIES_NAMES)] = dG_vals[1]
 				if do_binary:
-					dG_arr[ii, jj + len(species_names)] = \
+					dG_arr[ii, jj + len(SPECIES_NAMES)] = \
 						(float(dG_vals[1]) < dG_cutoff)
 			else:
-				dG_mask[ii, jj + len(species_names)] = True
-
-	labels = [0] * len(species_names) * 2
-	for ii, species in enumerate(species_names):
+				dG_mask[ii, jj + len(SPECIES_NAMES)] = True
+			if do_binary: 
+				species_zipper_cnt += dG_arr[ii, jj] + \
+					dG_arr[ii, jj + len(SPECIES_NAMES)]
+			else:
+				species_zipper_cnt += (dG_arr[ii, jj] < 0)
+				species_zipper_cnt += (dG_arr[ii, jj + len(SPECIES_NAMES)] < 0)
+			if not dG_mask[ii, jj]:
+				species_total += 1
+			if not dG_mask[ii, jj + len(SPECIES_NAMES)]:
+				species_total += 1
+		perc_bars += [species_zipper_cnt/species_total]
+	labels = [0] * len(SPECIES_NAMES) * 2
+	for ii, species in enumerate(SPECIES_NAMES):
 		labels[ii] = species
-		labels[ii + len(species_names)] = species
+		labels[ii + len(SPECIES_NAMES)] = species
 
 	colormap = 'YlGnBu_r'
 	if do_binary:
 		colormap='YlGnBu'
-	plot_heatmap(dG_arr, dG_mask, labels, colormap=colormap)
+	plot_heatmap(dG_arr, dG_mask, labels, perc_bars, colormap=colormap)
 
 def plot_best_zipper_paralog(dG_species_dict, all_gene_names, \
 	do_binary=False, dG_cutoff=0):
-	species_names = dG_species_dict.keys()
 
 	# Get heatmap data - each aligned intron can match up to two introns/species 
 	# two introns whenever this gene was duplicated in the WGD event
-	dG_arr = np.zeros((len(all_gene_names), len(species_names)))
-	dG_mask = np.full((len(all_gene_names), len(species_names)), False)
-	for ii, name in enumerate(all_gene_names):
-		for jj, species in enumerate(species_names):
+	dG_arr = np.zeros((len(all_gene_names), len(SPECIES_NAMES)))
+	dG_mask = np.full((len(all_gene_names), len(SPECIES_NAMES)), False)
+	perc_bars = []
+	for jj, species in enumerate(SPECIES_NAMES):
+		species_zipper_cnt = 0
+		total_intron_cnt = 0
+		for ii, name in enumerate(all_gene_names):
 			if name not in dG_species_dict[species]:
 				dG_mask[ii, jj] = True
 				continue
@@ -203,18 +246,27 @@ def plot_best_zipper_paralog(dG_species_dict, all_gene_names, \
 				dG_arr[ii, jj] = min(dG_vals[0], dG_vals[1])
 			if do_binary:
 				dG_arr[ii, jj] = (float(dG_arr[ii, jj]) < dG_cutoff)
+			if not do_binary and dG_arr[ii, jj] < 0: 
+				species_zipper_cnt += 1
+			if do_binary and dG_arr[ii, jj]: 
+				species_zipper_cnt += 1
+			total_intron_cnt += 1				
+
+		species_zipper_perc = species_zipper_cnt/total_intron_cnt
+		print("Zipper stems for %s: %f, %d" % (species, \
+			species_zipper_perc, species_zipper_cnt))
+		perc_bars += [species_zipper_perc]
 
 	colormap = 'YlGnBu_r'
 	if do_binary:
-		colormap='YlGnBu'
-	plot_heatmap(dG_arr, dG_mask, species_names, colormap=colormap)
+		colormap='Greens'
+	plot_heatmap(dG_arr, dG_mask, SPECIES_NAMES, perc_bars, colormap=colormap)
 
 def plot_histogram_num_zipperstems(dG_species_dict, all_gene_names, dG_cutoff=0):
-	species_names = dG_species_dict.keys()
 	num_zipper_stems = []
 	for gene_name in all_gene_names:
 		cnt_zipper_stem = 0
-		for species in species_names:
+		for species in SPECIES_NAMES:
 			if gene_name not in dG_species_dict[species].keys():
 				continue
 			dG_vals = dG_species_dict[species][gene_name]
@@ -228,12 +280,17 @@ def plot_histogram_num_zipperstems(dG_species_dict, all_gene_names, dG_cutoff=0)
 
 	bins = np.arange(0, max(num_zipper_stems))
 	ticks = np.arange(0, max(num_zipper_stems), 2)
-	plt.hist(num_zipper_stems, color='blue', bins=bins, alpha=0.5, rwidth=0.85)
+	counts, bins, bars = plt.hist(num_zipper_stems, \
+		color='blue', bins=bins, alpha=0.5, rwidth=0.85)
+
 	plt.xticks(ticks=ticks, labels=ticks)
 	plt.xlabel("Number of homologous introns with zipper stems")
 	plt.ylabel("Frequency")
 	plt.title("Distribution of zipper stems in introns in Saccharomyces genus")
 	plt.show()
+
+	print(counts)
+	print(bins)
 
 def heatmap_zipper_stem_data(intron_class):
 	intron_class = 'species_hooks_2/' + intron_class
@@ -269,8 +326,8 @@ def heatmap_zipper_stem_data(intron_class):
 	all_gene_names = list(gene_name_set)
 
 	plot_histogram_num_zipperstems(dG_species_dict, all_gene_names)
-	plot_paralogs_separately(dG_species_dict, all_gene_names)
-	plot_paralogs_separately(dG_species_dict, all_gene_names, do_binary=True)
+	# plot_paralogs_separately(dG_species_dict, all_gene_names)
+	# plot_paralogs_separately(dG_species_dict, all_gene_names, do_binary=True)
 	plot_best_zipper_paralog(dG_species_dict, all_gene_names)
 	plot_best_zipper_paralog(dG_species_dict, all_gene_names, do_binary=True)
 
