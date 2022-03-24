@@ -11,7 +11,7 @@ pred_approach = sys.argv[3]
 
 secstruct_options = {'secstruct_pkg': package,
 					'secstruct_type': pred_approach, 
-					'use_bpp': True,
+					'use_bpp': False,
 					'verbose': True,
 					'force_eval': True
 					}
