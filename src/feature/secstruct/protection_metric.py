@@ -25,11 +25,11 @@ class ProtectionMetric(SecstructMetric):
 
 	def get_score_mfe(self, intron):
 		return self.get_avg_protection([intron.mfe], intron.fivess_offset, 
-			intron.bp - intron.fivess_offset, len(intron.seq) - intron.threess_offset)
+			intron.bp, len(intron.seq) - intron.threess_offset)
 
 	def get_score_ens(self, intron):
 		return self.get_avg_protection(intron.ens, intron.fivess_offset, 
-			intron.bp - intron.fivess_offset, len(intron.seq) - intron.threess_offset)
+			intron.bp, len(intron.seq) - intron.threess_offset)
 
 
 class StartProtectionMetric(ProtectionMetric):

@@ -35,6 +35,16 @@ class Stem(BigNode):
 	def len(self):
 		return len(self.strand1_nts)
 
+	def is_in(self, start_pos, end_pos):
+		is_in = True
+		for ii in self.strand1_nts:
+			if ii < start_pos or ii > end_pos:
+				is_in = False
+		for ii in self.strand2_nts:
+			if ii < start_pos or ii > end_pos:
+				is_in = False
+		return is_in
+
 	def __str__(self):
 		print_str = "Stem of length %d containing base-pairs:\n" % len(self.strand2_nts)
 		for ii, n1 in enumerate(self.strand1_nts):

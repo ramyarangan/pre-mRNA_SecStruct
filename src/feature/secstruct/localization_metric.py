@@ -95,16 +95,16 @@ class LocalizationMetric(SecstructMetric):
 		start = intron.fivess_offset
 		end = len(intron.seq) - intron.threess_offset
 		if self.start_bp:
-			start = intron.bp - intron.fivess_offset
+			start = intron.bp
 		if self.end_bp:
-			end = intron.bp - intron.fivess_offset
+			end = intron.bp
 		return self.get_mean_dist([intron.mfe], start, end)
 
 	def get_score_ens(self, intron):
 		start = intron.fivess_offset
 		end = len(intron.seq) - intron.threess_offset
 		if self.start_bp:
-			start = intron.bp - intron.fivess_offset
+			start = intron.bp
 		if self.end_bp:
-			end = intron.bp - intron.fivess_offset
+			end = intron.bp
 		return self.get_mean_dist(intron.ens, start, end)

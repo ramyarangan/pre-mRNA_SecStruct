@@ -256,14 +256,14 @@ class ZipperStemMetric(SecstuctMetricBPP):
 
 		return False, -1
 	
-	def has_stem_dG(self, bp, seq, mfe, bpp_matrix=None, min_num_bp=6, bpp_cutoff=0.7):
+	def has_stem_dG(self, bp, seq, mfe, bpp_matrix=None, min_num_bp=6, bpp_cutoff=0.7, start_offset=0, end_offset=0):
 		dG_lim = self.DG_LIM
 		stems = self.get_stems(mfe)
 		stems_region = []
 		if not self.DOFIRST:
-			stems_region = self.get_stems_region(stems, self.region, bp, len(seq)) # Second step
+			stems_region = self.get_stems_region(stems, self.region, bp, len(seq) - end_offset) # Second step
 		else:
-			stems_region = self.get_stems_region(stems, self.region, 0, bp) # First step
+			stems_region = self.get_stems_region(stems, self.region, start_offset, bp) # First step
 
 		has_zipper_stem = False
 		best_dG = 200 # Some large number
@@ -282,9 +282,9 @@ class ZipperStemMetric(SecstuctMetricBPP):
 			dG = 200
 			cur_stem = ""
 			if not self.DOFIRST: 
-				[dG, cur_stem] = self.get_max_stem_dG(stem, seq, bp + self.region[0], len(seq)-self.region[1]) # Second step
+				[dG, cur_stem] = self.get_max_stem_dG(stem, seq, bp + self.region[0], len(seq)-end_offset-self.region[1]) # Second step
 			else:
-				[dG, cur_stem] = self.get_max_stem_dG(stem, seq, self.region[0], bp-self.region[1]) # First step
+				[dG, cur_stem] = self.get_max_stem_dG(stem, seq, start_offset+self.region[0], bp-self.region[1]) # First step
 			if (dG < best_dG):
 				has_zipper_stem = True
 				best_dG = dG
@@ -295,9 +295,10 @@ class ZipperStemMetric(SecstuctMetricBPP):
 		start = intron.fivess_offset
 		end = len(intron.seq) - intron.threess_offset
 		seq = intron.seq[start:end]
-		bp = bp - intron.fivess_offset
+		bp = intron.bp - intron.fivess_offset
 		mfe = intron.mfe[start:end]
-		[has_dG, best_stem, best_dG] = self.has_stem_dG(bp, seq, mfe)
+		[has_dG, best_stem, best_dG] = self.has_stem_dG(bp, seq, mfe, \
+			start_offset=intron.fivess_offset, end_offset=intron.threess_offset)
 		if (has_dG):
 			return best_dG
 		else:
@@ -315,17 +316,13 @@ class ZipperStemMetric(SecstuctMetricBPP):
 			return self.DG_LIM
 
 	def get_score_ens(self, intron):
-		start = intron.fivess_offset
-		end = len(intron.seq) - intron.threess_offset
-
 		dg_total = 0
 		dg_cnt = 0
 		secstructs = intron.ens[:self.max_ens]
 		for secstruct in secstructs:
-			seq = intron.seq[start:end]
-			bp = bp - intron.fivess_offset
-			trunc_secstruct = secstruct[start:end]			
-			[has_dG, best_stem, best_dG] = self.has_stem_dG(bp, seq, trunc_secstruct)
+			[has_dG, best_stem, best_dG] = self.has_stem_dG(intron.bp, \
+				intron.seq, secstruct, start_offset=intron.fivess_offset, \
+				end_offset=intron.threess_offset)
 			if has_dG:
 				dg_total += best_dG
 				dg_cnt += 1

@@ -9,7 +9,7 @@ class LongestStemMetric(SecstuctMetricBPP):
 		self.name = name
 	
 	def get_longest_stem(self, secstruct, loop_cutoff=10, do_bpp=False, \
-		bpp_thresh=0.7, bpp_len_cutoff=4, bpp_matrix=None):
+		bpp_thresh=0.7, bpp_len_cutoff=4, bpp_matrix=None, start_offset=0, end_offset=0):
 		secstruct_graph = SecstructGraph(secstruct)
 		stemG = secstruct_graph.stemG
 		nt_to_node_dict = secstruct_graph.nt_to_stem_dict
@@ -34,8 +34,11 @@ class LongestStemMetric(SecstuctMetricBPP):
 
 			if nt_to_node_dict[nt].get_type() != 'stem':
 				continue
-			
+
 			cur_stem = nt_to_node_dict[nt]
+
+			if not cur_stem.is_in(start_offset, len(secstruct) - end_offset):
+				continue
 
 			cur_longest_stem += [cur_stem]
 			cur_longest_len += cur_stem.len()
@@ -67,6 +70,8 @@ class LongestStemMetric(SecstuctMetricBPP):
 							continue
 						if neighbor_node.len() > bpp_len_cutoff:
 							passes_bpp = True
+					if not neighbor_node.is_in(start_offset, len(secstruct) - end_offset):
+						continue
 					cur_longest_stem += [neighbor_node]
 					cur_longest_len += neighbor_node.len()
 
@@ -93,10 +98,9 @@ class LongestStemMetric(SecstuctMetricBPP):
 		return longest_stem, longest_len
 
 	def get_score_mfe(self, intron):
-		start = intron.fivess_offset
-		end = len(intron.seq) - intron.threess_offset
 		mfe = intron.mfe[start:end]
-		_, longest_len = self.get_longest_stem(mfe)
+		_, longest_len = self.get_longest_stem(mfe, start_offset=intron.fivess_offset, \
+			end_offset=intron.threess_offset)
 		return longest_len
 
 	def get_score_mfe_bpp(self, intron):
@@ -107,14 +111,12 @@ class LongestStemMetric(SecstuctMetricBPP):
 		return longest_len
 
 	def get_score_ens(self, intron):
-		start = intron.fivess_offset
-		end = len(intron.seq) - intron.threess_offset
 		total_longest_len = 0
 		secstructs = intron.ens[:self.max_ens]
 		
 		for mfe in secstructs:
-			trunc_mfe = intron.mfe[start:end]
-			_, longest_len = self.get_longest_stem(trunc_mfe)
+			_, longest_len = self.get_longest_stem(mfe, start_offset=intron.fivess_offset, \
+				end_offset=intron.threess_offset)
 			total_longest_len += longest_len
 
 		return total_longest_len/len(secstructs)
