@@ -29,7 +29,8 @@ PLOT_NAME_DICT = {
 	"ZipperStemEndMetric": "End dG",
 	"LongestStemMetric": "Longest Stem", 
 	"NWJMetric": "# NWJs", 
-	"MLDMetric": "MLD"
+	"MLDMetric": "MLD",
+	"LengthFeature": "Length"
 }
 
 def read_pvals_from_file(filename):
@@ -187,10 +188,12 @@ def make_violin(standard_feature_df, \
 			norm_intron = (row[metric]-min_vals[metric])/min_max_range
 			control_row = control_feature_df.iloc[[idx]]
 			norm_control = (control_row[metric]-min_vals[metric])/min_max_range
-			new_entry += [norm_intron - norm_control]
+			diff_entry = norm_intron - norm_control
+			ratio_entry = norm_intron/norm_control
+			new_entry += [diff_entry]
 		df.loc[len(df)] = new_entry
 
-	plt.figure(figsize=(10,1.5))
+	plt.figure(figsize=(4,8))
 	ax = sns.violinplot(data=df, scale="count")# , inner="stick")
 	ax.axhline(0, color='black', linestyle='--')
 	plt.ylabel("Intron Metric - Control Metric")
@@ -259,23 +262,27 @@ if __name__ == "__main__":
 		intron_class_species = args.intron_class_species
 		control_class_species = args.control_class_species
 
-	secstruct_options = {'secstruct_pkg': 'RNAstructure', 
-						'secstruct_type': 'mfe', 
+	secstruct_options = {'secstruct_pkg': 'Vienna', 
+						'secstruct_type': 'ens', 
 						'use_bpp': False,
-						'verbose': False,
+						'verbose': True,
 						'force_eval': False
 						}
 
-	all_features = ["LocalizationMetric", "StartToBPStemMetric", "BPToEndStemMetric", "StartProtectionMetric", 
-			"EndProtectionMetric", "BPProtectionMetric"]
+
 	all_features = ["LocalizationMetric", "StartToBPStemMetric", "BPToEndStemMetric", "StartProtectionMetric", 
 		"EndProtectionMetric", "BPProtectionMetric", "ZipperStemStartMetric", "ZipperStemEndMetric", \
 		"LongestStemMetric", "NWJMetric", "MLDMetric"]
+	all_features = ["LocalizationMetric", "ZipperStemStartMetric", "ZipperStemEndMetric", \
+		"LongestStemMetric", "MLDMetric", "LengthFeature"]
 
 	metric_names = [features_db.get_feature_full_name(feature_name, secstruct_options) \
 			for feature_name in all_features]
+	all_metric_names = metric_names
+	metric_names = metric_names[:-1]
 
 	plot_names = [PLOT_NAME_DICT[x] for x in all_features]
+	plot_names = plot_names[:-1]
 
 	feature_options_all = {}
 	for feature in all_features:
@@ -288,7 +295,10 @@ if __name__ == "__main__":
 		control_feature_df = features_db.get_features(all_features, \
 			control_class_violin, feature_options_all=feature_options_all)
 		control_feature_df = control_feature_df.dropna(axis=0)
-		print(standard_feature_df[metric_names[-1]])
+
+		standard_feature_df[all_metric_names[-3]] = standard_feature_df[all_metric_names[-3]]/standard_feature_df[all_metric_names[-1]]
+		control_feature_df[all_metric_names[-3]] = control_feature_df[all_metric_names[-3]]/control_feature_df[all_metric_names[-1]]
+
 		all_introns = features_db.build_intron_set(intron_class_violin)
 		make_violin(standard_feature_df, control_feature_df, metric_names, plot_names, all_introns)
 
