@@ -75,10 +75,10 @@ class LongestStemMetric(SecstuctMetricBPP):
 					cur_longest_stem += [neighbor_node]
 					cur_longest_len += neighbor_node.len()
 
-				if neighbor_node.get_type() == 'loop':
+				if neighbor_node.get_type() == 'junction':
 					if len(neighbor_node.nts) > loop_cutoff:
 						continue
-					next_neighbors = nx.neighbors(stemG, cur_neighbor)
+					next_neighbors = list(nx.neighbors(stemG, cur_neighbor))
 					if len(next_neighbors) > 2:
 						continue
 

@@ -158,22 +158,21 @@ class SecstructGraph():
 		G = nx.Graph()
 
 		for ii in range(len(dotbracket)):
-			added_base = False
 			if node_dict[ii].base_pair:
 				# Base pair node
 				if node_dict[ii].base1 == ii:
 					G.add_node(ii)
-					added_base = True
 			else:
 				# Loop node
 				G.add_node(ii)
-				added_base = True
-			if added_base and ii > 0:
+
+			if ii > 0:
 				prev_node = node_dict[ii - 1]
 				weight = ss_weight
 				if node_dict[ii].base_pair and prev_node.base_pair:
 					weight = bp_weight
-				G.add_edge(prev_node.base1, ii, weight=weight)
+				if not G.has_edge(prev_node.base1, node_dict[ii].base1):
+					G.add_edge(prev_node.base1, node_dict[ii].base1, weight=weight)
 
 		return G, node_dict
 
