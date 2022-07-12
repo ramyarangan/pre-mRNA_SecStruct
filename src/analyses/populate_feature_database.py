@@ -18,7 +18,6 @@ secstruct_options = {'secstruct_pkg': package,
 
 all_features = ["LocalizationMetric", "ZipperStemStartMetric", "ZipperStemEndMetric", \
 	"LongestStemMetric", "MLDMetric"]
-all_features = ["LocalizationMetric"]
 
 feature_options_all = {}
 for feature in all_features:
