@@ -13,6 +13,10 @@ import os
 from util import features_db
 from config import DATABASE_PATH
 
+SPECIES_NAMES = ['scer', 'smik', 'skud', 'suva', 'cgla', 'kafr', 'knag', 'ncas', \
+	'ndai', 'tbla', 'tpha', 'kpol', 'zrou', 'tdel', 'klac', 'agos', 'ecym', 'sklu', \
+	'kthe', 'kwal']
+
 parser = argparse.ArgumentParser(description='Parameters for plotting dG stem features across species')
 parser.add_argument('intron_class', type=str, help='Intron class')
 parser.add_argument('control_class', type=str, help='Control class')
@@ -56,7 +60,7 @@ df_dict = {}
 for feature in all_features:
 	df_dict[feature] = pd.DataFrame(columns=['species', 'dG_diff'])
 
-for species_name in species_names:
+for species_name in SPECIES_NAMES:
 	print("Species: %s\n" % species_name)
 	if species_name == 'scer':
 		continue
@@ -100,11 +104,13 @@ for species_name in species_names:
 if make_violin:
 	for feature in all_features:
 		plt.figure(figsize=(8,2))
-		ax = sns.violinplot(data=df_dict[feature], x="species", y="dG_diff", cut=0, scale='width')
+		# blue- (0.12156862745098039, 0.4666666666666667, 0.7058823529411765)
+		# orange- (1.0, 0.4980392156862745, 0.054901960784313725)
+		ax = sns.violinplot(data=df_dict[feature], x="species", y="dG_diff", cut=0, scale='width',  linewidth=1, color=(0.12156862745098039, 0.4666666666666667, 0.7058823529411765))# color="#72A8CD")
 		ax.axhline(0, color='black', linestyle='--')
 		plt.ylabel("Intron - Control dG of zipper stems")
 		plt.xticks(fontsize=8)
-		plt.yticks(np.arange(-25, 11, 10), fontsize=8)
+		plt.yticks(np.arange(-80, 41, 40), fontsize=8)
 		plt.show()
 
 """

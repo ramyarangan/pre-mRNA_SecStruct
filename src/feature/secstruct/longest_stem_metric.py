@@ -98,8 +98,7 @@ class LongestStemMetric(SecstuctMetricBPP):
 		return longest_stem, longest_len
 
 	def get_score_mfe(self, intron):
-		mfe = intron.mfe[start:end]
-		_, longest_len = self.get_longest_stem(mfe, start_offset=intron.fivess_offset, \
+		_, longest_len = self.get_longest_stem(intron.mfe, start_offset=intron.fivess_offset, \
 			end_offset=intron.threess_offset)
 		return longest_len
 

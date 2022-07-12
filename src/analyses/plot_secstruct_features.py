@@ -14,7 +14,7 @@ import numpy as np
 import argparse
 import os
 from scipy import stats 
-
+import math
 from util import features_db
 from config import DATABASE_PATH
 
@@ -32,6 +32,9 @@ PLOT_NAME_DICT = {
 	"MLDMetric": "MLD",
 	"LengthFeature": "Length"
 }
+SPECIES_NAMES = ['scer', 'smik', 'skud', 'suva', 'cgla', 'kafr', 'knag', 'ncas', \
+	'ndai', 'tbla', 'tpha', 'kpol', 'zrou', 'tdel', 'klac', 'agos', 'ecym', 'sklu', \
+	'kthe', 'kwal']
 
 def read_pvals_from_file(filename):
 	species_dir = {}
@@ -86,14 +89,14 @@ def make_heatmap(all_features, feature_options_all, \
 	intron_path = os.path.join(DATABASE_PATH, 'introns/' + intron_class)
 
 	all_species = []
-	for species_name in os.listdir(intron_path):
+	for species_name in SPECIES_NAMES:
 		if species_name == 'scer':
 			continue
 		all_species += [species_name]
 
 	df = pd.DataFrame(index=np.array(plot_names), columns=np.array(all_species))
 	
-	for species_name in os.listdir(intron_path):
+	for species_name in SPECIES_NAMES:
 		print("Species: %s\n" % species_name)
 
 		if species_name == 'scer':
@@ -131,7 +134,7 @@ def get_percentile(arr, perc):
 	return np.percentile(arr, perc * 100)
 
 def make_violin(standard_feature_df, \
-	control_feature_df, metric_names, plot_names, all_introns):
+	control_feature_df, metric_names, plot_names, all_introns, do_ratio_norm):
 	print(standard_feature_df.shape)
 	print(control_feature_df.shape)
 
@@ -182,21 +185,26 @@ def make_violin(standard_feature_df, \
 	df = pd.DataFrame(columns=plot_names)
 	for idx, row in standard_feature_df.iterrows():
 		new_entry = []
-		for metric in metric_names:
+		for ii, metric in enumerate(metric_names):
+			do_ratio = do_ratio_norm[ii]
 			perc_range = perc_95_vals[metric]-perc_5_vals[metric]
 			min_max_range = max_vals[metric] - min_vals[metric]
 			norm_intron = (row[metric]-min_vals[metric])/min_max_range
 			control_row = control_feature_df.iloc[[idx]]
 			norm_control = (control_row[metric]-min_vals[metric])/min_max_range
-			diff_entry = norm_intron - norm_control
-			ratio_entry = norm_intron/norm_control
-			new_entry += [diff_entry]
+			norm_diff = norm_intron - norm_control
+			norm_ratio = 2 * norm_diff/(norm_control + norm_intron)
+			if do_ratio:
+				new_entry += [norm_ratio]
+			else:
+				new_entry += [norm_diff]
 		df.loc[len(df)] = new_entry
 
 	plt.figure(figsize=(4,8))
 	ax = sns.violinplot(data=df, scale="count")# , inner="stick")
 	ax.axhline(0, color='black', linestyle='--')
 	plt.ylabel("Intron Metric - Control Metric")
+	plt.ylim(-3.5, 3.5)
 	plt.xticks(rotation=45)
 	plt.show()
 
@@ -262,10 +270,10 @@ if __name__ == "__main__":
 		intron_class_species = args.intron_class_species
 		control_class_species = args.control_class_species
 
-	secstruct_options = {'secstruct_pkg': 'Vienna', 
-						'secstruct_type': 'ens', 
+	secstruct_options = {'secstruct_pkg': 'RNAstructure', 
+						'secstruct_type': 'mfe', 
 						'use_bpp': False,
-						'verbose': True,
+						'verbose': False,
 						'force_eval': False
 						}
 
@@ -273,8 +281,9 @@ if __name__ == "__main__":
 	all_features = ["LocalizationMetric", "StartToBPStemMetric", "BPToEndStemMetric", "StartProtectionMetric", 
 		"EndProtectionMetric", "BPProtectionMetric", "ZipperStemStartMetric", "ZipperStemEndMetric", \
 		"LongestStemMetric", "NWJMetric", "MLDMetric"]
-	all_features = ["LocalizationMetric", "ZipperStemStartMetric", "ZipperStemEndMetric", \
-		"LongestStemMetric", "MLDMetric", "LengthFeature"]
+	all_features = ["ZipperStemStartMetric", "ZipperStemEndMetric", \
+		"LongestStemMetric", "MLDMetric", "LocalizationMetric", "LengthFeature"]
+	do_ratio_norm = [True, True, True, True, True]
 
 	metric_names = [features_db.get_feature_full_name(feature_name, secstruct_options) \
 			for feature_name in all_features]
@@ -296,11 +305,11 @@ if __name__ == "__main__":
 			control_class_violin, feature_options_all=feature_options_all)
 		control_feature_df = control_feature_df.dropna(axis=0)
 
-		standard_feature_df[all_metric_names[-3]] = standard_feature_df[all_metric_names[-3]]/standard_feature_df[all_metric_names[-1]]
-		control_feature_df[all_metric_names[-3]] = control_feature_df[all_metric_names[-3]]/control_feature_df[all_metric_names[-1]]
+		standard_feature_df[all_metric_names[-4]] = standard_feature_df[all_metric_names[-4]]/standard_feature_df[all_metric_names[-1]]
+		control_feature_df[all_metric_names[-4]] = control_feature_df[all_metric_names[-4]]/control_feature_df[all_metric_names[-1]]
 
 		all_introns = features_db.build_intron_set(intron_class_violin)
-		make_violin(standard_feature_df, control_feature_df, metric_names, plot_names, all_introns)
+		make_violin(standard_feature_df, control_feature_df, metric_names, plot_names, all_introns, do_ratio_norm)
 
 	if make_species_heatmap:
 		make_heatmap(all_features, feature_options_all, \

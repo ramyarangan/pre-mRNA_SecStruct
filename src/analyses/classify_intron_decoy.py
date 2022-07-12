@@ -20,10 +20,10 @@ SECSTRUCT_FEATURES = ["LocalizationMetric", "StartToBPStemMetric", "BPToEndStemM
 			"StartProtectionMetric", "EndProtectionMetric", "BPProtectionMetric", "ZipperStemStartMetric", \
 			"ZipperStemEndMetric", "LongestStemMetric", "MLDMetric"]
 
-SECSTRUCT_FEATURES = ["LocalizationMetric", "StartProtectionMetric", "EndProtectionMetric",
-	"BPProtectionMetric", "ZipperStemStartMetric", "ZipperStemEndMetric", "LongestStemMetric", "MLDMetric"]
+# SECSTRUCT_FEATURES = ["LocalizationMetric", "StartProtectionMetric", "EndProtectionMetric",
+#	"BPProtectionMetric", "ZipperStemStartMetric", "ZipperStemEndMetric", "LongestStemMetric", "MLDMetric"]
 
-# SECSTRUCT_FEATURES = ["LocalizationMetric", "ZipperStemStartMetric", "ZipperStemEndMetric", "LongestStemMetric", "MLDMetric"]
+SECSTRUCT_FEATURES = ["LocalizationMetric", "ZipperStemStartMetric", "ZipperStemEndMetric", "LongestStemMetric", "MLDMetric"]
 
 # SECSTRUCT_FEATURES = ["ZipperStemStartMetric", "ZipperStemEndMetric", "LongestStemMetric", "MLDMetric"]
 

@@ -149,27 +149,40 @@ def plot_conservation_stats(cons_stats):
 	print(counts)
 	print(bins)
 
-def plot_heatmap(data_arr, data_mask, labels, perc_bars, colormap='YlGnBu_r'):
+def plot_heatmap(data_arr, data_mask, labels, num_homolog_bars, perc_bars, colormap='YlGnBu_r'):
 	row_linkage = hierarchy.linkage(distance.pdist(data_arr))
 	permutation = hierarchy.leaves_list(row_linkage)
 	data_arr[:] = data_arr[permutation,:]
 	data_mask[:] = data_mask[permutation,:]
+	num_homolog_bars = np.array(num_homolog_bars)
+	num_homolog_bars[:] = num_homolog_bars[permutation]
+	num_homolog_bars = list(num_homolog_bars)
 
-	fig, ((ax1, cbar_ax), (ax2, dummy_ax)) = plt.subplots(nrows=2, ncols=2, 
+	fig, ((cbar_ax, ax1, hbar_ax), (dummy_ax, ax2, dummy_ax2)) = \
+		plt.subplots(nrows=2, ncols=3, 
 		figsize=(4, 8), sharex='col',
-		gridspec_kw={'height_ratios': [10, 1], 'width_ratios': [20, 1]})
+		gridspec_kw={'height_ratios': [10, 1], 'width_ratios': [1, 10, 2]})
 
 	colormap = plt.cm.get_cmap(colormap)
 	colormap.set_bad('gray')
 	g = sns.heatmap(data_arr, mask=data_mask, cmap=colormap, xticklabels=False, \
 		yticklabels=False, ax=ax1, cbar_ax=cbar_ax)
+
 	ax2.set_xlabel("Species")
 	x_tick_pos = [i + 0.5 for i in range(len(labels))]
 	ax2.bar(x_tick_pos, perc_bars, align='center', color='grey')
 	ax2.set_ylim(0, 1)
 	ax2.set_xticks(x_tick_pos)
 	ax2.set_xticklabels(labels, Rotation=45, Fontsize=8)
+
+	y_tick_pos = [i + 0.5 for i in range(len(num_homolog_bars))]
+	hbar_ax.barh(y_tick_pos, num_homolog_bars[::-1], align='center', color='grey')
+	hbar_ax.set_ylim(0, len(num_homolog_bars))
+	hbar_ax.set_yticks([])
+
 	dummy_ax.axis('off')
+	dummy_ax2.axis('off')
+
 	plt.tight_layout()
 	plt.show()
 
@@ -181,6 +194,7 @@ def plot_paralogs_separately(dG_species_dict, all_gene_names, \
 	dG_arr = np.zeros((len(all_gene_names), len(SPECIES_NAMES) * 2))
 	dG_mask = np.full((len(all_gene_names), len(SPECIES_NAMES) * 2), False)
 	perc_bars = []
+	num_homolog_bars = [0] * len(all_gene_names)
 	for jj, species in enumerate(SPECIES_NAMES):
 		species_zipper_cnt = 0
 		species_total = 0
@@ -205,9 +219,14 @@ def plot_paralogs_separately(dG_species_dict, all_gene_names, \
 			if do_binary: 
 				species_zipper_cnt += dG_arr[ii, jj] + \
 					dG_arr[ii, jj + len(SPECIES_NAMES)]
+				if dG_arr[ii, jj] or (dG_arr[ii, jj + len(SPECIES_NAMES)]):
+					num_homolog_bars[ii] += 1
 			else:
 				species_zipper_cnt += (dG_arr[ii, jj] < 0)
 				species_zipper_cnt += (dG_arr[ii, jj + len(SPECIES_NAMES)] < 0)
+				if (dG_arr[ii, jj] < 0) or \
+					(dG_arr[ii, jj + len(SPECIES_NAMES)] < 0):
+					num_homolog_bars[ii] += 1
 			if not dG_mask[ii, jj]:
 				species_total += 1
 			if not dG_mask[ii, jj + len(SPECIES_NAMES)]:
@@ -221,7 +240,7 @@ def plot_paralogs_separately(dG_species_dict, all_gene_names, \
 	colormap = 'YlGnBu_r'
 	if do_binary:
 		colormap='YlGnBu'
-	plot_heatmap(dG_arr, dG_mask, labels, perc_bars, colormap=colormap)
+	plot_heatmap(dG_arr, dG_mask, labels, num_homolog_bars, perc_bars, colormap=colormap)
 
 def plot_best_zipper_paralog(dG_species_dict, all_gene_names, \
 	do_binary=False, dG_cutoff=0):
@@ -231,6 +250,7 @@ def plot_best_zipper_paralog(dG_species_dict, all_gene_names, \
 	dG_arr = np.zeros((len(all_gene_names), len(SPECIES_NAMES)))
 	dG_mask = np.full((len(all_gene_names), len(SPECIES_NAMES)), False)
 	perc_bars = []
+	num_homolog_bars = [0] * len(all_gene_names)
 	for jj, species in enumerate(SPECIES_NAMES):
 		species_zipper_cnt = 0
 		total_intron_cnt = 0
@@ -248,8 +268,10 @@ def plot_best_zipper_paralog(dG_species_dict, all_gene_names, \
 				dG_arr[ii, jj] = (float(dG_arr[ii, jj]) < dG_cutoff)
 			if not do_binary and dG_arr[ii, jj] < 0: 
 				species_zipper_cnt += 1
+				num_homolog_bars[ii] += 1
 			if do_binary and dG_arr[ii, jj]: 
 				species_zipper_cnt += 1
+				num_homolog_bars[ii] += 1
 			total_intron_cnt += 1				
 
 		species_zipper_perc = species_zipper_cnt/total_intron_cnt
@@ -260,7 +282,7 @@ def plot_best_zipper_paralog(dG_species_dict, all_gene_names, \
 	colormap = 'YlGnBu_r'
 	if do_binary:
 		colormap='Greens'
-	plot_heatmap(dG_arr, dG_mask, SPECIES_NAMES, perc_bars, colormap=colormap)
+	plot_heatmap(dG_arr, dG_mask, SPECIES_NAMES, num_homolog_bars, perc_bars, colormap=colormap)
 
 def plot_histogram_num_zipperstems(dG_species_dict, all_gene_names, dG_cutoff=0):
 	num_zipper_stems = []
@@ -293,7 +315,7 @@ def plot_histogram_num_zipperstems(dG_species_dict, all_gene_names, dG_cutoff=0)
 	print(bins)
 
 def heatmap_zipper_stem_data(intron_class):
-	intron_class = 'species_hooks_2/' + intron_class
+	intron_class = 'species_hooks_genes_named/' + intron_class
 	feature_options = {'secstruct_pkg': 'Vienna', 
 					'secstruct_type': 'mfe', 
 					'verbose': True,
@@ -313,6 +335,7 @@ def heatmap_zipper_stem_data(intron_class):
 		dG_species_dict[species_name] = {}
 		intron_class_species = intron_class + '/' + species_name
 		zipper_stem_data = get_zipper_stems(intron_class_species, feature_options)
+		print(zipper_stem_data)
 		dGs = [x[3] for x in zipper_stem_data]
 		all_introns = build_intron_set(intron_class_species, \
 			intron_options={'name_is_refseq': False})

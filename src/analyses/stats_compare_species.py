@@ -27,8 +27,9 @@ secstruct_options = {'secstruct_pkg': 'Vienna',
 					}
 
 	
-all_features = ["LocalizationMetric", "StartToBPStemMetric", "BPToEndStemMetric", "StartProtectionMetric", 
-		"EndProtectionMetric", "BPProtectionMetric"]
+# all_features = ["LocalizationMetric", "StartToBPStemMetric", "BPToEndStemMetric", "StartProtectionMetric", 
+# 		"EndProtectionMetric", "BPProtectionMetric"]
+all_features = ["StartToBPStemMetric", "BPToEndStemMetric"]
 
 metric_names = [features_db.get_feature_full_name(feature_name, secstruct_options) \
 		for feature_name in all_features]
