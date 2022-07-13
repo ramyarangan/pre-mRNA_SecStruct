@@ -138,15 +138,6 @@ def make_violin(standard_feature_df, \
 	print(standard_feature_df.shape)
 	print(control_feature_df.shape)
 
-	ii = 1
-	for metric in metric_names:
-		intron_vals = []
-		control_vals = []
-		for idx, row in standard_feature_df.iterrows():
-			intron_vals += [row[metric]]
-		for idx, row in control_feature_df.iterrows():
-			control_vals += [row[metric]]
-
 	# norm_long_stem = []
 	# norm_long_stem_control = []
 	# longest_stem_vals = standard_feature_df["LongestStemMetric_Vienna_ens"]
@@ -179,6 +170,7 @@ def make_violin(standard_feature_df, \
 
 		intron_vals = standard_feature_df[metric]
 		control_vals = control_feature_df[metric]
+		
 		print(stats.ttest_rel(np.array(intron_vals), np.array(control_vals)))
 		print(stats.wilcoxon(np.array(intron_vals), np.array(control_vals)))
 
@@ -270,8 +262,8 @@ if __name__ == "__main__":
 		intron_class_species = args.intron_class_species
 		control_class_species = args.control_class_species
 
-	secstruct_options = {'secstruct_pkg': 'RNAstructure', 
-						'secstruct_type': 'mfe', 
+	secstruct_options = {'secstruct_pkg': 'Vienna', 
+						'secstruct_type': 'ens', 
 						'use_bpp': False,
 						'verbose': False,
 						'force_eval': False
@@ -304,9 +296,6 @@ if __name__ == "__main__":
 		control_feature_df = features_db.get_features(all_features, \
 			control_class_violin, feature_options_all=feature_options_all)
 		control_feature_df = control_feature_df.dropna(axis=0)
-
-		standard_feature_df[all_metric_names[-4]] = standard_feature_df[all_metric_names[-4]]/standard_feature_df[all_metric_names[-1]]
-		control_feature_df[all_metric_names[-4]] = control_feature_df[all_metric_names[-4]]/control_feature_df[all_metric_names[-1]]
 
 		all_introns = features_db.build_intron_set(intron_class_violin)
 		make_violin(standard_feature_df, control_feature_df, metric_names, plot_names, all_introns, do_ratio_norm)

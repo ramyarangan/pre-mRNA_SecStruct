@@ -1,0 +1,1015 @@
+python analyses/stats_compare.py standard_allsize_dms_matched_to_shift500 standard_allsize_dms_shift_500
+
+LocalizationMetric_RNAstructure_DMS_mfe
+Average intron value: 72.585714
+Average control value: 45.528571
+Ttest_relResult(statistic=6.46128036484607, pvalue=1.6257287897042392e-09)
+WilcoxonResult(statistic=1953.5, pvalue=2.5519920238084585e-09)
+
+ZipperStemStartMetric_RNAstructure_DMS_mfe_BPP
+Average intron value: -5.085000
+Average control value: 0.000000
+Ttest_relResult(statistic=-6.9023786798289075, pvalue=1.6666010737554921e-10)
+WilcoxonResult(statistic=0.0, pvalue=2.4217282625308794e-08)
+
+ZipperStemEndMetric_RNAstructure_DMS_mfe_BPP
+Average intron value: -1.777143
+Average control value: -0.357143
+Ttest_relResult(statistic=-3.779531954289515, pvalue=0.0002323997837660402)
+WilcoxonResult(statistic=69.0, pvalue=0.00026555592098743774)
+
+LongestStemMetric_RNAstructure_DMS_mfe_BPP
+Average intron value: 16.700000
+Average control value: 10.778571
+Ttest_relResult(statistic=3.8850733313370736, pvalue=0.00015768384674281515)
+WilcoxonResult(statistic=2706.5, pvalue=0.0007204229556289132)
+
+MLDMetric_RNAstructure_DMS_mfe
+Average intron value: 0.451196
+Average control value: 0.346304
+Ttest_relResult(statistic=8.975335303940168, pvalue=1.7548975248188375e-15)
+WilcoxonResult(statistic=1160.0, pvalue=1.1054174503660178e-14)
+
+
+
+
+
+python analyses/stats_compare.py standard_allsize_dms_matched_to_shift500 standard_allsize_dms_shift_500
+
+LocalizationMetric_RNAstructure_mfe
+Average intron value: 22.921429
+Average control value: 27.821429
+Ttest_relResult(statistic=-3.0610563763355776, pvalue=0.0026480458305099624)
+WilcoxonResult(statistic=3299.0, pvalue=0.001465978590657744)
+
+ZipperStemStartMetric_RNAstructure_mfe
+Average intron value: -9.121429
+Average control value: -0.771429
+Ttest_relResult(statistic=-8.822119768253012, pvalue=4.227265632413305e-15)
+WilcoxonResult(statistic=164.0, pvalue=7.071786697717533e-12)
+
+ZipperStemEndMetric_RNAstructure_mfe
+Average intron value: -1.904286
+Average control value: -1.007143
+Ttest_relResult(statistic=-2.803518771118471, pvalue=0.0057781646678983995)
+WilcoxonResult(statistic=294.5, pvalue=0.0071923954562430606)
+
+LongestStemMetric_RNAstructure_mfe
+Average intron value: 26.407143
+Average control value: 22.907143
+Ttest_relResult(statistic=3.1690314368454184, pvalue=0.001881258163966813)
+WilcoxonResult(statistic=3173.0, pvalue=0.0008390300111998518)
+
+MLDMetric_RNAstructure_mfe
+Average intron value: 0.320319
+Average control value: 0.281796
+Ttest_relResult(statistic=5.713123472018532, pvalue=6.47750110919467e-08)
+WilcoxonResult(statistic=2191.0, pvalue=5.106174880310502e-08)
+
+
+
+
+
+python analyses/stats_compare.py standard_allsize_min_50_max_600 standard_allsize_min_50_max_600_shuffle
+
+LocalizationMetric_Vienna_ens
+Average intron value: 20.863854
+Average control value: 26.051656
+Ttest_relResult(statistic=-6.564554894161535, pvalue=2.437312425260556e-10)
+WilcoxonResult(statistic=12259.0, pvalue=1.508149693167277e-09)
+
+ZipperStemStartMetric_Vienna_ens
+Average intron value: -8.024357
+Average control value: -2.783669
+Ttest_relResult(statistic=-10.476321303007937, pvalue=5.836862851981001e-22)
+WilcoxonResult(statistic=1518.5, pvalue=4.710729677627628e-21)
+
+ZipperStemEndMetric_Vienna_ens
+Average intron value: -2.511376
+Average control value: -1.694621
+Ttest_relResult(statistic=-3.9562013322789515, pvalue=9.60272790339314e-05)
+WilcoxonResult(statistic=4185.0, pvalue=0.00027499125398430265)
+
+LongestStemMetric_Vienna_ens
+Average intron value: 20.660177
+Average control value: 18.610233
+Ttest_relResult(statistic=4.306278769430331, pvalue=2.281656771266943e-05)
+WilcoxonResult(statistic=16176.5, pvalue=0.0010599253627330688)
+
+MLDMetric_Vienna_ens
+Average intron value: 0.385128
+Average control value: 0.357728
+Ttest_relResult(statistic=6.771554266186035, pvalue=7.190463256692556e-11)
+WilcoxonResult(statistic=11346.0, pvalue=2.248353088965216e-11)
+
+
+
+
+python analyses/stats_compare.py standard_allsize_min_50_max_600 standard_allsize_min_50_max_600_shuffle
+
+LocalizationMetric_RNAstructure_ens
+Average intron value: 21.220712
+Average control value: 25.214826
+Ttest_relResult(statistic=-5.429488100903516, pvalue=1.2049115181434617e-07)
+WilcoxonResult(statistic=13802.0, pvalue=7.318793702802584e-07)
+
+ZipperStemStartMetric_RNAstructure_ens
+Average intron value: -7.717015
+Average control value: -2.798228
+Ttest_relResult(statistic=-9.623712039709964, pvalue=3.5039178533053816e-19)
+WilcoxonResult(statistic=2128.0, pvalue=6.848058492063965e-19)
+
+ZipperStemEndMetric_RNAstructure_ens
+Average intron value: -2.381853
+Average control value: -1.722042
+Ttest_relResult(statistic=-3.2016307330025784, pvalue=0.0015200486972733519)
+WilcoxonResult(statistic=4425.0, pvalue=0.005395064068523839)
+
+LongestStemMetric_RNAstructure_ens
+Average intron value: 18.125823
+Average control value: 16.342434
+Ttest_relResult(statistic=4.271326781236092, pvalue=2.645147136361419e-05)
+WilcoxonResult(statistic=16544.0, pvalue=0.0025755345389797167)
+
+MLDMetric_RNAstructure_ens
+Average intron value: 0.368932
+Average control value: 0.344636
+Ttest_relResult(statistic=6.365184971455032, pvalue=7.702414394861634e-10)
+WilcoxonResult(statistic=11382.0, pvalue=4.2259452354435213e-11)
+
+
+
+
+
+python analyses/stats_compare.py standard_allsize_min_50_max_600 standard_allsize_min_50_max_600_shift_500
+
+LocalizationMetric_Vienna_ens
+Average intron value: 20.863854
+Average control value: 25.377021
+Ttest_relResult(statistic=-6.0409533400601525, pvalue=4.739755555299361e-09)
+WilcoxonResult(statistic=12659.0, pvalue=8.375522438409018e-09)
+
+ZipperStemStartMetric_Vienna_ens
+Average intron value: -8.024357
+Average control value: -2.534012
+Ttest_relResult(statistic=-10.014502479932203, pvalue=1.925811667181805e-20)
+WilcoxonResult(statistic=1980.0, pvalue=2.911871662189562e-19)
+
+ZipperStemEndMetric_Vienna_ens
+Average intron value: -2.511376
+Average control value: -1.960526
+Ttest_relResult(statistic=-2.3574694246269323, pvalue=0.019071259451166514)
+WilcoxonResult(statistic=4993.5, pvalue=0.06031513292750214)
+
+LongestStemMetric_Vienna_ens
+Average intron value: 20.660177
+Average control value: 19.101705
+Ttest_relResult(statistic=2.751807045358933, pvalue=0.006304000202049744)
+WilcoxonResult(statistic=17801.0, pvalue=0.03352661386795847)
+
+MLDMetric_Vienna_ens
+Average intron value: 0.385128
+Average control value: 0.352804
+Ttest_relResult(statistic=7.152063546013126, pvalue=7.131311546974084e-12)
+WilcoxonResult(statistic=10378.0, pvalue=4.318548711518107e-13)
+
+
+
+
+
+python analyses/stats_compare.py standard_allsize_min_50_max_600 standard_allsize_min_50_max_600_shift_500_seq_matched
+
+LocalizationMetric_Vienna_ens
+Average intron value: 20.863854
+Average control value: 23.005625
+Ttest_relResult(statistic=-2.6769439173336784, pvalue=0.007857219244962221)
+WilcoxonResult(statistic=16367.0, pvalue=0.0016926627874037166)
+
+ZipperStemStartMetric_Vienna_ens
+Average intron value: -8.024357
+Average control value: -2.658844
+Ttest_relResult(statistic=-9.827077555863285, pvalue=7.796028089879231e-20)
+WilcoxonResult(statistic=1982.5, pvalue=8.101489370515195e-19)
+
+ZipperStemEndMetric_Vienna_ens
+Average intron value: -2.511376
+Average control value: -1.939763
+Ttest_relResult(statistic=-2.4696987778221446, pvalue=0.01410450828390885)
+WilcoxonResult(statistic=5245.0, pvalue=0.05517891105513863)
+
+LongestStemMetric_Vienna_ens
+Average intron value: 20.660177
+Average control value: 19.155156
+Ttest_relResult(statistic=2.741372090567707, pvalue=0.006502373879456022)
+WilcoxonResult(statistic=17764.0, pvalue=0.03140713944152748)
+
+MLDMetric_Vienna_ens
+Average intron value: 0.385128
+Average control value: 0.354673
+Ttest_relResult(statistic=7.1448780706490815, pvalue=7.455220125557787e-12)
+WilcoxonResult(statistic=10974.0, pvalue=3.6043007697032252e-12)
+
+
+
+
+python analyses/stats_compare.py decoy_dms_matched_to_shift500 decoy_dms_shift_500
+
+LocalizationMetric_RNAstructure_DMS_mfe
+Average intron value: 64.886228
+Average control value: 61.772455
+Ttest_relResult(statistic=0.7229373610287906, pvalue=0.4707357179336603)
+WilcoxonResult(statistic=5979.0, pvalue=0.09813271551648575)
+
+ZipperStemStartMetric_RNAstructure_DMS_mfe_BPP
+Sample sizes too small to compare.
+
+ZipperStemEndMetric_RNAstructure_DMS_mfe_BPP
+Average intron value: -0.633533
+Average control value: -0.365868
+Ttest_relResult(statistic=-1.1558839794994424, pvalue=0.24938952728294367)
+WilcoxonResult(statistic=58.0, pvalue=0.23094862415571282)
+
+LongestStemMetric_RNAstructure_DMS_mfe_BPP
+Average intron value: 8.502994
+Average control value: 8.311377
+Ttest_relResult(statistic=0.27259588410853836, pvalue=0.7855026704277032)
+WilcoxonResult(statistic=4805.0, pvalue=0.6796623911202615)
+
+MLDMetric_RNAstructure_DMS_mfe
+Average intron value: 0.438822
+Average control value: 0.410011
+Ttest_relResult(statistic=2.1073390186733536, pvalue=0.03659066381105157)
+WilcoxonResult(statistic=5895.5, pvalue=0.09515142086897063)
+
+
+
+
+python analyses/stats_compare.py standard_allsize_min_50_max_600_extend50 standard_allsize_min_50_max_600_extend50_shift_500
+
+LocalizationMetric_Vienna_ens
+Average intron value: 31.940437
+Average control value: 37.993319
+Ttest_relResult(statistic=-4.615288137506371, pvalue=5.9260976784391766e-06)
+WilcoxonResult(statistic=14730.0, pvalue=1.7337327504747853e-05)
+
+ZipperStemStartMetric_Vienna_ens
+Average intron value: -7.569549
+Average control value: -1.681312
+Ttest_relResult(statistic=-10.297837241662148, pvalue=2.2731782344325413e-21)
+WilcoxonResult(statistic=1395.5, pvalue=1.0436594121768138e-19)
+
+ZipperStemEndMetric_Vienna_ens
+Average intron value: -6.692105
+Average control value: -7.323330
+Ttest_relResult(statistic=1.9715205199015122, pvalue=0.049624685124746694)
+WilcoxonResult(statistic=17416.0, pvalue=0.020994785150488495)
+
+LongestStemMetric_Vienna_ens
+Average intron value: 20.889340
+Average control value: 19.776608
+Ttest_relResult(statistic=2.003133160281943, pvalue=0.04610309735027665)
+WilcoxonResult(statistic=18419.5, pvalue=0.09131769731772295)
+
+MLDMetric_Vienna_ens
+Average intron value: 0.305612
+Average control value: 0.285952
+Ttest_relResult(statistic=5.300420434461969, pvalue=2.3074930241665168e-07)
+WilcoxonResult(statistic=13224.0, pvalue=8.262085373235581e-08)
+
+
+
+
+python analyses/stats_compare_species.py standard_min_50_max_600 standard_min_50_max_600_shuffle
+
+Species: ndai
+(218, 5)
+(218, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-7.8850892393826095, pvalue=1.5170991559126913e-13)
+WilcoxonResult(statistic=5332.0, pvalue=1.4154014804708339e-12)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-9.608461127867582, pvalue=1.9384144979342536e-18)
+WilcoxonResult(statistic=914.0, pvalue=8.23897984297297e-19)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-3.6100590846766982, pvalue=0.00038017744706500745)
+WilcoxonResult(statistic=5049.0, pvalue=0.0005565347265016953)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=2.684392853692226, pvalue=0.007827011169604546)
+WilcoxonResult(statistic=10381.0, pvalue=0.09546119552962226)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=3.3511771641217276, pvalue=0.0009490878825229227)
+WilcoxonResult(statistic=8701.5, pvalue=0.0005231706794542281)
+
+Species: kthe
+(215, 5)
+(215, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-8.96386951890485, pvalue=1.5799115734472485e-16)
+WilcoxonResult(statistic=4449.0, pvalue=4.454900859172761e-15)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-8.280912783022627, pvalue=1.3208591943557612e-14)
+WilcoxonResult(statistic=392.0, pvalue=8.44586676216932e-15)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-1.145343750390808, pvalue=0.2533460386654307)
+/usr/local/lib/python3.9/site-packages/scipy/stats/morestats.py:3155: UserWarning: Sample size too small for normal approximation.
+  warnings.warn("Sample size too small for normal approximation.")
+WilcoxonResult(statistic=8.0, pvalue=0.3104944343172349)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=4.141659228369461, pvalue=4.9627878148542934e-05)
+WilcoxonResult(statistic=8947.5, pvalue=0.003551383333332941)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=3.9423395859588783, pvalue=0.00010930527395173315)
+WilcoxonResult(statistic=8181.0, pvalue=0.00017347043389046132)
+
+Species: smik
+(279, 5)
+(279, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-6.94387994252294, pvalue=2.696970456462909e-11)
+WilcoxonResult(statistic=11238.0, pvalue=7.885879791012101e-10)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-7.962758067334849, pvalue=4.3267975696473467e-14)
+WilcoxonResult(statistic=1942.0, pvalue=1.3847704978712147e-13)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-3.6592358816246358, pvalue=0.00030261700091790966)
+WilcoxonResult(statistic=4387.5, pvalue=0.001477079867496703)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=2.7468422455647485, pvalue=0.006410187269423522)
+WilcoxonResult(statistic=16675.5, pvalue=0.03433113528840401)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=4.306434781250716, pvalue=2.302764216550179e-05)
+WilcoxonResult(statistic=13809.0, pvalue=2.223105496016779e-05)
+
+Species: klac
+(151, 5)
+(151, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-6.85359347810561, pvalue=1.747068087636559e-10)
+WilcoxonResult(statistic=2216.0, pvalue=6.037910108132566e-11)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-6.59510325078047, pvalue=6.830890072685463e-10)
+WilcoxonResult(statistic=975.0, pvalue=2.7022418451846385e-09)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-3.3934875234548563, pvalue=0.0008828543247955226)
+WilcoxonResult(statistic=1918.5, pvalue=0.0025584177791471417)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=3.5091936973098004, pvalue=0.0005936137930030312)
+WilcoxonResult(statistic=3859.5, pvalue=0.0004836032127046598)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=3.405581320551589, pvalue=0.0008473622964215115)
+WilcoxonResult(statistic=3919.0, pvalue=0.0007271183176823537)
+
+Species: knag
+(175, 5)
+(175, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-7.232496698993405, pvalue=1.4453467986361782e-11)
+WilcoxonResult(statistic=3276.0, pvalue=4.3506810001213823e-11)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-8.509196220218858, pvalue=7.857703690082113e-15)
+WilcoxonResult(statistic=988.0, pvalue=1.3472281985522724e-13)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-2.569611520031758, pvalue=0.011019532658741268)
+WilcoxonResult(statistic=3322.0, pvalue=0.01090843753761156)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=3.4456561451587326, pvalue=0.0007140735054989219)
+WilcoxonResult(statistic=5959.5, pvalue=0.009506295890273315)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=5.8925705252985345, pvalue=1.923988874351525e-08)
+WilcoxonResult(statistic=3943.0, pvalue=2.1707959325808892e-08)
+
+Species: tbla
+(163, 5)
+(163, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-4.028940413593826, pvalue=8.596446164864308e-05)
+WilcoxonResult(statistic=4117.0, pvalue=2.1205996676411454e-05)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-4.798032739286672, pvalue=3.6130003367859576e-06)
+WilcoxonResult(statistic=1063.0, pvalue=6.262341247078114e-06)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-3.429496846147404, pvalue=0.0007670497974544071)
+WilcoxonResult(statistic=3107.0, pvalue=0.0016691314185451496)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=1.452073060268957, pvalue=0.14841526838368937)
+WilcoxonResult(statistic=6550.0, pvalue=0.8255769767124849)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=3.6130032287018286, pvalue=0.0004034662581047092)
+WilcoxonResult(statistic=4593.0, pvalue=0.0005340318913432789)
+
+Species: tdel
+(202, 5)
+(202, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-4.44553296192919, pvalue=1.4485795340859835e-05)
+WilcoxonResult(statistic=6785.0, pvalue=3.083475125890735e-05)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-5.445585787757672, pvalue=1.4973493367598976e-07)
+WilcoxonResult(statistic=414.5, pvalue=3.405163974850657e-08)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=0.510243211298951, pvalue=0.610440941944334)
+WilcoxonResult(statistic=205.5, pvalue=0.5786485512311916)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=1.6809285944194068, pvalue=0.09433002613179177)
+WilcoxonResult(statistic=9695.0, pvalue=0.5035019078807239)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=3.8619554801790557, pvalue=0.00015163865812142102)
+WilcoxonResult(statistic=7316.5, pvalue=0.0004182757908305508)
+
+Species: ncas
+(250, 5)
+(250, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-7.602651010082317, pvalue=5.915346951433766e-13)
+WilcoxonResult(statistic=7711.0, pvalue=3.184083744274264e-12)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-11.292321976560928, pvalue=3.774863199132062e-24)
+WilcoxonResult(statistic=239.0, pvalue=2.334206488088989e-22)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-1.3200494973090484, pvalue=0.18803071738470578)
+WilcoxonResult(statistic=4021.0, pvalue=0.09975412568496365)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=3.5665986190031833, pvalue=0.00043359183494660864)
+WilcoxonResult(statistic=12278.0, pvalue=0.00289189963518791)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=6.082126359466366, pvalue=4.43893008240715e-09)
+WilcoxonResult(statistic=8559.0, pvalue=7.4590455757265e-10)
+
+Species: agos
+(185, 5)
+(185, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-5.513302702665815, pvalue=1.1781582566548007e-07)
+WilcoxonResult(statistic=4633.0, pvalue=5.248714898256342e-08)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-6.096039596287205, pvalue=6.241534887393962e-09)
+WilcoxonResult(statistic=358.5, pvalue=6.4923787606341135e-09)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-1.0556894758728563, pvalue=0.2924942626096242)
+WilcoxonResult(statistic=10.0, pvalue=0.2626182904425206)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=5.251964577502829, pvalue=4.1300366112211303e-07)
+WilcoxonResult(statistic=5571.5, pvalue=3.240471254912137e-05)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=3.3243516256496584, pvalue=0.001069521157478786)
+WilcoxonResult(statistic=6084.0, pvalue=0.0011432925912641255)
+
+Species: kwal
+(210, 5)
+(210, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-5.340104502671181, pvalue=2.415032811278199e-07)
+WilcoxonResult(statistic=6503.0, pvalue=2.117839695295921e-07)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-7.8500282950974345, pvalue=2.1336358810427966e-13)
+WilcoxonResult(statistic=712.5, pvalue=1.1028458660737324e-12)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-1.7279907784146111, pvalue=0.08546694291327653)
+WilcoxonResult(statistic=1.0, pvalue=0.010862224704815628)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=2.840509190538563, pvalue=0.004949527821950708)
+WilcoxonResult(statistic=8921.0, pvalue=0.01444357074504055)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=5.839857163104516, pvalue=1.9772026922462864e-08)
+WilcoxonResult(statistic=6217.0, pvalue=8.720615706717576e-08)
+
+Species: tpha
+(143, 5)
+(143, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-7.64427536822867, pvalue=2.8707331767145286e-12)
+WilcoxonResult(statistic=1676.0, pvalue=2.620052274367966e-12)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-7.430689891008752, pvalue=9.241516889528304e-12)
+WilcoxonResult(statistic=335.5, pvalue=2.177015330287716e-12)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-3.5398549592734976, pvalue=0.0005417121312858048)
+WilcoxonResult(statistic=1814.0, pvalue=0.0005390779701478209)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=1.6427264965118826, pvalue=0.10265213780647858)
+WilcoxonResult(statistic=4954.0, pvalue=0.6958369092898691)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=3.2824263491693713, pvalue=0.0012955495060490978)
+WilcoxonResult(statistic=3446.0, pvalue=0.000898851140196818)
+
+Species: kpol
+(175, 5)
+(175, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-7.708274709026636, pvalue=9.362197941003725e-13)
+WilcoxonResult(statistic=3314.0, pvalue=6.361082003950495e-11)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-7.7947404564432, pvalue=5.643648682119978e-13)
+WilcoxonResult(statistic=1543.0, pvalue=6.114851004848633e-11)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-4.01016395013485, pvalue=8.992337117230964e-05)
+WilcoxonResult(statistic=2763.5, pvalue=9.368280409742862e-05)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=2.7136989279649457, pvalue=0.007323080181006013)
+WilcoxonResult(statistic=6430.0, pvalue=0.058456500328421514)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=3.1824632134275217, pvalue=0.0017298557928647669)
+WilcoxonResult(statistic=5263.5, pvalue=0.0002830858971440464)
+
+Species: cgla
+(100, 5)
+(100, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-5.636858565258727, pvalue=1.6362223334430662e-07)
+WilcoxonResult(statistic=1072.0, pvalue=5.856625244067156e-07)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-5.825294911138988, pvalue=7.107402538100502e-08)
+WilcoxonResult(statistic=219.0, pvalue=1.805859563070446e-07)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-6.515074164298822, pvalue=3.051825566720098e-09)
+WilcoxonResult(statistic=543.0, pvalue=1.0892550858177592e-08)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=3.91845807850067, pvalue=0.00016411254426256623)
+WilcoxonResult(statistic=1617.0, pvalue=0.0017962757440202187)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=2.634644754772285, pvalue=0.009776297684310825)
+WilcoxonResult(statistic=1776.0, pvalue=0.01001516391653368)
+
+Species: ecym
+(193, 5)
+(193, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-4.307046001537071, pvalue=2.637591133060402e-05)
+WilcoxonResult(statistic=5733.0, pvalue=3.033960353149521e-06)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-6.625608296114115, pvalue=3.394934590448498e-10)
+WilcoxonResult(statistic=1177.0, pvalue=1.0288907244114453e-09)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-1.1722588128280382, pvalue=0.24254563488104364)
+WilcoxonResult(statistic=92.0, pvalue=0.4140400034242331)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=2.458351736646279, pvalue=0.01484396395310222)
+WilcoxonResult(statistic=7700.0, pvalue=0.032595999905933155)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=5.131535290117809, pvalue=7.006985410362312e-07)
+WilcoxonResult(statistic=5159.0, pvalue=1.0136556378636825e-07)
+
+Species: kafr
+(216, 5)
+(216, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-4.353543581311591, pvalue=2.0718341028262e-05)
+WilcoxonResult(statistic=8051.0, pvalue=6.673409229169265e-05)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-8.709061175646559, pvalue=8.215768502398523e-16)
+WilcoxonResult(statistic=449.0, pvalue=2.023176282044353e-15)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-0.0481280301398772, pvalue=0.9616588845803479)
+WilcoxonResult(statistic=1496.5, pvalue=0.8265302564853058)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=2.3213952271236225, pvalue=0.021202007628164064)
+WilcoxonResult(statistic=9961.0, pvalue=0.05605205387564643)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=4.33844944413521, pvalue=2.2069995676845387e-05)
+WilcoxonResult(statistic=7793.5, pvalue=1.9753858083856925e-05)
+
+Species: sklu
+(229, 5)
+(229, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-6.833666376787768, pvalue=7.470663227002886e-11)
+WilcoxonResult(statistic=6838.5, pvalue=2.863719213856078e-10)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-8.237267465081196, pvalue=1.374367374625958e-14)
+WilcoxonResult(statistic=644.5, pvalue=9.728605113148859e-14)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-1.6173427185699376, pvalue=0.10718696416100633)
+WilcoxonResult(statistic=35.0, pvalue=0.2719476239947354)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=4.724362412770091, pvalue=4.036799944165676e-06)
+WilcoxonResult(statistic=9686.0, pvalue=0.0005227145399215398)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=6.096443692374353, pvalue=4.588795879211816e-09)
+WilcoxonResult(statistic=7165.0, pvalue=5.575021474226902e-09)
+
+Species: zrou
+(166, 5)
+(166, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-8.461586884612615, pvalue=1.3574887871850868e-14)
+WilcoxonResult(statistic=2383.0, pvalue=2.2613030329865723e-13)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-5.03629714079973, pvalue=1.233982618912688e-06)
+WilcoxonResult(statistic=230.5, pvalue=1.692566050519169e-07)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-1.1939414248199474, pvalue=0.2342145550962009)
+WilcoxonResult(statistic=41.0, pvalue=0.28053090025207417)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=1.667249506393128, pvalue=0.09736172815508076)
+WilcoxonResult(statistic=6356.5, pvalue=0.354698388839506)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=2.4308608467822452, pvalue=0.016133917609763442)
+WilcoxonResult(statistic=5255.0, pvalue=0.006901368505907317)
+
+Species: skud
+(279, 5)
+(279, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-5.908602841246106, pvalue=1.0064440082685498e-08)
+WilcoxonResult(statistic=12107.5, pvalue=3.742072395497742e-08)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-10.01981776913919, pvalue=2.2438060072272512e-20)
+WilcoxonResult(statistic=1502.0, pvalue=4.199421163292062e-20)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-2.1265934604091146, pvalue=0.03433469490760597)
+WilcoxonResult(statistic=5994.5, pvalue=0.20584284031824207)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=1.9963998913593843, pvalue=0.0468655260913148)
+WilcoxonResult(statistic=18715.0, pvalue=0.545714840540767)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=4.861927349657247, pvalue=1.947215746085645e-06)
+WilcoxonResult(statistic=12626.0, pvalue=6.871623838671753e-07)
+
+Species: suva
+(278, 5)
+(278, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-6.921714639607383, pvalue=3.1019499699354856e-11)
+WilcoxonResult(statistic=11107.0, pvalue=6.657880733750108e-10)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-10.020861005380748, pvalue=2.2761061919000718e-20)
+WilcoxonResult(statistic=1718.5, pvalue=4.303653400208015e-20)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-2.3608983422734275, pvalue=0.01892353916500327)
+WilcoxonResult(statistic=6654.0, pvalue=0.07332730414471261)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=2.3686710673805957, pvalue=0.01853846084531746)
+WilcoxonResult(statistic=17773.0, pvalue=0.2279775539946478)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=5.188903075312403, pvalue=4.0945748610107274e-07)
+WilcoxonResult(statistic=12190.5, pvalue=1.2144438666411254e-07)
+
+
+
+
+
+python analyses/stats_compare_species.py standard_min_50_max_600 standard_min_50_max_600_phylo_control
+
+Species: ndai
+(218, 5)
+(218, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-3.585458673523364, pvalue=0.0004156450074144659)
+WilcoxonResult(statistic=9081.0, pvalue=0.0022017715980185626)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-6.423141467762445, pvalue=8.315522868368384e-10)
+WilcoxonResult(statistic=2596.0, pvalue=1.9616570981257576e-09)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=2.3141468550248145, pvalue=0.02159515476604946)
+WilcoxonResult(statistic=6277.0, pvalue=0.07561697190536668)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=-2.060938743790534, pvalue=0.0405010858524741)
+WilcoxonResult(statistic=8698.0, pvalue=0.000515909692312839)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=7.9333762978168885, pvalue=1.1227579249700133e-13)
+WilcoxonResult(statistic=5455.0, pvalue=3.636995615433366e-12)
+
+Species: kthe
+(215, 5)
+(215, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-6.191891567214767, pvalue=2.9968320589712197e-09)
+WilcoxonResult(statistic=6196.0, pvalue=3.0585909211110817e-09)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-8.306184944414927, pvalue=1.1246185512585414e-14)
+WilcoxonResult(statistic=516.0, pvalue=2.4146228825795272e-14)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-1.2378918398519698, pvalue=0.2171125470005072)
+/usr/local/lib/python3.9/site-packages/scipy/stats/morestats.py:3155: UserWarning: Sample size too small for normal approximation.
+  warnings.warn("Sample size too small for normal approximation.")
+WilcoxonResult(statistic=12.0, pvalue=0.40081416938293446)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=4.194716298438704, pvalue=4.002042793416598e-05)
+WilcoxonResult(statistic=8802.0, pvalue=0.002106380363627738)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=5.09474848475009, pvalue=7.656455461979483e-07)
+WilcoxonResult(statistic=6779.5, pvalue=2.9629236077322027e-07)
+
+Species: smik
+(279, 5)
+(279, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-4.310121010962355, pvalue=2.267084306343898e-05)
+WilcoxonResult(statistic=14033.0, pvalue=4.598332902412072e-05)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-6.242535036449961, pvalue=1.60354497688654e-09)
+WilcoxonResult(statistic=2843.5, pvalue=8.945279758912098e-10)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-0.4170893261966091, pvalue=0.6769349689497205)
+WilcoxonResult(statistic=6290.0, pvalue=0.7982999595164489)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=1.1677676754486501, pvalue=0.24390104593173262)
+WilcoxonResult(statistic=19294.0, pvalue=0.8611136400657333)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=6.871154186028055, pvalue=4.176525808875498e-11)
+WilcoxonResult(statistic=10612.0, pvalue=6.031556883766627e-11)
+
+Species: klac
+(151, 5)
+(151, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-4.634673009609516, pvalue=7.708604390832286e-06)
+WilcoxonResult(statistic=3478.0, pvalue=2.688228290118124e-05)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-4.968903061697192, pvalue=1.814992603716806e-06)
+WilcoxonResult(statistic=1430.0, pvalue=1.5344408065207463e-05)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-2.0735963737504526, pvalue=0.039826680095391365)
+WilcoxonResult(statistic=1921.0, pvalue=0.10121389682972079)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=0.18234557096816242, pvalue=0.855557741948651)
+WilcoxonResult(statistic=5074.0, pvalue=0.21738603805449963)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=3.813065686029166, pvalue=0.000199960553923593)
+WilcoxonResult(statistic=3520.0, pvalue=8.924545717804209e-05)
+
+Species: knag
+(175, 5)
+(175, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-5.815211949501308, pvalue=2.8380152222082757e-08)
+WilcoxonResult(statistic=4195.0, pvalue=1.7668097272997791e-07)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-7.6629182126363, pvalue=1.2196486633795335e-12)
+WilcoxonResult(statistic=1091.0, pvalue=3.854997088685677e-12)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-1.4092830776495646, pvalue=0.16053617373704393)
+WilcoxonResult(statistic=4273.0, pvalue=0.3298808387487574)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=2.421460078014908, pvalue=0.016485483420778255)
+WilcoxonResult(statistic=6534.5, pvalue=0.08246539538292488)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=6.245713062906538, pvalue=3.136480226785004e-09)
+WilcoxonResult(statistic=3811.0, pvalue=1.1108729544273744e-08)
+
+Species: tbla
+(163, 5)
+(163, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-0.773576732162905, pvalue=0.4403084982392529)
+WilcoxonResult(statistic=6228.0, pvalue=0.4508950186532652)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-4.2991148818518905, pvalue=2.9519337576436822e-05)
+WilcoxonResult(statistic=1187.0, pvalue=0.00020973790937245295)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=2.872931210934781, pvalue=0.004611951877674614)
+WilcoxonResult(statistic=3574.0, pvalue=0.01328004902900547)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=1.1470374401992909, pvalue=0.2530573923527447)
+WilcoxonResult(statistic=6480.0, pvalue=0.736594905487052)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=7.16333378527483, pvalue=2.6191776473977347e-11)
+WilcoxonResult(statistic=2905.0, pvalue=3.848480156684239e-10)
+
+Species: tdel
+(202, 5)
+(202, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-2.4180929254928483, pvalue=0.016493784639462213)
+WilcoxonResult(statistic=8346.0, pvalue=0.021982253416576725)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-5.071043680388625, pvalue=8.962366813839255e-07)
+WilcoxonResult(statistic=538.0, pvalue=1.6757173209430702e-06)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=0.3664746190738654, pvalue=0.7143964188057478)
+WilcoxonResult(statistic=267.5, pvalue=0.8163083638214242)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=2.3361586669078016, pvalue=0.020468260359797374)
+WilcoxonResult(statistic=9011.0, pvalue=0.13589522423938646)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=6.343060206069649, pvalue=1.4610882480040939e-09)
+WilcoxonResult(statistic=5311.0, pvalue=2.8647750418493483e-09)
+
+Species: ncas
+(250, 5)
+(250, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-3.167562771202708, pvalue=0.0017291469756986603)
+WilcoxonResult(statistic=11870.0, pvalue=0.0008515082424290586)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-9.242098834715039, pvalue=1.1165781880108581e-17)
+WilcoxonResult(statistic=1023.0, pvalue=1.5228164921307297e-16)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=0.986739286992123, pvalue=0.3247283100216328)
+WilcoxonResult(statistic=4340.0, pvalue=0.7953335977535351)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=-0.7944768096862657, pvalue=0.42767445811437854)
+WilcoxonResult(statistic=13210.0, pvalue=0.030412256506746317)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=7.64928523208264, pvalue=4.412707796252432e-13)
+WilcoxonResult(statistic=7679.0, pvalue=4.221942339451001e-12)
+
+Species: agos
+(185, 5)
+(185, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-4.678146006596866, pvalue=5.592770920655585e-06)
+WilcoxonResult(statistic=5298.0, pvalue=5.873987320225642e-06)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-6.621421978422738, pvalue=3.78633413052884e-10)
+WilcoxonResult(statistic=287.0, pvalue=4.282338758672425e-10)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-0.6962292437457963, pvalue=0.48716380831885164)
+WilcoxonResult(statistic=16.0, pvalue=0.779434528427275)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=5.068609177891739, pvalue=9.714267123650617e-07)
+WilcoxonResult(statistic=5546.0, pvalue=2.779277462335688e-05)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=4.280788191287677, pvalue=2.993439147587186e-05)
+WilcoxonResult(statistic=5884.0, pvalue=0.00028355099538721615)
+
+Species: kwal
+(210, 5)
+(210, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-4.910917487993566, pvalue=1.8257886426511742e-06)
+WilcoxonResult(statistic=6915.0, pvalue=2.342624890997389e-06)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-7.741330418028222, pvalue=4.156553560142054e-13)
+WilcoxonResult(statistic=742.0, pvalue=1.2429109519887336e-12)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-0.22103625641661948, pvalue=0.8252799937248892)
+WilcoxonResult(statistic=38.0, pvalue=0.9374729223624751)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=3.51776813725631, pvalue=0.0005338343926126605)
+WilcoxonResult(statistic=8789.0, pvalue=0.009438183556290121)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=7.170857225661962, pvalue=1.2668500832717e-11)
+WilcoxonResult(statistic=5074.0, pvalue=9.790626587282063e-12)
+
+Species: tpha
+(143, 5)
+(143, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-6.9684292490466575, pvalue=1.1063022719150354e-10)
+WilcoxonResult(statistic=1952.0, pvalue=1.190503784769964e-10)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-6.627492781145048, pvalue=6.588682491243579e-10)
+WilcoxonResult(statistic=588.0, pvalue=1.546567286166175e-09)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-0.9997992196585581, pvalue=0.31910835801881005)
+WilcoxonResult(statistic=2430.0, pvalue=0.25979512811232786)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=3.1143569731477756, pvalue=0.002230432858129997)
+WilcoxonResult(statistic=3696.0, pvalue=0.003432928487600286)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=6.832179990964932, pvalue=2.2685274866509933e-10)
+WilcoxonResult(statistic=2186.5, pvalue=2.4021091016425336e-09)
+
+Species: kpol
+(175, 5)
+(175, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-4.63945174952205, pvalue=6.84513182241738e-06)
+WilcoxonResult(statistic=4756.0, pvalue=1.1520853994237258e-05)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-5.76516900938147, pvalue=3.643154396532972e-08)
+WilcoxonResult(statistic=2209.0, pvalue=1.7014780169892078e-07)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-1.8277723955765075, pvalue=0.06929651313301612)
+WilcoxonResult(statistic=3931.5, pvalue=0.23927357944220196)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=4.60052116896587, pvalue=8.08980836388612e-06)
+WilcoxonResult(statistic=5173.0, pvalue=0.0001664510720468678)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=8.45406008530334, pvalue=1.0987754764832902e-14)
+WilcoxonResult(statistic=2585.0, pvalue=2.5136291227142655e-14)
+
+Species: cgla
+(100, 5)
+(100, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-4.318880434089015, pvalue=3.7295666637615364e-05)
+WilcoxonResult(statistic=1349.0, pvalue=5.266589407314036e-05)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-4.491601974008708, pvalue=1.916672793983819e-05)
+WilcoxonResult(statistic=435.0, pvalue=0.00014675568197290064)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-2.8467800737633717, pvalue=0.005369681816520405)
+WilcoxonResult(statistic=1328.0, pvalue=0.013131597034228218)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=3.021501698897321, pvalue=0.0032012397286149174)
+WilcoxonResult(statistic=1770.0, pvalue=0.009433383853358793)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=4.706354858854769, pvalue=8.203397396892402e-06)
+WilcoxonResult(statistic=1269.0, pvalue=2.5617501280432127e-05)
+
+Species: ecym
+(193, 5)
+(193, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-4.420647567830459, pvalue=1.644393394753079e-05)
+WilcoxonResult(statistic=5721.0, pvalue=2.8139731381336362e-06)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-7.073563759849378, pvalue=2.743973946576091e-11)
+WilcoxonResult(statistic=1055.0, pvalue=3.3021270969439194e-10)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-1.0213378180002162, pvalue=0.3083795753123597)
+WilcoxonResult(statistic=88.5, pvalue=0.7936293343328789)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=6.309764308868287, pvalue=1.8868886363873383e-09)
+WilcoxonResult(statistic=5118.5, pvalue=4.778676799094161e-08)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=9.12108222223519, pvalue=1.0139833590766681e-16)
+WilcoxonResult(statistic=3137.0, pvalue=1.1517656780357454e-15)
+
+Species: kafr
+(216, 5)
+(216, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-2.4939612201757946, pvalue=0.013386030589744207)
+WilcoxonResult(statistic=9330.0, pvalue=0.00940954141401881)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-5.867473735763694, pvalue=1.656491738266084e-08)
+WilcoxonResult(statistic=1250.0, pvalue=2.7509715761909267e-08)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=1.4110387244709206, pvalue=0.15967855035674017)
+WilcoxonResult(statistic=958.0, pvalue=0.0959206942073988)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=1.0209432306840236, pvalue=0.30842874290368805)
+WilcoxonResult(statistic=11121.0, pvalue=0.5162083249802563)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=7.093939088414694, pvalue=1.8586997045180872e-11)
+WilcoxonResult(statistic=5584.5, pvalue=4.1666902029150464e-11)
+
+Species: sklu
+(229, 5)
+(229, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-2.1827325449024744, pvalue=0.030076490620090518)
+WilcoxonResult(statistic=10644.0, pvalue=0.011926137243904445)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-6.576394839125212, pvalue=3.253553906390558e-10)
+WilcoxonResult(statistic=946.0, pvalue=5.568063697581282e-10)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-1.5038505725525042, pvalue=0.13400375207509677)
+WilcoxonResult(statistic=26.0, pvalue=0.17295491798842066)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=1.81291600814233, pvalue=0.07115987177753394)
+WilcoxonResult(statistic=12979.5, pvalue=0.8514126600739812)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=8.44567484254519, pvalue=3.561523630867834e-15)
+WilcoxonResult(statistic=5688.5, pvalue=9.207504797483518e-14)
+
+Species: zrou
+(166, 5)
+(166, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-5.094985349526636, pvalue=9.452538890459827e-07)
+WilcoxonResult(statistic=3926.0, pvalue=1.2697033833637164e-06)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-3.6433155321027657, pvalue=0.0003601322490004925)
+WilcoxonResult(statistic=580.0, pvalue=0.0012888279087453617)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-0.18040489770008838, pvalue=0.8570560941517255)
+WilcoxonResult(statistic=38.0, pvalue=0.6001794871405539)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=0.6969849846094142, pvalue=0.4867930117467363)
+WilcoxonResult(statistic=6578.0, pvalue=0.5697844054469373)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=5.018997948288599, pvalue=1.334321208516505e-06)
+WilcoxonResult(statistic=3879.5, pvalue=1.3720224531026002e-06)
+
+Species: skud
+(279, 5)
+(279, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-4.59035059735209, pvalue=6.708283353778529e-06)
+WilcoxonResult(statistic=14030.0, pvalue=4.55458101015503e-05)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-9.614376560707042, pvalue=4.440903476746322e-19)
+WilcoxonResult(statistic=1662.0, pvalue=4.477429846027182e-18)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-1.2267531619796557, pvalue=0.220953330860283)
+WilcoxonResult(statistic=5994.5, pvalue=0.37464201340177505)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=-0.43961042545290613, pvalue=0.6605608287583635)
+WilcoxonResult(statistic=17470.5, pvalue=0.12681227358472738)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=6.379769533511237, pvalue=7.383102339616861e-10)
+WilcoxonResult(statistic=10828.0, pvalue=1.1099870166193513e-10)
+
+Species: suva
+(278, 5)
+(278, 5)
+LocalizationMetric_Vienna_ens
+Ttest_relResult(statistic=-4.700111781568322, pvalue=4.102661699768139e-06)
+WilcoxonResult(statistic=13115.0, pvalue=2.9057543222561096e-06)
+ZipperStemStartMetric_Vienna_ens
+Ttest_relResult(statistic=-7.845900226083567, pvalue=9.396746766981985e-14)
+WilcoxonResult(statistic=2929.0, pvalue=5.574371282301375e-14)
+ZipperStemEndMetric_Vienna_ens
+Ttest_relResult(statistic=-0.509512614290539, pvalue=0.6107986273711878)
+WilcoxonResult(statistic=7400.5, pvalue=0.8497199731557608)
+LongestStemMetric_Vienna_ens
+Ttest_relResult(statistic=0.042663536486197626, pvalue=0.9660004832660678)
+WilcoxonResult(statistic=17527.0, pvalue=0.1648515449116683)
+MLDMetric_Vienna_ens
+Ttest_relResult(statistic=8.250063335892284, pvalue=6.472994619846476e-15)
+WilcoxonResult(statistic=9078.0, pvalue=2.4645765978508305e-14)
+

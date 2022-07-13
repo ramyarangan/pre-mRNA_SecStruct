@@ -29,7 +29,8 @@ secstruct_options = {'secstruct_pkg': 'Vienna',
 	
 # all_features = ["LocalizationMetric", "StartToBPStemMetric", "BPToEndStemMetric", "StartProtectionMetric", 
 # 		"EndProtectionMetric", "BPProtectionMetric"]
-all_features = ["StartToBPStemMetric", "BPToEndStemMetric"]
+all_features = ["LocalizationMetric", "ZipperStemStartMetric", "ZipperStemEndMetric", \
+	"LongestStemMetric", "MLDMetric"]
 
 metric_names = [features_db.get_feature_full_name(feature_name, secstruct_options) \
 		for feature_name in all_features]
@@ -40,7 +41,7 @@ for feature in all_features:
 
 intron_path = os.path.join(DATABASE_PATH, 'introns/' + intron_class)
 for species_name in os.listdir(intron_path):
-	print("Species: %s\n" % species_name)
+	print("Species: %s" % species_name)
 
 	intron_class_species = intron_class + '/' + species_name
 	standard_feature_df = features_db.get_features(all_features, \
@@ -77,5 +78,6 @@ for species_name in os.listdir(intron_path):
 		print(metric)
 		print(stats.ttest_rel(np.array(intron_vals), np.array(control_vals)))
 		print(stats.wilcoxon(np.array(intron_vals), np.array(control_vals)))
+	print()
 
 	#plt.show()
