@@ -4,7 +4,12 @@ Computational modeling for sequence and structural features of yeast pre-mRNA
 # Overview
 This repository contains:
 * **Database** with gene annotations, RNA-seq RPKMs, intron sets in S. cerevisiae, alignments across Saccharomyces genus
-    * Each intron set (e.g. standard introns, controls, decoys, proto introns) includes sequences, splice site positions, cached secondary strucure features, minimum free energy secondary structures, and stochastically sampled secondary structure ensembles.
+    * Each intron set (e.g. standard introns, controls, decoys, proto introns) includes:  
+         * sequences
+         * splice site positions
+         * cached secondary strucure features
+         * minimum free energy secondary structures
+         * stochastically sampled secondary structure ensembles (will be stored here but not uploaded to repo)
 * **Feature calculation**: 
     * transcription levels
     * stop-codon features
