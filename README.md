@@ -1,22 +1,23 @@
 # pre-mRNA_SecStruct
-Modeling sequence and structural features for yeast pre-mRNA
+Computational modeling for sequence and structural features of yeast pre-mRNA
 
 # Overview
 This repository contains:
-* **Database** with gene annotations, RNA-seq RPKMs, intron sets in S. cerevisiae
-    * Intron sets: standard introns, controls, decoys, proto introns
+* **Database** with gene annotations, RNA-seq RPKMs, intron sets in S. cerevisiae, alignments across Saccharomyces genus
+    * Each intron set (e.g. standard introns, controls, decoys, proto introns) includes sequences, splice site positions, cached secondary strucure features, minimum free energy secondary structures, and stochastically sampled secondary structure ensembles.
 * **Feature calculation**: 
     * transcription levels
     * stop-codon features
     * sequence-based features: splicing motifs PWMs, length distributions
-    * secondary structure features: protection, stem-formation
-    * 3D motifs
+    * secondary structure features: stem dGs, longest stem, maximum path length, sequence protection
 * Basic **utilities**: 
     * Conversions between Refseq / Ensembl / symbolic gene names
     * Secondary structure and ensemble generation
+    * Processing sequence alignments
 * **Cache** expensive-to-compute secondary structure ensembles and features
 * **Analyses**: 
     * Statistical comparisons between intron and control / decoy sets
+    * Analyzing sequence and secondary structure properties across yeast species
     * Identifying decoy introns from whole transcriptome
     * Classification of introns vs decoys
 
@@ -24,4 +25,4 @@ This repository contains:
 # Requirements
 * bedtools
 * mygene
-* RNAstructure, Vienna, Contrafold
+* arnie, RNAstructure, Vienna, Contrafold
