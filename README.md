@@ -31,3 +31,6 @@ This repository contains:
 * bedtools
 * mygene
 * arnie, RNAstructure, Vienna, Contrafold
+
+# Running
+* Copy `src/sample_config.py` to `src/config.py` and update paths.
