@@ -1,3 +1,7 @@
+"""
+Starting from base_data.dat file, filter sequences that have lengths outside of 
+LEN_MIN and LEN_MAX.
+"""
 import sys
 
 input_filename = sys.argv[1]

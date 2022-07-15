@@ -1,7 +1,9 @@
-## Last modified 1/9/2022
-## Example usage: 
-##  python data_scripts/extend_introns.py ../database/introns/standard_allsize_min_50_max_600/base_info.dat ../database/introns/standard_allsize_min_50_max_600_extend20/ 20
-
+"""
+Last modified 1/9/2022
+Extend sequences to include surrounding genomic context
+Example usage: 
+## python data_scripts/extend_introns.py ../database/introns/standard_allsize_min_50_max_600/base_info.dat ../database/introns/standard_allsize_min_50_max_600_extend20/ 20
+"""
 import sys
 import os
 from config import DATABASE_PATH
