@@ -80,7 +80,7 @@ class SecstructGraph():
 		self.nt_to_stem_dict = nt_to_stem_dict
 		G, node_dict = self.get_graph()
 		self.G = G
-		self.node_dict = G
+		self.node_dict = node_dict
 		self.stemG = self.get_stem_graph()
 
 	def get_stems(self, stem_verbose=False):
