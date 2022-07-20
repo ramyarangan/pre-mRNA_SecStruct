@@ -26,6 +26,8 @@ This repository contains:
     * Identifying decoy introns from whole transcriptome
     * Classification of introns vs decoys
 
+# Generating figures
+A description for how to generate figures is included in `src/README.md`.
 
 # Requirements
 * bedtools
