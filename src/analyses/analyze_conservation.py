@@ -335,7 +335,6 @@ def heatmap_zipper_stem_data(intron_class):
 		dG_species_dict[species_name] = {}
 		intron_class_species = intron_class + '/' + species_name
 		zipper_stem_data = get_zipper_stems(intron_class_species, feature_options)
-		print(zipper_stem_data)
 		dGs = [x[3] for x in zipper_stem_data]
 		all_introns = build_intron_set(intron_class_species, \
 			intron_options={'name_is_refseq': False})

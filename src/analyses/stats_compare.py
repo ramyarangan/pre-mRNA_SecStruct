@@ -8,7 +8,7 @@ from util import features_db
 intron_class = sys.argv[1] # E.g. standard_allsize_min_50_max_600
 control_class = sys.argv[2] # E.g. standard_allsize_min_50_max_600_shuffle
 
-secstruct_options = {'secstruct_pkg': 'RNAstructure', # 'RNAstructure_DMS', 
+secstruct_options = {'secstruct_pkg': 'Vienna', # 'RNAstructure_DMS', 
 					'secstruct_type': 'ens', 
 					'use_bpp': False,
 					'verbose': True,

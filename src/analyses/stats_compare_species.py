@@ -16,6 +16,8 @@ from config import DATABASE_PATH
 
 intron_class = sys.argv[1] # E.g. standard_allsize_min_50_max_600
 control_class = sys.argv[2] # E.g. standard_allsize_min_50_max_600_shuffle
+secstruct_pkg = sys.argv[3] # E.g. Vienna, RNAstructure, RNAstructure_DMS
+secstruct_type = sys.argv[4] # E.g. ens, mfe
 
 intron_class = 'species_hooks/' + intron_class
 control_class = 'species_hooks/' + control_class 
@@ -41,6 +43,9 @@ for feature in all_features:
 
 intron_path = os.path.join(DATABASE_PATH, 'introns/' + intron_class)
 for species_name in os.listdir(intron_path):
+	if species_name == "scer":
+		continue
+
 	print("Species: %s" % species_name)
 
 	intron_class_species = intron_class + '/' + species_name

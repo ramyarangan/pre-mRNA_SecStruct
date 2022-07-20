@@ -166,13 +166,14 @@ def make_violin(standard_feature_df, \
 
 		min_vals[metric] = min(all_vals)
 		perc_5_vals[metric] =  get_percentile(all_vals, 0.05)
-		print("%s: %f-%f\n" % (metric, perc_5_vals[metric], perc_95_vals[metric]))
+		print("%s: %f-%f" % (metric, perc_5_vals[metric], perc_95_vals[metric]))
 
 		intron_vals = standard_feature_df[metric]
 		control_vals = control_feature_df[metric]
 		
 		print(stats.ttest_rel(np.array(intron_vals), np.array(control_vals)))
 		print(stats.wilcoxon(np.array(intron_vals), np.array(control_vals)))
+		print()
 
 	df = pd.DataFrame(columns=plot_names)
 	for idx, row in standard_feature_df.iterrows():
@@ -249,6 +250,10 @@ if __name__ == "__main__":
 		help='Directory to species intron classes with features computed; e.g. species_hooks/standard_min_50_max_600')
 	parser.add_argument('--control_class_species', type=str, \
 		help='Directory to species control classes with features computed; e.g. species_hooks/standard_min_50_max_600_phylo')
+	parser.add_argument('--secstruct_package', type=str, \
+		help="Secondary structure prediction package: options RNAstructure, RNAstructure_DMS, Vienna")
+	parser.add_argument('--secstruct_type', type=str, \
+		help="Secondary structure prediction approach: options mfe for minimum free energy or ens for ensemble")
 	args = parser.parse_args()
 
 	make_violin_plots = args.make_violin_plots
@@ -261,10 +266,15 @@ if __name__ == "__main__":
 	if make_species_heatmap:
 		intron_class_species = args.intron_class_species
 		control_class_species = args.control_class_species
+	secstruct_pkg = args.secstruct_package
+	secstruct_type = args.secstruct_type
+	use_bpp = False
+	if secstruct_pkg == "RNAstructure_DMS":
+		use_bpp = True
 
-	secstruct_options = {'secstruct_pkg': 'Vienna', 
-						'secstruct_type': 'ens', 
-						'use_bpp': False,
+	secstruct_options = {'secstruct_pkg': secstruct_pkg, 
+						'secstruct_type': secstruct_type, 
+						'use_bpp': use_bpp,
 						'verbose': False,
 						'force_eval': False
 						}
