@@ -6,6 +6,7 @@ Run: `python analyses/plot_secstruct_features.py --make_violin_plots --intron_cl
 
 Example output violin plot: 
 
+<img width="326" alt="standard_shuffle_vienna_ens_4" src="https://user-images.githubusercontent.com/2606810/179938801-7d629136-8018-4641-8051-43f419a36b84.png">
 
 Example output statistics (t-test and Wilcoxon ranked sum test comparisons): 
 ```
@@ -33,6 +34,7 @@ WilcoxonResult(statistic=12259.0, pvalue=1.508149693167277e-09)
 ```
 
 Fig. 6B, Fig. S12, Fig. S13, and Fig. S14 were produced with this function using different intron classes, secondary structure prediction packages, and secondary structure prediction approaches. Below we list the four parameters (intron class, control class, secondary structure package, secondary structure prediction type) for each figure.
+
 Fig. 6B: 
 * Panel 1: (`standard_allsize_dms_matched_to_shift500`, `standard_allsize_dms_shift_500`, `RNAstructure_DMS`, `mfe`)
 * Panel 2: (`standard_allsize_dms_matched_to_shift500`, `standard_allsize_dms_shift_500`, `RNAstructure`, `mfe`)
@@ -61,6 +63,7 @@ Run: `python analyses/plot_dg_zipper_stem_species.py standard_min_50_max_600 sta
 
 Example figure:
 
+<img width="634" alt="stem_dg_start_species_noscer_3" src="https://user-images.githubusercontent.com/2606810/179938900-e9f22497-70de-4634-af8c-1457e3a99da3.png">
 
 ### **Fig. 6D**
 Heatmap showing zipper stem conservation and per-species / per-intron statistics on zipper stem presence. 
@@ -71,6 +74,8 @@ Note: This code can also be used to produce heatmaps of zipper stem dG values in
 
 Example figure: 
 
+<img width="384" alt="Screen Shot 2022-07-20 at 1 34 16 AM" src="https://user-images.githubusercontent.com/2606810/179938653-faa1a613-ac58-4762-9f10-aea49da470a4.png">
+
 ### **Fig. S15A-B**
 
 Heatmap summarizing log p-values for comparisons between intron and control sequence sets across secondary structure features and species.
@@ -80,6 +85,8 @@ Run: `python analyses/plot_secstruct_features.py --make_species_heatmap --intron
 To compare against the shuffled control use the `control_class_species`: `standard_min_50_max_600_shuffle`. To compare against the phylogenetic control use the `control_class_species`: `standard_min_50_max_600_phylo_control`.
 
 Example figure:
+
+<img width="738" alt="feature_pval_heatmap_shuffle_log10_noscer_4" src="https://user-images.githubusercontent.com/2606810/179938508-d61e7c75-0592-4428-9fa2-b476ce595e9e.png">
 
 To generate t-test and Wilcoxon ranked sum test statistics for these comparisons, run: `python analyses/stats_compare_species.py standard_min_50_max_600 standard_min_50_max_600_shuffle`
 
