@@ -30,9 +30,20 @@ This repository contains:
 A description for how to generate figures is included in `src/README.md`.
 
 # Requirements
-* bedtools
-* mygene
-* arnie, RNAstructure, Vienna, Contrafold
+* scipy v1.10.1
+* numpy v1.24.3
+* matplotlib v3.7.1
+* seaborn v0.12.2
+* pandas v2.0.2
+* sklearn v1.3.0
+* argparse v1.1
+* mygene v3.2.2
+* arnie: https://github.com/DasLab/arnie
+* RNAstructure v6.2: https://rna.urmc.rochester.edu/RNAstructureDownload.html 
+* Vienna 2.0: https://www.tbi.univie.ac.at/RNA
+* Contrafold 2.00: http://contra.stanford.edu/contrafold/download.html
 
-# Running
+# Installation
+* Install all requirements (expected time: 1-2 hours)
+* Clone repository
 * Copy `src/sample_config.py` to `src/config.py` and update paths.
